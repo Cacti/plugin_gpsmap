@@ -55,6 +55,7 @@ if ($show != 'setup') {?>
 		gpsmap.initialLat      = <?php echo $initialLat; ?>;
 		gpsmap.initialLng      = <?php echo $initialLong; ?>;
 		gpsmap.initialZoom     = <?php echo $initialzoom; ?>;
+		gpsmap.initialized     = false;
 		gpsmap.liColor         = '<?php echo $liColor; ?>';
 		gpsmap.liWidth         = '<?php echo $liWidth; ?>';
 		gpsmap.liOpa           = '<?php echo $liOpa; ?>';
@@ -63,15 +64,13 @@ if ($show != 'setup') {?>
 		gpsmap.circleQuality   = '<?php echo $circleQuality; ?>';
 		gpsmap.enableWeather   = '<?php echo $enableWeather; ?>';
 		gpsmap.coverageOverlay = '<?php echo $coverageMap; ?>';
-		gpsmap.downloadURL     = '<?php echo './XML/', trim($parameter, '.'), '.xml'; ?>';
+		gpsmap.markerArray     = [];
+		gpsmap.downloadURL     = '<?php print $config['url_path'] . 'plugins/gpsmap/XML/' . trim($parameter, '.') . '.xml'; ?>';
 		gpsmap.t_error         = parseFloat('<?php echo $terror; ?>');
 
 		<?php include_once('plugins/gpsmap/includes/icons.php'); ?>
 		<?php include_once('plugins/gpsmap/includes/customicons.php'); ?>
 
-		google.maps.event.addDomListener(window, 'load', function() {
-			gpsmap.loader();
-		});
 		window.onresize = gpsmap.resize;
 
 		$(function() {
