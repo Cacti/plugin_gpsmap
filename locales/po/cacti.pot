@@ -1,0 +1,338 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-09-02 07:00-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../includes/polling/processregion.php:186
+#: ../includes/polling/processregion.php:205
+#, php-format
+msgid "IP %s"
+msgstr ""
+
+#: ../includes/setup/tabs.php:32 ../includes/setup/settings.php:24
+#: ../includes/setup/settings.php:127 ../includes/setup/settings.php:131
+msgid "GPS Map"
+msgstr ""
+
+#: ../includes/setup/settings.php:31 ../includes/setup/settings.php:38
+#: ../includes/setup/settings.php:45 ../includes/setup/settings.php:52
+msgid "GPS Templates"
+msgstr ""
+
+#: ../includes/setup/settings.php:59
+msgid "Create New Template"
+msgstr ""
+
+#: ../includes/setup/settings.php:70
+msgid "Templates"
+msgstr ""
+
+#: ../includes/setup/settings.php:70
+msgid "Map"
+msgstr ""
+
+#: ../includes/setup/settings.php:135
+msgid "Google API Key"
+msgstr ""
+
+#: ../includes/setup/settings.php:136
+msgid ""
+"The Google Maps API Key is not required but highly recommended, get more "
+"info at <a href='https://developers.google.com/maps/documentation/javascript/"
+"tutorial#api_key'>Google Documentation</a>."
+msgstr ""
+
+#: ../includes/setup/settings.php:142
+msgid "Geolocation URL"
+msgstr ""
+
+#: ../includes/setup/settings.php:143
+msgid ""
+"Enter the URL of the IP to Geolocation lookup service.  Every devices IP "
+"address will be tested against this location service if not set to determine "
+"the devices Geolocation.  The devices IP address will be appended to the end "
+"of this URL."
+msgstr ""
+
+#: ../includes/setup/settings.php:150
+msgid "Initial Latitude"
+msgstr ""
+
+#: ../includes/setup/settings.php:151 ../includes/setup/settings.php:159
+msgid "Defines the centering of the map"
+msgstr ""
+
+#: ../includes/setup/settings.php:158
+msgid "Initial Longitude"
+msgstr ""
+
+#: ../includes/setup/settings.php:166
+msgid "Initial Elevation"
+msgstr ""
+
+#: ../includes/setup/settings.php:167
+msgid "Defines the elevation of the map from 0 - 12"
+msgstr ""
+
+#: ../includes/setup/settings.php:174
+msgid "Display Settings"
+msgstr ""
+
+#: ../includes/setup/settings.php:178
+msgid "Display Disabled Devices"
+msgstr ""
+
+#: ../includes/setup/settings.php:179
+msgid "Allow the display of disabled Devices on the Map"
+msgstr ""
+
+#: ../includes/setup/settings.php:184
+msgid "Coverage Overlay"
+msgstr ""
+
+#: ../includes/setup/settings.php:185
+msgid ""
+"Draws a transparent circle around an AP with a radius equal to the furthest "
+"node in the same subnet"
+msgstr ""
+
+#: ../includes/setup/settings.php:190
+msgid "Map Refresh"
+msgstr ""
+
+#: ../includes/setup/settings.php:191
+msgid ""
+"Refreshes map after set minutes. Reccomend set to poller interval, 0 to "
+"disable."
+msgstr ""
+
+#: ../includes/setup/settings.php:198
+msgid "Overlay Settings"
+msgstr ""
+
+#: ../includes/setup/settings.php:202
+msgid "Tab Radius (Required)"
+msgstr ""
+
+#: ../includes/setup/settings.php:203
+msgid "Defines radius to combine points into one. (default: 0.0003)"
+msgstr ""
+
+#: ../includes/setup/settings.php:210
+msgid "Fill Color"
+msgstr ""
+
+#: ../includes/setup/settings.php:211
+msgid "The overlay circle fill color as FFFFFF"
+msgstr ""
+
+#: ../includes/setup/settings.php:216
+msgid "Ring Color"
+msgstr ""
+
+#: ../includes/setup/settings.php:217
+msgid "Defines the outer rim color as FFFFFF"
+msgstr ""
+
+#: ../includes/setup/settings.php:222
+msgid "Ring Width"
+msgstr ""
+
+#: ../includes/setup/settings.php:223
+msgid "Outter Ring width"
+msgstr ""
+
+#: ../includes/setup/settings.php:230
+msgid "Fill Opacity"
+msgstr ""
+
+#: ../includes/setup/settings.php:231
+msgid "Defines the fill opacity between 0 and 1"
+msgstr ""
+
+#: ../includes/setup/settings.php:238
+msgid "Ring Opacity"
+msgstr ""
+
+#: ../includes/setup/settings.php:239
+msgid "Defines the ring opacity between 0 and 1"
+msgstr ""
+
+#: ../includes/setup/settings.php:246
+msgid "Quality"
+msgstr ""
+
+#: ../includes/setup/settings.php:247
+msgid ""
+"Number of divisions in circle (preferably > 15) greater numbers can slow "
+"down browser performace."
+msgstr ""
+
+#: ../setup.php:35
+msgid "Configure GPSMap"
+msgstr ""
+
+#: ../setup.php:36
+msgid "View GPSMap"
+msgstr ""
+
+#: ../setup.php:107
+msgid "GPS Settings"
+msgstr ""
+
+#: ../setup.php:112
+msgid "Overlay Inclusion"
+msgstr ""
+
+#: ../setup.php:113
+msgid "Disable to plot host only, not included in coverage overlay."
+msgstr ""
+
+#: ../setup.php:120
+msgid "Latitude"
+msgstr ""
+
+#: ../setup.php:121
+msgid "The devices latitude coordinates"
+msgstr ""
+
+#: ../setup.php:129
+msgid "Longitude"
+msgstr ""
+
+#: ../setup.php:130
+msgid "The devices longitude coordinates"
+msgstr ""
+
+#: ../setup.php:149
+msgid "Starting Degree"
+msgstr ""
+
+#: ../setup.php:150
+msgid "Starting degree for directional area between 0-360"
+msgstr ""
+
+#: ../setup.php:158
+msgid "Stopping Degree"
+msgstr ""
+
+#: ../setup.php:159
+msgid ""
+"Stopping degree for directional area, must be greater than the Starting "
+"Degree"
+msgstr ""
+
+#: ../setup.php:167
+msgid "Specify Radius"
+msgstr ""
+
+#: ../setup.php:168
+msgid ""
+"Manually specify radius for Access Point. Set to 0 to determine radius based "
+"on grouped devices"
+msgstr ""
+
+#: ../setup.php:178
+msgid "Group ID"
+msgstr ""
+
+#: ../setup.php:179
+msgid ""
+"Groups define what devices are included in the coverage overlay. Will be "
+"checked against AP device group number. 0 to disable"
+msgstr ""
+
+#: ../gpstemplates.php:26
+msgid "Delete"
+msgstr ""
+
+#: ../gpstemplates.php:63
+msgid "Map Templates"
+msgstr ""
+
+#: ../gpstemplates.php:66
+msgid "Host Template"
+msgstr ""
+
+#: ../gpstemplates.php:67 ../gpstemplates.php:144
+msgid "Up Image"
+msgstr ""
+
+#: ../gpstemplates.php:68 ../gpstemplates.php:152
+msgid "Recovering Image"
+msgstr ""
+
+#: ../gpstemplates.php:69 ../gpstemplates.php:160
+msgid "Down Image"
+msgstr ""
+
+#: ../gpstemplates.php:70
+msgid "Is AP"
+msgstr ""
+
+#: ../gpstemplates.php:82
+msgid "True"
+msgstr ""
+
+#: ../gpstemplates.php:84
+msgid "False"
+msgstr ""
+
+#: ../gpstemplates.php:137
+msgid "Device Template"
+msgstr ""
+
+#: ../gpstemplates.php:138
+msgid "Choose the Device Template to base this Map Template type."
+msgstr ""
+
+#: ../gpstemplates.php:145
+msgid "Select the Image to Show for an Up Device"
+msgstr ""
+
+#: ../gpstemplates.php:153
+msgid "Select the Image to Show for a Recovering Device"
+msgstr ""
+
+#: ../gpstemplates.php:161
+msgid "Select the Image to Show for a Down Device"
+msgstr ""
+
+#: ../gpstemplates.php:168
+msgid "Access Point"
+msgstr ""
+
+#: ../gpstemplates.php:169
+msgid "Does this Device Template Represent an Access Point."
+msgstr ""
+
+#: ../gpstemplates.php:172
+msgid "No"
+msgstr ""
+
+#: ../gpstemplates.php:173
+msgid "Yes"
+msgstr ""
+
+#: ../gpstemplates.php:182
+msgid "Map Template Edit"
+msgstr ""
+
+#: ../gpsmap.php:34
+msgid ""
+"Please make sure to properly configure GPS Map first under settings -> gpsmap"
+msgstr ""
