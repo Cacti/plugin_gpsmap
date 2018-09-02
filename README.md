@@ -1,2 +1,2 @@
-# plugin_gpsmaps
-GPS Maps Plugin for Cacti
+# plugin_gpsmap
+GPS Map Plugin for Cacti
