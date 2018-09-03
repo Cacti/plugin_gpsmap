@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-02 07:00-0400\n"
+"POT-Creation-Date: 2018-09-03 17:10-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,13 +24,14 @@ msgid "IP %s"
 msgstr ""
 
 #: ../includes/setup/tabs.php:32 ../includes/setup/settings.php:24
-#: ../includes/setup/settings.php:127 ../includes/setup/settings.php:131
-msgid "GPS Map"
+#: ../includes/setup/settings.php:126 ../includes/setup/settings.php:130
+msgid "Maps"
 msgstr ""
 
 #: ../includes/setup/settings.php:31 ../includes/setup/settings.php:38
 #: ../includes/setup/settings.php:45 ../includes/setup/settings.php:52
-msgid "GPS Templates"
+#: ../gpstemplates.php:63
+msgid "Map Templates"
 msgstr ""
 
 #: ../includes/setup/settings.php:59
@@ -45,22 +46,22 @@ msgstr ""
 msgid "Map"
 msgstr ""
 
-#: ../includes/setup/settings.php:135
+#: ../includes/setup/settings.php:134
 msgid "Google API Key"
 msgstr ""
 
-#: ../includes/setup/settings.php:136
+#: ../includes/setup/settings.php:135
 msgid ""
 "The Google Maps API Key is not required but highly recommended, get more "
 "info at <a href='https://developers.google.com/maps/documentation/javascript/"
 "tutorial#api_key'>Google Documentation</a>."
 msgstr ""
 
-#: ../includes/setup/settings.php:142
+#: ../includes/setup/settings.php:141
 msgid "Geolocation URL"
 msgstr ""
 
-#: ../includes/setup/settings.php:143
+#: ../includes/setup/settings.php:142
 msgid ""
 "Enter the URL of the IP to Geolocation lookup service.  Every devices IP "
 "address will be tested against this location service if not set to determine "
@@ -68,200 +69,122 @@ msgid ""
 "of this URL."
 msgstr ""
 
-#: ../includes/setup/settings.php:150
+#: ../includes/setup/settings.php:149
 msgid "Initial Latitude"
 msgstr ""
 
-#: ../includes/setup/settings.php:151 ../includes/setup/settings.php:159
+#: ../includes/setup/settings.php:150 ../includes/setup/settings.php:158
 msgid "Defines the centering of the map"
 msgstr ""
 
-#: ../includes/setup/settings.php:158
+#: ../includes/setup/settings.php:157
 msgid "Initial Longitude"
 msgstr ""
 
-#: ../includes/setup/settings.php:166
+#: ../includes/setup/settings.php:165
 msgid "Initial Elevation"
 msgstr ""
 
-#: ../includes/setup/settings.php:167
+#: ../includes/setup/settings.php:166
 msgid "Defines the elevation of the map from 0 - 12"
 msgstr ""
 
-#: ../includes/setup/settings.php:174
+#: ../includes/setup/settings.php:173
 msgid "Display Settings"
 msgstr ""
 
-#: ../includes/setup/settings.php:178
+#: ../includes/setup/settings.php:177
 msgid "Display Disabled Devices"
 msgstr ""
 
-#: ../includes/setup/settings.php:179
+#: ../includes/setup/settings.php:178
 msgid "Allow the display of disabled Devices on the Map"
 msgstr ""
 
-#: ../includes/setup/settings.php:184
+#: ../includes/setup/settings.php:183
 msgid "Coverage Overlay"
 msgstr ""
 
-#: ../includes/setup/settings.php:185
+#: ../includes/setup/settings.php:184
 msgid ""
 "Draws a transparent circle around an AP with a radius equal to the furthest "
 "node in the same subnet"
 msgstr ""
 
-#: ../includes/setup/settings.php:190
+#: ../includes/setup/settings.php:189
 msgid "Map Refresh"
 msgstr ""
 
-#: ../includes/setup/settings.php:191
+#: ../includes/setup/settings.php:190
 msgid ""
 "Refreshes map after set minutes. Reccomend set to poller interval, 0 to "
 "disable."
 msgstr ""
 
-#: ../includes/setup/settings.php:198
+#: ../includes/setup/settings.php:197
 msgid "Overlay Settings"
 msgstr ""
 
-#: ../includes/setup/settings.php:202
+#: ../includes/setup/settings.php:201
 msgid "Tab Radius (Required)"
 msgstr ""
 
-#: ../includes/setup/settings.php:203
+#: ../includes/setup/settings.php:202
 msgid "Defines radius to combine points into one. (default: 0.0003)"
 msgstr ""
 
-#: ../includes/setup/settings.php:210
+#: ../includes/setup/settings.php:209
 msgid "Fill Color"
 msgstr ""
 
-#: ../includes/setup/settings.php:211
+#: ../includes/setup/settings.php:210
 msgid "The overlay circle fill color as FFFFFF"
 msgstr ""
 
-#: ../includes/setup/settings.php:216
+#: ../includes/setup/settings.php:215
 msgid "Ring Color"
 msgstr ""
 
-#: ../includes/setup/settings.php:217
+#: ../includes/setup/settings.php:216
 msgid "Defines the outer rim color as FFFFFF"
 msgstr ""
 
-#: ../includes/setup/settings.php:222
+#: ../includes/setup/settings.php:221
 msgid "Ring Width"
 msgstr ""
 
-#: ../includes/setup/settings.php:223
+#: ../includes/setup/settings.php:222
 msgid "Outter Ring width"
 msgstr ""
 
-#: ../includes/setup/settings.php:230
+#: ../includes/setup/settings.php:229
 msgid "Fill Opacity"
 msgstr ""
 
-#: ../includes/setup/settings.php:231
+#: ../includes/setup/settings.php:230
 msgid "Defines the fill opacity between 0 and 1"
 msgstr ""
 
-#: ../includes/setup/settings.php:238
+#: ../includes/setup/settings.php:237
 msgid "Ring Opacity"
 msgstr ""
 
-#: ../includes/setup/settings.php:239
+#: ../includes/setup/settings.php:238
 msgid "Defines the ring opacity between 0 and 1"
 msgstr ""
 
-#: ../includes/setup/settings.php:246
+#: ../includes/setup/settings.php:245
 msgid "Quality"
 msgstr ""
 
-#: ../includes/setup/settings.php:247
+#: ../includes/setup/settings.php:246
 msgid ""
 "Number of divisions in circle (preferably > 15) greater numbers can slow "
 "down browser performace."
 msgstr ""
 
-#: ../setup.php:35
-msgid "Configure GPSMap"
-msgstr ""
-
-#: ../setup.php:36
-msgid "View GPSMap"
-msgstr ""
-
-#: ../setup.php:107
-msgid "GPS Settings"
-msgstr ""
-
-#: ../setup.php:112
-msgid "Overlay Inclusion"
-msgstr ""
-
-#: ../setup.php:113
-msgid "Disable to plot host only, not included in coverage overlay."
-msgstr ""
-
-#: ../setup.php:120
-msgid "Latitude"
-msgstr ""
-
-#: ../setup.php:121
-msgid "The devices latitude coordinates"
-msgstr ""
-
-#: ../setup.php:129
-msgid "Longitude"
-msgstr ""
-
-#: ../setup.php:130
-msgid "The devices longitude coordinates"
-msgstr ""
-
-#: ../setup.php:149
-msgid "Starting Degree"
-msgstr ""
-
-#: ../setup.php:150
-msgid "Starting degree for directional area between 0-360"
-msgstr ""
-
-#: ../setup.php:158
-msgid "Stopping Degree"
-msgstr ""
-
-#: ../setup.php:159
-msgid ""
-"Stopping degree for directional area, must be greater than the Starting "
-"Degree"
-msgstr ""
-
-#: ../setup.php:167
-msgid "Specify Radius"
-msgstr ""
-
-#: ../setup.php:168
-msgid ""
-"Manually specify radius for Access Point. Set to 0 to determine radius based "
-"on grouped devices"
-msgstr ""
-
-#: ../setup.php:178
-msgid "Group ID"
-msgstr ""
-
-#: ../setup.php:179
-msgid ""
-"Groups define what devices are included in the coverage overlay. Will be "
-"checked against AP device group number. 0 to disable"
-msgstr ""
-
 #: ../gpstemplates.php:26
 msgid "Delete"
-msgstr ""
-
-#: ../gpstemplates.php:63
-msgid "Map Templates"
 msgstr ""
 
 #: ../gpstemplates.php:66
@@ -333,6 +256,79 @@ msgid "Map Template Edit"
 msgstr ""
 
 #: ../gpsmap.php:34
+msgid "Please make sure to properly configure Maps first under Settings > Maps"
+msgstr ""
+
+#: ../setup.php:35
+msgid "Configure Maps"
+msgstr ""
+
+#: ../setup.php:36
+msgid "View Maps"
+msgstr ""
+
+#: ../setup.php:107
+msgid "Map Settings"
+msgstr ""
+
+#: ../setup.php:112
+msgid "Overlay Inclusion"
+msgstr ""
+
+#: ../setup.php:113
+msgid "Disable to plot host only, not included in coverage overlay."
+msgstr ""
+
+#: ../setup.php:120
+msgid "Latitude"
+msgstr ""
+
+#: ../setup.php:121
+msgid "The devices latitude coordinates"
+msgstr ""
+
+#: ../setup.php:129
+msgid "Longitude"
+msgstr ""
+
+#: ../setup.php:130
+msgid "The devices longitude coordinates"
+msgstr ""
+
+#: ../setup.php:149
+msgid "Starting Degree"
+msgstr ""
+
+#: ../setup.php:150
+msgid "Starting degree for directional area between 0-360"
+msgstr ""
+
+#: ../setup.php:158
+msgid "Stopping Degree"
+msgstr ""
+
+#: ../setup.php:159
 msgid ""
-"Please make sure to properly configure GPS Map first under settings -> gpsmap"
+"Stopping degree for directional area, must be greater than the Starting "
+"Degree"
+msgstr ""
+
+#: ../setup.php:167
+msgid "Specify Radius"
+msgstr ""
+
+#: ../setup.php:168
+msgid ""
+"Manually specify radius for Access Point. Set to 0 to determine radius based "
+"on grouped devices"
+msgstr ""
+
+#: ../setup.php:178
+msgid "Group ID"
+msgstr ""
+
+#: ../setup.php:179
+msgid ""
+"Groups define what devices are included in the coverage overlay. Will be "
+"checked against AP device group number. 0 to disable"
 msgstr ""

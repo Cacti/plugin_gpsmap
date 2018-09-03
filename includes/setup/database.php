@@ -62,7 +62,7 @@ function gpsmap_setup_database() {
 	$data['columns'][] = array('name' => 'AP', 'type' => 'int(1)', 'NULL' => true);
 	$data['type'] = 'MyISAM';
 	$data['unique_keys'][] = array('name' => 'templateID' , 'columns' => 'templateID', 'unique' => true);
-	$data['comment'] = 'GPSMap icon template';
+	$data['comment'] = 'Map icon template';
 	api_plugin_db_table_create('gpsmap', 'gpsmap_templates', $data);
 
 	db_execute('UPDATE plugin_config SET version = "' . $v['version'] . '" WHERE directory = "gpsmap"');

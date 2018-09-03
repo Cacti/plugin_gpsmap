@@ -31,7 +31,7 @@ general_header();
 switch ($show) {
     //selected nodes
     case 'setup':
-        $body = __('Please make sure to properly configure GPS Map first under settings -> gpsmap', 'gpsmap');
+        $body = __('Please make sure to properly configure Maps first under Settings > Maps', 'gpsmap');
         break;
     default:
         if (!$parameter) {

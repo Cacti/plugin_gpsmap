@@ -1,7 +1,7 @@
 [info]
 name = gpsmap
 version = 2.1
-longname = GPS Maps Plugin
+longname = Maps Plugin
 author = Andrew Aloia, Wixiweb, The Cacti Group
 email = 
 homepage = http://www.cacti.net

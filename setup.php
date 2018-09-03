@@ -32,8 +32,8 @@ function plugin_gpsmap_install() {
 	api_plugin_register_hook('gpsmap', 'poller_bottom',         'gpsmap_poller_bottom',        'includes/polling.php');
 	api_plugin_register_hook('gpsmap', 'page_head',             'gpsmap_page_head',            'setup.php');
 
-	api_plugin_register_realm('gpsmap', 'gpstemplates.php,gpstemplates_add.php',__('Configure GPSMap', 'gpsmap'), 1);
-	api_plugin_register_realm('gpsmap', 'gpsmap.php', __('View GPSMap', 'gpsmap'), 1);
+	api_plugin_register_realm('gpsmap', 'gpstemplates.php,gpstemplates_add.php',__('Configure Maps', 'gpsmap'), 1);
+	api_plugin_register_realm('gpsmap', 'gpsmap.php', __('View Maps', 'gpsmap'), 1);
 
 	include_once($config['base_path'] . '/plugins/gpsmap/includes/setup/database.php');
 
@@ -104,7 +104,7 @@ function gpsmap_config_form() {
 		$fields_host_edit3[$f] = $a;
 		if ($f == 'disabled') {
 			$fields_host_edit3['gpsSpacer'] = array(
-				'friendly_name' => __('GPS Settings', 'gpsmap'),
+				'friendly_name' => __('Map Settings', 'gpsmap'),
 				'method' => 'spacer',
 			);
 

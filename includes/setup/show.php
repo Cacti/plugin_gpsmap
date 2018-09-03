@@ -26,7 +26,7 @@ else {
     $show = $_REQUEST['show'];
 }
 
-// GPS SETTINGS
+// Map SETTINGS
 $apiKey = read_config_option('gpsmap_apikey');
 $initialLong = read_config_option('gpsmap_longitude');
 $initialLat = read_config_option('gpsmap_latutude');

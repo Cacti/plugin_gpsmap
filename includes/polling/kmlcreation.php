@@ -22,7 +22,7 @@
 $kmldoc = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 $kmldoc .= "<kml xmlns=\"http://www.opengis.net/kml/2.2\">\n";
 $kmldoc .= "<Document>";
-$kmldoc .= "<name>GPSMaps Points</name>\n";
+$kmldoc .= "<name>Map Points</name>\n";
 
 //default google point info for KML
 

@@ -31,7 +31,7 @@ if (!isset_request_var('subnet')) {
 	$parameter = get_request_var('subnet');
 }
 
-//GPS SETTINGS *Other settings in show.php*
+//SETTINGS *Other settings in show.php*
 $initialzoom = read_config_option('gpsmap_zoom');
 
 //DISPLAY SETTINGS
