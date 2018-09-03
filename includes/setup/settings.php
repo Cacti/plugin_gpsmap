@@ -21,35 +21,35 @@
 
 function gpsmap_draw_navigation_text($nav) {
    $nav['gpsmap.php:'] = array(
-		'title' => __('GPS Map', 'gpsmap'),
+		'title' => __('Maps', 'gpsmap'),
 		'mapping' => '',
 		'url' => 'gpsmap.php',
 		'level' => '0'
 	);
 
    $nav['gpstemplates.php:'] = array(
-		'title' => __('GPS Templates', 'gpsmap'),
+		'title' => __('Map Templates', 'gpsmap'),
 		'mapping' => 'index.php:',
 		'url' => 'gpstemplates.php',
 		'level' => '1'
 	);
 
    $nav['gpstemplates.php:save'] = array(
-		'title' => __('GPS Templates', 'gpsmap'),
+		'title' => __('Map Templates', 'gpsmap'),
 		'mapping' => 'index.php:',
 		'url' => 'gpstemplates.php',
 		'level' => '1'
 	);
 
    $nav['gpstemplates.php:add'] = array(
-		'title' => __('GPS Templates', 'gpsmap'),
+		'title' => __('Map Templates', 'gpsmap'),
 		'mapping' => 'index.php:',
 		'url' => 'gpstemplates.php',
 		'level' => '1'
 	);
 
    $nav['gpstemplates.php:actions'] = array(
-		'title' => __('GPS Templates', 'gpsmap'),
+		'title' => __('Map Templates', 'gpsmap'),
 		'mapping' => 'index.php:',
 		'url' => 'gpstemplates.php',
 		'level' => '1'
@@ -72,9 +72,9 @@ function gpsmap_config_arrays() {
 
 function gpsmap_api_device_save($save) {
 	if (isset_request_var('GPScoverage')) {
-		$save['GPScoverage'] = "on";
+		$save['GPScoverage'] = 'on';
 	} else {
-		$save['GPScoverage'] = "off";
+		$save['GPScoverage'] = 'off';
 	}
 
     if (isset_request_var('latitude')) {
@@ -117,18 +117,17 @@ function gpsmap_api_device_save($save) {
 }
 
 function gpsmap_config_settings() {
-	//this puts the following form elements on the Settings->GPS Map tab in cacti
 	global $tabs, $settings;
 
 	if (basename(get_current_page()) !== 'settings.php') {
 		return;
 	}
 
-	$tabs['gpsmap'] = __('GPS Map', 'gpsmap');
+	$tabs['gpsmap'] = __('Maps', 'gpsmap');
 
 	$settings['gpsmap'] = array(
 		'gpsmap_header' => array(
-			'friendly_name' => __('GPS Map', 'gpsmap'),
+			'friendly_name' => __('Maps', 'gpsmap'),
 			'method'        => 'spacer',
 		),
 		'gpsmap_apikey' => array(
