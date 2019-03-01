@@ -114,7 +114,7 @@ function gpsmap_config_form() {
 				'method' => 'checkbox',
 				'value' => '|arg1:GPScoverage|',
 				'default' => 'on',
-	        );
+			);
 
 			$fields_host_edit3['latitude'] = array(
 				'friendly_name' => __('Latitude', 'gpsmap'),
