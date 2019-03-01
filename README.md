@@ -112,11 +112,11 @@ Got any ideas or complaints, please create an issue in GitHub. Examples include:
 
 * Allow better filtering by
 
-* Allowing Device Templates to be temporarily disabled
+  * Allowing Device Templates to be temporarily disabled
 
-* Allowing Sites to help filter what devices are shown
+  * Allowing Sites to help filter what devices are shown
 
-* Creating Regex-based rules to filter out individually unwanted devices
+  * Creating Regex-based rules to filter out individually unwanted devices
 
 ## Changelog
 
