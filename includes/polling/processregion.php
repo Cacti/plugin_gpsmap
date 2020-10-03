@@ -208,7 +208,7 @@ function region($subnet) {
 
 	//print out the information we have gathered.
 	$body .= '<div id="gpstopmenu" style="overflow: auto; width:100%; ">';
-	$body .= '<div id="gpsnav" style="overflow:auto; float:left; position:relative;"><input type="button" value="' . __esc('Start Over', 'gpsmap') . '" onclick="javascript: document.location = \'gpsmap.php\';" />';
+	$body .= '<div id="gpsnav" style="overflow:auto; float:left; position:relative;"><input type="button" value="' . __esc('Start Over', 'gpsmap') . '" onclick="window.location.reload(true);" />';
 	$body .= '<input type="button" class="print" alt="" value="' . __esc('Print', 'gpsmap') . '" onclick="window.open(\'print.php\')" />';
 	$body .= '</div>';
 	$tempHold = ' ';

@@ -33,17 +33,19 @@ var gpsmap = {
 	circleQuality : '',
 	enableWeather : '',
 	coverageOverlay : '',
-	downloadURL : '',
 	markerArray : [],
 	APArray : [],
 	t_error : 0,
 
 	// -------------------------------------------------------------------------
-	loader : function() {  
+	loader : function() {
 		this.resize();
 		this.gload();
 		if (this.refreshMap !== '0') {
-			setInterval(function() {gpsmap.gload();}, (this.refreshMap * 60000));
+			setInterval(function () {
+				gpsmap.deleteMarkers();
+				gpsmap.gload();
+			}, (this.refreshMap * 60000));
 		}
 	},
             
@@ -65,9 +67,10 @@ var gpsmap = {
 
 			this.initialized = true;
 		}
-
-		$.get(this.downloadURL, function(data) {
-            var xml = data;
+		//turn caching off
+		$.ajaxSetup({ cache: false });
+		$.get(gpsmap.downloadURL, function(data) {
+                        var xml = data;
 			var markers = xml.documentElement.getElementsByTagName('marker');
 
 			self.putMarkersOnMap(markers);
@@ -165,6 +168,16 @@ var gpsmap = {
 		);
 	},
 
+	// -------------------------------------------------------------------------
+	deleteMarkers: function () {
+		var self = this;
+		//Loop through all the markers and remove
+		for (var i = 0; i < this.markerArray.length; i++) {
+			this.markerArray[i].setMap(null);
+		}
+		this.markerArray = [];
+	},
+	
 	// -------------------------------------------------------------------------
 	createMarker : function(xmlMarker) {
 		var self = this,

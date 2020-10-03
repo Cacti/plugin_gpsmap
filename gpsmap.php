@@ -27,6 +27,11 @@ $body = '';
 
 general_header();
 
+//set headers to NOT cache a page
+header("Cache-Control: no-cache, no-store, must-revalidate");
+header("Pragma: no-cache");
+header("0");
+
 //decide what needs to be shown
 switch ($show) {
 	//selected nodes
