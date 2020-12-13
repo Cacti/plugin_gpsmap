@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR The Cacti Group
+# This file is distributed under the same license as the Cacti package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-19 09:50+0000\n"
+"Project-Id-Version: Cacti \n"
+"Report-Msgid-Bugs-To: developers@cacti.net\n"
+"POT-Creation-Date: 2020-12-12 22:15-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: gpsmap.php:34
+#: gpsmap.php:39
 msgid "Please make sure to properly configure Maps first under Settings > Maps"
 msgstr ""
 
@@ -146,9 +146,7 @@ msgid "Stopping Degree"
 msgstr ""
 
 #: setup.php:159
-msgid ""
-"Stopping degree for directional area, must be greater than the Starting "
-"Degree"
+msgid "Stopping degree for directional area, must be greater than the Starting Degree"
 msgstr ""
 
 #: setup.php:167
@@ -156,9 +154,7 @@ msgid "Specify Radius"
 msgstr ""
 
 #: setup.php:168
-msgid ""
-"Manually specify radius for Access Point. Set to 0 to determine radius based "
-"on grouped devices"
+msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
 msgstr ""
 
 #: setup.php:178
@@ -166,7 +162,5 @@ msgid "Group ID"
 msgstr ""
 
 #: setup.php:179
-msgid ""
-"Groups define what devices are included in the coverage overlay. Will be "
-"checked against AP device group number. 0 to disable"
+msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
 msgstr ""
