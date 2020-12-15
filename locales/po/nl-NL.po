@@ -1,0 +1,193 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The Cacti Group
+# This file is distributed under the same license as the Cacti package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Cacti\n"
+"Report-Msgid-Bugs-To: developers@cacti.net\n"
+"POT-Creation-Date: 2020-12-12 22:15-0500\n"
+"PO-Revision-Date: 2020-12-14 21:10-0500\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.2\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: nl_NL\n"
+
+#: gpsmap.php:39
+#, fuzzy
+msgid "Please make sure to properly configure Maps first under Settings > Maps"
+msgstr "Zorg ervoor dat u Maps eerst correct configureert onder Instellingen> Kaarten"
+
+#: gpstemplates.php:26
+msgid "Delete"
+msgstr "Verwijderen"
+
+#: gpstemplates.php:63
+#, fuzzy
+msgid "Map Templates"
+msgstr "Kaartsjablonen"
+
+#: gpstemplates.php:66
+#, fuzzy
+msgid "Host Template"
+msgstr "Host-sjabloon"
+
+#: gpstemplates.php:67 gpstemplates.php:144
+#, fuzzy
+msgid "Up Image"
+msgstr "Afbeelding omhoog"
+
+#: gpstemplates.php:68 gpstemplates.php:152
+#, fuzzy
+msgid "Recovering Image"
+msgstr "Afbeelding herstellen"
+
+#: gpstemplates.php:69 gpstemplates.php:160
+#, fuzzy
+msgid "Down Image"
+msgstr "Omlaag Afbeelding"
+
+#: gpstemplates.php:70
+#, fuzzy
+msgid "Is AP"
+msgstr "Is AP"
+
+#: gpstemplates.php:82
+msgid "True"
+msgstr "Waar"
+
+#: gpstemplates.php:84
+msgid "False"
+msgstr "Niet waar"
+
+#: gpstemplates.php:137
+msgid "Device Template"
+msgstr "Apparaattemplate"
+
+#: gpstemplates.php:138
+#, fuzzy
+msgid "Choose the Device Template to base this Map Template type."
+msgstr "Kies de apparaatsjabloon om dit type kaartsjabloon te baseren."
+
+#: gpstemplates.php:145
+#, fuzzy
+msgid "Select the Image to Show for an Up Device"
+msgstr "Selecteer de afbeelding die u wilt weergeven voor een up-apparaat"
+
+#: gpstemplates.php:153
+#, fuzzy
+msgid "Select the Image to Show for a Recovering Device"
+msgstr "Selecteer de afbeelding die u wilt weergeven voor een herstelapparaat"
+
+#: gpstemplates.php:161
+#, fuzzy
+msgid "Select the Image to Show for a Down Device"
+msgstr "Selecteer de afbeelding die u wilt weergeven voor een down-apparaat"
+
+#: gpstemplates.php:168
+#, fuzzy
+msgid "Access Point"
+msgstr "Toegangspunt"
+
+#: gpstemplates.php:169
+#, fuzzy
+msgid "Does this Device Template Represent an Access Point."
+msgstr "Vertegenwoordigt deze apparaatsjabloon een toegangspunt."
+
+#: gpstemplates.php:172
+msgid "No"
+msgstr "Nee"
+
+#: gpstemplates.php:173
+msgid "Yes"
+msgstr "Ja"
+
+#: gpstemplates.php:182
+#, fuzzy
+msgid "Map Template Edit"
+msgstr "Kaartsjabloon bewerken"
+
+#: setup.php:35
+#, fuzzy
+msgid "Configure Maps"
+msgstr "Configureer kaarten"
+
+#: setup.php:36
+msgid "View Maps"
+msgstr "Kaarten bekijken"
+
+#: setup.php:107
+msgid "Map Settings"
+msgstr "Kaart instellingen"
+
+#: setup.php:112
+#, fuzzy
+msgid "Overlay Inclusion"
+msgstr "Overlay-opname"
+
+#: setup.php:113
+#, fuzzy
+msgid "Disable to plot host only, not included in coverage overlay."
+msgstr "Schakel uit om alleen host te plotten, niet opgenomen in dekkingsoverlay."
+
+#: setup.php:120
+msgid "Latitude"
+msgstr "Breedtegraad"
+
+#: setup.php:121
+#, fuzzy
+msgid "The devices latitude coordinates"
+msgstr "De coördinaten van de breedtegraad van het apparaat"
+
+#: setup.php:129
+msgid "Longitude"
+msgstr "Longitude"
+
+#: setup.php:130
+#, fuzzy
+msgid "The devices longitude coordinates"
+msgstr "De lengtecoördinaten van het apparaat"
+
+#: setup.php:149
+#, fuzzy
+msgid "Starting Degree"
+msgstr "Beginnend diploma"
+
+#: setup.php:150
+#, fuzzy
+msgid "Starting degree for directional area between 0-360"
+msgstr "Startgraad voor richtingsgebied tussen 0-360"
+
+#: setup.php:158
+#, fuzzy
+msgid "Stopping Degree"
+msgstr "Degree stoppen"
+
+#: setup.php:159
+#, fuzzy
+msgid "Stopping degree for directional area, must be greater than the Starting Degree"
+msgstr "De stopgraad voor het richtingsgebied moet groter zijn dan de startgraad"
+
+#: setup.php:167
+#, fuzzy
+msgid "Specify Radius"
+msgstr "Specificeer Radius"
+
+#: setup.php:168
+#, fuzzy
+msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
+msgstr "Geef handmatig de straal op voor het toegangspunt. Stel in op 0 om de straal te bepalen op basis van gegroepeerde apparaten"
+
+#: setup.php:178
+msgid "Group ID"
+msgstr "Groeps-ID"
+
+#: setup.php:179
+#, fuzzy
+msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
+msgstr "Groepen bepalen welke apparaten zijn opgenomen in de dekkingsoverlay. Wordt gecontroleerd aan de hand van het AP-apparaatgroepnummer. 0 om uit te schakelen"

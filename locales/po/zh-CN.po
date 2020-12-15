@@ -1,0 +1,194 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The Cacti Group
+# This file is distributed under the same license as the Cacti package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Cacti\n"
+"Report-Msgid-Bugs-To: developers@cacti.net\n"
+"POT-Creation-Date: 2020-12-12 22:15-0500\n"
+"PO-Revision-Date: 2020-12-14 21:09-0500\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.2\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: zh_CN\n"
+
+#: gpsmap.php:39
+#, fuzzy
+msgid "Please make sure to properly configure Maps first under Settings > Maps"
+msgstr "请确保首先在“设置”>“地图”下正确配置“地图”"
+
+#: gpstemplates.php:26
+msgid "Delete"
+msgstr "删除"
+
+#: gpstemplates.php:63
+#, fuzzy
+msgid "Map Templates"
+msgstr "地图模板"
+
+#: gpstemplates.php:66
+#, fuzzy
+msgid "Host Template"
+msgstr "主机模板"
+
+#: gpstemplates.php:67 gpstemplates.php:144
+#, fuzzy
+msgid "Up Image"
+msgstr "上图"
+
+#: gpstemplates.php:68 gpstemplates.php:152
+#, fuzzy
+msgid "Recovering Image"
+msgstr "恢复影像"
+
+#: gpstemplates.php:69 gpstemplates.php:160
+#, fuzzy
+msgid "Down Image"
+msgstr "下图"
+
+#: gpstemplates.php:70
+#, fuzzy
+msgid "Is AP"
+msgstr "是AP"
+
+#: gpstemplates.php:82
+msgid "True"
+msgstr "是"
+
+#: gpstemplates.php:84
+msgid "False"
+msgstr "否"
+
+#: gpstemplates.php:137
+msgid "Device Template"
+msgstr "设备模板"
+
+#: gpstemplates.php:138
+#, fuzzy
+msgid "Choose the Device Template to base this Map Template type."
+msgstr "选择设备模板作为此地图模板类型的基础。"
+
+#: gpstemplates.php:145
+#, fuzzy
+msgid "Select the Image to Show for an Up Device"
+msgstr "选择要显示向上设备的图像"
+
+#: gpstemplates.php:153
+#, fuzzy
+msgid "Select the Image to Show for a Recovering Device"
+msgstr "选择要为恢复设备显示的图像"
+
+#: gpstemplates.php:161
+#, fuzzy
+msgid "Select the Image to Show for a Down Device"
+msgstr "选择要显示关闭设备的图像"
+
+#: gpstemplates.php:168
+msgid "Access Point"
+msgstr "接入点"
+
+#: gpstemplates.php:169
+#, fuzzy
+msgid "Does this Device Template Represent an Access Point."
+msgstr "此设备模板代表一个接入点吗？"
+
+#: gpstemplates.php:172
+#, fuzzy
+msgid "No"
+msgstr "否"
+
+#: gpstemplates.php:173
+msgid "Yes"
+msgstr "是"
+
+#: gpstemplates.php:182
+#, fuzzy
+msgid "Map Template Edit"
+msgstr "地图模板编辑"
+
+#: setup.php:35
+#, fuzzy
+msgid "Configure Maps"
+msgstr "配置地图"
+
+#: setup.php:36
+#, fuzzy
+msgid "View Maps"
+msgstr "查看地图"
+
+#: setup.php:107
+msgid "Map Settings"
+msgstr "地图设置"
+
+#: setup.php:112
+#, fuzzy
+msgid "Overlay Inclusion"
+msgstr "叠加包含"
+
+#: setup.php:113
+#, fuzzy
+msgid "Disable to plot host only, not included in coverage overlay."
+msgstr "仅禁用绘制主机，不包括在覆盖图叠加中。"
+
+#: setup.php:120
+msgid "Latitude"
+msgstr "纬度"
+
+#: setup.php:121
+#, fuzzy
+msgid "The devices latitude coordinates"
+msgstr "设备纬度坐标"
+
+#: setup.php:129
+msgid "Longitude"
+msgstr "经度"
+
+#: setup.php:130
+#, fuzzy
+msgid "The devices longitude coordinates"
+msgstr "设备经度坐标"
+
+#: setup.php:149
+#, fuzzy
+msgid "Starting Degree"
+msgstr "起始学位"
+
+#: setup.php:150
+#, fuzzy
+msgid "Starting degree for directional area between 0-360"
+msgstr "0-360之间的定向区域的起始度"
+
+#: setup.php:158
+#, fuzzy
+msgid "Stopping Degree"
+msgstr "停止度"
+
+#: setup.php:159
+#, fuzzy
+msgid "Stopping degree for directional area, must be greater than the Starting Degree"
+msgstr "定向区域的停止度，必须大于开始度"
+
+#: setup.php:167
+#, fuzzy
+msgid "Specify Radius"
+msgstr "指定半径"
+
+#: setup.php:168
+#, fuzzy
+msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
+msgstr "手动为接入点指定半径。设置为0以确定基于分组设备的半径"
+
+#: setup.php:178
+msgid "Group ID"
+msgstr "群组 ID"
+
+#: setup.php:179
+#, fuzzy
+msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
+msgstr "组定义了覆盖图中包括哪些设备。将对照AP设备组号进行检查。 0禁用"
