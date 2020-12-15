@@ -1,0 +1,199 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The Cacti Group
+# This file is distributed under the same license as the Cacti package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Cacti\n"
+"Report-Msgid-Bugs-To: developers@cacti.net\n"
+"POT-Creation-Date: 2020-12-12 22:15-0500\n"
+"PO-Revision-Date: 2020-12-14 21:27-0500\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.2\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
+"Language: hi_IN\n"
+
+#: gpsmap.php:39
+#, fuzzy
+msgid "Please make sure to properly configure Maps first under Settings > Maps"
+msgstr "कृपया सेटिंग> मैप्स के तहत पहले मैप्स को ठीक से कॉन्फ़िगर करना सुनिश्चित करें"
+
+#: gpstemplates.php:26
+msgid "Delete"
+msgstr "हटाएं"
+
+#: gpstemplates.php:63
+#, fuzzy
+msgid "Map Templates"
+msgstr "मैप टेम्प्लेट"
+
+#: gpstemplates.php:66
+#, fuzzy
+msgid "Host Template"
+msgstr "होस्ट टेम्पलेट"
+
+#: gpstemplates.php:67 gpstemplates.php:144
+#, fuzzy
+msgid "Up Image"
+msgstr "ऊपर की छवि"
+
+#: gpstemplates.php:68 gpstemplates.php:152
+#, fuzzy
+msgid "Recovering Image"
+msgstr "पुनर्प्राप्त करने वाली छवि"
+
+#: gpstemplates.php:69 gpstemplates.php:160
+#, fuzzy
+msgid "Down Image"
+msgstr "डाउन इमेज"
+
+#: gpstemplates.php:70
+#, fuzzy
+msgid "Is AP"
+msgstr "एपी है"
+
+#: gpstemplates.php:82
+#, fuzzy
+msgid "True"
+msgstr "सच"
+
+#: gpstemplates.php:84
+#, fuzzy
+msgid "False"
+msgstr "असत्य"
+
+#: gpstemplates.php:137
+#, fuzzy
+msgid "Device Template"
+msgstr "डिवाइस टेम्पलेट"
+
+#: gpstemplates.php:138
+#, fuzzy
+msgid "Choose the Device Template to base this Map Template type."
+msgstr "इस मैप टेम्पलेट प्रकार को आधार बनाने के लिए डिवाइस टेम्पलेट चुनें।"
+
+#: gpstemplates.php:145
+#, fuzzy
+msgid "Select the Image to Show for an Up Device"
+msgstr "एक डिवाइस के लिए दिखाने के लिए छवि का चयन करें"
+
+#: gpstemplates.php:153
+#, fuzzy
+msgid "Select the Image to Show for a Recovering Device"
+msgstr "एक पुनर्प्राप्त उपकरण के लिए दिखाने के लिए छवि का चयन करें"
+
+#: gpstemplates.php:161
+#, fuzzy
+msgid "Select the Image to Show for a Down Device"
+msgstr "एक डाउन डिवाइस के लिए दिखाने के लिए छवि का चयन करें"
+
+#: gpstemplates.php:168
+#, fuzzy
+msgid "Access Point"
+msgstr "अभिगम केंद्र"
+
+#: gpstemplates.php:169
+#, fuzzy
+msgid "Does this Device Template Represent an Access Point."
+msgstr "क्या यह डिवाइस टेम्पलेट एक्सेस प्वाइंट का प्रतिनिधित्व करता है।"
+
+#: gpstemplates.php:172
+msgid "No"
+msgstr "नहीं"
+
+#: gpstemplates.php:173
+msgid "Yes"
+msgstr "हाँ"
+
+#: gpstemplates.php:182
+#, fuzzy
+msgid "Map Template Edit"
+msgstr "नक्शा खाका संपादित करें"
+
+#: setup.php:35
+#, fuzzy
+msgid "Configure Maps"
+msgstr "मैप्स कॉन्फ़िगर करें"
+
+#: setup.php:36
+#, fuzzy
+msgid "View Maps"
+msgstr "नक्शे देखें"
+
+#: setup.php:107
+#, fuzzy
+msgid "Map Settings"
+msgstr "नक्शा सेटिंग्स"
+
+#: setup.php:112
+#, fuzzy
+msgid "Overlay Inclusion"
+msgstr "ओवरले इंक्लूजन"
+
+#: setup.php:113
+#, fuzzy
+msgid "Disable to plot host only, not included in coverage overlay."
+msgstr "केवल होस्ट प्लॉट करने में अक्षम, कवरेज ओवरले में शामिल नहीं।"
+
+#: setup.php:120
+msgid "Latitude"
+msgstr "अक्षांश रेखाएँ"
+
+#: setup.php:121
+#, fuzzy
+msgid "The devices latitude coordinates"
+msgstr "डिवाइस अक्षांश निर्देशांक"
+
+#: setup.php:129
+msgid "Longitude"
+msgstr "रेखांश"
+
+#: setup.php:130
+#, fuzzy
+msgid "The devices longitude coordinates"
+msgstr "डिवाइस देशांतर निर्देशांक"
+
+#: setup.php:149
+#, fuzzy
+msgid "Starting Degree"
+msgstr "डिग्री शुरू"
+
+#: setup.php:150
+#, fuzzy
+msgid "Starting degree for directional area between 0-360"
+msgstr "0-360 के बीच दिशात्मक क्षेत्र के लिए डिग्री शुरू करना"
+
+#: setup.php:158
+#, fuzzy
+msgid "Stopping Degree"
+msgstr "स्टॉपिंग डिग्री"
+
+#: setup.php:159
+#, fuzzy
+msgid "Stopping degree for directional area, must be greater than the Starting Degree"
+msgstr "दिशात्मक क्षेत्र के लिए स्टॉपिंग डिग्री, प्रारंभिक डिग्री से अधिक होनी चाहिए"
+
+#: setup.php:167
+#, fuzzy
+msgid "Specify Radius"
+msgstr "त्रिज्या निर्दिष्ट करें"
+
+#: setup.php:168
+#, fuzzy
+msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
+msgstr "एक्सेस प्वाइंट के लिए मैन्युअल रूप से त्रिज्या निर्दिष्ट करें। समूहित उपकरणों के आधार पर त्रिज्या निर्धारित करने के लिए 0 पर सेट करें"
+
+#: setup.php:178
+#, fuzzy
+msgid "Group ID"
+msgstr "समूह आईडी"
+
+#: setup.php:179
+#, fuzzy
+msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
+msgstr "समूह परिभाषित करते हैं कि कवरेज ओवरले में कौन से उपकरण शामिल हैं। एपी डिवाइस ग्रुप नंबर के खिलाफ जांच की जाएगी। 0 अक्षम करने के लिए"

@@ -1,0 +1,195 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The Cacti Group
+# This file is distributed under the same license as the Cacti package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Cacti\n"
+"Report-Msgid-Bugs-To: developers@cacti.net\n"
+"POT-Creation-Date: 2020-12-12 22:15-0500\n"
+"PO-Revision-Date: 2020-12-14 21:35-0500\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.2\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: vi_VN\n"
+
+#: gpsmap.php:39
+#, fuzzy
+msgid "Please make sure to properly configure Maps first under Settings > Maps"
+msgstr "Trước tiên, hãy đảm bảo định cấu hình đúng Bản đồ trong Cài đặt> Bản đồ"
+
+#: gpstemplates.php:26
+msgid "Delete"
+msgstr "Xóa"
+
+#: gpstemplates.php:63
+#, fuzzy
+msgid "Map Templates"
+msgstr "Mẫu bản đồ"
+
+#: gpstemplates.php:66
+#, fuzzy
+msgid "Host Template"
+msgstr "Mẫu máy chủ lưu trữ"
+
+#: gpstemplates.php:67 gpstemplates.php:144
+#, fuzzy
+msgid "Up Image"
+msgstr "Lên hình ảnh"
+
+#: gpstemplates.php:68 gpstemplates.php:152
+#, fuzzy
+msgid "Recovering Image"
+msgstr "Khôi phục hình ảnh"
+
+#: gpstemplates.php:69 gpstemplates.php:160
+#, fuzzy
+msgid "Down Image"
+msgstr "Hình ảnh xuống"
+
+#: gpstemplates.php:70
+#, fuzzy
+msgid "Is AP"
+msgstr "Là AP"
+
+#: gpstemplates.php:82
+msgid "True"
+msgstr "Đúng"
+
+#: gpstemplates.php:84
+msgid "False"
+msgstr "Sai"
+
+#: gpstemplates.php:137
+#, fuzzy
+msgid "Device Template"
+msgstr "Mẫu thiết bị"
+
+#: gpstemplates.php:138
+#, fuzzy
+msgid "Choose the Device Template to base this Map Template type."
+msgstr "Chọn Mẫu thiết bị để làm cơ sở cho loại Mẫu bản đồ này."
+
+#: gpstemplates.php:145
+#, fuzzy
+msgid "Select the Image to Show for an Up Device"
+msgstr "Chọn Hình ảnh để Hiển thị cho Thiết bị Lên"
+
+#: gpstemplates.php:153
+#, fuzzy
+msgid "Select the Image to Show for a Recovering Device"
+msgstr "Chọn hình ảnh để hiển thị cho thiết bị đang khôi phục"
+
+#: gpstemplates.php:161
+#, fuzzy
+msgid "Select the Image to Show for a Down Device"
+msgstr "Chọn hình ảnh để hiển thị cho thiết bị bị hỏng"
+
+#: gpstemplates.php:168
+#, fuzzy
+msgid "Access Point"
+msgstr "Điểm truy cập"
+
+#: gpstemplates.php:169
+#, fuzzy
+msgid "Does this Device Template Represent an Access Point."
+msgstr "Mẫu thiết bị này có đại diện cho một điểm truy cập không."
+
+#: gpstemplates.php:172
+msgid "No"
+msgstr "Không"
+
+#: gpstemplates.php:173
+msgid "Yes"
+msgstr "Có"
+
+#: gpstemplates.php:182
+#, fuzzy
+msgid "Map Template Edit"
+msgstr "Bản đồ Mẫu Chỉnh sửa"
+
+#: setup.php:35
+#, fuzzy
+msgid "Configure Maps"
+msgstr "Định cấu hình bản đồ"
+
+#: setup.php:36
+#, fuzzy
+msgid "View Maps"
+msgstr "Xem bản đồ"
+
+#: setup.php:107
+msgid "Map Settings"
+msgstr "Cài đặt bản đồ"
+
+#: setup.php:112
+#, fuzzy
+msgid "Overlay Inclusion"
+msgstr "Bao gồm lớp phủ"
+
+#: setup.php:113
+#, fuzzy
+msgid "Disable to plot host only, not included in coverage overlay."
+msgstr "Vô hiệu hóa để chỉ máy chủ lưu trữ âm mưu, không được bao gồm trong lớp phủ bảo hiểm."
+
+#: setup.php:120
+msgid "Latitude"
+msgstr "Vĩ độ"
+
+#: setup.php:121
+#, fuzzy
+msgid "The devices latitude coordinates"
+msgstr "Tọa độ vĩ độ của thiết bị"
+
+#: setup.php:129
+msgid "Longitude"
+msgstr "Kinh độ"
+
+#: setup.php:130
+#, fuzzy
+msgid "The devices longitude coordinates"
+msgstr "Tọa độ kinh độ của thiết bị"
+
+#: setup.php:149
+#, fuzzy
+msgid "Starting Degree"
+msgstr "Bằng cấp khởi đầu"
+
+#: setup.php:150
+#, fuzzy
+msgid "Starting degree for directional area between 0-360"
+msgstr "Độ bắt đầu cho khu vực định hướng trong khoảng từ 0-360"
+
+#: setup.php:158
+#, fuzzy
+msgid "Stopping Degree"
+msgstr "Mức độ dừng"
+
+#: setup.php:159
+#, fuzzy
+msgid "Stopping degree for directional area, must be greater than the Starting Degree"
+msgstr "Mức độ dừng cho khu vực định hướng, phải lớn hơn Mức độ bắt đầu"
+
+#: setup.php:167
+#, fuzzy
+msgid "Specify Radius"
+msgstr "Chỉ định bán kính"
+
+#: setup.php:168
+#, fuzzy
+msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
+msgstr "Chỉ định bán kính cho Access Point theo cách thủ công. Đặt thành 0 để xác định bán kính dựa trên các thiết bị được nhóm"
+
+#: setup.php:178
+msgid "Group ID"
+msgstr "ID Nhóm"
+
+#: setup.php:179
+#, fuzzy
+msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
+msgstr "Các nhóm xác định những thiết bị nào được bao gồm trong lớp phủ. Sẽ được kiểm tra với số nhóm thiết bị AP. 0 để tắt"

@@ -1,0 +1,195 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The Cacti Group
+# This file is distributed under the same license as the Cacti package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Cacti\n"
+"Report-Msgid-Bugs-To: developers@cacti.net\n"
+"POT-Creation-Date: 2020-12-12 22:15-0500\n"
+"PO-Revision-Date: 2020-12-14 21:34-0500\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.2\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: tr_TR\n"
+
+#: gpsmap.php:39
+#, fuzzy
+msgid "Please make sure to properly configure Maps first under Settings > Maps"
+msgstr "Lütfen önce Ayarlar> Haritalar altında Haritalar'ı doğru şekilde yapılandırdığınızdan emin olun."
+
+#: gpstemplates.php:26
+msgid "Delete"
+msgstr "Sil"
+
+#: gpstemplates.php:63
+#, fuzzy
+msgid "Map Templates"
+msgstr "Harita Şablonları"
+
+#: gpstemplates.php:66
+#, fuzzy
+msgid "Host Template"
+msgstr "Barındırma Şablonu"
+
+#: gpstemplates.php:67 gpstemplates.php:144
+#, fuzzy
+msgid "Up Image"
+msgstr "Yukarı Resim"
+
+#: gpstemplates.php:68 gpstemplates.php:152
+#, fuzzy
+msgid "Recovering Image"
+msgstr "Görüntü Kurtarılıyor"
+
+#: gpstemplates.php:69 gpstemplates.php:160
+#, fuzzy
+msgid "Down Image"
+msgstr "Aşağı Resmi"
+
+#: gpstemplates.php:70
+#, fuzzy
+msgid "Is AP"
+msgstr "AP mi"
+
+#: gpstemplates.php:82
+msgid "True"
+msgstr "Doğru"
+
+#: gpstemplates.php:84
+msgid "False"
+msgstr "Yanlış"
+
+#: gpstemplates.php:137
+#, fuzzy
+msgid "Device Template"
+msgstr "Cihaz Şablonu"
+
+#: gpstemplates.php:138
+#, fuzzy
+msgid "Choose the Device Template to base this Map Template type."
+msgstr "Bu Harita Şablonu tipini temel almak için Cihaz Şablonunu seçin."
+
+#: gpstemplates.php:145
+#, fuzzy
+msgid "Select the Image to Show for an Up Device"
+msgstr "Bir Yukarı Aygıt için Gösterilecek Görüntüyü Seçin"
+
+#: gpstemplates.php:153
+#, fuzzy
+msgid "Select the Image to Show for a Recovering Device"
+msgstr "Bir Kurtarma Cihazı için Gösterilecek Resmi Seçin"
+
+#: gpstemplates.php:161
+#, fuzzy
+msgid "Select the Image to Show for a Down Device"
+msgstr "Aşağı Cihazı için Gösterilecek Resmi Seçin"
+
+#: gpstemplates.php:168
+#, fuzzy
+msgid "Access Point"
+msgstr "Erişim noktası"
+
+#: gpstemplates.php:169
+#, fuzzy
+msgid "Does this Device Template Represent an Access Point."
+msgstr "Bu Cihaz Şablonu bir Erişim Noktasını Temsil Eder mi?"
+
+#: gpstemplates.php:172
+msgid "No"
+msgstr "Hayır"
+
+#: gpstemplates.php:173
+msgid "Yes"
+msgstr "Evet"
+
+#: gpstemplates.php:182
+#, fuzzy
+msgid "Map Template Edit"
+msgstr "Harita Şablonu Düzenlemesi"
+
+#: setup.php:35
+#, fuzzy
+msgid "Configure Maps"
+msgstr "Haritaları Yapılandırın"
+
+#: setup.php:36
+#, fuzzy
+msgid "View Maps"
+msgstr "Haritaları Görüntüle"
+
+#: setup.php:107
+msgid "Map Settings"
+msgstr "Harita Ayarları"
+
+#: setup.php:112
+#, fuzzy
+msgid "Overlay Inclusion"
+msgstr "Yer Paylaşımı Dahil Etme"
+
+#: setup.php:113
+#, fuzzy
+msgid "Disable to plot host only, not included in coverage overlay."
+msgstr "Kapsama yer paylaşımına dahil değil, yalnızca ana bilgisayarı işaretlemeyi devre dışı bırakın."
+
+#: setup.php:120
+msgid "Latitude"
+msgstr "Enlem"
+
+#: setup.php:121
+#, fuzzy
+msgid "The devices latitude coordinates"
+msgstr "Cihazın enlem koordinatları"
+
+#: setup.php:129
+msgid "Longitude"
+msgstr "Boylam"
+
+#: setup.php:130
+#, fuzzy
+msgid "The devices longitude coordinates"
+msgstr "Cihaz boylam koordinatları"
+
+#: setup.php:149
+#, fuzzy
+msgid "Starting Degree"
+msgstr "Başlangıç Derecesi"
+
+#: setup.php:150
+#, fuzzy
+msgid "Starting degree for directional area between 0-360"
+msgstr "0-360 arası yön alanı başlangıç derecesi"
+
+#: setup.php:158
+#, fuzzy
+msgid "Stopping Degree"
+msgstr "Durma Derecesi"
+
+#: setup.php:159
+#, fuzzy
+msgid "Stopping degree for directional area, must be greater than the Starting Degree"
+msgstr "Yön alanı için durma derecesi, Başlangıç Derecesinden büyük olmalıdır"
+
+#: setup.php:167
+#, fuzzy
+msgid "Specify Radius"
+msgstr "Yarıçapı Belirtin"
+
+#: setup.php:168
+#, fuzzy
+msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
+msgstr "Erişim Noktası için yarıçapı manuel olarak belirtin. Gruplanmış cihazlara göre yarıçapı belirlemek için 0'a ayarlayın"
+
+#: setup.php:178
+msgid "Group ID"
+msgstr "Grup ID"
+
+#: setup.php:179
+#, fuzzy
+msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
+msgstr "Gruplar, kapsama katmanına hangi cihazların dahil edileceğini tanımlar. AP cihaz grup numarasına göre kontrol edilecektir. 0 devre dışı bırakmak için"

@@ -1,0 +1,196 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The Cacti Group
+# This file is distributed under the same license as the Cacti package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Cacti\n"
+"Report-Msgid-Bugs-To: developers@cacti.net\n"
+"POT-Creation-Date: 2020-12-12 22:15-0500\n"
+"PO-Revision-Date: 2020-12-14 21:31-0500\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.2\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: ko_KR\n"
+
+#: gpsmap.php:39
+#, fuzzy
+msgid "Please make sure to properly configure Maps first under Settings > Maps"
+msgstr "먼저 설정>지도에서지도를 올바르게 구성했는지 확인하세요."
+
+#: gpstemplates.php:26
+msgid "Delete"
+msgstr "삭제"
+
+#: gpstemplates.php:63
+#, fuzzy
+msgid "Map Templates"
+msgstr "지도 템플릿"
+
+#: gpstemplates.php:66
+#, fuzzy
+msgid "Host Template"
+msgstr "호스트 템플릿"
+
+#: gpstemplates.php:67 gpstemplates.php:144
+#, fuzzy
+msgid "Up Image"
+msgstr "업 이미지"
+
+#: gpstemplates.php:68 gpstemplates.php:152
+#, fuzzy
+msgid "Recovering Image"
+msgstr "이미지 복구"
+
+#: gpstemplates.php:69 gpstemplates.php:160
+#, fuzzy
+msgid "Down Image"
+msgstr "다운 이미지"
+
+#: gpstemplates.php:70
+#, fuzzy
+msgid "Is AP"
+msgstr "AP인가"
+
+#: gpstemplates.php:82
+msgid "True"
+msgstr "O "
+
+#: gpstemplates.php:84
+msgid "False"
+msgstr "X"
+
+#: gpstemplates.php:137
+#, fuzzy
+msgid "Device Template"
+msgstr "장치 템플릿"
+
+#: gpstemplates.php:138
+#, fuzzy
+msgid "Choose the Device Template to base this Map Template type."
+msgstr "이 맵 템플릿 유형을 기반으로하는 장치 템플릿을 선택합니다."
+
+#: gpstemplates.php:145
+#, fuzzy
+msgid "Select the Image to Show for an Up Device"
+msgstr "Up 장치에 표시 할 이미지 선택"
+
+#: gpstemplates.php:153
+#, fuzzy
+msgid "Select the Image to Show for a Recovering Device"
+msgstr "복구 장치에 대해 표시 할 이미지 선택"
+
+#: gpstemplates.php:161
+#, fuzzy
+msgid "Select the Image to Show for a Down Device"
+msgstr "다운 장치에 표시 할 이미지 선택"
+
+#: gpstemplates.php:168
+#, fuzzy
+msgid "Access Point"
+msgstr "액세스 포인트"
+
+#: gpstemplates.php:169
+#, fuzzy
+msgid "Does this Device Template Represent an Access Point."
+msgstr "이 장치 템플릿이 액세스 포인트를 나타 냅니까?"
+
+#: gpstemplates.php:172
+msgid "No"
+msgstr "아니오"
+
+#: gpstemplates.php:173
+msgid "Yes"
+msgstr "예"
+
+#: gpstemplates.php:182
+#, fuzzy
+msgid "Map Template Edit"
+msgstr "지도 템플릿 편집"
+
+#: setup.php:35
+#, fuzzy
+msgid "Configure Maps"
+msgstr "지도 구성"
+
+#: setup.php:36
+#, fuzzy
+msgid "View Maps"
+msgstr "지도보기"
+
+#: setup.php:107
+#, fuzzy
+msgid "Map Settings"
+msgstr "지도 설정"
+
+#: setup.php:112
+#, fuzzy
+msgid "Overlay Inclusion"
+msgstr "오버레이 포함"
+
+#: setup.php:113
+#, fuzzy
+msgid "Disable to plot host only, not included in coverage overlay."
+msgstr "커버리지 오버레이에 포함되지 않고 호스트 만 플롯하려면 비활성화합니다."
+
+#: setup.php:120
+msgid "Latitude"
+msgstr "위도"
+
+#: setup.php:121
+#, fuzzy
+msgid "The devices latitude coordinates"
+msgstr "장치 위도 좌표"
+
+#: setup.php:129
+msgid "Longitude"
+msgstr "경도"
+
+#: setup.php:130
+#, fuzzy
+msgid "The devices longitude coordinates"
+msgstr "장치 경도 좌표"
+
+#: setup.php:149
+#, fuzzy
+msgid "Starting Degree"
+msgstr "시작 학위"
+
+#: setup.php:150
+#, fuzzy
+msgid "Starting degree for directional area between 0-360"
+msgstr "0-360 사이의 방향 영역에 대한 시작 정도"
+
+#: setup.php:158
+#, fuzzy
+msgid "Stopping Degree"
+msgstr "정지 정도"
+
+#: setup.php:159
+#, fuzzy
+msgid "Stopping degree for directional area, must be greater than the Starting Degree"
+msgstr "방향 영역의 정지 정도는 시작 정도보다 커야합니다."
+
+#: setup.php:167
+#, fuzzy
+msgid "Specify Radius"
+msgstr "반지름 지정"
+
+#: setup.php:168
+#, fuzzy
+msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
+msgstr "액세스 포인트의 반경을 수동으로 지정합니다. 그룹화 된 장치를 기반으로 반경을 결정하려면 0으로 설정합니다."
+
+#: setup.php:178
+msgid "Group ID"
+msgstr "그룹 ID"
+
+#: setup.php:179
+#, fuzzy
+msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
+msgstr "그룹은 커버리지 오버레이에 포함되는 장치를 정의합니다. AP 장치 그룹 번호에 대해 확인됩니다. 비활성화하려면 0"

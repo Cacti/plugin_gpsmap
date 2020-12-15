@@ -1,0 +1,195 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The Cacti Group
+# This file is distributed under the same license as the Cacti package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Cacti\n"
+"Report-Msgid-Bugs-To: developers@cacti.net\n"
+"POT-Creation-Date: 2020-12-12 22:15-0500\n"
+"PO-Revision-Date: 2020-12-14 21:28-0500\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.2\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: el_GR\n"
+
+#: gpsmap.php:39
+#, fuzzy
+msgid "Please make sure to properly configure Maps first under Settings > Maps"
+msgstr "Βεβαιωθείτε ότι έχετε διαμορφώσει σωστά τους Χάρτες πρώτα στις Ρυθμίσεις> Χάρτες"
+
+#: gpstemplates.php:26
+msgid "Delete"
+msgstr "Διαγραφή"
+
+#: gpstemplates.php:63
+#, fuzzy
+msgid "Map Templates"
+msgstr "Πρότυπα χάρτη"
+
+#: gpstemplates.php:66
+#, fuzzy
+msgid "Host Template"
+msgstr "Πρότυπο κεντρικού υπολογιστή"
+
+#: gpstemplates.php:67 gpstemplates.php:144
+#, fuzzy
+msgid "Up Image"
+msgstr "Πάνω εικόνα"
+
+#: gpstemplates.php:68 gpstemplates.php:152
+#, fuzzy
+msgid "Recovering Image"
+msgstr "Ανάκτηση εικόνας"
+
+#: gpstemplates.php:69 gpstemplates.php:160
+#, fuzzy
+msgid "Down Image"
+msgstr "Κάτω εικόνα"
+
+#: gpstemplates.php:70
+#, fuzzy
+msgid "Is AP"
+msgstr "Είναι AP"
+
+#: gpstemplates.php:82
+msgid "True"
+msgstr "Αληθής"
+
+#: gpstemplates.php:84
+msgid "False"
+msgstr "Ψευδής"
+
+#: gpstemplates.php:137
+#, fuzzy
+msgid "Device Template"
+msgstr "Πρότυπο συσκευής"
+
+#: gpstemplates.php:138
+#, fuzzy
+msgid "Choose the Device Template to base this Map Template type."
+msgstr "Επιλέξτε το Πρότυπο συσκευής για να βασίσετε αυτόν τον τύπο προτύπου χάρτη."
+
+#: gpstemplates.php:145
+#, fuzzy
+msgid "Select the Image to Show for an Up Device"
+msgstr "Επιλέξτε την εικόνα που θα εμφανίζεται για μια επάνω συσκευή"
+
+#: gpstemplates.php:153
+#, fuzzy
+msgid "Select the Image to Show for a Recovering Device"
+msgstr "Επιλέξτε την εικόνα που θα εμφανίζεται για μια συσκευή ανάκτησης"
+
+#: gpstemplates.php:161
+#, fuzzy
+msgid "Select the Image to Show for a Down Device"
+msgstr "Επιλέξτε την εικόνα που θα εμφανίζεται για μια Down Device"
+
+#: gpstemplates.php:168
+#, fuzzy
+msgid "Access Point"
+msgstr "Σημείο πρόσβασης"
+
+#: gpstemplates.php:169
+#, fuzzy
+msgid "Does this Device Template Represent an Access Point."
+msgstr "Αυτό το πρότυπο συσκευής αντιπροσωπεύει ένα σημείο πρόσβασης."
+
+#: gpstemplates.php:172
+msgid "No"
+msgstr "Όχι"
+
+#: gpstemplates.php:173
+msgid "Yes"
+msgstr "Ναι"
+
+#: gpstemplates.php:182
+#, fuzzy
+msgid "Map Template Edit"
+msgstr "Επεξεργασία προτύπου χάρτη"
+
+#: setup.php:35
+#, fuzzy
+msgid "Configure Maps"
+msgstr "Διαμόρφωση χαρτών"
+
+#: setup.php:36
+#, fuzzy
+msgid "View Maps"
+msgstr "Προβολή χαρτών"
+
+#: setup.php:107
+msgid "Map Settings"
+msgstr "Ρυθμίσεις Χάρτη"
+
+#: setup.php:112
+#, fuzzy
+msgid "Overlay Inclusion"
+msgstr "Συμπερίληψη επικάλυψης"
+
+#: setup.php:113
+#, fuzzy
+msgid "Disable to plot host only, not included in coverage overlay."
+msgstr "Απενεργοποίηση για να σχεδιάσετε μόνο τον κεντρικό υπολογιστή, δεν περιλαμβάνεται στην επικάλυψη κάλυψης"
+
+#: setup.php:120
+msgid "Latitude"
+msgstr "Γεωγραφικό πλάτος"
+
+#: setup.php:121
+#, fuzzy
+msgid "The devices latitude coordinates"
+msgstr "Οι συντεταγμένες γεωγραφικού πλάτους συσκευών"
+
+#: setup.php:129
+msgid "Longitude"
+msgstr "Γεωγραφικό μήκος"
+
+#: setup.php:130
+#, fuzzy
+msgid "The devices longitude coordinates"
+msgstr "Οι συντεταγμένες γεωγραφικού μήκους συσκευών"
+
+#: setup.php:149
+#, fuzzy
+msgid "Starting Degree"
+msgstr "Έναρξη πτυχίου"
+
+#: setup.php:150
+#, fuzzy
+msgid "Starting degree for directional area between 0-360"
+msgstr "Έναρξη βαθμού για κατευθυντική περιοχή μεταξύ 0-360"
+
+#: setup.php:158
+#, fuzzy
+msgid "Stopping Degree"
+msgstr "Διακοπή πτυχίου"
+
+#: setup.php:159
+#, fuzzy
+msgid "Stopping degree for directional area, must be greater than the Starting Degree"
+msgstr "Ο βαθμός διακοπής για κατευθυντική περιοχή, πρέπει να είναι μεγαλύτερος από τον βαθμό εκκίνησης"
+
+#: setup.php:167
+#, fuzzy
+msgid "Specify Radius"
+msgstr "Καθορίστε την ακτίνα"
+
+#: setup.php:168
+#, fuzzy
+msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
+msgstr "Μη αυτόματη ρύθμιση ακτίνας για το Σημείο πρόσβασης. Ρυθμίστε στο 0 για να προσδιορίσετε την ακτίνα βάσει ομαδοποιημένων συσκευών"
+
+#: setup.php:178
+msgid "Group ID"
+msgstr "ID ομάδας"
+
+#: setup.php:179
+#, fuzzy
+msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
+msgstr "Οι ομάδες καθορίζουν ποιες συσκευές περιλαμβάνονται στην επικάλυψη κάλυψης. Θα ελεγχθεί έναντι του αριθμού ομάδας συσκευών AP. 0 για απενεργοποίηση"
