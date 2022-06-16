@@ -1,0 +1,155 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The Cacti Group
+# This file is distributed under the same license as the Cacti package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr "Project-Id-Version: Cacti\nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2020-12-12 22:15-0500\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: Automatically generated\nLanguage-Team: none\nLanguage: lv\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
+
+#: gpsmap.php:39
+msgid "Please make sure to properly configure Maps first under Settings > Maps"
+msgstr ""
+
+#: gpstemplates.php:26
+msgid "Delete"
+msgstr ""
+
+#: gpstemplates.php:63
+msgid "Map Templates"
+msgstr ""
+
+#: gpstemplates.php:66
+msgid "Host Template"
+msgstr ""
+
+#: gpstemplates.php:67 gpstemplates.php:144
+msgid "Up Image"
+msgstr ""
+
+#: gpstemplates.php:68 gpstemplates.php:152
+msgid "Recovering Image"
+msgstr ""
+
+#: gpstemplates.php:69 gpstemplates.php:160
+msgid "Down Image"
+msgstr ""
+
+#: gpstemplates.php:70
+msgid "Is AP"
+msgstr ""
+
+#: gpstemplates.php:82
+msgid "True"
+msgstr ""
+
+#: gpstemplates.php:84
+msgid "False"
+msgstr ""
+
+#: gpstemplates.php:137
+msgid "Device Template"
+msgstr ""
+
+#: gpstemplates.php:138
+msgid "Choose the Device Template to base this Map Template type."
+msgstr ""
+
+#: gpstemplates.php:145
+msgid "Select the Image to Show for an Up Device"
+msgstr ""
+
+#: gpstemplates.php:153
+msgid "Select the Image to Show for a Recovering Device"
+msgstr ""
+
+#: gpstemplates.php:161
+msgid "Select the Image to Show for a Down Device"
+msgstr ""
+
+#: gpstemplates.php:168
+msgid "Access Point"
+msgstr ""
+
+#: gpstemplates.php:169
+msgid "Does this Device Template Represent an Access Point."
+msgstr ""
+
+#: gpstemplates.php:172
+msgid "No"
+msgstr ""
+
+#: gpstemplates.php:173
+msgid "Yes"
+msgstr ""
+
+#: gpstemplates.php:182
+msgid "Map Template Edit"
+msgstr ""
+
+#: setup.php:35
+msgid "Configure Maps"
+msgstr ""
+
+#: setup.php:36
+msgid "View Maps"
+msgstr ""
+
+#: setup.php:107
+msgid "Map Settings"
+msgstr ""
+
+#: setup.php:112
+msgid "Overlay Inclusion"
+msgstr ""
+
+#: setup.php:113
+msgid "Disable to plot host only, not included in coverage overlay."
+msgstr ""
+
+#: setup.php:120
+msgid "Latitude"
+msgstr ""
+
+#: setup.php:121
+msgid "The devices latitude coordinates"
+msgstr ""
+
+#: setup.php:129
+msgid "Longitude"
+msgstr ""
+
+#: setup.php:130
+msgid "The devices longitude coordinates"
+msgstr ""
+
+#: setup.php:149
+msgid "Starting Degree"
+msgstr ""
+
+#: setup.php:150
+msgid "Starting degree for directional area between 0-360"
+msgstr ""
+
+#: setup.php:158
+msgid "Stopping Degree"
+msgstr ""
+
+#: setup.php:159
+msgid "Stopping degree for directional area, must be greater than the Starting Degree"
+msgstr ""
+
+#: setup.php:167
+msgid "Specify Radius"
+msgstr ""
+
+#: setup.php:168
+msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
+msgstr ""
+
+#: setup.php:178
+msgid "Group ID"
+msgstr ""
+
+#: setup.php:179
+msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
+msgstr ""
