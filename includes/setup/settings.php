@@ -187,7 +187,7 @@ function gpsmap_config_settings() {
 		),
 		'gpsmap_refreshMap' => array(
 			'friendly_name' => __('Map Refresh', 'gpsmap'),
-			'description'   => __('Refreshes map after set minutes. Reccomend set to poller interval, 0 to disable.', 'gpsmap'),
+			'description'   => __('Refreshes map after set minutes. Recommend set to poller interval, 0 to disable.', 'gpsmap'),
 			'method'        => 'textbox',
 			'default'       => '5',
 			'max_length'    => 2,
@@ -219,7 +219,7 @@ function gpsmap_config_settings() {
 		),
 		'gpsmap_liwidth' => array(
 			'friendly_name' => __('Ring Width', 'gpsmap'),
-			'description'   => __('Outter Ring width', 'gpsmap'),
+			'description'   => __('Outer Ring width', 'gpsmap'),
 			'method'        => 'textbox',
 			'default'       => '2',
 			'max_length'    => 7,
@@ -243,7 +243,7 @@ function gpsmap_config_settings() {
 		),
 		'gpsmap_circlequality' => array(
 			'friendly_name' => __('Quality', 'gpsmap'),
-			'description'   => __('Number of divisions in circle (preferably > 15) greater numbers can slow down browser performace.', 'gpsmap'),
+			'description'   => __('Number of divisions in circle (preferably > 15) greater numbers can slow down browser performance.', 'gpsmap'),
 			'method'        => 'textbox',
 			'default'       => '15',
 			'max_length'    => 3,

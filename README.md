@@ -58,7 +58,7 @@ charges will be made unless you upgrade from the free account.
 * **Initial Latitude, Longitude, Elevation**
 
   You should set the Latitude/Longitude so that the initial map centers on the
-  center of your ditributed devices.  You can zoom in by entering a higher
+  center of your distributed devices.  You can zoom in by entering a higher
   elevation factor (note these can only be whole numbers at this time).  The
   following is an example of how to default to showing the whole world:
 
@@ -206,7 +206,7 @@ Got any ideas or complaints, please create an issue in GitHub. Examples include:
 * Thanks to Nate for the tabs:
   [Google Maps API Forum Link](http://groups.google.com/group/Google-Maps-API/browse_thread/thread/b023708935be9392/ae9ca67ef4e8b136%3Fshow_docid=ae9ca67ef4e8b136)
 
-* Nodes close to each other are grouped into tabs. There is a threashold setting
+* Nodes close to each other are grouped into tabs. There is a threshold setting
   for this.
 
 * One bud is that the nodes put into the tabs are not removed form the map.
@@ -289,7 +289,7 @@ Got any ideas or complaints, please create an issue in GitHub. Examples include:
 * Added the UP/Down/Recovery viewing. Hosts change color based on status. Colors
   correspond to cacti designated colors.
 
-* Added the ability to display disabled hosts. These wil show up as BLACK
+* Added the ability to display disabled hosts. These will show up as BLACK
   markers to ensure that a difference can be seen.
 
 * Added a preliminary test for overlaying current radar information. Take a look

@@ -40,7 +40,7 @@ function region($subnet) {
 	$towerArray = array();
 	$back       = '';
 
-	//we are going to parse every node and sort them by region numbers, IE the IP range seleced in the setup.
+	//we are going to parse every node and sort them by region numbers, IE the IP range selected in the setup.
 	if ($enableAll) {
 		$results = db_fetch_assoc('SELECT * FROM `host`
 			INNER JOIN gpsmap_templates

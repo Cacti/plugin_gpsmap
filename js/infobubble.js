@@ -742,7 +742,7 @@ InfoBubble.prototype.updateArrowStyle_ = function() {
     outer.style['marginLeft'] = inner.style['marginLeft'] = 0;
   }
 
-  // If there is no border then don't show thw outer arrow
+  // If there is no border then don't show the outer arrow
   if (borderWidth == 0) {
     outer.style['display'] = 'none';
   } else {
@@ -787,7 +787,7 @@ InfoBubble.prototype['padding_changed'] = InfoBubble.prototype.padding_changed;
 
 
 /**
- * Add px extention to the number
+ * Add px extension to the number
  *
  * @param {number} num The number to wrap.
  * @return {string|number} A wrapped number.
