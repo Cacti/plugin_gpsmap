@@ -4,46 +4,39 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: Cacti\nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2020-12-12 22:15-0500\nPO-Revision-Date: 2023-04-20 15:06+0000\nLast-Translator: Сергей <zersh@mail.ru>\nLanguage-Team: Russian <http://translate.cacti.net/projects/cacti/gpsmaps/ru/>\nLanguage: ru-RU\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\nX-Generator: Weblate 4.8.1\n"
+msgstr "Project-Id-Version: Cacti\nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2020-12-12 22:15-0500\nPO-Revision-Date: 2024-12-09 15:49+0000\nLast-Translator: Anton Zhuravlev <baka109g@gmail.com>\nLanguage-Team: Russian <http://translate.cacti.net/projects/cacti/gpsmaps/ru/>\nLanguage: ru-RU\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\nX-Generator: Weblate 4.8.1\n"
 
 #: gpsmap.php:39
-#, fuzzy
 msgid "Please make sure to properly configure Maps first under Settings > Maps"
-msgstr "Пожалуйста, сначала убедитесь, что правильно настроили Карты в Настройки> Карты."
+msgstr "Пожалуйста, сначала убедитесь, что правильно настроили Карты в Настройки > Карты"
 
 #: gpstemplates.php:26
 msgid "Delete"
 msgstr "Удалить"
 
 #: gpstemplates.php:63
-#, fuzzy
 msgid "Map Templates"
 msgstr "Шаблоны карт"
 
 #: gpstemplates.php:66
-#, fuzzy
 msgid "Host Template"
 msgstr "Шаблон хоста"
 
 #: gpstemplates.php:67 gpstemplates.php:144
-#, fuzzy
 msgid "Up Image"
-msgstr "Изображение вверх"
+msgstr "Поднять изображение вверх"
 
 #: gpstemplates.php:68 gpstemplates.php:152
-#, fuzzy
 msgid "Recovering Image"
 msgstr "Восстановление изображения"
 
 #: gpstemplates.php:69 gpstemplates.php:160
-#, fuzzy
 msgid "Down Image"
-msgstr "Изображение вниз"
+msgstr "Опустить изображение вниз"
 
 #: gpstemplates.php:70
-#, fuzzy
 msgid "Is AP"
-msgstr "АП"
+msgstr "Это точка доступа"
 
 #: gpstemplates.php:82
 msgid "True"
@@ -58,32 +51,26 @@ msgid "Device Template"
 msgstr "Шаблон Устройства"
 
 #: gpstemplates.php:138
-#, fuzzy
 msgid "Choose the Device Template to base this Map Template type."
 msgstr "Выберите шаблон устройства для создания этого типа шаблона карты."
 
 #: gpstemplates.php:145
-#, fuzzy
 msgid "Select the Image to Show for an Up Device"
-msgstr "Выберите изображение для показа на подключенном устройстве"
+msgstr "Выберите изображение для отображения работающего устройства"
 
 #: gpstemplates.php:153
-#, fuzzy
 msgid "Select the Image to Show for a Recovering Device"
-msgstr "Выберите изображение для показа на устройстве для восстановления"
+msgstr "Выберите изображение для отображения восстанавливающегося устройства"
 
 #: gpstemplates.php:161
-#, fuzzy
 msgid "Select the Image to Show for a Down Device"
-msgstr "Выберите изображение для показа на неработающем устройстве"
+msgstr "Выберите изображение для отображения упавшего устройства"
 
 #: gpstemplates.php:168
-#, fuzzy
 msgid "Access Point"
 msgstr "Точка доступа"
 
 #: gpstemplates.php:169
-#, fuzzy
 msgid "Does this Device Template Represent an Access Point."
 msgstr "Представляет ли этот шаблон устройства точку доступа."
 
@@ -96,17 +83,14 @@ msgid "Yes"
 msgstr "Да"
 
 #: gpstemplates.php:182
-#, fuzzy
 msgid "Map Template Edit"
 msgstr "Редактировать шаблон карты"
 
 #: setup.php:35
-#, fuzzy
 msgid "Configure Maps"
 msgstr "Настроить карты"
 
 #: setup.php:36
-#, fuzzy
 msgid "View Maps"
 msgstr "Просмотр карт"
 
@@ -115,12 +99,10 @@ msgid "Map Settings"
 msgstr "Настройки карты"
 
 #: setup.php:112
-#, fuzzy
 msgid "Overlay Inclusion"
 msgstr "Включение оверлея"
 
 #: setup.php:113
-#, fuzzy
 msgid "Disable to plot host only, not included in coverage overlay."
 msgstr "Отключить только для графика, не включаемого в наложение покрытия."
 
@@ -129,7 +111,6 @@ msgid "Latitude"
 msgstr "Широта"
 
 #: setup.php:121
-#, fuzzy
 msgid "The devices latitude coordinates"
 msgstr "Координаты широты устройства"
 
@@ -138,45 +119,37 @@ msgid "Longitude"
 msgstr "Долгота"
 
 #: setup.php:130
-#, fuzzy
 msgid "The devices longitude coordinates"
 msgstr "Координаты долготы устройства"
 
 #: setup.php:149
-#, fuzzy
 msgid "Starting Degree"
-msgstr "Начальная степень"
+msgstr "Начальный градус"
 
 #: setup.php:150
-#, fuzzy
 msgid "Starting degree for directional area between 0-360"
 msgstr "Начальный градус для направленной области от 0 до 360"
 
 #: setup.php:158
-#, fuzzy
 msgid "Stopping Degree"
-msgstr "Степень остановки"
+msgstr "Конечный градус"
 
 #: setup.php:159
-#, fuzzy
 msgid "Stopping degree for directional area, must be greater than the Starting Degree"
-msgstr "Степень остановки для направленной зоны должна быть больше начальной степени."
+msgstr "Конечный градус для направленной зоны должна быть больше начальной степени"
 
 #: setup.php:167
-#, fuzzy
 msgid "Specify Radius"
 msgstr "Укажите радиус"
 
 #: setup.php:168
-#, fuzzy
 msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
-msgstr "Вручную укажите радиус точки доступа. Установите 0, чтобы определить радиус на основе сгруппированных устройств."
+msgstr "Вручную укажите радиус точки доступа. Установите 0, чтобы определить радиус на основе сгруппированных устройств"
 
 #: setup.php:178
 msgid "Group ID"
 msgstr "ID группы"
 
 #: setup.php:179
-#, fuzzy
 msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
 msgstr "Группы определяют, какие устройства включаются в наложение покрытия. Будет проверяться по номеру группы устройств AP. 0 для отключения"
