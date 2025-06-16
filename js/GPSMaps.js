@@ -2,7 +2,7 @@
  +-------------------------------------------------------------------------+
  | Copyright (C) 2009-2013 Andrew Aloia                                    |
  | Copyright (C) 2014 Wixiweb                                              | 
- | Copyright (C) 2018 The Cacti Group, Inc.                                |
+ | Copyright (C) 2004-2025 The Cacti Group, Inc.                                |
  |                                                                         |
  | This program is free software; you can redistribute it and/or           |
  | modify it under the terms of the GNU General Public License             |
