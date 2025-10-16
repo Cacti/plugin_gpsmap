@@ -4,11 +4,11 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: Cacti\nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2020-12-12 22:15-0500\nPO-Revision-Date: 2025-03-14 13:09+0000\nLast-Translator: Daniel Nylander <weblate@danielnylander.se>\nLanguage-Team: Swedish <http://translate.cacti.net/projects/cacti/gpsmaps/sv/>\nLanguage: sv-SE\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 4.8.1\n"
+msgstr "Project-Id-Version: Cacti\nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2020-12-12 22:15-0500\nPO-Revision-Date: 2025-10-16 17:46+0000\nLast-Translator: Daniel Nylander <daniel@danielnylander.se>\nLanguage-Team: Swedish <https://translate.cacti.net/projects/cacti/gpsmaps/sv/>\nLanguage: sv-SE\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.11.4\n"
 
 #: gpsmap.php:39
 msgid "Please make sure to properly configure Maps first under Settings > Maps"
-msgstr "Se till att du först konfigurerar Maps korrekt under Inställningar > Maps"
+msgstr "Se till att du först konfigurerar kartor korrekt under Inställningar > Kartor"
 
 #: gpstemplates.php:26
 msgid "Delete"
@@ -20,19 +20,19 @@ msgstr "Kartmallar"
 
 #: gpstemplates.php:66
 msgid "Host Template"
-msgstr "Värd mall"
+msgstr "Värdmall"
 
 #: gpstemplates.php:67 gpstemplates.php:144
 msgid "Up Image"
-msgstr "Upp bild"
+msgstr "Bild för Uppe"
 
 #: gpstemplates.php:68 gpstemplates.php:152
 msgid "Recovering Image"
-msgstr "Återställning av bild"
+msgstr "Bild för Återhämtar"
 
 #: gpstemplates.php:69 gpstemplates.php:160
 msgid "Down Image"
-msgstr "Bild nedåt"
+msgstr "Bild för Nere"
 
 #: gpstemplates.php:70
 msgid "Is AP"
@@ -56,19 +56,19 @@ msgstr "Välj den enhetsmall som ska ligga till grund för denna typ av kartmall
 
 #: gpstemplates.php:145
 msgid "Select the Image to Show for an Up Device"
-msgstr "Välj den bild som ska visas för en Up Device"
+msgstr "Välj den bild som ska visas för en enhet som är Uppe"
 
 #: gpstemplates.php:153
 msgid "Select the Image to Show for a Recovering Device"
-msgstr "Välj den bild som ska visas för en enhet som återhämtar sig"
+msgstr "Välj den bild som ska visas för en enhet som Återhämtar sig"
 
 #: gpstemplates.php:161
 msgid "Select the Image to Show for a Down Device"
-msgstr "Välj den bild som ska visas för en nedåtriktad enhet"
+msgstr "Välj den bild som ska visas för en enhet som är Nere"
 
 #: gpstemplates.php:168
 msgid "Access Point"
-msgstr "Accesspunkt"
+msgstr "Åtkomstpunkt"
 
 #: gpstemplates.php:169
 msgid "Does this Device Template Represent an Access Point."
@@ -84,7 +84,7 @@ msgstr "Ja"
 
 #: gpstemplates.php:182
 msgid "Map Template Edit"
-msgstr "Kartmall Redigera"
+msgstr "Kartmallsredigering"
 
 #: setup.php:35
 msgid "Configure Maps"
@@ -100,11 +100,11 @@ msgstr "Kartinställningar"
 
 #: setup.php:112
 msgid "Overlay Inclusion"
-msgstr "Överlagring Inkludering"
+msgstr "Överlagringsinkludering"
 
 #: setup.php:113
 msgid "Disable to plot host only, not included in coverage overlay."
-msgstr "Inaktiveras endast för plot host, ingår inte i täckningsöverlägg."
+msgstr "Inaktivera endast för plotvärd, ingår inte i täckningsöverlägg."
 
 #: setup.php:120
 msgid "Latitude"
@@ -124,15 +124,15 @@ msgstr "Enhetens longitudkoordinater"
 
 #: setup.php:149
 msgid "Starting Degree"
-msgstr "Startande examen"
+msgstr "Startgrad"
 
 #: setup.php:150
 msgid "Starting degree for directional area between 0-360"
-msgstr "Startgrad för riktat område mellan 0-360"
+msgstr "Startgrad för riktningsområde mellan 0-360"
 
 #: setup.php:158
 msgid "Stopping Degree"
-msgstr "Grad av stopp"
+msgstr "Stoppgrad"
 
 #: setup.php:159
 msgid "Stopping degree for directional area, must be greater than the Starting Degree"
@@ -144,7 +144,7 @@ msgstr "Ange radie"
 
 #: setup.php:168
 msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
-msgstr "Ange manuellt radius för Access Point. Ställ in till 0 för att bestämma radius baserat på grupperade enheter"
+msgstr "Ange manuellt radie för åtkomstpunkt. Ställ in till 0 för att bestämma radie baserat på grupperade enheter"
 
 #: setup.php:178
 msgid "Group ID"
