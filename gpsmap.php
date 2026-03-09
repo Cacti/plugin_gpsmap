@@ -46,7 +46,7 @@ switch ($show) {
 		/* Reject any parameter that contains directory traversal sequences or
 		 * characters outside the safe set.  basename() alone does not strip
 		 * embedded ../ so we validate the whole value first. */
-		if (!preg_match('/^[a-zA-Z0-9_-]+$/', $parameter)) {
+		if (!preg_match('/^[a-zA-Z0-9._-]+$/', $parameter)) {
 			$parameter = 'all';
 		}
 
@@ -68,21 +68,21 @@ if ($show != 'setup') { ?>
 		var initialZoom     = <?php echo (int) $initialzoom; ?>;
 	</script>
 	<script type='text/javascript'>
-		gpsmap.refreshMap      = <?php echo json_encode((string) $refreshMap); ?>;
+		gpsmap.refreshMap      = <?php echo json_encode((string) $refreshMap, JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES); ?>;
 		gpsmap.initialLat      = <?php echo (float) $initialLat; ?>;
 		gpsmap.initialLng      = <?php echo (float) $initialLong; ?>;
 		gpsmap.initialZoom     = <?php echo (int) $initialzoom; ?>;
 		gpsmap.initialized     = false;
-		gpsmap.liColor         = <?php echo json_encode((string) $liColor); ?>;
-		gpsmap.liWidth         = <?php echo json_encode((string) $liWidth); ?>;
-		gpsmap.liOpa           = <?php echo json_encode((string) $liOpa); ?>;
-		gpsmap.fillColor       = <?php echo json_encode((string) $fillColor); ?>;
-		gpsmap.fillOpa         = <?php echo json_encode((string) $fillOpa); ?>;
-		gpsmap.circleQuality   = <?php echo json_encode((string) $circleQuality); ?>;
-		gpsmap.enableWeather   = <?php echo json_encode((string) $enableWeather); ?>;
-		gpsmap.coverageOverlay = <?php echo json_encode((string) $coverageMap); ?>;
+		gpsmap.liColor         = <?php echo json_encode((string) $liColor, JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES); ?>;
+		gpsmap.liWidth         = <?php echo json_encode((string) $liWidth, JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES); ?>;
+		gpsmap.liOpa           = <?php echo json_encode((string) $liOpa, JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES); ?>;
+		gpsmap.fillColor       = <?php echo json_encode((string) $fillColor, JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES); ?>;
+		gpsmap.fillOpa         = <?php echo json_encode((string) $fillOpa, JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES); ?>;
+		gpsmap.circleQuality   = <?php echo json_encode((string) $circleQuality, JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES); ?>;
+		gpsmap.enableWeather   = <?php echo json_encode((string) $enableWeather, JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES); ?>;
+		gpsmap.coverageOverlay = <?php echo json_encode((string) $coverageMap, JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES); ?>;
 		gpsmap.markerArray     = [];
-		gpsmap.downloadURL     = <?php echo json_encode($config['url_path'] . 'plugins/gpsmap/XML/' . $parameter . '.xml'); ?>;
+		gpsmap.downloadURL     = <?php echo json_encode($config['url_path'] . 'plugins/gpsmap/XML/' . $parameter . '.xml', JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES); ?>;
 		gpsmap.t_error         = <?php echo (float) $terror; ?>;
 
 		<?php include_once('plugins/gpsmap/includes/icons.php'); ?>

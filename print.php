@@ -22,9 +22,10 @@
 chdir('../../');
 /* auth.php halts execution (exit/redirect) for unauthenticated users,
  * so the HTML below is only reached after successful authentication. */
-include('./include/auth.php');
+require_once('./include/auth.php');
 ?>
 <script language='javascript'>
-document.write(window.opener.document.getElementById('map').textContent);
+var mapEl = window.opener.document.getElementById('map');
+if (mapEl) { document.body.appendChild(mapEl.cloneNode(true)); }
 window.print();
 </script>

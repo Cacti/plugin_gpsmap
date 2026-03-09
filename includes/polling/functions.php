@@ -58,8 +58,8 @@ function calcKm($Lat1, $Lon1, $Lat2, $Lon2) {
 }
 
 /** @deprecated Use calcKm() instead. */
-function calcMeters(...$args) {
-	return calcKm(...$args);
+function calcMeters($Lat1, $Lon1, $Lat2, $Lon2) {
+	return calcKm($Lat1, $Lon1, $Lat2, $Lon2);
 }
 
 //---------------------------------------------------------------
