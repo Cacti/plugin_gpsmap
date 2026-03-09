@@ -82,9 +82,9 @@ function gpsmap_check_upgrade() {
 	/* Migrate the misspelled 'gpsmap_latutude' key to 'gpsmap_latitude'.
 	 * Runs on every version transition so it self-heals on first upgrade. */
 	$old_lat = read_config_option('gpsmap_latutude');
-	if ($old_lat !== false && $old_lat !== '') {
+	if ($old_lat !== false && $old_lat !== null && $old_lat !== '') {
 		$current_lat = read_config_option('gpsmap_latitude');
-		if ($current_lat === false || $current_lat === '') {
+		if ($current_lat === false || $current_lat === null || $current_lat === '') {
 			set_config_option('gpsmap_latitude', $old_lat);
 		}
 		db_execute_prepared("DELETE FROM settings WHERE name = ?", array('gpsmap_latutude'));

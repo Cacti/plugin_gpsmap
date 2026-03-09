@@ -43,24 +43,27 @@ function region($subnet) {
 	/* Select only the columns used by region()/createDoc().  Avoids pulling
 	 * SNMP credentials (snmp_community, snmp_auth_passphrase, etc.) into PHP
 	 * memory on every poller cycle. */
-	$cols = 'h.id, h.host_template_id, h.hostname, h.description,
-		h.status, h.disabled, h.availability, h.cur_time,
-		h.latitude, h.longitude, h.start, h.stop, h.rdistance,
-		h.groupnum, h.GPScoverage,
-		gt.AP, gt.upimage, gt.downimage, gt.recoverimage';
-
 	if ($enableAll) {
-		$results = db_fetch_assoc("SELECT $cols
+		$results = db_fetch_assoc_prepared("SELECT h.id, h.host_template_id, h.hostname, h.description,
+			h.status, h.disabled, h.availability, h.cur_time,
+			h.latitude, h.longitude, h.start, h.stop, h.rdistance,
+			h.groupnum, h.GPScoverage,
+			gt.AP, gt.upimage, gt.downimage, gt.recoverimage
 			FROM `host` AS h
 			INNER JOIN gpsmap_templates AS gt
 			ON h.host_template_id = gt.templateID
-			ORDER BY h.hostname");
+			ORDER BY h.hostname", array());
 	} else {
-		$results = db_fetch_assoc("SELECT $cols
+		$results = db_fetch_assoc_prepared("SELECT h.id, h.host_template_id, h.hostname, h.description,
+			h.status, h.disabled, h.availability, h.cur_time,
+			h.latitude, h.longitude, h.start, h.stop, h.rdistance,
+			h.groupnum, h.GPScoverage,
+			gt.AP, gt.upimage, gt.downimage, gt.recoverimage
 			FROM `host` AS h
 			INNER JOIN gpsmap_templates AS gt
 			ON h.host_template_id = gt.templateID
-			WHERE h.disabled = '' ORDER BY h.hostname");
+			WHERE h.disabled = ?
+			ORDER BY h.hostname", array(''));
 	}
 
 	/* Cache hostname -> IP resolutions so each hostname is resolved at most
