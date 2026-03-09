@@ -18,6 +18,9 @@
  | http://www.cacti.net/                                                   |
  +-------------------------------------------------------------------------+
 */
+
+chdir('../../');
+include('./include/auth.php');
 ?>
 <script language='javascript'>
 document.write(window.opener.document.getElementById('map').innerHTML);

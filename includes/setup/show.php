@@ -19,17 +19,12 @@
  +-------------------------------------------------------------------------+
 */
 
-if (!isset($_REQUEST['show'])) {
-    $show = '';
-}
-else {
-    $show = $_REQUEST['show'];
-}
+$show = get_request_var('show', '');
 
 // Map SETTINGS
 $apiKey = read_config_option('gpsmap_apikey');
 $initialLong = read_config_option('gpsmap_longitude');
-$initialLat = read_config_option('gpsmap_latutude');
+$initialLat = read_config_option('gpsmap_latitude');
 
 // insurance that the basic options are set.
 if($initialLong == '' || $initialLat == ''){

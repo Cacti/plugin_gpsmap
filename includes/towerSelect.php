@@ -19,34 +19,22 @@
  +-------------------------------------------------------------------------+
 */
 
-?><html>
-<?php
+chdir('../../../');
+include('./include/auth.php');
 
-if ($_POST){
-	global $config, $database_default;
-	include_once($config['library_path'] . '/database.php');
-}else{
-	global $config, $database_default;
-	include_once($config['library_path'] . '/database.php');
+$results = db_fetch_assoc('SELECT name, id FROM host_template');
 
-	$results = db_fetch_assoc('SELECT name,id FROM host_template');
+$body = '<form action=\'towerSelect.php\' method=\'post\'>';
 
-	//Begin form
-	$body .= '<form action=\'towerSelect.php\' method=\'post\'>';
-
-	//Printout template types
-	if (sizeof($results)) {
-		foreach($results as $row) {
-			$body .= $row['name'] + ': <input type=\'text\' name=\''+ $row['id'] + '\' />';
-		}
+if (cacti_sizeof($results)) {
+	foreach ($results as $row) {
+		$body .= html_escape($row['name']) . ': <input type=\'text\' name=\'' . html_escape($row['id']) . '\' />';
 	}
-
-	$body .= '<input type=\'submit\' />';
-
-	$body .= '</form>';
-
-	print($body);
 }
 
-?>
-</html>
+$body .= '<input type=\'submit\' />';
+$body .= '</form>';
+
+print('<html>');
+print($body);
+print('</html>');

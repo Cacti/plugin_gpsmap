@@ -40,23 +40,41 @@ function region($subnet) {
 	$towerArray = array();
 	$back       = '';
 
-	//we are going to parse every node and sort them by region numbers, IE the IP range selected in the setup.
+	/* Select only the columns used by region()/createDoc().  Avoids pulling
+	 * SNMP credentials (snmp_community, snmp_auth_passphrase, etc.) into PHP
+	 * memory on every poller cycle. */
+	$cols = 'h.id, h.host_template_id, h.hostname, h.description,
+		h.status, h.disabled, h.availability, h.cur_time,
+		h.latitude, h.longitude, h.start, h.stop, h.rdistance,
+		h.groupnum, h.GPScoverage,
+		gt.AP, gt.upimage, gt.downimage, gt.recoverimage';
+
 	if ($enableAll) {
-		$results = db_fetch_assoc('SELECT * FROM `host`
-			INNER JOIN gpsmap_templates
-			ON host.host_template_id=gpsmap_templates.templateID
-			ORDER BY hostname');
+		$results = db_fetch_assoc("SELECT $cols
+			FROM `host` AS h
+			INNER JOIN gpsmap_templates AS gt
+			ON h.host_template_id = gt.templateID
+			ORDER BY h.hostname");
 	} else {
-		$results = db_fetch_assoc('SELECT * FROM `host`
-			INNER JOIN gpsmap_templates
-			ON host.host_template_id=gpsmap_templates.templateID
-			WHERE disabled="" ORDER BY hostname');
+		$results = db_fetch_assoc("SELECT $cols
+			FROM `host` AS h
+			INNER JOIN gpsmap_templates AS gt
+			ON h.host_template_id = gt.templateID
+			WHERE h.disabled = '' ORDER BY h.hostname");
 	}
 
-	if (sizeof($results)) {
+	/* Cache hostname -> IP resolutions so each hostname is resolved at most
+	 * once per region() call rather than twice (here and in the subnet loop). */
+	$dns_cache = array();
+
+	if (cacti_sizeof($results)) {
 		foreach ($results as $row) {
 			if ($row['latitude'] != '0.000' && $row['longitude'] != '0.000') {
-				$hostip = gethostbyname($row['hostname']);
+				if (!isset($dns_cache[$row['hostname']])) {
+					$dns_cache[$row['hostname']] = gethostbyname($row['hostname']);
+				}
+
+				$hostip = $dns_cache[$row['hostname']];
 
 				if (is_ipaddress($hostip) && substr_count($hostip, '.') == 3) {
 					list($first, $second, $third, $fourth) = explode('.', $hostip);
@@ -147,7 +165,11 @@ function region($subnet) {
 	//for 1 we want to display all top level IP
 	foreach ($hostArrays as $hostArray) {
 		foreach ($hostArray as $host) {
-			$hostname = gethostbyname($host->hostname);
+			if (!isset($dns_cache[$host->hostname])) {
+				$dns_cache[$host->hostname] = gethostbyname($host->hostname);
+			}
+
+			$hostname = $dns_cache[$host->hostname];
 
 			@list($first, $second, $third, $fourth) = explode('.', $hostname);
 
@@ -214,7 +236,7 @@ function region($subnet) {
 	$tempHold = ' ';
 	$i = 1;
 
-	if (sizeof($ipwriteout)) {
+	if (cacti_sizeof($ipwriteout)) {
 		foreach ($ipwriteout as $ipoutput) {
 			$tempHold .= $ipoutput;
 			if ($i % 6 == 0) {
