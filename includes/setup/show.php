@@ -26,7 +26,7 @@ $apiKey = read_config_option('gpsmap_apikey');
 $initialLong = read_config_option('gpsmap_longitude');
 $initialLat = read_config_option('gpsmap_latitude');
 
-// insurance that the basic options are set.
+// Ensure that the basic options are set.
 if($initialLong == '' || $initialLat == ''){
     $show = 'setup';
 }
