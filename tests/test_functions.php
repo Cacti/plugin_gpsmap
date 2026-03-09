@@ -107,7 +107,7 @@ assert_equal(
 /* Subnet parameter validation regex (mirrors gpsmap.php logic)       */
 /* ------------------------------------------------------------------ */
 
-$valid_re   = '/^[a-zA-Z0-9._-]+$/';
+$valid_re   = '/^[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)*$/';
 
 /* Valid values. */
 assert_true('subnet regex: "all"',              preg_match($valid_re, 'all'));
@@ -116,11 +116,14 @@ assert_true('subnet regex: alphanumeric',       preg_match($valid_re, 'region1')
 assert_true('subnet regex: underscore',         preg_match($valid_re, 'region_1'));
 assert_true('subnet regex: uppercase',          preg_match($valid_re, 'RegionA'));
 assert_true('subnet regex: dotted subnet',      preg_match($valid_re, '10.0.0'));
-assert_true('subnet regex: "."',                preg_match($valid_re, '.'));
-assert_true('subnet regex: ".."',               preg_match($valid_re, '..'));
+assert_true('subnet regex: dotted with dash',   preg_match($valid_re, '192-168-1.0'));
 
 /* Values that must be rejected (path traversal and other dangerous input). */
+assert_false('subnet regex: ".."',              preg_match($valid_re, '..'));
+assert_false('subnet regex: "."',               preg_match($valid_re, '.'));
 assert_false('subnet regex: "../etc/passwd"',   preg_match($valid_re, '../etc/passwd'));
+assert_false('subnet regex: leading dot',       preg_match($valid_re, '.foo'));
+assert_false('subnet regex: trailing dot',      preg_match($valid_re, 'foo.'));
 assert_false('subnet regex: null byte',         preg_match($valid_re, "foo\x00bar"));
 assert_false('subnet regex: slash',             preg_match($valid_re, 'a/b'));
 assert_false('subnet regex: backslash',         preg_match($valid_re, 'a\\b'));

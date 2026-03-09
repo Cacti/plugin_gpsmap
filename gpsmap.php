@@ -46,7 +46,7 @@ switch ($show) {
 		/* Reject any parameter that contains directory traversal sequences or
 		 * characters outside the safe set.  basename() alone does not strip
 		 * embedded ../ so we validate the whole value first. */
-		if (!preg_match('/^[a-zA-Z0-9._-]+$/', $parameter)) {
+		if (!preg_match('/^[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)*$/', $parameter)) {
 			$parameter = 'all';
 		}
 
