@@ -46,7 +46,7 @@ switch ($show) {
 		/* Reject any parameter that contains directory traversal sequences or
 		 * characters outside the safe set.  basename() alone does not strip
 		 * embedded ../ so we validate the whole value first. */
-		if (!preg_match('/^[a-zA-Z0-9._-]+$/', $parameter)) {
+		if (!preg_match('/^[a-zA-Z0-9_-]+$/', $parameter)) {
 			$parameter = 'all';
 		}
 
@@ -63,27 +63,27 @@ switch ($show) {
 
 if ($show != 'setup') { ?>
 	<script type='text/javascript'>
-		var initialLat      = <?php echo $initialLat; ?>;
-		var initialLng      = <?php echo $initialLong; ?>;
-		var initialZoom     = <?php echo $initialzoom; ?>;
+		var initialLat      = <?php echo (float) $initialLat; ?>;
+		var initialLng      = <?php echo (float) $initialLong; ?>;
+		var initialZoom     = <?php echo (int) $initialzoom; ?>;
 	</script>
 	<script type='text/javascript'>
-		gpsmap.refreshMap      = '<?php echo $refreshMap; ?>';
-		gpsmap.initialLat      = <?php echo $initialLat; ?>;
-		gpsmap.initialLng      = <?php echo $initialLong; ?>;
-		gpsmap.initialZoom     = <?php echo $initialzoom; ?>;
+		gpsmap.refreshMap      = <?php echo json_encode((string) $refreshMap); ?>;
+		gpsmap.initialLat      = <?php echo (float) $initialLat; ?>;
+		gpsmap.initialLng      = <?php echo (float) $initialLong; ?>;
+		gpsmap.initialZoom     = <?php echo (int) $initialzoom; ?>;
 		gpsmap.initialized     = false;
-		gpsmap.liColor         = '<?php echo $liColor; ?>';
-		gpsmap.liWidth         = '<?php echo $liWidth; ?>';
-		gpsmap.liOpa           = '<?php echo $liOpa; ?>';
-		gpsmap.fillColor       = '<?php echo $fillColor; ?>';
-		gpsmap.fillOpa         = '<?php echo $fillOpa; ?>';
-		gpsmap.circleQuality   = '<?php echo $circleQuality; ?>';
-		gpsmap.enableWeather   = '<?php echo $enableWeather; ?>';
-		gpsmap.coverageOverlay = '<?php echo $coverageMap; ?>';
+		gpsmap.liColor         = <?php echo json_encode((string) $liColor); ?>;
+		gpsmap.liWidth         = <?php echo json_encode((string) $liWidth); ?>;
+		gpsmap.liOpa           = <?php echo json_encode((string) $liOpa); ?>;
+		gpsmap.fillColor       = <?php echo json_encode((string) $fillColor); ?>;
+		gpsmap.fillOpa         = <?php echo json_encode((string) $fillOpa); ?>;
+		gpsmap.circleQuality   = <?php echo json_encode((string) $circleQuality); ?>;
+		gpsmap.enableWeather   = <?php echo json_encode((string) $enableWeather); ?>;
+		gpsmap.coverageOverlay = <?php echo json_encode((string) $coverageMap); ?>;
 		gpsmap.markerArray     = [];
-		gpsmap.downloadURL     = '<?php print html_escape($config['url_path'] . 'plugins/gpsmap/XML/' . $parameter . '.xml'); ?>';
-		gpsmap.t_error         = parseFloat('<?php echo $terror; ?>');
+		gpsmap.downloadURL     = <?php echo json_encode($config['url_path'] . 'plugins/gpsmap/XML/' . $parameter . '.xml'); ?>;
+		gpsmap.t_error         = <?php echo (float) $terror; ?>;
 
 		<?php include_once('plugins/gpsmap/includes/icons.php'); ?>
 		<?php include_once('plugins/gpsmap/includes/customicons.php'); ?>

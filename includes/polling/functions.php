@@ -57,6 +57,11 @@ function calcKm($Lat1, $Lon1, $Lat2, $Lon2) {
 	return $difference;
 }
 
+/** @deprecated Use calcKm() instead. */
+function calcMeters(...$args) {
+	return calcKm(...$args);
+}
+
 //---------------------------------------------------------------
 function coordCheck($coords) {
 	$match = preg_match('#((-\d{1,3})|(\d{1,3}))(.)(\d+)#',$coords);

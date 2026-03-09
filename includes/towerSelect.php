@@ -24,7 +24,7 @@ include('./include/auth.php');
 
 $results = db_fetch_assoc('SELECT name, id FROM host_template');
 
-$body = '<form action=\'towerSelect.php\' method=\'post\'>';
+$body = '<form>';
 
 if (cacti_sizeof($results)) {
 	foreach ($results as $row) {

@@ -20,9 +20,11 @@
 */
 
 chdir('../../');
+/* auth.php halts execution (exit/redirect) for unauthenticated users,
+ * so the HTML below is only reached after successful authentication. */
 include('./include/auth.php');
 ?>
 <script language='javascript'>
-document.write(window.opener.document.getElementById('map').innerHTML);
+document.write(window.opener.document.getElementById('map').textContent);
 window.print();
 </script>

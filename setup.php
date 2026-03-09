@@ -87,6 +87,7 @@ function gpsmap_check_upgrade() {
 		if ($current_lat === false || $current_lat === '') {
 			set_config_option('gpsmap_latitude', $old_lat);
 		}
+		db_execute_prepared("DELETE FROM settings WHERE name = ?", array('gpsmap_latutude'));
 	}
 }
 
