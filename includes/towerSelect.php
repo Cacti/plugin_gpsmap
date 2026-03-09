@@ -24,16 +24,15 @@ include('./include/auth.php');
 
 $results = db_fetch_assoc('SELECT name, id FROM host_template');
 
-$body = '<form method=\'post\'>';
+$body = '<ul>';
 
 if (cacti_sizeof($results)) {
 	foreach ($results as $row) {
-		$body .= html_escape($row['name']) . ': <input type=\'text\' name=\'' . html_escape($row['id']) . '\' />';
+		$body .= '<li>' . html_escape($row['name']) . ' (ID: ' . html_escape($row['id']) . ')</li>';
 	}
 }
 
-$body .= '<input type=\'submit\' />';
-$body .= '</form>';
+$body .= '</ul>';
 
 print('<html>');
 print($body);

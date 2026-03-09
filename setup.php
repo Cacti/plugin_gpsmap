@@ -96,7 +96,7 @@ function gpsmap_page_head() {
 
 	$apiKey = read_config_option('gpsmap_apikey');
 
-	print "<script type='text/javascript' src='https://maps.googleapis.com/maps/api/js?" . (empty($apiKey) === false ? 'key=' . urlencode($apiKey) . '&amp;' : '') . "libraries=geometry'></script>" . PHP_EOL;
+	print "<script type='text/javascript' src='https://maps.googleapis.com/maps/api/js?" . (empty($apiKey) === false ? 'key=' . rawurlencode($apiKey) . '&amp;' : '') . "libraries=geometry'></script>" . PHP_EOL;
 	print "<script type='text/javascript' src='" . $config['url_path'] . "plugins/gpsmap/js/GPSMaps.js'></script>" . PHP_EOL;
 	print "<script type='text/javascript' src='" . $config['url_path'] . "plugins/gpsmap/js/infobubble.js'></script>" . PHP_EOL;
 }
