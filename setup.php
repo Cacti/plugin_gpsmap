@@ -42,7 +42,10 @@ function plugin_gpsmap_install() {
 
 
 function plugin_gpsmap_uninstall() {
-	//gpsmap_remove_database();
+	/* Tables and settings created on install are intentionally left in place
+	 * on uninstall to prevent data loss on accidental removal.  A future
+	 * release should call gpsmap_remove_database() here with explicit
+	 * confirmation from the administrator. */
 }
 
 function plugin_gpsmap_check_config() {
@@ -75,6 +78,17 @@ function gpsmap_check_upgrade() {
 		include_once($config['base_path'] . '/plugins/gpsmap/includes/database.php');
 		gpsmap_upgrade_database();
 	}
+
+	/* Migrate the misspelled 'gpsmap_latutude' key to 'gpsmap_latitude'.
+	 * Runs on every version transition so it self-heals on first upgrade. */
+	$old_lat = read_config_option('gpsmap_latutude');
+	if ($old_lat !== false && $old_lat !== null && $old_lat !== '') {
+		$current_lat = read_config_option('gpsmap_latitude');
+		if ($current_lat === false || $current_lat === null || $current_lat === '') {
+			set_config_option('gpsmap_latitude', $old_lat);
+		}
+		db_execute_prepared("DELETE FROM settings WHERE name = ?", array('gpsmap_latutude'));
+	}
 }
 
 function gpsmap_page_head() {
@@ -82,7 +96,7 @@ function gpsmap_page_head() {
 
 	$apiKey = read_config_option('gpsmap_apikey');
 
-	print "<script type='text/javascript' src='https://maps.googleapis.com/maps/api/js?" . (empty($apiKey) === false ? "key=" . $apiKey . '&' : '') . "libraries=geometry'></script>" . PHP_EOL;
+	print "<script type='text/javascript' src='https://maps.googleapis.com/maps/api/js?" . (empty($apiKey) === false ? 'key=' . rawurlencode($apiKey) . '&amp;' : '') . "libraries=geometry'></script>" . PHP_EOL;
 	print "<script type='text/javascript' src='" . $config['url_path'] . "plugins/gpsmap/js/GPSMaps.js'></script>" . PHP_EOL;
 	print "<script type='text/javascript' src='" . $config['url_path'] . "plugins/gpsmap/js/infobubble.js'></script>" . PHP_EOL;
 }
@@ -144,7 +158,7 @@ function gpsmap_config_form() {
 					WHERE id = ?',
 					array($did));
 
-				if (sizeof($row) && $row['AP'] == 1) {
+				if (cacti_sizeof($row) && $row['AP'] == 1) {
 					$fields_host_edit3['start'] = array(
 						'friendly_name' => __('Starting Degree', 'gpsmap'),
 						'description' => __('Starting degree for directional area between 0-360', 'gpsmap'),

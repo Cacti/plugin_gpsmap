@@ -38,7 +38,7 @@ function gpsmap_poller_bottom() {
 	$thirdArray  = array();
 	$totals      = 0;
 
-	if (sizeof($result)) {
+	if (cacti_sizeof($result)) {
 		foreach($result as $row){
 			if ($row['latitude'] != '0.000' && $row['longitude'] != '0.000') {
 				$totals++;

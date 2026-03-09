@@ -76,7 +76,7 @@ function templates() {
 		FROM gpsmap_templates 
 		ORDER BY templateID');
 
-	if (sizeof($template_list)) {
+	if (cacti_sizeof($template_list)) {
 		foreach ($template_list as $template) {
 			if($template['AP']) {
 				$isAP = __('True', 'gpsmap');
@@ -96,7 +96,7 @@ function templates() {
 			form_end_row();
 		}
 	} else {
-		print '<tr><td colspan="' . (sizeof($display_text) + 1) . '"><em>No Data Templates</em></td></tr>';
+		print '<tr><td colspan="' . (cacti_sizeof($display_text) + 1) . '"><em>No Data Templates</em></td></tr>';
 	}
 
 	html_end_box(false);

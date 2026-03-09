@@ -26,7 +26,7 @@ foreach ($hostArray as $host){
 	if (($host->showMap == "1")&&($host->coverage == "1")){
 		foreach($towerArray as $tower){
 				if ($host->group == $tower->group){
-					$distance = calcMeters($tower->lat,$tower->long, $host->lat, $host->long);
+					$distance = calcKm($tower->lat, $tower->long, $host->lat, $host->long);
 					if ($distance > $tower->radius){
 						$tower->radius = $distance;
 					}

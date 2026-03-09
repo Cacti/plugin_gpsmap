@@ -145,7 +145,7 @@ function gpsmap_config_settings() {
 			'max_length'    => 80,
 			'size'          => 40 
 		),
-		'gpsmap_latutude' => array(
+		'gpsmap_latitude' => array(
 			'friendly_name' => __('Initial Latitude', 'gpsmap'),
 			'description'   => __('Defines the centering of the map', 'gpsmap'),
 			'method'        => 'textbox',

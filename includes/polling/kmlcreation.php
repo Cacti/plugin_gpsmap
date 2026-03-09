@@ -40,7 +40,7 @@ $kmldoc .= '</Icon>';
 $kmldoc .= '</IconStyle>';
 $kmldoc .= '</Style>'. PHP_EOL;
 
-if (sizeof($hostArrays)) {
+if (cacti_sizeof($hostArrays)) {
 	foreach ($hostArrays as $hostArray) {
 		foreach ($hostArray as $host) {
 			$icon = array();
