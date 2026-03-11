@@ -63,7 +63,7 @@ if (cacti_sizeof($hostArrays)) {
 
 			$kmldoc .= '<Placemark>';
 			$kmldoc .= '<name>' . parseToXML($host->description) . '</name>';
-			$kmldoc .= '<styleUrl>' . parseToXml($icon[0]) . '</styleUrl> ';
+			$kmldoc .= '<styleUrl>' . parseToXML($icon[0]) . '</styleUrl> ';
 			$kmldoc .= '<description>'. parseToXML($host->description) . PHP_EOL . 'Availability: ' . $host->avail . PHP_EOL . 'Address: ' . parseToXML($host->hostname) . '</description>';
 			$kmldoc .= '<Point>';
 			$kmldoc .= '<coordinates>'. parseToXML($host->long) .',' . parseToXML($host->lat) . '</coordinates>';

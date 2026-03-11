@@ -121,6 +121,7 @@ assert_true('subnet regex: dotted with dash',   preg_match($valid_re, '192-168-1
 /* Values that must be rejected (path traversal and other dangerous input). */
 assert_false('subnet regex: ".."',              preg_match($valid_re, '..'));
 assert_false('subnet regex: "."',               preg_match($valid_re, '.'));
+assert_false('subnet regex: consecutive dots',  preg_match($valid_re, '10..0'));
 assert_false('subnet regex: "../etc/passwd"',   preg_match($valid_re, '../etc/passwd'));
 assert_false('subnet regex: leading dot',       preg_match($valid_re, '.foo'));
 assert_false('subnet regex: trailing dot',      preg_match($valid_re, 'foo.'));
@@ -184,6 +185,81 @@ assert_equal('coordCheck: invalid alpha',     '0.000',   coordCheck('abc'));
 assert_equal('coordCheck: invalid empty',     '0.000',   coordCheck(''));
 assert_equal('coordCheck: valid zero',        '0.000',   coordCheck('0.000'));
 assert_equal('coordCheck: negative longitude', '-122.4194', coordCheck('-122.4194'));
+
+/* Long input: verify no catastrophic backtracking (ReDoS). */
+assert_true('subnet regex: 1000-char valid input',     preg_match($valid_re, str_repeat('a', 1000)));
+assert_false('subnet regex: 1000-char with slash',     preg_match($valid_re, str_repeat('a', 999) . '/'));
+
+/* ------------------------------------------------------------------ */
+/* coordCheck — out-of-range and whitespace inputs                     */
+/* ------------------------------------------------------------------ */
+
+/* coordCheck's regex matches any 1-3 digit number with a decimal portion,
+ * so out-of-range values like 999.999 pass through. */
+assert_equal('coordCheck: out-of-range 999.999',       '999.999',  coordCheck('999.999'));
+/* '-999' has no decimal portion, so the anchored regex rejects it. */
+assert_equal('coordCheck: out-of-range -999 (no decimal)', '0.000', coordCheck('-999'));
+assert_equal('coordCheck: out-of-range -999.0',        '-999.0',   coordCheck('-999.0'));
+
+/* Leading/trailing whitespace is trimmed before matching. */
+assert_equal('coordCheck: leading/trailing whitespace', '45.0',    coordCheck(' 45.0 '));
+
+/* ------------------------------------------------------------------ */
+/* parseToXML — null and non-BMP input                                 */
+/* ------------------------------------------------------------------ */
+
+assert_equal('parseToXML: null input',          '',                parseToXML(null));
+assert_equal('parseToXML: emoji (non-BMP)',     "\xF0\x9F\x98\x80", parseToXML("\xF0\x9F\x98\x80"));
+
+/* ------------------------------------------------------------------ */
+/* calcKm — identical non-zero points                                  */
+/* ------------------------------------------------------------------ */
+
+assert_equal('calcKm: identical non-zero point is 0', 0.0, calcKm(45.0, 90.0, 45.0, 90.0));
+
+/* ------------------------------------------------------------------ */
+/* calcKm — high latitude (near poles)                                 */
+/* ------------------------------------------------------------------ */
+
+$dist_polar = calcKm(89.9, 0.0, 89.9, 180.0);
+assert_true('calcKm: high latitude is finite', is_finite($dist_polar));
+assert_true('calcKm: high latitude > 0', $dist_polar > 0);
+
+/* ------------------------------------------------------------------ */
+/* coordCheck — injection payloads                                     */
+/* ------------------------------------------------------------------ */
+
+assert_equal('coordCheck: semicolon after valid coord rejected', '0.000', coordCheck('45.123; rm -rf'));
+assert_equal('coordCheck: script injection',      '0.000', coordCheck('<script>'));
+assert_equal('coordCheck: SQL injection',         '0.000', coordCheck('DROP TABLE hosts'));
+
+/* ------------------------------------------------------------------ */
+/* coordCheck — null byte and additional injection payloads             */
+/* ------------------------------------------------------------------ */
+
+assert_equal('coordCheck: null byte embedded',          '0.000', coordCheck("45.123\x00DROP"));
+/* trim() strips tabs and newlines before the regex runs, so these resolve
+ * to '45.123' which is a valid coordinate. */
+assert_equal('coordCheck: tab after coord trimmed',     '45.123', coordCheck("45.123\t"));
+assert_equal('coordCheck: newline after coord trimmed', '45.123', coordCheck("45.123\n"));
+
+/* ------------------------------------------------------------------ */
+/* parseToXML — mixed entities in sequence                             */
+/* ------------------------------------------------------------------ */
+
+assert_equal('parseToXML: ampersand and less-than mixed', 'A &amp; B &lt; C', parseToXML('A & B < C'));
+
+/* ------------------------------------------------------------------ */
+/* calcKm — non-numeric input: PHP 8.1+ throws TypeError for string   */
+/* operands in arithmetic, so callers must pass numeric values.        */
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+/* Subnet regex — URL-encoded null byte variant                        */
+/* ------------------------------------------------------------------ */
+
+assert_false('subnet regex: ..%00 null-byte variant', preg_match($valid_re, "..%00"));
+assert_false('subnet regex: null byte in value',      preg_match($valid_re, "10\x00../etc"));
 
 /* ------------------------------------------------------------------ */
 echo "\n";

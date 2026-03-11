@@ -87,10 +87,10 @@ function templates() {
 			$url = $config['url_path'] . 'plugins/gpsmap/gpstemplates.php?action=edit&id=' . $template['templateID'];
 
 			form_alternate_row('line' . $template['templateID'], true);
-			form_selectable_cell("<a class='linkEditMain' href='$url'>" . $template['templateName'] . "</a>", $template['templateID']);
-			form_selectable_cell("<img src='" . $config['url_path'] . 'plugins/gpsmap/images/icons/' . $template['upimage'] . "'>", $template['templateID']);
-			form_selectable_cell("<img src='" . $config['url_path'] . 'plugins/gpsmap/images/icons/' . $template['recoverimage'] . "'>", $template['templateID']);
-			form_selectable_cell("<img src='" . $config['url_path'] . 'plugins/gpsmap/images/icons/' . $template['downimage'] . "'>", $template['templateID']);
+			form_selectable_cell("<a class='linkEditMain' href='$url'>" . html_escape($template['templateName']) . "</a>", $template['templateID']);
+			form_selectable_cell("<img src='" . $config['url_path'] . 'plugins/gpsmap/images/icons/' . html_escape($template['upimage']) . "'>", $template['templateID']);
+			form_selectable_cell("<img src='" . $config['url_path'] . 'plugins/gpsmap/images/icons/' . html_escape($template['recoverimage']) . "'>", $template['templateID']);
+			form_selectable_cell("<img src='" . $config['url_path'] . 'plugins/gpsmap/images/icons/' . html_escape($template['downimage']) . "'>", $template['templateID']);
 			form_selectable_cell($isAP, $template['templateID']);
 			form_checkbox_cell($template['templateID'], $template['templateID']);
 			form_end_row();

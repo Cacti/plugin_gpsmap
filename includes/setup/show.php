@@ -27,7 +27,7 @@ $initialLong = read_config_option('gpsmap_longitude');
 $initialLat = read_config_option('gpsmap_latitude');
 
 // Ensure that the basic options are set.
-if($initialLong == '' || $initialLat == ''){
+if ($initialLong === '' || $initialLat === '') {
     $show = 'setup';
 }
 

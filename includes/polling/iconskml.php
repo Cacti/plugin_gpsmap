@@ -23,34 +23,45 @@ function iconskml() {
 	global $config;
 	//get all icons in the icon folder and create an icon list
 	$kmlDomain = read_config_option('base_url');
-	$iconlist = '';
-	$icons = opendir($config['base_path'] . '/plugins/gpsmap/images/icons');
+	$iconlist   = '';
+	$icon_dir   = $config['base_path'] . '/plugins/gpsmap/images/icons';
 
-	while (false !== ($icon = readdir($icons))) {
-		if ($icon != '.' && $icon != '..') {
-			list($icon,$tail) = explode('.',$icon);
+	$dh = opendir($icon_dir);
+	if ($dh === false) {
+		cacti_log('WARNING: iconskml() could not open icon directory: ' . $icon_dir, false, 'GPSMAP');
+		return $iconlist;
+	}
 
-			switch($tail) {
-				case 'png':
-				case 'jpg':
-				case 'jpeg':
-				case 'gif':
-					$iconlist .= '<Style id="' . $icon . '">';
-					$iconlist .= '<IconStyle id="my' . $icon . '">';
-					$iconlist .= '<Icon>';
-					$iconlist .= '<href>' . $kmlDomain . $config['url_path'] . 'plugins/gpsmap/images/icons/' . $icon . '.' . $tail . '</href>';
-					$iconlist .= '<scale>1.0</scale>';
-					$iconlist .= '</Icon>';
-					$iconlist .= '</IconStyle>';
-					$iconlist .= '</Style>' . PHP_EOL;
+	while (false !== ($file = readdir($dh))) {
+		if ($file === '.' || $file === '..') {
+			continue;
+		}
 
-					break;
-				default:
-					//Not an icon we want to load
-					break;
-			}
+		$icon = pathinfo($file, PATHINFO_FILENAME);
+		$tail = pathinfo($file, PATHINFO_EXTENSION);
+
+		switch ($tail) {
+			case 'png':
+			case 'jpg':
+			case 'jpeg':
+			case 'gif':
+				$iconlist .= '<Style id="' . $icon . '">';
+				$iconlist .= '<IconStyle id="my' . $icon . '">';
+				$iconlist .= '<Icon>';
+				$iconlist .= '<href>' . $kmlDomain . $config['url_path'] . 'plugins/gpsmap/images/icons/' . $icon . '.' . $tail . '</href>';
+				$iconlist .= '<scale>1.0</scale>';
+				$iconlist .= '</Icon>';
+				$iconlist .= '</IconStyle>';
+				$iconlist .= '</Style>' . PHP_EOL;
+
+				break;
+			default:
+				//Not an icon we want to load
+				break;
 		}
 	}
+
+	closedir($dh);
 
 	return $iconlist;
 }

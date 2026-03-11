@@ -65,6 +65,6 @@ function gpsmap_setup_database() {
 	$data['comment'] = 'Map icon template';
 	api_plugin_db_table_create('gpsmap', 'gpsmap_templates', $data);
 
-	db_execute('UPDATE plugin_config SET version = "' . $v['version'] . '" WHERE directory = "gpsmap"');
+	db_execute_prepared('UPDATE plugin_config SET version = ? WHERE directory = "gpsmap"', array($v['version']));
 }
 

@@ -27,6 +27,9 @@ function region($subnet) {
 	global $enableAll;
 	global $kmlCreation;
 
+	/* Cacti checkbox convention: '' = unchecked, 'on' = checked. (bool)
+	 * correctly maps '' -> false and 'on' -> true for this contract. */
+	$enableAll = (bool) $enableAll;
 	$towerIds = getTowerIds();
 
 	include_once($config['base_path'] . '/plugins/gpsmap/class/hosts_class.php');
@@ -63,11 +66,14 @@ function region($subnet) {
 			INNER JOIN gpsmap_templates AS gt
 			ON h.host_template_id = gt.templateID
 			WHERE h.disabled = ?
-			ORDER BY h.hostname", array(''));
+			ORDER BY h.hostname", array('')); // Cacti stores '' for enabled, 'on' for disabled
 	}
 
 	/* Cache hostname -> IP resolutions so each hostname is resolved at most
-	 * once per region() call rather than twice (here and in the subnet loop). */
+	 * once per region() call rather than twice (here and in the subnet loop).
+	 * Intentionally per-invocation with no TTL: the poller is batch-oriented
+	 * and stale entries within a single cycle are acceptable. If poller cycles
+	 * exceed 5 minutes, consider adding a TTL-based expiry. */
 	$dns_cache = array();
 
 	if (cacti_sizeof($results)) {
@@ -174,7 +180,10 @@ function region($subnet) {
 
 			$hostname = $dns_cache[$host->hostname];
 
-			@list($first, $second, $third, $fourth) = explode('.', $hostname);
+			/* pad to 4 elements so destructuring is safe when $hostname is not a
+			 * dotted-quad (e.g. gethostbyname returned the original hostname). */
+			$octets = array_pad(explode('.', $hostname), 4, '0');
+			[$first, $second, $third, $fourth] = $octets;
 
 			switch ($preempt) {
 			case 0:
