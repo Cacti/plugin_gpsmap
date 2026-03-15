@@ -27,10 +27,10 @@ function gpsmap_upgrade_database() {
 	gpsmap_setup_database();
 
 	if ($old < '1.6'){
-		db_execute('ALTER TABLE host CHANGE COLUMN latitude latitude DECIMAL(13,10) NOT NULL;');
-		db_execute('ALTER TABLE host ALTER COLUMN latitude SET DEFAULT `0.0000000000`;');
-		db_execute('ALTER TABLE host CHANGE COLUMN longitude longitude DECIMAL(13,10) NOT NULL;');
-		db_execute('ALTER TABLE host ALTER COLUMN longitude SET DEFAULT `0.0000000000`;');
+		db_execute_prepared('ALTER TABLE host CHANGE COLUMN latitude latitude DECIMAL(13,10) NOT NULL;');
+		db_execute_prepared('ALTER TABLE host ALTER COLUMN latitude SET DEFAULT `0.0000000000`;');
+		db_execute_prepared('ALTER TABLE host CHANGE COLUMN longitude longitude DECIMAL(13,10) NOT NULL;');
+		db_execute_prepared('ALTER TABLE host ALTER COLUMN longitude SET DEFAULT `0.0000000000`;');
 	}
 
 	if ($old < '2.1') {
@@ -65,6 +65,5 @@ function gpsmap_setup_database() {
 	$data['comment'] = 'Map icon template';
 	api_plugin_db_table_create('gpsmap', 'gpsmap_templates', $data);
 
-	db_execute('UPDATE plugin_config SET version = "' . $v['version'] . '" WHERE directory = "gpsmap"');
+	db_execute_prepared('UPDATE plugin_config SET version = "' . $v['version'] . '" WHERE directory = "gpsmap"');
 }
-

@@ -28,7 +28,7 @@ function gpsmap_poller_bottom() {
 	//the processregion.php file. Start with high subnet and work down.
 	include_once($config['base_path'] . '/plugins/gpsmap/includes/polling/functions.php');
 
-	$result      =  db_fetch_assoc('SELECT hostname, latitude, longitude
+	$result      =  db_fetch_assoc_prepared('SELECT hostname, latitude, longitude
 		FROM host AS h
 		INNER JOIN gpsmap_templates AS gt
 		ON h.host_template_id = gt.templateID');
@@ -102,4 +102,3 @@ function gpsmap_poller_bottom() {
 		}
 	}
 }
-

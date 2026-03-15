@@ -33,7 +33,7 @@ function callRegion($subnet){
 function getTowerIds() {
 	$towerIds = array();
 
-	$results = db_fetch_assoc("SELECT `templateID` 
+	$results = db_fetch_assoc_prepared("SELECT `templateID` 
 		FROM `gpsmap_templates` 
 		WHERE `AP`=1");
 
@@ -132,7 +132,7 @@ function kmlCreate($hostArrays,$preemptive){
 function createTypeArray(){
 	$typeArray = array();
 
-	$results = db_fetch_assoc("SELECT `id`,`name` FROM `host_template`");
+	$results = db_fetch_assoc_prepared("SELECT `id`,`name` FROM `host_template`");
 
 	foreach($results as $row) {
 		$typeArray[$row['id']] = $row['name'];
@@ -182,4 +182,3 @@ function createXMLNodes($hostArray){
 
 	return $doc;
 }
-

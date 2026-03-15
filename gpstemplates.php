@@ -72,7 +72,7 @@ function templates() {
 
 	html_header_checkbox($display_text);
 
-	$template_list = db_fetch_assoc('SELECT * 
+	$template_list = db_fetch_assoc_prepared('SELECT * 
 		FROM gpsmap_templates 
 		ORDER BY templateID');
 
@@ -276,4 +276,3 @@ function getIcons() {
 
 	return $iconArray;
 }
-

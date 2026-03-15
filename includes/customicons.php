@@ -25,7 +25,7 @@
 
 $customiconlist = "gpsmap.customIcons = {};\n";
 
-$results = db_fetch_assoc('SELECT * FROM gpsmap_templates ORDER BY templateID');
+$results = db_fetch_assoc_prepared('SELECT * FROM gpsmap_templates ORDER BY templateID');
 if (cacti_sizeof($results)) {
 	foreach ($results as $row) {
 		$icon = array();
@@ -49,4 +49,3 @@ $customiconlist .= "gpsmap.customIcons['disabled'] = gpsmap.Black;\n";
 $customiconlist .= "gpsmap.customIcons['undefined'] = gpsmap.Black;\n";
 
 echo $customiconlist;
-
