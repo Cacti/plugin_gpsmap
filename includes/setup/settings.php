@@ -70,50 +70,33 @@ function gpsmap_config_arrays() {
    $menu[__('Templates')]['plugins/gpsmap/gpstemplates.php'] = __('Map', 'gpsmap');
 }
 
+function gpsmap_get_validated_device_field(string $request_field, string $validation_field): string {
+	$value = '';
+
+	if (isset_request_var($request_field)) {
+		$value = get_nfilter_request_var($request_field);
+	}
+
+	return form_input_validate($value, $validation_field, '', true, 3);
+}
+
 function gpsmap_api_device_save($save) {
-	if (isset_request_var('GPScoverage')) {
-		$save['GPScoverage'] = 'on';
-	} else {
-		$save['GPScoverage'] = 'off';
+	$save['GPScoverage'] = isset_request_var('GPScoverage') ? 'on' : 'off';
+
+	$field_map = [
+		'latitude'  => 'latitude',
+		'longitude' => 'longitude',
+		'start'     => 'start',
+		'stop'      => 'stop',
+		'rdistance' => 'distance',
+		'groupnum'  => 'groupnum',
+	];
+
+	foreach ($field_map as $field => $validation_field) {
+		$save[$field] = gpsmap_get_validated_device_field($field, $validation_field);
 	}
 
-    if (isset_request_var('latitude')) {
-        $save['latitude'] = form_input_validate(get_nfilter_request_var('latitude'), 'latitude', '', true, 3);
-	} else {
-        $save['latitude'] = form_input_validate('', 'latitude', '', true, 3);
-	}
-
-    if (isset_request_var('longitude')) {
-        $save['longitude'] = form_input_validate(get_nfilter_request_var('longitude'), 'longitude', '', true, 3);
-	} else {
-        $save['longitude'] = form_input_validate('', 'longitude', '', true, 3);
-	}
-
-    if (isset_request_var('start')) {
-        $save['start'] = form_input_validate(get_nfilter_request_var('start'), 'start', '', true, 3);
-	} else {
-        $save['start'] = form_input_validate('', 'start', '', true, 3);
-	}
-
-    if (isset_request_var('stop')) {
-        $save['stop'] = form_input_validate(get_nfilter_request_var('stop'), 'stop', '', true, 3);
-	} else {
-        $save['stop'] = form_input_validate('', 'stop', '', true, 3);
-	}
-
-    if (isset_request_var('rdistance')) {
-        $save['rdistance'] = form_input_validate(get_nfilter_request_var('rdistance'), 'distance', '', true, 3);
-	} else {
-        $save['rdistance'] = form_input_validate('', 'rdistance', '', true, 3);
-	}
-
-    if (isset_request_var('groupnum')) {
-        $save['groupnum'] = form_input_validate(get_nfilter_request_var('groupnum'), 'groupnum', '', true, 3);
-	} else {
-        $save['groupnum'] = form_input_validate('', 'groupnum', '', true, 3);
-	}
-
-    return $save;
+	return $save;
 }
 
 function gpsmap_config_settings() {
@@ -251,4 +234,3 @@ function gpsmap_config_settings() {
 		)
     );
 }
-
