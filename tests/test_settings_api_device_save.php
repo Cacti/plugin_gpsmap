@@ -108,10 +108,11 @@ assert_equal('latitude empty validation result', 'validated:latitude:', $save['l
 assert_equal('longitude empty validation result', 'validated:longitude:', $save['longitude']);
 assert_equal('start empty validation result', 'validated:start:', $save['start']);
 assert_equal('stop empty validation result', 'validated:stop:', $save['stop']);
-assert_equal('rdistance empty validation result', 'validated:distance:', $save['rdistance']);
+assert_equal('rdistance empty validation result', 'validated:rdistance:', $save['rdistance']);
 assert_equal('groupnum empty validation result', 'validated:groupnum:', $save['groupnum']);
 assert_equal('validation call count with no fields set', 6, count($gpsmap_validate_calls));
 assert_equal('latitude missing request validates empty string', '', $gpsmap_validate_calls[0]['value']);
+assert_equal('rdistance missing request uses legacy rdistance validation key', 'rdistance', $gpsmap_validate_calls[4]['field']);
 
 echo "\n";
 echo "Results: $pass passed, $fail failed\n";

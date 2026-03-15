@@ -70,30 +70,37 @@ function gpsmap_config_arrays() {
    $menu[__('Templates')]['plugins/gpsmap/gpstemplates.php'] = __('Map', 'gpsmap');
 }
 
-function gpsmap_get_validated_device_field(string $request_field, string $validation_field): string {
+function gpsmap_get_validated_device_field(string $request_field, string $validation_field, ?string $missing_validation_field = null): string {
 	$value = '';
+	$field = $validation_field;
 
 	if (isset_request_var($request_field)) {
 		$value = get_nfilter_request_var($request_field);
+	} elseif ($missing_validation_field !== null) {
+		$field = $missing_validation_field;
 	}
 
-	return form_input_validate($value, $validation_field, '', true, 3);
+	return form_input_validate($value, $field, '', true, 3);
 }
 
 function gpsmap_api_device_save($save) {
 	$save['GPScoverage'] = isset_request_var('GPScoverage') ? 'on' : 'off';
 
 	$field_map = [
-		'latitude'  => 'latitude',
-		'longitude' => 'longitude',
-		'start'     => 'start',
-		'stop'      => 'stop',
-		'rdistance' => 'distance',
-		'groupnum'  => 'groupnum',
+		'latitude'  => ['validation' => 'latitude'],
+		'longitude' => ['validation' => 'longitude'],
+		'start'     => ['validation' => 'start'],
+		'stop'      => ['validation' => 'stop'],
+		'rdistance' => ['validation' => 'distance', 'missing_validation' => 'rdistance'],
+		'groupnum'  => ['validation' => 'groupnum'],
 	];
 
-	foreach ($field_map as $field => $validation_field) {
-		$save[$field] = gpsmap_get_validated_device_field($field, $validation_field);
+	foreach ($field_map as $field => $validation) {
+		$save[$field] = gpsmap_get_validated_device_field(
+			$field,
+			$validation['validation'],
+			$validation['missing_validation'] ?? null
+		);
 	}
 
 	return $save;
