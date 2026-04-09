@@ -30,7 +30,7 @@ $customiconlist = "gpsmap.customIcons = {};\n";
 $results = db_fetch_assoc('SELECT * FROM gpsmap_templates ORDER BY templateID');
 if (cacti_sizeof($results)) {
 	foreach ($results as $row) {
-		$icon = array();
+		$icon = [];
 
 		$icon = explode('.', $row['upimage']);
 		$customiconlist .= "gpsmap.customIcons['" . $row['templateID'] . "up'] = gpsmap." . $icon[0] . ";\n";

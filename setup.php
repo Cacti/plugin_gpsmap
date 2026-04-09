@@ -67,7 +67,7 @@ function plugin_gpsmap_version() {
 function gpsmap_check_upgrade() {
 	global $config;
 
-	$files = array('gpsmap.php','gpstemplates.php','poller.php');
+	$files = ['gpsmap.php','gpstemplates.php','poller.php'];
 
 	if (isset($_SERVER['PHP_SELF']) && !in_array(basename($_SERVER['PHP_SELF']), $files)) {
 		return;
@@ -89,7 +89,7 @@ function gpsmap_check_upgrade() {
 		if ($current_lat === false || $current_lat === null || $current_lat === '') {
 			set_config_option('gpsmap_latitude', $old_lat);
 		}
-		db_execute_prepared("DELETE FROM settings WHERE name = ?", array('gpsmap_latutude'));
+		db_execute_prepared("DELETE FROM settings WHERE name = ?", ['gpsmap_latutude']);
 	}
 }
 
@@ -114,7 +114,7 @@ function gpsmap_config_form() {
 	global $fields_host_edit, $url_path;
 
 	$fields_host_edit2 = $fields_host_edit;
-	$fields_host_edit3 = array();
+	$fields_host_edit3 = [];
 
 	foreach ($fields_host_edit2 as $f => $a) {
 		$fields_host_edit3[$f] = $a;
@@ -158,7 +158,7 @@ function gpsmap_config_form() {
 					RIGHT JOIN gpsmap_templates
 					ON host.host_template_id = gpsmap_templates.templateID
 					WHERE id = ?',
-					array($did));
+					[$did]);
 
 				if (cacti_sizeof($row) && $row['AP'] == 1) {
 					$fields_host_edit3['start'] = array(

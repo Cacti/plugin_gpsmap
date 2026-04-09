@@ -37,7 +37,7 @@ function gpsmap_upgrade_database() {
 
 	if ($old < '2.1') {
 		if (!db_index_exists('gpsmap_templates', 'templateID')) {
-			db_add_index('gpsmap_templates', 'unique', 'templateID', array('templateID'));
+			db_add_index('gpsmap_templates', 'unique', 'templateID', ['templateID']);
 		}
 	}
 
@@ -55,7 +55,7 @@ function gpsmap_setup_database() {
 	api_plugin_db_add_column('gpsmap', 'host', array('name' => 'groupnum', 'type' => 'int(3)', 'NULL' => false, 'default' => '0', 'after' => 'availability'));
 	api_plugin_db_add_column('gpsmap', 'host', array('name' => 'rdistance', 'type' => 'decimal(10,6)', 'NULL' => false, 'default' => '0', 'after' => 'availability'));
 
-	$data = array();
+	$data = [];
 	$data['columns'][] = array('name' => 'templateID', 'type' => 'int(11)', 'NULL' => true);
 	$data['columns'][] = array('name' => 'templateName', 'type' => 'varchar(100)', 'NULL' => true);
 	$data['columns'][] = array('name' => 'upimage', 'type' => 'varchar(255)', 'NULL' => true);
@@ -63,7 +63,7 @@ function gpsmap_setup_database() {
 	$data['columns'][] = array('name' => 'downimage', 'type' => 'varchar(255)', 'NULL' => true);
 	$data['columns'][] = array('name' => 'AP', 'type' => 'int(1)', 'NULL' => true);
 	$data['type'] = 'MyISAM';
-	$data['unique_keys'][] = array('name' => 'templateID' , 'columns' => 'templateID', 'unique' => true);
+	$data['unique_keys'][] = ['name' => 'templateID' , 'columns' => 'templateID', 'unique' => true];
 	$data['comment'] = 'Map icon template';
 	api_plugin_db_table_create('gpsmap', 'gpsmap_templates', $data);
 

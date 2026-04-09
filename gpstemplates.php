@@ -113,7 +113,7 @@ function template_delete() {
 	foreach($_POST as $t=>$v) {
 		if (substr($t, 0,4) == 'chk_') {
 			$id = substr($t, 4);
-			db_execute_prepared('DELETE FROM gpsmap_templates WHERE templateID = ?', array($id));
+			db_execute_prepared('DELETE FROM gpsmap_templates WHERE templateID = ?', [$id]);
 		}
 	}
 
@@ -185,7 +185,7 @@ function template_edit() {
 
 	draw_edit_form(
 		array(
-			'config' => array('no_form_tag' => true),
+			'config' => ['no_form_tag' => true],
 			'fields' => inject_form_variables($form_template, $template)
 		)
 	);
@@ -231,9 +231,9 @@ function template_edit() {
 function gpsmap_save_template() {
 	global $config;
 
-	$save                 = array();
+	$save                 = [];
 	$save['templateID']   = get_filter_request_var('templateID');
-	$save['templateName'] = db_fetch_cell_prepared('SELECT name FROM host_template WHERE id = ?', array($save['templateID']));
+	$save['templateName'] = db_fetch_cell_prepared('SELECT name FROM host_template WHERE id = ?', [$save['templateID']]);
 	$save['upimage']      = get_nfilter_request_var('upimage');
 	$save['recoverimage'] = get_nfilter_request_var('recoverimage');
 	$save['downimage']    = get_nfilter_request_var('downimage');
@@ -253,7 +253,7 @@ function gpsmap_save_template() {
 
 //------------------------------------------------------------------------------
 function getIcons() {
-	$iconArray = array();
+	$iconArray = [];
 	$icons     = opendir('./plugins/gpsmap/images/icons');
 
 	while (false !== ($icon = readdir($icons))) {

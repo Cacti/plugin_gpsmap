@@ -35,11 +35,11 @@ function region($subnet) {
 
 	$kmlDomain  = read_config_option('base_url');
 
-	$iparray    = array();
-	$ipwriteout = array();
-	$hostArrays = array();
-	$hostArray  = array();
-	$towerArray = array();
+	$iparray    = [];
+	$ipwriteout = [];
+	$hostArrays = [];
+	$hostArray  = [];
+	$towerArray = [];
 	$back       = '';
 
 	/* Select only the columns used by region()/createDoc().  Avoids pulling
@@ -54,7 +54,7 @@ function region($subnet) {
 			FROM `host` AS h
 			INNER JOIN gpsmap_templates AS gt
 			ON h.host_template_id = gt.templateID
-			ORDER BY h.hostname", array());
+			ORDER BY h.hostname", []);
 	} else {
 		$results = db_fetch_assoc_prepared("SELECT h.id, h.host_template_id, h.hostname, h.description,
 			h.status, h.disabled, h.availability, h.cur_time,
@@ -65,12 +65,12 @@ function region($subnet) {
 			INNER JOIN gpsmap_templates AS gt
 			ON h.host_template_id = gt.templateID
 			WHERE h.disabled = ?
-			ORDER BY h.hostname", array(''));
+			ORDER BY h.hostname", ['']);
 	}
 
 	/* Cache hostname -> IP resolutions so each hostname is resolved at most
 	 * once per region() call rather than twice (here and in the subnet loop). */
-	$dns_cache = array();
+	$dns_cache = [];
 
 	if (cacti_sizeof($results)) {
 		foreach ($results as $row) {
@@ -108,7 +108,7 @@ function region($subnet) {
 					$stop = $row['stop'];
 					$group = $row['groupnum'];
 
-					if (in_array($row['host_template_id'], $towerIds)) {
+					if (in_[$row['host_template_id'], $towerIds]) {
 						$towerArray[] =  new host(
 							$row['id'],
 							$row['host_template_id'],
@@ -180,14 +180,14 @@ function region($subnet) {
 
 			switch ($preempt) {
 			case 0:
-				if (!in_array($first . '.', $iparray)) {
+				if (!in_[$first . '.', $iparray]) {
 					$iparray[] = $first.'.';
 				}
 
 				break;
 			case 1:
 				if (!strcasecmp($subnet, $first . '.')) {
-					if (!in_array($first . '.' . $second . '.', $iparray)) {
+					if (!in_[$first . '.' . $second . '.', $iparray]) {
 						$iparray[] = $first . '.' . $second . '.';
 					}
 				} else {
@@ -198,7 +198,7 @@ function region($subnet) {
 				break;
 			case 2:
 				if (!strcasecmp($subnet, $first . '.' . $second . '.')) {
-					if (!in_array($first . '.' . $second . '.' . $third . '.', $iparray)) {
+					if (!in_[$first . '.' . $second . '.' . $third . '.', $iparray]) {
 						$iparray[] = $first . '.' . $second . '.' . $third . '.';
 					}
 				} else {
@@ -208,7 +208,7 @@ function region($subnet) {
 				break;
 			case 3:
 				if (!strcasecmp($subnet, $first . '.' . $second . '.' . $third . '.')) {
-					if (!in_array($first . '.' . $second . '.' . $third . '.' . $fourth . '.' , $iparray)) {
+					if (!in_[$first . '.' . $second . '.' . $third . '.' . $fourth . '.' , $iparray]) {
 						$iparray[] = $first . '.' . $second . '.' . $third . '.' . $fourth;
 						$ipwriteout[] = '<a href="' . $config['url_path'] . 'graph_view.php?action=preview&reset=1&host_id=' . $host->id. '">' . __('IP %s', $first . '.' . $second . '.' . $third . '.' . $fourth) . '</a><br/>';
 					}

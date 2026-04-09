@@ -45,7 +45,7 @@ $kmldoc .= '</Style>'. PHP_EOL;
 if (cacti_sizeof($hostArrays)) {
 	foreach ($hostArrays as $hostArray) {
 		foreach ($hostArray as $host) {
-			$icon = array();
+			$icon = [];
 
 			//Check if google icon is used first
 			//else a custom icon is used and we need to parse.

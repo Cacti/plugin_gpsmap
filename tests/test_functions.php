@@ -20,10 +20,10 @@ declare(strict_types=1);
 /* Stub Cacti globals so functions.php can be included without a full
  * Cacti installation. */
 if (!function_exists('db_fetch_assoc')) {
-	function db_fetch_assoc($sql) { return array(); }
+	function db_fetch_assoc($sql) { return []; }
 }
 if (!function_exists('cacti_sizeof')) {
-	function cacti_sizeof($var) { return is_array($var) ? count($var) : 0; }
+	function cacti_sizeof($var) { return is_[$var] ? count($var) : 0; }
 }
 
 require_once __DIR__ . '/../includes/polling/functions.php';

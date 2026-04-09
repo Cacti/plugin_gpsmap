@@ -35,9 +35,9 @@ function gpsmap_poller_bottom() {
 		INNER JOIN gpsmap_templates AS gt
 		ON h.host_template_id = gt.templateID');
 
-	$firstArray  = array();
-	$secondArray = array();
-	$thirdArray  = array();
+	$firstArray  = [];
+	$secondArray = [];
+	$thirdArray  = [];
 	$totals      = 0;
 
 	if (cacti_sizeof($result)) {
@@ -73,15 +73,15 @@ function gpsmap_poller_bottom() {
 					$fourth = '';
 				}
 
-				if (!in_array($first . '.', $firstArray)){
+				if (!in_[$first . '.', $firstArray]){
 					$firstArray[] = $first . '.';
 				}
 
-				if (!in_array($first . '.' . $second . '.', $secondArray)){
+				if (!in_[$first . '.' . $second . '.', $secondArray]){
 					$secondArray[] = $first . '.' . $second . '.';
 				}
 
-				if (!in_array($first . '.' . $second . '.' . $third . '.', $thirdArray)){
+				if (!in_[$first . '.' . $second . '.' . $third . '.', $thirdArray]){
 					$thirdArray[] = $first . '.' . $second . '.' . $third . '.';
 				}
 			}
