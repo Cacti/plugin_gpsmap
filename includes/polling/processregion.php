@@ -108,7 +108,7 @@ function region($subnet) {
 					$stop = $row['stop'];
 					$group = $row['groupnum'];
 
-					if (in_array($row['host_template_id'), $towerIds]) {
+					if (in_array($row['host_template_id'], $towerIds)) {
 						$towerArray[] =  new host(
 							$row['id'],
 							$row['host_template_id'],
