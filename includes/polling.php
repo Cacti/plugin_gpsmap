@@ -73,15 +73,15 @@ function gpsmap_poller_bottom() {
 					$fourth = '';
 				}
 
-				if (!in_[$first . '.', $firstArray]){
+				if (!in_array($first . '.', $firstArray)){
 					$firstArray[] = $first . '.';
 				}
 
-				if (!in_[$first . '.' . $second . '.', $secondArray]){
+				if (!in_array($first . '.' . $second . '.', $secondArray)){
 					$secondArray[] = $first . '.' . $second . '.';
 				}
 
-				if (!in_[$first . '.' . $second . '.' . $third . '.', $thirdArray]){
+				if (!in_array($first . '.' . $second . '.' . $third . '.', $thirdArray)){
 					$thirdArray[] = $first . '.' . $second . '.' . $third . '.';
 				}
 			}
