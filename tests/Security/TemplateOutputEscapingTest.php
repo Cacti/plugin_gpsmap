@@ -22,18 +22,18 @@ describe('gpstemplates.php template output escaping', function () {
         expect($escaped)->toContain('&quot;');
     });
 
-    it('escapes image filenames containing path traversal and XSS payloads', function () {
-        $payloads = [
-            "../../etc/passwd",
-            "x.png' onerror='alert(1)",
-            '<img src=x onerror=alert(1)>.png',
-        ];
+    it('normalizes image filenames against the allowed icon list before saving', function () {
+        require_once __DIR__ . '/../../gpsmap_security.php';
 
-        foreach ($payloads as $payload) {
-            $escaped = html_escape($payload);
-            expect($escaped)->not->toContain("'");
-            expect($escaped)->not->toContain('<img');
-        }
+        $icons = array(
+            'Green.png' => 'Green.png',
+            'Orange.png' => 'Orange.png',
+            'Red.png' => 'Red.png',
+        );
+
+        expect(gpsmap_normalize_icon_name('Green.png', $icons, 'Green.png'))->toBe('Green.png');
+        expect(gpsmap_normalize_icon_name('../../etc/passwd', $icons, 'Green.png'))->toBe('Green.png');
+        expect(gpsmap_normalize_icon_name("x.png' onerror='alert(1)", $icons, 'Green.png'))->toBe('Green.png');
     });
 
     it('verifies gpstemplates.php templates() uses html_escape on output fields', function () {
@@ -46,5 +46,9 @@ describe('gpstemplates.php template output escaping', function () {
         expect($source)->toContain("html_escape(\$template['upimage'])");
         expect($source)->toContain("html_escape(\$template['recoverimage'])");
         expect($source)->toContain("html_escape(\$template['downimage'])");
+
+        expect($source)->toContain("gpsmap_normalize_icon_name(get_nfilter_request_var('upimage'), \$iconArray, 'Green.png')");
+        expect($source)->toContain("gpsmap_normalize_icon_name(get_nfilter_request_var('recoverimage'), \$iconArray, 'Orange.png')");
+        expect($source)->toContain("gpsmap_normalize_icon_name(get_nfilter_request_var('downimage'), \$iconArray, 'Red.png')");
     });
 });

@@ -21,6 +21,7 @@
 
 chdir('../../');
 include_once('./include/auth.php');
+include_once('./plugins/gpsmap/gpsmap_security.php');
 
 $ds_actions = array(
 	1 => __('Delete')
@@ -229,12 +230,13 @@ function template_edit() {
 function gpsmap_save_template() {
 	global $config;
 
+	$iconArray            = getIcons();
 	$save                 = array();
 	$save['templateID']   = get_filter_request_var('templateID');
 	$save['templateName'] = db_fetch_cell_prepared('SELECT name FROM host_template WHERE id = ?', array($save['templateID']));
-	$save['upimage']      = get_nfilter_request_var('upimage');
-	$save['recoverimage'] = get_nfilter_request_var('recoverimage');
-	$save['downimage']    = get_nfilter_request_var('downimage');
+	$save['upimage']      = gpsmap_normalize_icon_name(get_nfilter_request_var('upimage'), $iconArray, 'Green.png');
+	$save['recoverimage'] = gpsmap_normalize_icon_name(get_nfilter_request_var('recoverimage'), $iconArray, 'Orange.png');
+	$save['downimage']    = gpsmap_normalize_icon_name(get_nfilter_request_var('downimage'), $iconArray, 'Red.png');
 	$save['AP']           = get_filter_request_var('AP');
 
 	$templateID = sql_save($save, 'gpsmap_templates', 'templateID');
@@ -276,4 +278,3 @@ function getIcons() {
 
 	return $iconArray;
 }
-
