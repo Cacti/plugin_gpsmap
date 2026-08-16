@@ -19,23 +19,6 @@
  +-------------------------------------------------------------------------+
 */
 
-/* Image types accepted as map icons.  Declared here because setup.php is the
- * one file Cacti loads for both the web and poller paths. */
-if (!defined('GPSMAP_ICON_EXTENSIONS')) {
-	define('GPSMAP_ICON_EXTENSIONS', array('png', 'jpg', 'jpeg', 'gif'));
-}
-
-/* An icon's base name is emitted as a JavaScript assignment target
- * (gpsmap.Green = {...}) and as a KML Style id, so it has to be a bare
- * identifier.  Returns null for anything else; callers skip those files
- * rather than emitting a name that would break the surrounding script.
- * 'ap.v2.png' and 'my-icon.png' are the common cases. */
-function gpsmap_icon_identifier(string $filename): ?string {
-	$base = pathinfo($filename, PATHINFO_FILENAME);
-
-	return preg_match('/^[A-Za-z_][A-Za-z0-9_]*$/', $base) ? $base : null;
-}
-
 function plugin_gpsmap_install() {
 	global $config;
 

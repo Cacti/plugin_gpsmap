@@ -19,6 +19,7 @@
  +-------------------------------------------------------------------------+
 */
 
+require_once(__DIR__ . '/../gpsmap_security.php');
 //This file takes care of the individual assignments for each custom icon set for the map templates
 //This pulls the template from MySQL and attaches the Up/Down/Recover icon reference.
 //Basically this makes a mapping between template and icon.

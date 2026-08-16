@@ -19,6 +19,7 @@
  +-------------------------------------------------------------------------+
 */
 
+require_once(__DIR__ . '/../../gpsmap_security.php');
 function iconskml(): string {
 	global $config;
 

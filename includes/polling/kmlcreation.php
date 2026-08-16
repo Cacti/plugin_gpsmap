@@ -19,6 +19,7 @@
  +-------------------------------------------------------------------------+
 */
 
+require_once(__DIR__ . '/../../gpsmap_security.php');
 /* Included from kmlCreate(); $hostArrays, $preemptive and $config come from
  * that scope. */
 include_once($config['base_path'] . '/plugins/gpsmap/includes/polling/iconskml.php');

@@ -18,6 +18,8 @@
  | http://www.cacti.net/                                                   |
  +-------------------------------------------------------------------------+
 */
+
+require_once(__DIR__ . '/../gpsmap_security.php');
 //get all icons in the icon folder and create an icon list.
 //This a process to dynamically create the javascript for each icon.
 //This is separate from the function in customicons.php
