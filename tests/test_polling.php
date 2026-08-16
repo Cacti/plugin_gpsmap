@@ -205,8 +205,6 @@ $second = file_get_contents($root . '/plugins/gpsmap/XML/10.9.9-top.html');
 
 assert_equal('region: navigation does not accumulate across calls', 1, substr_count($second, 'gpstopmenu'));
 assert_not_contains('region: second file excludes the first subnet links', 'host_id=1"', $second);
-assert_true('region: repeated calls produce stable output', $first === file_get_contents($root . '/plugins/gpsmap/XML/10.1.2-top.html') || true);
-
 region('10.1.2.');
 assert_equal('region: rerunning a subnet does not grow its file', $first, file_get_contents($root . '/plugins/gpsmap/XML/10.1.2-top.html'));
 
@@ -251,6 +249,17 @@ $GLOBALS['gpsmap_stub_rows']['hosts'] = array(
 );
 region('all');
 assert_equal('coverageXML: coverage-off devices are ignored', 0.0, gpsmap_test_tower_radius(file_get_contents(gpsmap_xml_path('all', 'xml'))));
+
+/* Two Devices resolving to one address must yield one graph link, not two.
+ * The de-duplication guard used to test a different string than it stored. */
+$GLOBALS['gpsmap_stub_rows']['towers'] = array(array('templateID' => '10'));
+$GLOBALS['gpsmap_stub_rows']['hosts']  = array(
+	gpsmap_test_row(array('id' => '11', 'hostname' => '10.4.4.4', 'host_template_id' => '20')),
+	gpsmap_test_row(array('id' => '12', 'hostname' => '10.4.4.4', 'host_template_id' => '20')),
+);
+region('10.4.4.');
+$deepest = file_get_contents($root . '/plugins/gpsmap/XML/10.4.4-top.html');
+assert_equal('region: one link per address at the deepest level', 1, substr_count($deepest, 'graph_view.php'));
 
 /* calcMeters is the retained deprecated alias. */
 assert_equal('calcMeters: delegates to calcKm', calcKm(1.0, 2.0, 3.0, 4.0), calcMeters(1.0, 2.0, 3.0, 4.0));

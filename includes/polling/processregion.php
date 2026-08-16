@@ -150,11 +150,13 @@ function region(string $subnet): void {
 
 			if ($preempt == 3) {
 				/* Deepest level: link straight to the device's graphs.  The
-				 * guard tests the dotted form but stores the undotted one,
-				 * which is how this has always behaved. */
-				if (!in_array($child, $iparray)) {
-					$iparray[]    = rtrim($child, '.');
-					$ipwriteout[] = '<a href="' . $config['url_path'] . 'graph_view.php?action=preview&reset=1&host_id=' . $host->id . '">' . __('IP %s', rtrim($child, '.')) . '</a><br/>';
+				 * guard has to test the same form that gets stored, otherwise
+				 * two Devices resolving to one address each emit a link. */
+				$leaf = rtrim($child, '.');
+
+				if (!in_array($leaf, $iparray)) {
+					$iparray[]    = $leaf;
+					$ipwriteout[] = '<a href="' . $config['url_path'] . 'graph_view.php?action=preview&reset=1&host_id=' . $host->id . '">' . __('IP %s', $leaf) . '</a><br/>';
 				}
 			} elseif (!in_array($child, $iparray)) {
 				$iparray[] = $child;
