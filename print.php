@@ -20,12 +20,21 @@
 */
 
 chdir('../../');
-/* auth.php halts execution (exit/redirect) for unauthenticated users,
- * so the HTML below is only reached after successful authentication. */
 require_once('./include/auth.php');
+
+
 ?>
 <script language='javascript'>
 var mapEl = window.opener.document.getElementById('map');
-if (mapEl) { document.body.appendChild(mapEl.cloneNode(true)); }
+if (mapEl) {
+	var clone = mapEl.cloneNode(true);
+	clone.querySelectorAll('script').forEach(function(s) { s.remove(); });
+	clone.querySelectorAll('*').forEach(function(el) {
+		Array.from(el.attributes).forEach(function(attr) {
+			if (attr.name.toLowerCase().indexOf('on') === 0) { el.removeAttribute(attr.name); }
+		});
+	});
+	document.body.appendChild(clone);
+}
 window.print();
 </script>

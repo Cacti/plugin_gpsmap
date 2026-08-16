@@ -19,56 +19,34 @@
  +-------------------------------------------------------------------------+
 */
 
-class host{
-	var $id = "0";
-	var $type = "0";
-	var $lat = "0";
-	var $long = "0";
-	var $iprange = "";
-	var $description = "";
-	var $hostname = "";
-	var $radius = "0";
-	var $avail = "";
-	var $status = "";
-	var $showMap = "1";
-	var $latency = "0";
-	var $coverage = "1";
-	var $upimage = "";
-	var $downimage = "";
-	var $recoverimage = "";
-	var $start = "0";
-	var $stop = "360";
-	var $group = "0";
+class host {
+	public string $radius;
+	public int    $coverage;
+	public int    $showMap = 1;
 
-	function __construct($id,$type,$lat,$long,$iprange,$description,$hostname,$radius,$avail,$status,$latency,$coverage,$upimage,$downimage,$recoverimage,$start,$stop,$group) {
-		$this->id = $id;
-		$this->type = $type;
-		$this->lat = $lat;
-		$this->long = $long;
-		$this->iprange = $iprange;
-		$this->description = $description;
-		$this->hostname = $hostname;
-		$this->radius = $radius;
-		$this->avail = $avail;
-		$this->status = $status;
-		$this->latency = $latency;
+	public function __construct(
+		public string $id,
+		public string $type,
+		public string $lat,
+		public string $long,
+		public string $iprange,
+		public string $description,
+		public string $hostname,
+		int $radius,
+		public string $avail,
+		public string $status,
+		public string $latency,
+		string $coverage,
+		public string $upimage,
+		public string $downimage,
+		public string $recoverimage,
+		public string $start,
+		public string $stop,
+		public string $group,
+	) {
+		$this->radius = (string) $radius;
 
-		if ($coverage === "on") {
-			$this->coverage = 1;
-		} else {
-			$this->coverage = 0;
-		}
-
-		$this->upimage = $upimage;
-		$this->downimage = $downimage;
-		$this->recoverimage = $recoverimage;
-		$this->start = $start;
-		$this->stop = $stop;
-		$this->group = $group;
-	}
-
-	function __destruct() {
-		return true;
+		/* Cacti checkbox convention: 'on' when ticked, '' otherwise. */
+		$this->coverage = ($coverage === 'on') ? 1 : 0;
 	}
 }
-

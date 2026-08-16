@@ -19,70 +19,59 @@
  +-------------------------------------------------------------------------+
 */
 
-$kmldoc = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
-$kmldoc .= "<kml xmlns=\"http://www.opengis.net/kml/2.2\">\n";
-$kmldoc .= "<Document>";
-$kmldoc .= "<name>Map Points</name>\n";
-
-//default google point info for KML
-
+require_once(__DIR__ . '/../../gpsmap_security.php');
+/* Included from kmlCreate(); $hostArrays, $preemptive and $config come from
+ * that scope. */
 include_once($config['base_path'] . '/plugins/gpsmap/includes/polling/iconskml.php');
 
+$kmldoc  = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
+$kmldoc .= '<kml xmlns="http://www.opengis.net/kml/2.2">' . "\n";
+$kmldoc .= '<Document>';
+$kmldoc .= '<name>Map Points</name>' . "\n";
 $kmldoc .= iconskml();
 
-//default
-$kmldoc .= '<Style id="pushpin">';
-$kmldoc .= '<IconStyle id="mystyle">';
-$kmldoc .= '<Icon>';
-$kmldoc .= '<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>';
-$kmldoc .= '<scale>1.0</scale>';
-$kmldoc .= '</Icon>';
-$kmldoc .= '</IconStyle>';
-$kmldoc .= '</Style>'. PHP_EOL;
+//fallback style for any placemark whose icon is not in the icon folder
+$kmldoc .= '<Style id="pushpin">'
+	. '<IconStyle id="mystyle">'
+	. '<Icon>'
+	. '<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>'
+	. '<scale>1.0</scale>'
+	. '</Icon>'
+	. '</IconStyle>'
+	. '</Style>' . PHP_EOL;
 
-if (cacti_sizeof($hostArrays)) {
-	foreach ($hostArrays as $hostArray) {
-		foreach ($hostArray as $host) {
-			$icon = array();
+foreach ($hostArrays as $hostArray) {
+	foreach ($hostArray as $host) {
+		$image = match ($host->status) {
+			'down'       => $host->downimage,
+			'recovering' => $host->recoverimage,
+			default      => $host->upimage,
+		};
 
-			//Check if google icon is used first
-			//else a custom icon is used and we need to parse.
-			if ($host->status == "up") {
-				$icon = explode('.',$host->upimage);
-			} elseif ($host->status == "down") {
-				$icon = explode('.',$host->downimage);
-			} elseif ($host->status == "recovering") {
-				$icon = explode('.',$host->recoverimage);
-			} else {
-				$icon = explode('.',$host->upimage);
-			}
+		/* Must resolve to the same name iconskml() registered as a Style id;
+		 * anything it skipped falls back to the built-in pushpin style. */
+		$style = gpsmap_icon_identifier($image) ?? 'pushpin';
 
-			if (!strncmp('Google',$icon[0],6)) {
-				$icon[0] = strtolower(substr($icon[0],6));
-			}
-
-			$kmldoc .= '<Placemark>';
-			$kmldoc .= '<name>' . parseToXML($host->description) . '</name>';
-			$kmldoc .= '<styleUrl>' . parseToXml($icon[0]) . '</styleUrl> ';
-			$kmldoc .= '<description>'. parseToXML($host->description) . PHP_EOL . 'Availability: ' . $host->avail . PHP_EOL . 'Address: ' . parseToXML($host->hostname) . '</description>';
-			$kmldoc .= '<Point>';
-			$kmldoc .= '<coordinates>'. parseToXML($host->long) .',' . parseToXML($host->lat) . '</coordinates>';
-			$kmldoc .= '</Point>';
-			$kmldoc .= '</Placemark>';
-			$kmldoc .= PHP_EOL;
+		/* Icons named GoogleXxx map onto the built-in Google styles, which are
+		 * registered lower-cased without the prefix. */
+		if (str_starts_with($style, 'Google')) {
+			$style = strtolower(substr($style, 6));
 		}
+
+		$kmldoc .= '<Placemark>'
+			. '<name>' . parseToXML($host->description) . '</name>'
+			. '<styleUrl>' . parseToXML($style) . '</styleUrl> '
+			. '<description>' . parseToXML($host->description) . PHP_EOL
+				. 'Availability: ' . $host->avail . PHP_EOL
+				. 'Address: ' . parseToXML($host->hostname) . '</description>'
+			. '<Point>'
+			. '<coordinates>' . parseToXML($host->long) . ',' . parseToXML($host->lat) . '</coordinates>'
+			. '</Point>'
+			. '</Placemark>'
+			. PHP_EOL;
 	}
 }
 
 $kmldoc .= '</Document></kml>';
 
-$filename = './plugins/gpsmap/XML/' . trim($preemptive, '.') . '.kml';
-$f = @fopen($filename, 'w');
-
-if (is_resource($f)) {
-	fwrite($f, $kmldoc);
-	fclose($f);
-} else {
-	cacti_log('Unable to write to: ' . $filename . '.  Please verify that the Data Collector has write access to this location.', false, 'POLLER');
-}
-
+gpsmap_write_file(gpsmap_xml_path($preemptive, 'kml'), $kmldoc);

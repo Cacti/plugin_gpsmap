@@ -21,6 +21,7 @@
 
 chdir('../../');
 include_once('./include/auth.php');
+include_once('./plugins/gpsmap/gpsmap_security.php');
 
 $ds_actions = array(
 	1 => __('Delete')
@@ -87,10 +88,10 @@ function templates() {
 			$url = $config['url_path'] . 'plugins/gpsmap/gpstemplates.php?action=edit&id=' . $template['templateID'];
 
 			form_alternate_row('line' . $template['templateID'], true);
-			form_selectable_cell("<a class='linkEditMain' href='$url'>" . $template['templateName'] . "</a>", $template['templateID']);
-			form_selectable_cell("<img src='" . $config['url_path'] . 'plugins/gpsmap/images/icons/' . $template['upimage'] . "'>", $template['templateID']);
-			form_selectable_cell("<img src='" . $config['url_path'] . 'plugins/gpsmap/images/icons/' . $template['recoverimage'] . "'>", $template['templateID']);
-			form_selectable_cell("<img src='" . $config['url_path'] . 'plugins/gpsmap/images/icons/' . $template['downimage'] . "'>", $template['templateID']);
+			form_selectable_cell("<a class='linkEditMain' href='$url'>" . html_escape($template['templateName']) . "</a>", $template['templateID']);
+			form_selectable_cell("<img src='" . $config['url_path'] . 'plugins/gpsmap/images/icons/' . html_escape($template['upimage']) . "'>", $template['templateID']);
+			form_selectable_cell("<img src='" . $config['url_path'] . 'plugins/gpsmap/images/icons/' . html_escape($template['recoverimage']) . "'>", $template['templateID']);
+			form_selectable_cell("<img src='" . $config['url_path'] . 'plugins/gpsmap/images/icons/' . html_escape($template['downimage']) . "'>", $template['templateID']);
 			form_selectable_cell($isAP, $template['templateID']);
 			form_checkbox_cell($template['templateID'], $template['templateID']);
 			form_end_row();
@@ -229,12 +230,13 @@ function template_edit() {
 function gpsmap_save_template() {
 	global $config;
 
+	$iconArray            = getIcons();
 	$save                 = array();
 	$save['templateID']   = get_filter_request_var('templateID');
 	$save['templateName'] = db_fetch_cell_prepared('SELECT name FROM host_template WHERE id = ?', array($save['templateID']));
-	$save['upimage']      = get_nfilter_request_var('upimage');
-	$save['recoverimage'] = get_nfilter_request_var('recoverimage');
-	$save['downimage']    = get_nfilter_request_var('downimage');
+	$save['upimage']      = gpsmap_normalize_icon_name(get_nfilter_request_var('upimage'), $iconArray, 'Green.png');
+	$save['recoverimage'] = gpsmap_normalize_icon_name(get_nfilter_request_var('recoverimage'), $iconArray, 'Orange.png');
+	$save['downimage']    = gpsmap_normalize_icon_name(get_nfilter_request_var('downimage'), $iconArray, 'Red.png');
 	$save['AP']           = get_filter_request_var('AP');
 
 	$templateID = sql_save($save, 'gpsmap_templates', 'templateID');
@@ -276,4 +278,3 @@ function getIcons() {
 
 	return $iconArray;
 }
-

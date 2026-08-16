@@ -18,34 +18,46 @@
  | http://www.cacti.net/                                                   |
  +-------------------------------------------------------------------------+
 */
+
+require_once(__DIR__ . '/../gpsmap_security.php');
 //get all icons in the icon folder and create an icon list.
 //This a process to dynamically create the javascript for each icon.
 //This is separate from the function in customicons.php
-$server = $_SERVER['SERVER_NAME'];
+/* Use relative $config['url_path'] for icon URLs. This avoids injecting
+ * an attacker-controlled origin if base_url were set to an external domain. */
+global $config;
+$url_path = $config['url_path'];
 
 $icons = opendir('plugins/gpsmap/images/icons');
-while (false !== ($icon = readdir($icons))) {
-    if ($icon !== '.' && $icon !== '..') {
-        list($icon, $tail) = explode('.', $icon);
 
-        switch ($tail) {
-            case 'png':
-            case 'jpg':
-            case 'jpeg':
-            case 'gif':
+if ($icons !== false) {
+	while (false !== ($icon = readdir($icons))) {
+		$tail = pathinfo($icon, PATHINFO_EXTENSION);
 
-                echo 'gpsmap.' , $icon , ' = {', PHP_EOL,
-                     "url : 'http://" , $server , $url_path , '/plugins/gpsmap/images/icons/' , $icon, '.', $tail, "',", PHP_EOL,
-                     'size : new google.maps.Size(12, 20),', PHP_EOL,
-                     'anchor : new google.maps.Point(6, 20)};', PHP_EOL, PHP_EOL
-                ;
+		/* Compare case-insensitively but keep the on-disk spelling in the
+		 * URL; the icon folder may live on a case-sensitive filesystem. */
+		if (!in_array(strtolower($tail), GPSMAP_ICON_EXTENSIONS, true)) {
+			continue;
+		}
 
-                break;
-            default:
-                //Not an icon we want to load
-                break;
-        }
-    }
+		/* $icon is emitted as an assignment target, so json_encode() on the
+		 * url line does not protect it.  Skip anything that is not a bare
+		 * identifier instead of emitting broken JavaScript. */
+		$base = gpsmap_icon_identifier($icon);
+
+		if ($base === null) {
+			continue;
+		}
+
+		$icon_url = $url_path . 'plugins/gpsmap/images/icons/' . $icon;
+		$icon     = $base;
+
+		echo 'gpsmap.', $icon, ' = {', PHP_EOL,
+			'url : ', json_encode($icon_url, JSON_HEX_TAG | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR), ',', PHP_EOL,
+			'size : new google.maps.Size(12, 20),', PHP_EOL,
+			'anchor : new google.maps.Point(6, 20)};', PHP_EOL, PHP_EOL
+		;
+	}
+
+	closedir($icons);
 }
-
-closedir($icons);

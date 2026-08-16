@@ -19,25 +19,30 @@
  +-------------------------------------------------------------------------+
 */
 
+require_once(__DIR__ . '/../gpsmap_security.php');
 //This file takes care of the individual assignments for each custom icon set for the map templates
 //This pulls the template from MySQL and attaches the Up/Down/Recover icon reference.
 //Basically this makes a mapping between template and icon.
 
 $customiconlist = "gpsmap.customIcons = {};\n";
 
-$results = db_fetch_assoc('SELECT * FROM gpsmap_templates ORDER BY templateID');
+/* Property-access position, so an unusable name degrades to gpsmap.undefined
+ * (valid JavaScript) rather than being skipped. */
+function gpsmap_safe_icon_base(string $filename): string {
+	return gpsmap_icon_identifier($filename) ?? 'undefined';
+}
+
+$results = db_fetch_assoc_prepared('SELECT * FROM gpsmap_templates ORDER BY templateID', array());
 if (cacti_sizeof($results)) {
 	foreach ($results as $row) {
-		$icon = array();
+		$tid          = (int) $row['templateID'];
+		$up_base      = gpsmap_safe_icon_base($row['upimage']);
+		$down_base    = gpsmap_safe_icon_base($row['downimage']);
+		$recover_base = gpsmap_safe_icon_base($row['recoverimage']);
 
-		$icon = explode('.', $row['upimage']);
-		$customiconlist .= "gpsmap.customIcons['" . $row['templateID'] . "up'] = gpsmap." . $icon[0] . ";\n";
-
-		$icon = explode('.', $row['downimage']);
-		$customiconlist .= "gpsmap.customIcons['" . $row['templateID'] . "down'] = gpsmap." . $icon[0] . ";\n";
-
-		$icon = explode('.', $row['recoverimage']);
-		$customiconlist .= "gpsmap.customIcons['" . $row['templateID'] . "recovering'] = gpsmap." . $icon[0] . ";\n";
+		$customiconlist .= 'gpsmap.customIcons[' . json_encode($tid . 'up')        . '] = gpsmap.' . $up_base      . ";\n";
+		$customiconlist .= 'gpsmap.customIcons[' . json_encode($tid . 'down')       . '] = gpsmap.' . $down_base    . ";\n";
+		$customiconlist .= 'gpsmap.customIcons[' . json_encode($tid . 'recovering') . '] = gpsmap.' . $recover_base . ";\n";
 	}
 }
 
