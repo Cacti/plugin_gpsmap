@@ -55,6 +55,28 @@ charges will be made unless you upgrade from the free account.
 
   ***Note:** Without this, no Map API will work*
 
+* **Content Security Policy**
+
+  The map is drawn by JavaScript that Cacti loads from Google, and Cacti's
+  default Content Security Policy only permits scripts served by the Cacti web
+  server itself.  Until the policy is widened, the Maps tab renders as a blank
+  page and the browser console reports `Refused to load the script
+  'https://maps.googleapis.com/maps/api/js'`.
+
+  Under Console -> Configuration -> Settings -> General, set:
+
+  Setting | Value
+  --- | ---
+  Content-Security Alternate Sources | `https://maps.googleapis.com https://maps.gstatic.com`
+  Content-Security Script Policy | Allow both unsafe-eval and Non-Nonced Inline JavaScript
+
+  The Google Maps loader calls `eval()`, so the plain *Allow Non-Nonced Inline
+  JavaScript* mode is not sufficient.  Both settings are required.
+
+  If your Cacti is fronted by a reverse proxy that sets its own
+  `Content-Security-Policy` header, the same two hosts have to be added there
+  as well, otherwise the proxy header wins.
+
 * **Initial Latitude, Longitude, Elevation**
 
   You should set the Latitude/Longitude so that the initial map centers on the
@@ -101,6 +123,11 @@ Top Header's Map tab.
 ![Sample Map](images/sample_map.png)
 
 ## Possible Bugs
+
+A blank Maps tab is almost always the Content Security Policy rather than a
+fault in the plugin.  Open the browser console first: a `Refused to load the
+script` entry naming `maps.googleapis.com` means the two settings described
+under Installation have not been applied.
 
 If you figure out this problem, see the Cacti forums!
 
