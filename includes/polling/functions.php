@@ -33,8 +33,8 @@ function callRegion($subnet){
 function getTowerIds() {
 	$towerIds = array();
 
-	$results = db_fetch_assoc("SELECT `templateID` 
-		FROM `gpsmap_templates` 
+	$results = db_fetch_assoc("SELECT `templateID`
+		FROM `gpsmap_templates`
 		WHERE `AP`=1");
 
 	if (cacti_sizeof($results)) {
@@ -49,9 +49,10 @@ function getTowerIds() {
 }
 
 //---------------------------------------------------------------
-/* Returns the great-circle distance in kilometres (not metres — the constant
+/* Returns the great-circle distance in kilometres (not metres, the constant
  * 6378.7 is Earth's mean radius in km).  Renamed from calcMeters to reflect
- * the actual unit; callers treating the result as metres will be off by 1000x. */
+ * the actual unit; callers treating the result as metres will be off by 1000x.
+ * The gpsmap_templates.radius column is also stored in km. */
 function calcKm($Lat1, $Lon1, $Lat2, $Lon2) {
 	$difference = (6378.7 * 3.1415926 * sqrt(($Lat2 - $Lat1) * ($Lat2 - $Lat1) + cos($Lat2 / 57.29578) * cos($Lat1 / 57.29578) * ($Lon2 - $Lon1) * ($Lon2 - $Lon1)) / 180);
 	return $difference;
@@ -64,9 +65,9 @@ function calcMeters($Lat1, $Lon1, $Lat2, $Lon2) {
 
 //---------------------------------------------------------------
 function coordCheck($coords) {
-	$match = preg_match('#((-\d{1,3})|(\d{1,3}))(.)(\d+)#',$coords);
+	$match = preg_match('#^-?\d{1,3}\.\d+$#', trim($coords));
 	if ($match) {
-		return $coords;
+		return trim($coords);
 	} else {
 		//return 0.00 as coords, user can fix problem.
 		return "0.000";

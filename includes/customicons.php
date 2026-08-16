@@ -25,19 +25,24 @@
 
 $customiconlist = "gpsmap.customIcons = {};\n";
 
+/* Restrict icon property names to safe JS identifiers to prevent injection
+ * when the value is concatenated directly into a property-access expression. */
+function gpsmap_safe_icon_base(string $filename): string {
+	$base = pathinfo($filename, PATHINFO_FILENAME);
+	return preg_match('/^[A-Za-z_][A-Za-z0-9_]*$/', $base) ? $base : 'undefined';
+}
+
 $results = db_fetch_assoc('SELECT * FROM gpsmap_templates ORDER BY templateID');
 if (cacti_sizeof($results)) {
 	foreach ($results as $row) {
-		$icon = array();
+		$tid          = (int) $row['templateID'];
+		$up_base      = gpsmap_safe_icon_base($row['upimage']);
+		$down_base    = gpsmap_safe_icon_base($row['downimage']);
+		$recover_base = gpsmap_safe_icon_base($row['recoverimage']);
 
-		$icon = explode('.', $row['upimage']);
-		$customiconlist .= "gpsmap.customIcons['" . $row['templateID'] . "up'] = gpsmap." . $icon[0] . ";\n";
-
-		$icon = explode('.', $row['downimage']);
-		$customiconlist .= "gpsmap.customIcons['" . $row['templateID'] . "down'] = gpsmap." . $icon[0] . ";\n";
-
-		$icon = explode('.', $row['recoverimage']);
-		$customiconlist .= "gpsmap.customIcons['" . $row['templateID'] . "recovering'] = gpsmap." . $icon[0] . ";\n";
+		$customiconlist .= 'gpsmap.customIcons[' . json_encode($tid . 'up')        . '] = gpsmap.' . $up_base      . ";\n";
+		$customiconlist .= 'gpsmap.customIcons[' . json_encode($tid . 'down')       . '] = gpsmap.' . $down_base    . ";\n";
+		$customiconlist .= 'gpsmap.customIcons[' . json_encode($tid . 'recovering') . '] = gpsmap.' . $recover_base . ";\n";
 	}
 }
 

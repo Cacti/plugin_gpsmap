@@ -67,7 +67,7 @@ function gpsmap_check_upgrade() {
 
 	$files = array('gpsmap.php','gpstemplates.php','poller.php');
 
-	if (isset($_SERVER['PHP_SELF']) && !in_array(basename($_SERVER['PHP_SELF']), $files)) {
+	if (!in_array(get_current_page(), $files)) {
 		return;
 	}
 
@@ -80,7 +80,11 @@ function gpsmap_check_upgrade() {
 	}
 
 	/* Migrate the misspelled 'gpsmap_latutude' key to 'gpsmap_latitude'.
-	 * Runs on every version transition so it self-heals on first upgrade. */
+	 * Runs on every version transition so it self-heals on first upgrade.
+	 * read_config_option() returns '' for missing keys in most Cacti versions,
+	 * but some older versions return false or null. The triple-check guards
+	 * against all known return values so the DELETE only fires when the old
+	 * key actually exists with a non-empty value. */
 	$old_lat = read_config_option('gpsmap_latutude');
 	if ($old_lat !== false && $old_lat !== null && $old_lat !== '') {
 		$current_lat = read_config_option('gpsmap_latitude');

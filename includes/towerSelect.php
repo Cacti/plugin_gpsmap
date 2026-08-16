@@ -20,9 +20,17 @@
 */
 
 chdir('../../../');
-include('./include/auth.php');
+require_once('./include/auth.php');
 
-$results = db_fetch_assoc('SELECT name, id FROM host_template');
+if (!isset($_SESSION['sess_user_id'])) {
+	exit;
+}
+
+if (function_exists('api_user_realm_auth') && !api_user_realm_auth('gpsmap.php')) {
+	exit;
+}
+
+$results = db_fetch_assoc_prepared("SELECT name, id FROM host_template", array());
 
 $body = '<ul>';
 

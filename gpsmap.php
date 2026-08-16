@@ -63,27 +63,27 @@ switch ($show) {
 
 if ($show != 'setup') { ?>
 	<script type='text/javascript'>
-		var initialLat      = <?php echo (float) $initialLat; ?>;
-		var initialLng      = <?php echo (float) $initialLong; ?>;
-		var initialZoom     = <?php echo (int) $initialzoom; ?>;
+		var initialLat      = <?php echo is_finite((float) $initialLat) ? json_encode((float) $initialLat) : '0'; ?>;
+		var initialLng      = <?php echo is_finite((float) $initialLong) ? json_encode((float) $initialLong) : '0'; ?>;
+		var initialZoom     = <?php echo json_encode((int) $initialzoom); ?>;
 	</script>
 	<script type='text/javascript'>
-		gpsmap.refreshMap      = <?php echo json_encode((string) $refreshMap, JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES); ?>;
-		gpsmap.initialLat      = <?php echo (float) $initialLat; ?>;
-		gpsmap.initialLng      = <?php echo (float) $initialLong; ?>;
-		gpsmap.initialZoom     = <?php echo (int) $initialzoom; ?>;
+		gpsmap.refreshMap      = <?php echo json_encode((string) $refreshMap, JSON_THROW_ON_ERROR | JSON_HEX_TAG | JSON_UNESCAPED_SLASHES); ?>;
+		gpsmap.initialLat      = <?php echo is_finite((float) $initialLat) ? json_encode((float) $initialLat) : '0'; ?>;
+		gpsmap.initialLng      = <?php echo is_finite((float) $initialLong) ? json_encode((float) $initialLong) : '0'; ?>;
+		gpsmap.initialZoom     = <?php echo json_encode((int) $initialzoom); ?>;
 		gpsmap.initialized     = false;
-		gpsmap.liColor         = <?php echo json_encode((string) $liColor, JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES); ?>;
-		gpsmap.liWidth         = <?php echo json_encode((string) $liWidth, JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES); ?>;
-		gpsmap.liOpa           = <?php echo json_encode((string) $liOpa, JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES); ?>;
-		gpsmap.fillColor       = <?php echo json_encode((string) $fillColor, JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES); ?>;
-		gpsmap.fillOpa         = <?php echo json_encode((string) $fillOpa, JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES); ?>;
-		gpsmap.circleQuality   = <?php echo json_encode((string) $circleQuality, JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES); ?>;
-		gpsmap.enableWeather   = <?php echo json_encode((string) $enableWeather, JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES); ?>;
-		gpsmap.coverageOverlay = <?php echo json_encode((string) $coverageMap, JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES); ?>;
+		gpsmap.liColor         = <?php echo json_encode((string) $liColor, JSON_THROW_ON_ERROR | JSON_HEX_TAG | JSON_UNESCAPED_SLASHES); ?>;
+		gpsmap.liWidth         = <?php echo json_encode((string) $liWidth, JSON_THROW_ON_ERROR | JSON_HEX_TAG | JSON_UNESCAPED_SLASHES); ?>;
+		gpsmap.liOpa           = <?php echo json_encode((string) $liOpa, JSON_THROW_ON_ERROR | JSON_HEX_TAG | JSON_UNESCAPED_SLASHES); ?>;
+		gpsmap.fillColor       = <?php echo json_encode((string) $fillColor, JSON_THROW_ON_ERROR | JSON_HEX_TAG | JSON_UNESCAPED_SLASHES); ?>;
+		gpsmap.fillOpa         = <?php echo json_encode((string) $fillOpa, JSON_THROW_ON_ERROR | JSON_HEX_TAG | JSON_UNESCAPED_SLASHES); ?>;
+		gpsmap.circleQuality   = <?php echo json_encode((string) $circleQuality, JSON_THROW_ON_ERROR | JSON_HEX_TAG | JSON_UNESCAPED_SLASHES); ?>;
+		gpsmap.enableWeather   = <?php echo json_encode((string) $enableWeather, JSON_THROW_ON_ERROR | JSON_HEX_TAG | JSON_UNESCAPED_SLASHES); ?>;
+		gpsmap.coverageOverlay = <?php echo json_encode((string) $coverageMap, JSON_THROW_ON_ERROR | JSON_HEX_TAG | JSON_UNESCAPED_SLASHES); ?>;
 		gpsmap.markerArray     = [];
-		gpsmap.downloadURL     = <?php echo json_encode($config['url_path'] . 'plugins/gpsmap/XML/' . $parameter . '.xml', JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES); ?>;
-		gpsmap.t_error         = <?php echo (float) $terror; ?>;
+		gpsmap.downloadURL     = <?php echo json_encode($config['url_path'] . 'plugins/gpsmap/XML/' . $parameter . '.xml', JSON_THROW_ON_ERROR | JSON_HEX_TAG | JSON_UNESCAPED_SLASHES); ?>;
+		gpsmap.t_error         = <?php echo is_finite((float) $terror) ? json_encode((float) $terror) : '0'; ?>;
 
 		<?php include_once('plugins/gpsmap/includes/icons.php'); ?>
 		<?php include_once('plugins/gpsmap/includes/customicons.php'); ?>
