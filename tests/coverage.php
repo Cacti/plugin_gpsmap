@@ -15,6 +15,13 @@
  +-------------------------------------------------------------------------+
 */
 
+/* Never reachable over HTTP.  Cacti deploys plugins inside the web root, so
+ * plugins/gpsmap/tests/ would otherwise be a public endpoint that resolves DNS
+ * and writes to the filesystem. */
+if (PHP_SAPI !== 'cli') {
+	exit;
+}
+
 if (!function_exists('xdebug_start_code_coverage')) {
 	fwrite(STDERR, "Xdebug with XDEBUG_MODE=coverage is required.\n");
 	exit(2);
@@ -26,6 +33,7 @@ if (!function_exists('xdebug_start_code_coverage')) {
  * deliberately out of scope here. */
 $targets = array(
 	'class/hosts_class.php',
+	'gpsmap_security.php',
 	'includes/polling/functions.php',
 	'includes/polling/processregion.php',
 	'includes/polling/coveragexml.php',

@@ -7,6 +7,13 @@
  +-------------------------------------------------------------------------+
 */
 
+/* Never reachable over HTTP.  Cacti deploys plugins inside the web root, so
+ * plugins/gpsmap/tests/ would otherwise be a public endpoint that resolves DNS
+ * and writes to the filesystem. */
+if (PHP_SAPI !== 'cli') {
+	exit;
+}
+
 require_once __DIR__ . '/harness.php';
 require_once __DIR__ . '/../class/hosts_class.php';
 

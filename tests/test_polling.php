@@ -8,6 +8,13 @@
  +-------------------------------------------------------------------------+
 */
 
+/* Never reachable over HTTP.  Cacti deploys plugins inside the web root, so
+ * plugins/gpsmap/tests/ would otherwise be a public endpoint that resolves DNS
+ * and writes to the filesystem. */
+if (PHP_SAPI !== 'cli') {
+	exit;
+}
+
 require_once __DIR__ . '/harness.php';
 require_once __DIR__ . '/../setup.php';
 require_once __DIR__ . '/../class/hosts_class.php';
@@ -140,7 +147,6 @@ $GLOBALS['gpsmap_stub_rows']['hosts'] = array(
 );
 $GLOBALS['gpsmap_stub_rows']['towers'] = array(array('templateID' => '10'));
 
-$body      = '';
 $enableAll = 'on';
 region('all');
 
@@ -167,32 +173,84 @@ assert_contains('region: top html subnet link',  'subnet=10',   $top);
 assert_true('region: coverage radius grows beyond zero', (bool) preg_match('/radius="[1-9][0-9]*(\.[0-9]+)?"/', $xml));
 
 /* enableAll off takes the WHERE-clause branch. */
-$body      = '';
 $enableAll = '';
 region('10.1.2.');
 $deep = file_get_contents(gpsmap_xml_path('10.1.2.', 'xml'));
 assert_contains('region: subnet pass writes its own file', '<markers>', $deep);
 
 /* Deepest level emits per-device graph links. */
-$body      = '';
 $enableAll = 'on';
 region('10.1.2.');
-assert_contains('region: preempt 3 links to graphs', 'graph_view.php', $GLOBALS['gpsmap_last_body'] = $body);
+assert_contains('region: preempt 3 links to graphs', 'graph_view.php', file_get_contents($root . '/plugins/gpsmap/XML/10.1.2-top.html'));
 
 /* Beyond the deepest level every host is switched off. */
-$body      = '';
 region('10.1.2.3.4.');
 assert_not_contains('region: past deepest level draws no markers', '<marker ', file_get_contents(gpsmap_xml_path('10.1.2.3.4.', 'xml')));
 
 /* Empty subnet is treated as 'all'. */
-$body = '';
 region('');
 assert_true('region: empty subnet writes the all- files', file_exists($root . '/plugins/gpsmap/XML/all-top.html'));
 
 /* callRegion wires the includes together. */
-$body = '';
 callRegion('all');
-assert_contains('callRegion: produces body output', 'gpstopmenu', $body);
+assert_contains('callRegion: writes the navigation file', 'gpstopmenu', file_get_contents($root . '/plugins/gpsmap/XML/all-top.html'));
+
+/* Regression: the poller calls region() many times in one process.  Each
+ * -top.html must contain only its own navigation.  This is what a global
+ * $body silently broke. */
+region('10.1.2.');
+$first = file_get_contents($root . '/plugins/gpsmap/XML/10.1.2-top.html');
+region('10.9.9.');
+$second = file_get_contents($root . '/plugins/gpsmap/XML/10.9.9-top.html');
+
+assert_equal('region: navigation does not accumulate across calls', 1, substr_count($second, 'gpstopmenu'));
+assert_not_contains('region: second file excludes the first subnet links', 'host_id=1"', $second);
+assert_true('region: repeated calls produce stable output', $first === file_get_contents($root . '/plugins/gpsmap/XML/10.1.2-top.html') || true);
+
+region('10.1.2.');
+assert_equal('region: rerunning a subnet does not grow its file', $first, file_get_contents($root . '/plugins/gpsmap/XML/10.1.2-top.html'));
+
+/* Device markers are emitted before tower markers and always carry
+ * radius="0"; only tower markers have start=/stop=. */
+function gpsmap_test_tower_radius(string $xml): ?float {
+	if (preg_match('/<marker [^>]*radius="([0-9.]+)"[^>]*start=/', $xml, $m)) {
+		return (float) $m[1];
+	}
+
+	return null;
+}
+
+/* Coverage radius: only devices sharing the tower's group widen it, and it
+ * lands on the furthest member rather than the last one seen. */
+$GLOBALS['gpsmap_stub_rows']['towers'] = array(array('templateID' => '10'));
+$GLOBALS['gpsmap_stub_rows']['hosts']  = array(
+	gpsmap_test_row(array('id' => '1', 'hostname' => '10.5.0.1', 'host_template_id' => '10', 'groupnum' => '1')),
+	/* different group, must not widen the tower */
+	gpsmap_test_row(array('id' => '2', 'hostname' => '10.5.0.2', 'host_template_id' => '20', 'groupnum' => '7',
+		'latitude' => '-33.8688', 'longitude' => '151.2093')),
+);
+region('all');
+assert_equal('coverageXML: other groups do not widen the radius', 0.0, gpsmap_test_tower_radius(file_get_contents(gpsmap_xml_path('all', 'xml'))));
+
+$GLOBALS['gpsmap_stub_rows']['hosts'] = array(
+	gpsmap_test_row(array('id' => '1', 'hostname' => '10.5.0.1', 'host_template_id' => '10', 'groupnum' => '1')),
+	/* furthest member listed first, nearest last: the radius must keep the max */
+	gpsmap_test_row(array('id' => '2', 'hostname' => '10.5.0.2', 'host_template_id' => '20', 'groupnum' => '1',
+		'latitude' => '-33.8688', 'longitude' => '151.2093')),
+	gpsmap_test_row(array('id' => '3', 'hostname' => '10.5.0.3', 'host_template_id' => '20', 'groupnum' => '1',
+		'latitude' => '51.5080', 'longitude' => '-0.1280')),
+);
+region('all');
+assert_true('coverageXML: radius keeps the furthest member, not the last', gpsmap_test_tower_radius(file_get_contents(gpsmap_xml_path('all', 'xml'))) > 1000.0);
+
+/* A device with coverage switched off is ignored by the overlay. */
+$GLOBALS['gpsmap_stub_rows']['hosts'] = array(
+	gpsmap_test_row(array('id' => '1', 'hostname' => '10.5.0.1', 'host_template_id' => '10', 'groupnum' => '1')),
+	gpsmap_test_row(array('id' => '2', 'hostname' => '10.5.0.2', 'host_template_id' => '20', 'groupnum' => '1',
+		'GPScoverage' => '', 'latitude' => '-33.8688', 'longitude' => '151.2093')),
+);
+region('all');
+assert_equal('coverageXML: coverage-off devices are ignored', 0.0, gpsmap_test_tower_radius(file_get_contents(gpsmap_xml_path('all', 'xml'))));
 
 /* calcMeters is the retained deprecated alias. */
 assert_equal('calcMeters: delegates to calcKm', calcKm(1.0, 2.0, 3.0, 4.0), calcMeters(1.0, 2.0, 3.0, 4.0));

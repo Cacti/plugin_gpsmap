@@ -31,9 +31,9 @@ function callRegion(string $subnet): void {
 
 //---------------------------------------------------------------
 function getTowerIds(): array {
-	$results = db_fetch_assoc('SELECT `templateID`
+	$results = db_fetch_assoc_prepared('SELECT `templateID`
 		FROM `gpsmap_templates`
-		WHERE `AP` = 1');
+		WHERE `AP` = 1', array());
 
 	/* 9999 is a sentinel that matches no host_template_id, so an empty
 	 * result set still produces a usable in_array() haystack. */
@@ -133,7 +133,7 @@ function kmlCreate(array $hostArrays, string $preemptive): void {
 
 //---------------------------------------------------------------
 function createTypeArray(): array {
-	return array_column(db_fetch_assoc('SELECT `id`, `name` FROM `host_template`'), 'name', 'id');
+	return array_column(db_fetch_assoc_prepared('SELECT `id`, `name` FROM `host_template`', array()), 'name', 'id');
 }
 
 //---------------------------------------------------------------

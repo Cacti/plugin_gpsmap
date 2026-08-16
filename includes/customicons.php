@@ -31,7 +31,7 @@ function gpsmap_safe_icon_base(string $filename): string {
 	return gpsmap_icon_identifier($filename) ?? 'undefined';
 }
 
-$results = db_fetch_assoc('SELECT * FROM gpsmap_templates ORDER BY templateID');
+$results = db_fetch_assoc_prepared('SELECT * FROM gpsmap_templates ORDER BY templateID', array());
 if (cacti_sizeof($results)) {
 	foreach ($results as $row) {
 		$tid          = (int) $row['templateID'];

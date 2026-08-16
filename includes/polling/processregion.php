@@ -22,7 +22,7 @@
 //this function is called to process the nodes and get them ready for analysis
 //---------------------------------------------------------------
 function region(string $subnet): void {
-	global $config, $body, $enableAll;
+	global $config, $enableAll;
 
 	/* Cacti checkbox convention: '' = unchecked, 'on' = checked. (bool)
 	 * correctly maps '' -> false and 'on' -> true for this contract. */
@@ -31,6 +31,10 @@ function region(string $subnet): void {
 
 	include_once($config['base_path'] . '/plugins/gpsmap/class/hosts_class.php');
 
+	/* Per-call output.  This used to be a global that region() had to blank on
+	 * the way out; the poller calls region() once per subnet, so a missed reset
+	 * concatenated every earlier subnet's navigation into the next file. */
+	$body       = '';
 	$kmlDomain  = read_config_option('base_url');
 	$iparray    = array();
 	$ipwriteout = array();

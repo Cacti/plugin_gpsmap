@@ -9,6 +9,13 @@
  +-------------------------------------------------------------------------+
 */
 
+/* Never reachable over HTTP.  Cacti deploys plugins inside the web root, so
+ * plugins/gpsmap/tests/ would otherwise be a public endpoint that resolves DNS
+ * and writes to the filesystem. */
+if (PHP_SAPI !== 'cli') {
+	exit;
+}
+
 $GLOBALS['gpsmap_test_pass'] = 0;
 $GLOBALS['gpsmap_test_fail'] = 0;
 
@@ -139,12 +146,12 @@ function gpsmap_test_tmpdir(): string {
 		return $dir;
 	}
 
-	$dir    = sys_get_temp_dir() . '/gpsmap-tests-' . getmypid();
+	$dir    = sys_get_temp_dir() . '/gpsmap-tests-' . bin2hex(random_bytes(8));
 	$plugin = $dir . '/plugins/gpsmap';
 	$repo   = dirname(__DIR__);
 
-	@mkdir($plugin . '/XML', 0777, true);
-	@mkdir($plugin . '/images/icons', 0777, true);
+	@mkdir($plugin . '/XML', 0700, true);
+	@mkdir($plugin . '/images/icons', 0700, true);
 
 	foreach (array('class', 'includes') as $link) {
 		if (!file_exists($plugin . '/' . $link)) {
