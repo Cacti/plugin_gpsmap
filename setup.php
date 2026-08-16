@@ -75,7 +75,7 @@ function gpsmap_check_upgrade() {
 	$current = $info['version'];
 	$old = read_config_option('plugin_gpsmap_version', TRUE);
 	if ($current != $old) {
-		include_once($config['base_path'] . '/plugins/gpsmap/includes/database.php');
+		include_once($config['base_path'] . '/plugins/gpsmap/includes/setup/database.php');
 		gpsmap_upgrade_database();
 	}
 
