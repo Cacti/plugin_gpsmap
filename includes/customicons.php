@@ -25,11 +25,10 @@
 
 $customiconlist = "gpsmap.customIcons = {};\n";
 
-/* Restrict icon property names to safe JS identifiers to prevent injection
- * when the value is concatenated directly into a property-access expression. */
+/* Property-access position, so an unusable name degrades to gpsmap.undefined
+ * (valid JavaScript) rather than being skipped. */
 function gpsmap_safe_icon_base(string $filename): string {
-	$base = pathinfo($filename, PATHINFO_FILENAME);
-	return preg_match('/^[A-Za-z_][A-Za-z0-9_]*$/', $base) ? $base : 'undefined';
+	return gpsmap_icon_identifier($filename) ?? 'undefined';
 }
 
 $results = db_fetch_assoc('SELECT * FROM gpsmap_templates ORDER BY templateID');

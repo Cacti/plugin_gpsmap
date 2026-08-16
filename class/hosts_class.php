@@ -20,63 +20,33 @@
 */
 
 class host {
-	public string $id           = '0';
-	public string $type         = '0';
-	public string $lat          = '0';
-	public string $long         = '0';
-	public string $iprange      = '';
-	public string $description  = '';
-	public string $hostname     = '';
-	public string $radius       = '0';
-	public string $avail        = '';
-	public string $status       = '';
-	public int    $showMap      = 1;
-	public string $latency      = '0';
-	public int    $coverage     = 1;
-	public string $upimage      = '';
-	public string $downimage    = '';
-	public string $recoverimage = '';
-	public string $start        = '0';
-	public string $stop         = '360';
-	public string $group        = '0';
+	public string $radius;
+	public int    $coverage;
+	public int    $showMap = 1;
 
 	public function __construct(
-		string $id,
-		string $type,
-		string $lat,
-		string $long,
-		string $iprange,
-		string $description,
-		string $hostname,
-		int    $radius,
-		string $avail,
-		string $status,
-		string $latency,
+		public string $id,
+		public string $type,
+		public string $lat,
+		public string $long,
+		public string $iprange,
+		public string $description,
+		public string $hostname,
+		int $radius,
+		public string $avail,
+		public string $status,
+		public string $latency,
 		string $coverage,
-		string $upimage,
-		string $downimage,
-		string $recoverimage,
-		string $start,
-		string $stop,
-		string $group
+		public string $upimage,
+		public string $downimage,
+		public string $recoverimage,
+		public string $start,
+		public string $stop,
+		public string $group,
 	) {
-		$this->id           = $id;
-		$this->type         = $type;
-		$this->lat          = $lat;
-		$this->long         = $long;
-		$this->iprange      = $iprange;
-		$this->description  = $description;
-		$this->hostname     = $hostname;
-		$this->radius       = (string) $radius;
-		$this->avail        = $avail;
-		$this->status       = $status;
-		$this->latency      = $latency;
-		$this->coverage     = ($coverage === 'on') ? 1 : 0;
-		$this->upimage      = $upimage;
-		$this->downimage    = $downimage;
-		$this->recoverimage = $recoverimage;
-		$this->start        = $start;
-		$this->stop         = $stop;
-		$this->group        = $group;
+		$this->radius = (string) $radius;
+
+		/* Cacti checkbox convention: 'on' when ticked, '' otherwise. */
+		$this->coverage = ($coverage === 'on') ? 1 : 0;
 	}
 }

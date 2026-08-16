@@ -19,51 +19,32 @@
  +-------------------------------------------------------------------------+
 */
 
-$typeArray = createTypeArray();
+/* Included from coverageXML(); $doc and $hostArrays come from that scope. */
+$typeArray  = createTypeArray();
 $towerArray = $hostArrays[0];
-$hostArray = $hostArrays[1];
-foreach ($hostArray as $host){
-	if (($host->showMap == "1")&&($host->coverage == "1")){
-		foreach($towerArray as $tower){
-				if ($host->group == $tower->group){
-					$distance = calcKm($tower->lat, $tower->long, $host->lat, $host->long);
-					if ($distance > $tower->radius){
-						$tower->radius = $distance;
-					}
-				}
+$hostArray  = $hostArrays[1];
+
+/* Grow each tower's radius to reach the furthest device sharing its group. */
+foreach ($hostArray as $host) {
+	if ($host->showMap != 1 || $host->coverage != 1) {
+		continue;
+	}
+
+	foreach ($towerArray as $tower) {
+		if ($host->group != $tower->group) {
+			continue;
 		}
 
+		$distance = calcKm((float) $tower->lat, (float) $tower->long, (float) $host->lat, (float) $host->long);
+
+		if ($distance > (float) $tower->radius) {
+			$tower->radius = (string) $distance;
+		}
 	}
 }
 
-foreach($towerArray as $host){
-	if ($host->showMap == 1){
-		//Add a new node to XML
-		$doc .= '<marker ';
-		//gotta determine type based on host type,
-		$type = $host->type;
-
-		//insure nothing will be invalid.
-		$doc .= 'id="' . parseToXML($host->id) . '" ';
-		$doc .= 'name="' . parseToXML($host->description) . '" ';
-		$doc .= 'address="' . parseToXML($host->hostname) . '" ';
-		$doc .= 'lat="' . parseToXML($host->lat) . '" ';
-		$doc .= 'lng="' . parseToXML($host->long) . '" ';
-		if ($typeArray[$type]){
-			$doc .= 'type="' . parseToXML($typeArray[$type]) . '" ';
-		}else{
-			$doc .= 'type="' . parseToXML("Unknown") . '" ';
-		}
-		$doc .= 'templateId="' . parseToXML($type) . '" ';
-		$doc .= 'availability="' . $host->avail .'" ';
-		$doc .= 'radius="' . $host->radius .'"  ';
-		$doc .= 'status="' . parseToXML($host->status) . '" ';
-		$doc .= 'latency="' . parseToXML($host->latency) . '" ';
-		$doc .= 'start="' . parseToXML($host->start) . '" ';
-		$doc .= 'stop="' . parseToXML($host->stop) . '" ';
-		$doc .= 'group="' . parseToXML($host->group) . '" ';
-		$doc .= '/>';
-		$doc .= "\n";
+foreach ($towerArray as $tower) {
+	if ($tower->showMap == 1) {
+		$doc .= gpsmap_marker($tower, $typeArray, $tower->radius, true);
 	}
 }
-

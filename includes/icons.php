@@ -27,29 +27,34 @@ global $config;
 $url_path = $config['url_path'];
 
 $icons = opendir('plugins/gpsmap/images/icons');
+
 if ($icons !== false) {
 	while (false !== ($icon = readdir($icons))) {
-		if ($icon !== '.' && $icon !== '..') {
-			$tail = pathinfo($icon, PATHINFO_EXTENSION);
-			$icon = pathinfo($icon, PATHINFO_FILENAME);
+		$tail = pathinfo($icon, PATHINFO_EXTENSION);
 
-			switch ($tail) {
-				case 'png':
-				case 'jpg':
-				case 'jpeg':
-				case 'gif':
-					$icon_url = $url_path . 'plugins/gpsmap/images/icons/' . $icon . '.' . $tail;
-					echo 'gpsmap.' , $icon , ' = {', PHP_EOL,
-						'url : ' , json_encode($icon_url, JSON_HEX_TAG | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR) , ',', PHP_EOL,
-						'size : new google.maps.Size(12, 20),', PHP_EOL,
-						'anchor : new google.maps.Point(6, 20)};', PHP_EOL, PHP_EOL
-					;
-
-					break;
-				default:
-					break;
-			}
+		/* Compare case-insensitively but keep the on-disk spelling in the
+		 * URL; the icon folder may live on a case-sensitive filesystem. */
+		if (!in_array(strtolower($tail), GPSMAP_ICON_EXTENSIONS, true)) {
+			continue;
 		}
+
+		/* $icon is emitted as an assignment target, so json_encode() on the
+		 * url line does not protect it.  Skip anything that is not a bare
+		 * identifier instead of emitting broken JavaScript. */
+		$base = gpsmap_icon_identifier($icon);
+
+		if ($base === null) {
+			continue;
+		}
+
+		$icon_url = $url_path . 'plugins/gpsmap/images/icons/' . $icon;
+		$icon     = $base;
+
+		echo 'gpsmap.', $icon, ' = {', PHP_EOL,
+			'url : ', json_encode($icon_url, JSON_HEX_TAG | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR), ',', PHP_EOL,
+			'size : new google.maps.Size(12, 20),', PHP_EOL,
+			'anchor : new google.maps.Point(6, 20)};', PHP_EOL, PHP_EOL
+		;
 	}
 
 	closedir($icons);

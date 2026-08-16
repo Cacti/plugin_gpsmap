@@ -19,50 +19,50 @@
  +-------------------------------------------------------------------------+
 */
 
-function iconskml() {
+function iconskml(): string {
 	global $config;
-	//get all icons in the icon folder and create an icon list
+
+	//register one KML style per icon in the icon folder
 	$kmlDomain = read_config_option('base_url');
-	$iconlist   = '';
-	$icon_dir   = $config['base_path'] . '/plugins/gpsmap/images/icons';
+	$icon_dir  = $config['base_path'] . '/plugins/gpsmap/images/icons';
+	$iconlist  = '';
 
 	$dh = opendir($icon_dir);
+
 	if ($dh === false) {
 		cacti_log('WARNING: iconskml() could not open icon directory: ' . $icon_dir, false, 'GPSMAP');
+
 		return $iconlist;
 	}
 
 	while (false !== ($file = readdir($dh))) {
-		if ($file === '.' || $file === '..') {
+		$tail = pathinfo($file, PATHINFO_EXTENSION);
+
+		/* Compare case-insensitively but keep the on-disk spelling in the
+		 * href; the icon folder may live on a case-sensitive filesystem. */
+		if (!in_array(strtolower($tail), GPSMAP_ICON_EXTENSIONS, true)) {
 			continue;
 		}
 
-		$icon = pathinfo($file, PATHINFO_FILENAME);
-		$tail = pathinfo($file, PATHINFO_EXTENSION);
+		/* The Style id is dereferenced by <styleUrl> in kmlcreation.php, so
+		 * both sides have to agree on the same normalised name. */
+		$icon = gpsmap_icon_identifier($file);
 
-		switch ($tail) {
-			case 'png':
-			case 'jpg':
-			case 'jpeg':
-			case 'gif':
-				$iconlist .= '<Style id="' . $icon . '">';
-				$iconlist .= '<IconStyle id="my' . $icon . '">';
-				$iconlist .= '<Icon>';
-				$iconlist .= '<href>' . $kmlDomain . $config['url_path'] . 'plugins/gpsmap/images/icons/' . $icon . '.' . $tail . '</href>';
-				$iconlist .= '<scale>1.0</scale>';
-				$iconlist .= '</Icon>';
-				$iconlist .= '</IconStyle>';
-				$iconlist .= '</Style>' . PHP_EOL;
-
-				break;
-			default:
-				//Not an icon we want to load
-				break;
+		if ($icon === null) {
+			continue;
 		}
+
+		$iconlist .= '<Style id="' . $icon . '">'
+			. '<IconStyle id="my' . $icon . '">'
+			. '<Icon>'
+			. '<href>' . $kmlDomain . $config['url_path'] . 'plugins/gpsmap/images/icons/' . $icon . '.' . $tail . '</href>'
+			. '<scale>1.0</scale>'
+			. '</Icon>'
+			. '</IconStyle>'
+			. '</Style>' . PHP_EOL;
 	}
 
 	closedir($dh);
 
 	return $iconlist;
 }
-
