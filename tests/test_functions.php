@@ -15,41 +15,8 @@
  +-------------------------------------------------------------------------+
 */
 
-/* Stub Cacti globals so functions.php can be included without a full
- * Cacti installation. */
-if (!function_exists('db_fetch_assoc')) {
-	function db_fetch_assoc($sql) { return array(); }
-}
-if (!function_exists('cacti_sizeof')) {
-	function cacti_sizeof($var) { return is_array($var) ? count($var) : 0; }
-}
-
+require_once __DIR__ . '/harness.php';
 require_once __DIR__ . '/../includes/polling/functions.php';
-
-/* ------------------------------------------------------------------ */
-$pass = 0;
-$fail = 0;
-
-function assert_equal($label, $expected, $actual) {
-	global $pass, $fail;
-	if ($expected === $actual) {
-		echo "PASS  $label\n";
-		$pass++;
-	} else {
-		echo "FAIL  $label\n";
-		echo "      expected: " . var_export($expected, true) . "\n";
-		echo "      actual:   " . var_export($actual,   true) . "\n";
-		$fail++;
-	}
-}
-
-function assert_true($label, $value) {
-	assert_equal($label, true, (bool) $value);
-}
-
-function assert_false($label, $value) {
-	assert_equal($label, false, (bool) $value);
-}
 
 /* ------------------------------------------------------------------ */
 /* parseToXML — encoding correctness                                   */
@@ -186,6 +153,6 @@ assert_equal('coordCheck: valid zero',        '0.000',   coordCheck('0.000'));
 assert_equal('coordCheck: negative longitude', '-122.4194', coordCheck('-122.4194'));
 
 /* ------------------------------------------------------------------ */
-echo "\n";
-echo "Results: $pass passed, $fail failed\n";
-exit($fail > 0 ? 1 : 0);
+if (!defined('GPSMAP_TEST_SUITE')) {
+	exit(gpsmap_test_summary());
+}

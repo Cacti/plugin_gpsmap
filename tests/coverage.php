@@ -35,7 +35,7 @@ $targets = array(
 	'includes/customicons.php',
 );
 
-/* test_functions.php ends in exit(), so the report runs from a shutdown
+/* run.php ends in exit(), so the report runs from a shutdown
  * handler and preserves the suite's own exit status when it fails. */
 register_shutdown_function(function () use ($targets) {
 	gpsmap_coverage_report($targets);
@@ -43,7 +43,7 @@ register_shutdown_function(function () use ($targets) {
 
 xdebug_start_code_coverage(XDEBUG_CC_UNUSED | XDEBUG_CC_DEAD_CODE);
 
-require __DIR__ . '/test_functions.php';
+require __DIR__ . '/run.php';
 
 function gpsmap_coverage_report(array $targets): void {
 		$status = 0;
