@@ -60,8 +60,12 @@ charges will be made unless you upgrade from the free account.
   The map is drawn by JavaScript that Cacti loads from Google, and Cacti's
   default Content Security Policy only permits scripts served by the Cacti web
   server itself.  Until the policy is widened, the Maps tab renders as a blank
-  page and the browser console reports `Refused to load the script
-  'https://maps.googleapis.com/maps/api/js'`.
+  page and the browser console reports a `Refused to load the script` error
+  naming `maps.googleapis.com`.
+
+  Both settings below were added in Cacti 1.2.15.  On an older core they do
+  not exist, and the map cannot be made to work without widening the policy
+  at the web server instead.
 
   Under Console -> Configuration -> Settings -> General, set:
 
@@ -74,8 +78,10 @@ charges will be made unless you upgrade from the free account.
   JavaScript* mode is not sufficient.  Both settings are required.
 
   If your Cacti is fronted by a reverse proxy that sets its own
-  `Content-Security-Policy` header, the same two hosts have to be added there
-  as well, otherwise the proxy header wins.
+  `Content-Security-Policy` header, that header replaces Cacti's entirely.
+  Reproduce the whole policy there, not just the two hosts: the `script-src`
+  directive still needs `unsafe-eval` and inline script permitted, or the map
+  stays blank with Cacti's own settings correct.
 
 * **Initial Latitude, Longitude, Elevation**
 
