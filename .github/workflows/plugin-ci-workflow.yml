@@ -109,6 +109,7 @@ jobs:
       uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
       with:
         repository: Cacti/cacti
+        ref: 1.2.x
         path: cacti
 
     - name: Checkout gpsmap Plugin
