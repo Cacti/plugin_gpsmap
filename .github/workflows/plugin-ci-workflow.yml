@@ -130,7 +130,10 @@ jobs:
       run: sudo apt-get update
 
     - name: Install System Dependencies
-      run: sudo apt-get install -y apache2 snmp snmpd rrdtool fping libapache2-mod-php${{ matrix.php }}
+      run: |
+        # Unversioned: Ubuntu carries no libapache2-mod-php8.x package, and the
+        # PHP the tests run under comes from setup-php rather than from apt.
+        sudo apt-get install --yes --no-install-recommends apache2 snmp snmpd rrdtool fping libapache2-mod-php
 
     - name: Start SNMPD Agent and Test
       run: |
