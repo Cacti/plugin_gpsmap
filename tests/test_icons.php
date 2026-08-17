@@ -18,6 +18,7 @@ if (PHP_SAPI !== 'cli') {
 
 require_once __DIR__ . '/harness.php';
 require_once __DIR__ . '/../setup.php';
+require_once __DIR__ . '/../gpsmap_security.php';
 require_once __DIR__ . '/../includes/polling/iconskml.php';
 
 gpsmap_test_use_tmp_root();
@@ -116,6 +117,47 @@ assert_contains('customicons: keeps builtin ups',  "gpsmap.customIcons['up'] = g
 assert_contains('customicons: keeps disabled',     "gpsmap.customIcons['disabled'] = gpsmap.Black;", $custom);
 assert_equal('gpsmap_safe_icon_base: good name',   'Green',     gpsmap_safe_icon_base('Green.png'));
 assert_equal('gpsmap_safe_icon_base: bad name',    'undefined', gpsmap_safe_icon_base('ap.v2.png'));
+
+/* ------------------------------------------------------------------ */
+/* getIcons() must offer exactly what the renderers can draw            */
+/* ------------------------------------------------------------------ */
+
+/* getIcons() reads a path relative to the Cacti root. */
+gpsmap_test_icons(array('Green.png', 'Node2.gif', 'my-icon.png', 'ap.v2.png', 'notes.txt', 'noext'));
+
+$cwd = getcwd();
+chdir(gpsmap_test_tmpdir());
+$offered = getIcons();
+chdir($cwd);
+
+assert_true('getIcons: offers a renderable icon',      isset($offered['Green.png']));
+assert_true('getIcons: offers a digit-bearing name',   isset($offered['Node2.gif']));
+assert_false('getIcons: hides hyphenated name',        isset($offered['my-icon.png']));
+assert_false('getIcons: hides dotted name',            isset($offered['ap.v2.png']));
+assert_false('getIcons: hides non-images',             isset($offered['notes.txt']));
+assert_false('getIcons: hides extensionless files',    isset($offered['noext']));
+
+/* The dropdown and the JavaScript emitter must never disagree: anything
+ * offered here has to survive gpsmap_icon_identifier(). */
+foreach (array_keys($offered) as $name) {
+	assert_true('getIcons: offered name is renderable - ' . $name, gpsmap_icon_identifier($name) !== null);
+}
+
+/* The path comes from base_path, not the working directory, so poller and CLI
+ * callers see the same list as the web pages. */
+$savedRoot = $GLOBALS['config']['base_path'];
+$cwd       = getcwd();
+chdir(sys_get_temp_dir());
+assert_true('getIcons: resolves regardless of the working directory', isset(getIcons()['Green.png']));
+chdir($cwd);
+
+$GLOBALS['config']['base_path'] = sys_get_temp_dir() . '/gpsmap-no-such-root';
+assert_equal('getIcons: missing directory yields no icons', array(), @getIcons());
+$GLOBALS['config']['base_path'] = $savedRoot;
+
+/* Saving still falls back when a name is not on the list. */
+assert_equal('save: hyphenated name rejected on save', 'Green.png', gpsmap_normalize_icon_name('my-icon.png', $offered));
+assert_equal('save: offered name accepted on save',    'Green.png', gpsmap_normalize_icon_name('Green.png', $offered));
 
 if (!defined('GPSMAP_TEST_SUITE')) {
 	exit(gpsmap_test_summary());

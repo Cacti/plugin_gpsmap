@@ -38,3 +38,41 @@ function gpsmap_normalize_icon_name($value, $icon_array, $default = 'Green.png')
 
 	return $value;
 }
+
+//---------------------------------------------------------------
+function getIcons() {
+	$iconArray = array();
+	global $config;
+
+	/* Built from base_path so poller and CLI callers resolve it too; only web
+	 * entry points chdir() to the Cacti root. */
+	$dir = $config['base_path'] . '/plugins/gpsmap/images/icons';
+
+	/* Suppressed rather than warned: this runs on the Map Templates page, and a
+	 * missing icon folder should not print a PHP warning into the form. */
+	$icons = @opendir($dir);
+
+	if ($icons === false) {
+		return $iconArray;
+	}
+
+	while (false !== ($icon = readdir($icons))) {
+		/* Offer only names the map can actually render.  icons.php emits each
+		 * base name as a JavaScript identifier, so a file this rule rejects
+		 * would appear in the dropdown, save cleanly, and then silently fail
+		 * to draw. */
+		if (!in_array(strtolower(pathinfo($icon, PATHINFO_EXTENSION)), GPSMAP_ICON_EXTENSIONS, true)) {
+			continue;
+		}
+
+		if (gpsmap_icon_identifier($icon) === null) {
+			continue;
+		}
+
+		$iconArray[$icon] = $icon;
+	}
+
+	closedir($icons);
+
+	return $iconArray;
+}

@@ -88,7 +88,7 @@ function templates() {
 			$url = $config['url_path'] . 'plugins/gpsmap/gpstemplates.php?action=edit&id=' . $template['templateID'];
 
 			form_alternate_row('line' . $template['templateID'], true);
-			form_selectable_cell("<a class='linkEditMain' href='$url'>" . html_escape($template['templateName']) . "</a>", $template['templateID']);
+			form_selectable_cell("<a class='linkEditMain' href='" . html_escape($url) . "'>" . html_escape($template['templateName']) . "</a>", $template['templateID']);
 			form_selectable_cell("<img src='" . $config['url_path'] . 'plugins/gpsmap/images/icons/' . html_escape($template['upimage']) . "'>", $template['templateID']);
 			form_selectable_cell("<img src='" . $config['url_path'] . 'plugins/gpsmap/images/icons/' . html_escape($template['recoverimage']) . "'>", $template['templateID']);
 			form_selectable_cell("<img src='" . $config['url_path'] . 'plugins/gpsmap/images/icons/' . html_escape($template['downimage']) . "'>", $template['templateID']);
@@ -252,29 +252,3 @@ function gpsmap_save_template() {
 }
 
 //------------------------------------------------------------------------------
-function getIcons() {
-	$iconArray = array();
-	$icons     = opendir('./plugins/gpsmap/images/icons');
-
-	while (false !== ($icon = readdir($icons))) {
-		if ($icon != '.' && $icon != '..') {
-			$iconExplode    = explode('.', $icon);
-			$iconExplode[1] = $iconExplode[1];
-
-			switch ($iconExplode[1]) {
-				case 'png':
-				case 'jpg':
-				case 'jpeg':
-				case 'gif':
-					$iconArray[$icon] = $icon;
-					break;
-				default:
-					break;
-			}
-		}
-	}
-
-	closedir($icons);
-
-	return $iconArray;
-}
