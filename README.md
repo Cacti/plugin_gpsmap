@@ -28,7 +28,7 @@ Maps tab reads a static file instead of querying the database.
 
 ## Requirements
 
-| | |
+| Component | Requirement |
 | --- | --- |
 | Cacti | 1.2.15 or later |
 | PHP | 8.0 or later, as Cacti 1.2 requires |
