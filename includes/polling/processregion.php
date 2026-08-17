@@ -22,11 +22,14 @@
 //this function is called to process the nodes and get them ready for analysis
 //---------------------------------------------------------------
 function region(string $subnet): void {
-	global $config, $enableAll;
+	global $config;
 
-	/* Cacti checkbox convention: '' = unchecked, 'on' = checked. (bool)
-	 * correctly maps '' -> false and 'on' -> true for this contract. */
-	$enableAll = (bool) $enableAll;
+	/* Read the setting here rather than through a global.  pollinginitial.php
+	 * assigns $enableAll, but it is include_once'd from inside callRegion(), so
+	 * the assignment binds to that function's scope and the global was always
+	 * null: the setting has never taken effect.  Cacti's checkbox convention is
+	 * 'on' when ticked and '' otherwise. */
+	$enableAll = (read_config_option('gpsmap_enableall') === 'on');
 	$towerIds  = getTowerIds();
 
 	include_once($config['base_path'] . '/plugins/gpsmap/class/hosts_class.php');

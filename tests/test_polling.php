@@ -147,7 +147,7 @@ $GLOBALS['gpsmap_stub_rows']['hosts'] = array(
 );
 $GLOBALS['gpsmap_stub_rows']['towers'] = array(array('templateID' => '10'));
 
-$enableAll = 'on';
+$GLOBALS['gpsmap_stub_settings']['gpsmap_enableall'] = 'on';
 region('all');
 
 $xml = file_get_contents(gpsmap_xml_path('all', 'xml'));
@@ -173,13 +173,13 @@ assert_contains('region: top html subnet link',  'subnet=10',   $top);
 assert_true('region: coverage radius grows beyond zero', (bool) preg_match('/radius="[1-9][0-9]*(\.[0-9]+)?"/', $xml));
 
 /* enableAll off takes the WHERE-clause branch. */
-$enableAll = '';
+$GLOBALS['gpsmap_stub_settings']['gpsmap_enableall'] = '';
 region('10.1.2.');
 $deep = file_get_contents(gpsmap_xml_path('10.1.2.', 'xml'));
 assert_contains('region: subnet pass writes its own file', '<markers>', $deep);
 
 /* Deepest level emits per-device graph links. */
-$enableAll = 'on';
+$GLOBALS['gpsmap_stub_settings']['gpsmap_enableall'] = 'on';
 region('10.1.2.');
 assert_contains('region: preempt 3 links to graphs', 'graph_view.php', file_get_contents($root . '/plugins/gpsmap/XML/10.1.2-top.html'));
 
@@ -260,6 +260,41 @@ $GLOBALS['gpsmap_stub_rows']['hosts']  = array(
 region('10.4.4.');
 $deepest = file_get_contents($root . '/plugins/gpsmap/XML/10.4.4-top.html');
 assert_equal('region: one link per address at the deepest level', 1, substr_count($deepest, 'graph_view.php'));
+
+/* Disk pressure must not publish a truncated document while reporting success. */
+$GLOBALS['gpsmap_stub_log'] = array();
+assert_false('write: a short write fails', gpsmap_write_file('gpsmapshort://target', str_repeat('x', 64)));
+assert_true('write: a short write is logged', str_contains($GLOBALS['gpsmap_stub_log'][0] ?? '', 'Unable to write to'));
+
+/* A failed rename must roll back rather than leave a stray temp file. */
+$blocked = gpsmap_test_tmpdir() . '/plugins/gpsmap/XML/occupied';
+@mkdir($blocked, 0700, true);
+file_put_contents($blocked . '/child', 'x');
+$GLOBALS['gpsmap_stub_log'] = array();
+assert_false('write: a failed rename fails', gpsmap_write_file($blocked, 'body'));
+assert_true('write: a failed rename is logged', str_contains($GLOBALS['gpsmap_stub_log'][0] ?? '', 'Unable to write to'));
+assert_equal('write: a failed rename leaves no temp file', array(),
+	preg_grep('/occupied\..*\.tmp$/', scandir(gpsmap_test_tmpdir() . '/plugins/gpsmap/XML')));
+
+/* The Display Disabled Devices setting has to reach the query.  It never did:
+ * pollinginitial.php assigns $enableAll inside callRegion(), so the global
+ * region() read was always null and the setting was inert. */
+$GLOBALS['gpsmap_stub_rows']['hosts'] = array(gpsmap_test_row(array('id' => '31', 'hostname' => '10.7.7.1')));
+
+$GLOBALS['gpsmap_stub_settings']['gpsmap_enableall'] = '';
+region('all');
+assert_contains('enableAll off: query filters disabled Devices', 'h.disabled = ?', $GLOBALS['gpsmap_stub_host_sql']);
+
+$GLOBALS['gpsmap_stub_settings']['gpsmap_enableall'] = 'on';
+region('all');
+assert_not_contains('enableAll on: query does not filter disabled Devices', 'h.disabled = ?', $GLOBALS['gpsmap_stub_host_sql']);
+
+/* And it must not depend on a global the caller happens to have set. */
+$GLOBALS['enableAll'] = '';
+$GLOBALS['gpsmap_stub_settings']['gpsmap_enableall'] = 'on';
+region('all');
+assert_not_contains('enableAll: a stale global does not override the setting', 'h.disabled = ?', $GLOBALS['gpsmap_stub_host_sql']);
+unset($GLOBALS['enableAll']);
 
 /* calcMeters is the retained deprecated alias. */
 assert_equal('calcMeters: delegates to calcKm', calcKm(1.0, 2.0, 3.0, 4.0), calcMeters(1.0, 2.0, 3.0, 4.0));
