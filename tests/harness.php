@@ -84,7 +84,11 @@ if (!function_exists('db_fetch_assoc_prepared')) {
 /* Route each query to a named fixture bucket so a test can set them
  * independently rather than guessing call order. */
 function gpsmap_stub_query($sql) {
+	$GLOBALS['gpsmap_stub_last_sql'] = $sql;
+
 	if (str_contains($sql, 'FROM `host` AS h')) {
+		$GLOBALS['gpsmap_stub_host_sql'] = $sql;
+
 		return $GLOBALS['gpsmap_stub_rows']['hosts'] ?? array();
 	}
 
@@ -202,4 +206,24 @@ function gpsmap_test_icons(array $names): string {
 /* Points $config at the scratch root for the duration of a test file. */
 function gpsmap_test_use_tmp_root(): void {
 	$GLOBALS['config']['base_path'] = gpsmap_test_tmpdir();
+}
+
+/* A stream that accepts fopen then reports a short write, so the truncated
+ * artefact path can be exercised without /dev/full or a full filesystem. */
+class GpsmapShortWriteStream {
+	public $context;
+
+	public function stream_open($path, $mode, $options, &$opened_path) { return true; }
+	public function stream_write($data) { return max(0, strlen($data) - 1); }
+	public function stream_close() { return true; }
+	public function stream_flush() { return true; }
+	public function stream_eof() { return true; }
+	public function stream_stat() { return array(); }
+	public function url_stat($path, $flags) { return array(); }
+	public function unlink($path) { return true; }
+	public function rename($from, $to) { return false; }
+}
+
+if (!in_array('gpsmapshort', stream_get_wrappers(), true)) {
+	stream_wrapper_register('gpsmapshort', 'GpsmapShortWriteStream');
 }

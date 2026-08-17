@@ -70,16 +70,36 @@ function coordCheck(string $coords): string {
 /* Single writer for every generated artefact (XML, KML, top HTML) so the
  * failure path and its log message stay identical across all three. */
 function gpsmap_write_file(string $filename, string $contents): bool {
-	$f = @fopen($filename, 'w');
-
-	if ($f === false) {
+	$fail = function () use ($filename) {
 		cacti_log('Unable to write to: ' . $filename . '.  Please verify that the Data Collector has write access to this location.', false, 'POLLER');
 
 		return false;
+	};
+
+	/* Staged and renamed into place: the browser fetches these files while the
+	 * poller rewrites them, and rename() is atomic within a filesystem.  A
+	 * short write is a failure, so disk pressure cannot publish a truncated
+	 * document while reporting success. */
+	$temp = $filename . '.' . getmypid() . '.tmp';
+	$f    = @fopen($temp, 'w');
+
+	if ($f === false) {
+		return $fail();
 	}
 
-	fwrite($f, $contents);
-	fclose($f);
+	$written = fwrite($f, $contents);
+
+	if (!fclose($f) || $written !== strlen($contents)) {
+		@unlink($temp);
+
+		return $fail();
+	}
+
+	if (!@rename($temp, $filename)) {
+		@unlink($temp);
+
+		return $fail();
+	}
 
 	return true;
 }
