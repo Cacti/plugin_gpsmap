@@ -115,9 +115,9 @@ Access Points take three further values:
 | Overlay Inclusion | Whether this Device counts towards an Access Point's coverage area |
 
 Marker icons are read from `plugins/gpsmap/images/icons`.  Any `png`, `jpg`,
-`jpeg` or `gif` placed there is offered in the Map Template dropdowns, but only
-names made of letters, digits and underscores are drawn on the map.  See
-Troubleshooting.
+`jpeg` or `gif` placed there is offered in the Map Template dropdowns, but a
+name is only drawn on the map if it starts with a letter or underscore and
+contains only letters, digits and underscores.  See Troubleshooting.
 
 ### Map settings
 
@@ -175,10 +175,10 @@ for each file it could not write.
 
 **A chosen icon does not appear.**  An icon's name is emitted as a JavaScript
 identifier, so files whose base name is not a plain identifier, such as
-`ap.v2.png` or `my-icon.png`, are skipped when the map is drawn.  They are
+`ap.v2.png`, `my-icon.png` or `2fast.png`, are skipped when the map is drawn.  They are
 still offered in the Map Template dropdowns, so the Template saves cleanly and
-the marker then falls back to the default.  Rename the file using letters,
-digits and underscores only.
+the marker then falls back to the default.  Rename the file so it starts with a
+letter or underscore and uses only letters, digits and underscores.
 
 **Markers overlap or hide each other.**  Raise Tab Radius so nearby Devices
 combine into one popup with a tab per Device.
