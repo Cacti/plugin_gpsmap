@@ -250,6 +250,100 @@ $GLOBALS['gpsmap_stub_rows']['hosts'] = array(
 region('all');
 assert_equal('coverageXML: coverage-off devices are ignored', 0.0, gpsmap_test_tower_radius(file_get_contents(gpsmap_xml_path('all', 'xml'))));
 
+/* ------------------------------------------------------------------ */
+/* Single-pass loading: one query and one DNS pass for the whole cycle  */
+/* ------------------------------------------------------------------ */
+
+$GLOBALS['gpsmap_stub_rows']['towers'] = array(array('templateID' => '10'));
+$GLOBALS['gpsmap_stub_rows']['hosts']  = array(
+	gpsmap_test_row(array('id' => '1', 'hostname' => '10.1.2.3', 'host_template_id' => '10')),
+	gpsmap_test_row(array('id' => '2', 'hostname' => '10.1.9.4', 'host_template_id' => '20')),
+	gpsmap_test_row(array('id' => '3', 'hostname' => '192.168.1.5', 'host_template_id' => '20')),
+);
+
+/* No mapped devices at all is a normal state on a fresh install. */
+$savedHosts = $GLOBALS['gpsmap_stub_rows']['hosts'];
+$GLOBALS['gpsmap_stub_rows']['hosts'] = array();
+assert_equal('load: empty result set yields empty groups', array(array(), array()), gpsmap_load_devices(true));
+$GLOBALS['gpsmap_stub_rows']['hosts'] = $savedHosts;
+
+$loaded = gpsmap_load_devices(true);
+assert_equal('load: towers separated', 1, cacti_sizeof($loaded[0]));
+assert_equal('load: devices separated', 2, cacti_sizeof($loaded[1]));
+assert_equal('load: iprange holds the resolved address', '10.1.2.3', $loaded[0][0]->iprange);
+
+$prefixes = gpsmap_subnet_prefixes($loaded);
+assert_equal('prefixes: every depth, de-duplicated', array('10.', '10.1.', '10.1.2.', '10.1.9.', '192.', '192.168.', '192.168.1.'), $prefixes);
+assert_equal('prefixes: empty set yields none', array(), gpsmap_subnet_prefixes(array(array(), array())));
+
+/* Rendering mutates the shared set, so it must be restored between subnets. */
+gpsmap_render_region($loaded, '10.1.2.');
+$hidden = 0;
+foreach ($loaded as $g) { foreach ($g as $h) { if ($h->showMap == 0) { $hidden++; } } }
+assert_true('render: a narrow subnet hides the others', $hidden > 0);
+
+gpsmap_render_region($loaded, 'all');
+$hidden = 0;
+foreach ($loaded as $g) { foreach ($g as $h) { if ($h->showMap == 0) { $hidden++; } } }
+assert_equal('render: state is reset before each subnet', 0, $hidden);
+
+/* Reusing the set must give the same bytes as rendering it fresh. */
+gpsmap_render_region($loaded, '10.1.2.');
+$reused = file_get_contents(gpsmap_xml_path('10.1.2.', 'xml'));
+region('10.1.2.');
+assert_equal('render: reused set matches a fresh load', $reused, file_get_contents(gpsmap_xml_path('10.1.2.', 'xml')));
+
+/* ------------------------------------------------------------------ */
+/* Atomic writes                                                       */
+/* ------------------------------------------------------------------ */
+
+$xmldir = $root . '/plugins/gpsmap/XML';
+assert_equal('write: leaves no temp files behind', array(), preg_grep('/\.tmp$/', scandir($xmldir)));
+
+/* Prefix de-duplication must stay correct now that it is keyed rather than
+ * searched: many Devices in one subnet still yield one prefix per depth. */
+$dupHosts = array();
+
+for ($i = 1; $i <= 5; $i++) {
+	$dupHosts[] = gpsmap_test_row(array('id' => (string) (60 + $i), 'hostname' => '10.3.3.' . $i));
+}
+
+$GLOBALS['gpsmap_stub_rows']['towers'] = array();
+$GLOBALS['gpsmap_stub_rows']['hosts']  = $dupHosts;
+
+$dupPrefixes = gpsmap_subnet_prefixes(gpsmap_load_devices(true));
+
+assert_equal('prefixes: repeated addresses collapse', array('10.', '10.3.', '10.3.3.'), $dupPrefixes);
+assert_equal('prefixes: no duplicates survive', count($dupPrefixes), count(array_unique($dupPrefixes)));
+
+/* rename() into an occupied directory name fails, exercising the staged-write
+ * rollback: the temp file is removed and the failure is logged. */
+$blocked = $xmldir . '/occupied';
+@mkdir($blocked, 0700, true);
+file_put_contents($blocked . '/child', 'x');
+
+$GLOBALS['gpsmap_stub_log'] = array();
+assert_false('write: failed rename returns false', gpsmap_write_file($blocked, 'body'));
+assert_true('write: failed rename is logged', str_contains($GLOBALS['gpsmap_stub_log'][0] ?? '', 'Unable to write to'));
+assert_equal('write: failed rename leaves no temp file', array(), preg_grep('/occupied\..*\.tmp$/', scandir($xmldir)));
+
+/* A short write must not be renamed into place: the previous document has to
+ * survive and the failure has to be logged. */
+$target = $xmldir . '/shortwrite.xml';
+file_put_contents($target, 'original');
+
+$GLOBALS['gpsmap_stub_log'] = array();
+$full = str_repeat('x', 64);
+
+assert_false('write: short write returns false', gpsmap_write_file('gpsmapshort://target', $full));
+assert_true('write: short write is logged', str_contains($GLOBALS['gpsmap_stub_log'][0] ?? '', 'Unable to write to'));
+
+assert_equal('write: previous document survives a failure', 'original', file_get_contents($target));
+
+$savedRoot = $GLOBALS['config']['base_path'];
+$GLOBALS['config']['base_path'] = $root . '/no-such-root';
+$GLOBALS['config']['base_path'] = $savedRoot;
+
 /* Two Devices resolving to one address must yield one graph link, not two.
  * The de-duplication guard used to test a different string than it stored. */
 $GLOBALS['gpsmap_stub_rows']['towers'] = array(array('templateID' => '10'));
@@ -260,6 +354,27 @@ $GLOBALS['gpsmap_stub_rows']['hosts']  = array(
 region('10.4.4.');
 $deepest = file_get_contents($root . '/plugins/gpsmap/XML/10.4.4-top.html');
 assert_equal('region: one link per address at the deepest level', 1, substr_count($deepest, 'graph_view.php'));
+
+/* Overwriting an existing artefact is the normal case: the poller rewrites the
+ * same names every cycle. */
+$overwrite = gpsmap_xml_path('overwrite-probe', 'xml');
+assert_true('write: first write creates the file', gpsmap_write_file($overwrite, 'first'));
+assert_true('write: second write replaces it', gpsmap_write_file($overwrite, 'second'));
+assert_equal('write: contents are the newer document', 'second', file_get_contents($overwrite));
+assert_equal('write: no temp files survive', array(),
+	preg_grep('/overwrite-probe\..*\.tmp$/', scandir(dirname($overwrite))));
+
+/* A failed rename must leave the previous document in place rather than
+ * deleting it and hoping the retry works. */
+$xd   = $root . '/plugins/gpsmap/XML';
+$live = $xd . '/rename-guard.xml';
+file_put_contents($live, 'previous');
+@mkdir($xd . '/rename-guard-dir', 0700, true);
+file_put_contents($xd . '/rename-guard-dir/child', 'x');
+
+$GLOBALS['gpsmap_stub_log'] = array();
+assert_false('write: a failed rename reports failure', gpsmap_write_file($xd . '/rename-guard-dir', 'body'));
+assert_equal('write: the previous document is untouched', 'previous', file_get_contents($live));
 
 /* Disk pressure must not publish a truncated document while reporting success. */
 $GLOBALS['gpsmap_stub_log'] = array();
@@ -295,6 +410,74 @@ $GLOBALS['gpsmap_stub_settings']['gpsmap_enableall'] = 'on';
 region('all');
 assert_not_contains('enableAll: a stale global does not override the setting', 'h.disabled = ?', $GLOBALS['gpsmap_stub_host_sql']);
 unset($GLOBALS['enableAll']);
+
+/* A failed Device query and an estate with no mapped Devices both arrive as an
+ * empty set, but only the first is a reason to withhold publication.  Treating
+ * them alike meant a fresh install never got an all.xml at all. */
+$GLOBALS['gpsmap_stub_rows']['hosts'] = false;
+gpsmap_load_devices(true);
+assert_true('load: a failed query is reported', $GLOBALS['gpsmap_load_failed']);
+
+$GLOBALS['gpsmap_stub_rows']['hosts'] = array();
+gpsmap_load_devices(true);
+assert_false('load: an empty estate is not a failure', $GLOBALS['gpsmap_load_failed']);
+
+/* An empty estate still publishes, so the map reflects reality. */
+$emptyXml = gpsmap_xml_path('empty-estate', 'xml');
+gpsmap_render_region(array(array(), array()), 'empty-estate');
+assert_true('render: an empty estate still writes its documents', file_exists($emptyXml));
+assert_contains('render: the empty document is well formed', '<markers>', file_get_contents($emptyXml));
+
+/* The staged write keeps the destination's mode, which the web server relies on. */
+$modeTarget = gpsmap_xml_path('mode-probe', 'xml');
+gpsmap_write_file($modeTarget, 'first');
+chmod($modeTarget, 0644);
+$before = fileperms($modeTarget) & 0777;
+gpsmap_write_file($modeTarget, 'second');
+assert_equal('write: the destination mode survives the rename', $before, fileperms($modeTarget) & 0777);
+
+/* gpsmap_poller_bottom() is the refactor's only production entry point, so it
+ * is exercised directly rather than only through region(). */
+require_once __DIR__ . '/../includes/polling.php';
+
+$GLOBALS['gpsmap_stub_rows']['towers'] = array(array('templateID' => '10'));
+$GLOBALS['gpsmap_stub_rows']['hosts']  = array(
+	gpsmap_test_row(array('id' => '41', 'hostname' => '10.8.1.1', 'host_template_id' => '10')),
+	gpsmap_test_row(array('id' => '42', 'hostname' => '10.8.2.2', 'host_template_id' => '20')),
+);
+$GLOBALS['gpsmap_stub_settings']['gpsmap_enableall'] = 'on';
+$GLOBALS['gpsmap_stub_log'] = array();
+
+gpsmap_poller_bottom();
+
+assert_true('poller: publishes the top level', file_exists(gpsmap_xml_path('all', 'xml')));
+assert_true('poller: publishes a subnet', file_exists(gpsmap_xml_path('10.8.1', 'xml')));
+assert_true('poller: logs a stats line',
+	(bool) preg_grep('/GPSMAP STATS: Mapped:2 /', $GLOBALS['gpsmap_stub_log']));
+
+/* A failed Device query must leave the published map alone. */
+file_put_contents(gpsmap_xml_path('all', 'xml'), '<markers><marker id="99"/></markers>');
+$GLOBALS['gpsmap_stub_rows']['hosts'] = false;
+$GLOBALS['gpsmap_stub_log']           = array();
+
+gpsmap_poller_bottom();
+
+assert_contains('poller: a failed query keeps the previous map', 'id="99"',
+	file_get_contents(gpsmap_xml_path('all', 'xml')));
+assert_true('poller: the failure is logged',
+	(bool) preg_grep('/could not read the Device list/', $GLOBALS['gpsmap_stub_log']));
+
+/* An estate with no mapped Devices still publishes, so a new install is not
+ * left fetching a 404 forever. */
+$GLOBALS['gpsmap_stub_rows']['hosts'] = array();
+$GLOBALS['gpsmap_stub_log']           = array();
+
+gpsmap_poller_bottom();
+
+assert_not_contains('poller: an empty estate republishes', 'id="99"',
+	file_get_contents(gpsmap_xml_path('all', 'xml')));
+assert_true('poller: the empty estate is explained',
+	(bool) preg_grep('/no Devices to map/', $GLOBALS['gpsmap_stub_log']));
 
 /* calcMeters is the retained deprecated alias. */
 assert_equal('calcMeters: delegates to calcKm', calcKm(1.0, 2.0, 3.0, 4.0), calcMeters(1.0, 2.0, 3.0, 4.0));

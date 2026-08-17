@@ -19,33 +19,38 @@
  +-------------------------------------------------------------------------+
 */
 
-//this function is called to process the nodes and get them ready for analysis
+/* The poller renders one file set per subnet prefix.  Loading the device list
+ * is the expensive part -- one query plus a DNS lookup per device -- so it
+ * happens once in gpsmap_load_devices() and every render reuses the result.
+ * region() keeps the old load-then-render shape for single callers. */
+
 //---------------------------------------------------------------
 function region(string $subnet): void {
-	global $config;
+	$hostArrays = gpsmap_load_devices(gpsmap_enable_all());
 
-	/* Read the setting here rather than through a global.  pollinginitial.php
-	 * assigns $enableAll, but it is include_once'd from inside callRegion(), so
-	 * the assignment binds to that function's scope and the global was always
-	 * null: the setting has never taken effect.  Cacti's checkbox convention is
-	 * 'on' when ticked and '' otherwise. */
-	$enableAll = (read_config_option('gpsmap_enableall') === 'on');
-	$towerIds  = getTowerIds();
+	gpsmap_render_region($hostArrays, $subnet);
+}
+
+//---------------------------------------------------------------
+/* One query, one DNS lookup per device.  Returns array(towers, devices) in
+ * the order coveragexml.php and xmlCreate() expect. */
+function gpsmap_enable_all(): bool {
+	/* pollinginitial.php assigns $enableAll from inside callRegion(), so the
+	 * global that used to be read here was never bound and the setting was
+	 * inert.  Read it where it is needed instead. */
+	return read_config_option('gpsmap_enableall') === 'on';
+}
+
+//---------------------------------------------------------------
+function gpsmap_load_devices(bool $enableAll): array {
+	global $config;
 
 	include_once($config['base_path'] . '/plugins/gpsmap/class/hosts_class.php');
 
-	/* Per-call output.  This used to be a global that region() had to blank on
-	 * the way out; the poller calls region() once per subnet, so a missed reset
-	 * concatenated every earlier subnet's navigation into the next file. */
-	$body       = '';
-	$kmlDomain  = read_config_option('base_url');
-	$iparray    = array();
-	$ipwriteout = array();
-	$hostArray  = array();
-	$towerArray = array();
+	$towerIds = getTowerIds();
 
-	/* Select only the columns used by region()/createDoc().  Avoids pulling
-	 * SNMP credentials (snmp_community, snmp_auth_passphrase, etc.) into PHP
+	/* Select only the columns used by the renderers.  Avoids pulling SNMP
+	 * credentials (snmp_community, snmp_auth_passphrase, etc.) into PHP
 	 * memory on every poller cycle. */
 	$sql = 'SELECT h.id, h.host_template_id, h.hostname, h.description,
 		h.status, h.disabled, h.availability, h.cur_time,
@@ -62,12 +67,26 @@ function region(string $subnet): void {
 
 	$results = db_fetch_assoc_prepared($sql . $sql_where . ' ORDER BY h.hostname', $sql_params);
 
-	/* Cache hostname -> IP resolutions so each hostname is resolved at most
-	 * once per region() call rather than twice (here and in the subnet loop).
-	 * Intentionally per-invocation with no TTL: the poller is batch-oriented
-	 * and stale entries within a single cycle are acceptable. If poller cycles
-	 * exceed 5 minutes, consider adding a TTL-based expiry. */
-	$dns_cache = array();
+	/* A failed query and an estate with no mapped Devices both arrive here as
+	 * an empty set.  Only the first is a reason to withhold publication, so the
+	 * caller is told which happened.
+	 *
+	 * false really is reachable: db_fetch_assoc_prepared() delegates to
+	 * db_execute_prepared(), which returns false on a connection failure, a
+	 * failed re-connect and an exhausted retry loop, and db_fetch_assoc_return()
+	 * documents itself as returning "the associated array of data, or false on
+	 * failure" (Cacti 1.2.x lib/database.php). */
+	$GLOBALS['gpsmap_load_failed'] = ($results === false);
+
+	/* gethostbyname() is blocking, so each distinct name is resolved at most
+	 * once for the whole poller cycle rather than once per subnet. */
+	$dns_cache  = array();
+	$towerArray = array();
+	$hostArray  = array();
+
+	if (!cacti_sizeof($results)) {
+		return array($towerArray, $hostArray);
+	}
 
 	foreach ($results as $row) {
 		if ($row['latitude'] == '0.000' || $row['longitude'] == '0.000') {
@@ -123,7 +142,52 @@ function region(string $subnet): void {
 		}
 	}
 
-	$hostArrays = array($towerArray, $hostArray);
+	return array($towerArray, $hostArray);
+}
+
+//---------------------------------------------------------------
+/* Rendering mutates showMap and grows tower radii, so the shared device set
+ * has to be returned to its loaded state before each subnet. */
+function gpsmap_reset_devices(array $hostArrays): void {
+	foreach ($hostArrays as $group) {
+		foreach ($group as $host) {
+			$host->showMap = 1;
+			$host->radius  = '0';
+		}
+	}
+}
+
+//---------------------------------------------------------------
+/* Every distinct /8, /16 and /24 prefix present in the loaded device set.
+ * Derived from the already-resolved addresses, so no second DNS pass. */
+function gpsmap_subnet_prefixes(array $hostArrays): array {
+	/* Keyed rather than searched: in_array() over a growing list is quadratic in
+	 * the number of prefixes, which is material on a large estate. */
+	$prefixes = array();
+
+	foreach ($hostArrays as $group) {
+		foreach ($group as $host) {
+			$octets = array_pad(explode('.', $host->iprange), 4, '0');
+
+			for ($depth = 1; $depth <= 3; $depth++) {
+				$prefixes[implode('.', array_slice($octets, 0, $depth)) . '.'] = true;
+			}
+		}
+	}
+
+	return array_keys($prefixes);
+}
+
+//---------------------------------------------------------------
+function gpsmap_render_region(array $hostArrays, string $subnet): void {
+	global $config;
+
+	gpsmap_reset_devices($hostArrays);
+
+	$kmlDomain  = read_config_option('base_url');
+	$body       = '';
+	$iparray    = array();
+	$ipwriteout = array();
 	$preempt    = ($subnet == 'all') ? 0 : str_word_count($subnet, 0, '.');
 
 	//This section deals with traversal of the subnets
@@ -132,15 +196,11 @@ function region(string $subnet): void {
 	//for 1 we want to display all top level IP
 	foreach ($hostArrays as $group) {
 		foreach ($group as $host) {
-			$dns_cache[$host->hostname] ??= gethostbyname($host->hostname);
-
-			/* pad to 4 elements so destructuring is safe when the name did not
-			 * resolve to a dotted-quad. */
-			[$first, $second, $third, $fourth] = array_pad(explode('.', $dns_cache[$host->hostname]), 4, '0');
+			/* iprange is the address gpsmap_load_devices() already resolved. */
+			$octets = array_pad(explode('.', $host->iprange), 4, '0');
 
 			/* The prefix this host would contribute at the current depth, and
 			 * the prefix the requested subnet has to match for it to count. */
-			$octets = array($first, $second, $third, $fourth);
 			$parent = implode('.', array_slice($octets, 0, $preempt)) . '.';
 			$child  = implode('.', array_slice($octets, 0, $preempt + 1)) . '.';
 
@@ -189,9 +249,9 @@ function region(string $subnet): void {
 
 	$body .= '</div>';
 
-	createDoc($hostArrays, $subnet === '' ? 'all' : $subnet);
+	$name = $subnet === '' ? 'all' : $subnet;
 
-	$top = $config['base_path'] . '/plugins/gpsmap/XML/' . trim($subnet === '' ? 'all' : $subnet, '.') . '-top.html';
+	createDoc($hostArrays, $name);
 
-	gpsmap_write_file($top, $body);
+	gpsmap_write_file($config['base_path'] . '/plugins/gpsmap/XML/' . trim($name, '.') . '-top.html', $body);
 }

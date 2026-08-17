@@ -157,7 +157,7 @@ function gpsmap_test_tmpdir(): string {
 	@mkdir($plugin . '/XML', 0700, true);
 	@mkdir($plugin . '/images/icons', 0700, true);
 
-	foreach (array('class', 'includes') as $link) {
+	foreach (array('class', 'includes', 'INFO', 'setup.php', 'gpsmap_security.php') as $link) {
 		if (!file_exists($plugin . '/' . $link)) {
 			@symlink($repo . '/' . $link, $plugin . '/' . $link);
 		}

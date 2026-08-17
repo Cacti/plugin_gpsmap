@@ -22,84 +22,44 @@
 function gpsmap_poller_bottom() {
 	global $config;
 
-	//Here we are getting the available hostnames (Numbers only) and
-	//Processing them to create our XML index arrays. So that it can
-	//pass an partial IP as a parameter to the region() function in
-	//the processregion.php file. Start with high subnet and work down.
 	include_once($config['base_path'] . '/plugins/gpsmap/includes/polling/functions.php');
+	include_once($config['base_path'] . '/plugins/gpsmap/includes/polling/pollinginitial.php');
+	include_once($config['base_path'] . '/plugins/gpsmap/includes/polling/processregion.php');
 
-	$result      =  db_fetch_assoc('SELECT hostname, latitude, longitude
-		FROM host AS h
-		INNER JOIN gpsmap_templates AS gt
-		ON h.host_template_id = gt.templateID');
+	$start = microtime(true);
 
-	$firstArray  = array();
-	$secondArray = array();
-	$thirdArray  = array();
-	$totals      = 0;
+	/* Load once.  Every subnet below is rendered from this same set, so the
+	 * device query and the DNS lookups happen a single time per poller cycle
+	 * rather than once per subnet. */
+	$hostArrays = gpsmap_load_devices(gpsmap_enable_all());
+	$mapped     = cacti_sizeof($hostArrays[0]) + cacti_sizeof($hostArrays[1]);
 
-	if (cacti_sizeof($result)) {
-		foreach($result as $row){
-			if ($row['latitude'] != '0.000' && $row['longitude'] != '0.000') {
-				$totals++;
+	/* Withhold publication only when the Device query itself failed.  An estate
+	 * with no mapped Devices is a real answer and has to be published, or a new
+	 * install never gets an all.xml at all and the map page fetches a 404. */
+	if (!empty($GLOBALS['gpsmap_load_failed'])) {
+		cacti_log('WARNING: gpsmap could not read the Device list this cycle; the existing map has been left in place', false, 'GPSMAP');
 
-				$hostname = gethostbyname($row['hostname']);
-
-				$indexes = explode('.', $hostname);
-
-				if (isset($indexes[0])) {
-					$first = $indexes[0];
-				} else {
-					$first = '';
-				}
-
-				if (isset($indexes[1])) {
-					$second = $indexes[1];
-				} else {
-					$second = '';
-				}
-
-				if (isset($indexes[2])) {
-					$third = $indexes[2];
-				} else {
-					$third = '';
-				}
-
-				if (isset($indexes[3])) {
-					$fourth = $indexes[3];
-				} else {
-					$fourth = '';
-				}
-
-				if (!in_array($first . '.', $firstArray)){
-					$firstArray[] = $first . '.';
-				}
-
-				if (!in_array($first . '.' . $second . '.', $secondArray)){
-					$secondArray[] = $first . '.' . $second . '.';
-				}
-
-				if (!in_array($first . '.' . $second . '.' . $third . '.', $thirdArray)){
-					$thirdArray[] = $first . '.' . $second . '.' . $third . '.';
-				}
-			}
-		}
+		return;
 	}
 
-	callRegion('all');
-
-	if ($totals > 0) {
-		foreach($firstArray as $ip) {
-			callRegion($ip);
-		}
-
-		foreach($secondArray as $ip) {
-			callRegion($ip);
-		}
-
-		foreach($thirdArray as $ip) {
-			callRegion($ip);
-		}
+	if ($mapped === 0) {
+		cacti_log('NOTICE: gpsmap has no Devices to map.  Check that a Device Template is listed under Templates -> Map and that Devices have coordinates.', false, 'GPSMAP');
 	}
+
+	$prefixes = gpsmap_subnet_prefixes($hostArrays);
+
+	gpsmap_render_region($hostArrays, 'all');
+
+	foreach ($prefixes as $prefix) {
+		gpsmap_render_region($hostArrays, $prefix);
+	}
+
+	cacti_log(sprintf(
+		'GPSMAP STATS: Mapped:%d Towers:%d Subnets:%d Time:%0.2f',
+		$mapped,
+		cacti_sizeof($hostArrays[0]),
+		cacti_sizeof($prefixes),
+		microtime(true) - $start
+	), false, 'GPSMAP');
 }
-

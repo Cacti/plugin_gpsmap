@@ -80,6 +80,10 @@ function gpsmap_write_file(string $filename, string $contents): bool {
 	 * poller rewrites them, and rename() is atomic within a filesystem.  A
 	 * short write is a failure, so disk pressure cannot publish a truncated
 	 * document while reporting success. */
+	/* The temp file is a new inode, so it starts at 0666 & ~umask rather than
+	 * inheriting the destination's mode.  These files are read by the web
+	 * server, not the poller, so losing the mode breaks the map silently. */
+	$mode = file_exists($filename) ? (fileperms($filename) & 0777) : 0;
 	$temp = $filename . '.' . getmypid() . '.tmp';
 	$f    = @fopen($temp, 'w');
 
@@ -93,6 +97,14 @@ function gpsmap_write_file(string $filename, string $contents): bool {
 		@unlink($temp);
 
 		return $fail();
+	}
+
+	/* rename() already replaces an existing destination on every supported
+	 * platform, so a failure here is a filesystem or permission problem.
+	 * Unlinking first would destroy the last-good document without any
+	 * guarantee the retry succeeds, turning a stale map into a missing one. */
+	if ($mode !== 0) {
+		@chmod($temp, $mode);
 	}
 
 	if (!@rename($temp, $filename)) {

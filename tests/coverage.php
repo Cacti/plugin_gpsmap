@@ -28,12 +28,14 @@ if (!function_exists('xdebug_start_code_coverage')) {
 }
 
 /* Files that hold logic.  The web entry points (gpsmap.php, gpstemplates.php,
- * print.php, includes/towerSelect.php) chdir() to the Cacti root and include
+ * print.php) chdir() to the Cacti root and include
  * include/auth.php, so they cannot execute outside a real installation and are
  * deliberately out of scope here. */
 $targets = array(
 	'class/hosts_class.php',
 	'gpsmap_security.php',
+	'includes/setup/database.php',
+	'includes/polling.php',
 	'includes/polling/functions.php',
 	'includes/polling/processregion.php',
 	'includes/polling/coveragexml.php',
