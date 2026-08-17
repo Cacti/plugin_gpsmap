@@ -76,7 +76,7 @@ function gpsmap_check_upgrade() {
 	$old = read_config_option('plugin_gpsmap_version', TRUE);
 	if ($current != $old) {
 		include_once($config['base_path'] . '/plugins/gpsmap/includes/setup/database.php');
-		gpsmap_upgrade_database();
+		gpsmap_upgrade_database((string) $old);
 	}
 
 	/* Migrate the misspelled 'gpsmap_latutude' key to 'gpsmap_latitude'.
