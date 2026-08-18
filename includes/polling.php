@@ -55,11 +55,28 @@ function gpsmap_poller_bottom() {
 		gpsmap_render_region($hostArrays, $prefix);
 	}
 
+	/* Only a successful cycle may age out old snapshots. Three poller intervals
+	 * make absence persistent evidence instead of a transient partial result. */
+	$poller_interval = max(60, (int) read_config_option('poller_interval'));
+	$pruned          = gpsmap_prune_artifacts(time() - (3 * $poller_interval));
+
+	/* DNS refresh is deliberately a separate process. This poll uses literals
+	 * and last-known cached values, then asks the background worker to refresh
+	 * names for a future cycle. */
+	if (db_table_exists('plugin_gpsmap_dns_cache') && function_exists('exec_background')) {
+		$php = read_config_option('path_php_binary');
+
+		if ($php !== '') {
+			exec_background($php, $config['base_path'] . '/plugins/gpsmap/gpsmap_dns.php');
+		}
+	}
+
 	cacti_log(sprintf(
-		'GPSMAP STATS: Mapped:%d Towers:%d Subnets:%d Time:%0.2f',
+		'GPSMAP STATS: Mapped:%d Towers:%d Subnets:%d Pruned:%d Time:%0.2f',
 		$mapped,
 		cacti_sizeof($hostArrays[0]),
 		cacti_sizeof($prefixes),
+		$pruned,
 		microtime(true) - $start
 	), false, 'GPSMAP');
 }

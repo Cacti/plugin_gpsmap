@@ -20,9 +20,9 @@
 */
 
 require_once(__DIR__ . '/../gpsmap_security.php');
-//This file takes care of the individual assignments for each custom icon set for the map templates
-//This pulls the template from MySQL and attaches the Up/Down/Recover icon reference.
-//Basically this makes a mapping between template and icon.
+// This file takes care of the individual assignments for each custom icon set for the map templates
+// This pulls the template from MySQL and attaches the Up/Down/Recover icon reference.
+// Basically this makes a mapping between template and icon.
 
 $customiconlist = "gpsmap.customIcons = {};\n";
 
@@ -32,7 +32,8 @@ function gpsmap_safe_icon_base(string $filename): string {
 	return gpsmap_icon_identifier($filename) ?? 'undefined';
 }
 
-$results = db_fetch_assoc_prepared('SELECT * FROM gpsmap_templates ORDER BY templateID', array());
+$results = db_fetch_assoc_prepared('SELECT * FROM gpsmap_templates ORDER BY templateID', []);
+
 if (cacti_sizeof($results)) {
 	foreach ($results as $row) {
 		$tid          = (int) $row['templateID'];
@@ -40,18 +41,19 @@ if (cacti_sizeof($results)) {
 		$down_base    = gpsmap_safe_icon_base($row['downimage']);
 		$recover_base = gpsmap_safe_icon_base($row['recoverimage']);
 
-		$customiconlist .= 'gpsmap.customIcons[' . json_encode($tid . 'up')        . '] = gpsmap.' . $up_base      . ";\n";
-		$customiconlist .= 'gpsmap.customIcons[' . json_encode($tid . 'down')       . '] = gpsmap.' . $down_base    . ";\n";
+		$customiconlist .= 'gpsmap.customIcons[' . json_encode($tid . 'up') . '] = gpsmap.' . $up_base . ";\n";
+		$customiconlist .= 'gpsmap.customIcons[' . json_encode($tid . 'down') . '] = gpsmap.' . $down_base . ";\n";
 		$customiconlist .= 'gpsmap.customIcons[' . json_encode($tid . 'recovering') . '] = gpsmap.' . $recover_base . ";\n";
+		$customiconlist .= 'gpsmap.customIcons[' . json_encode($tid . 'alert') . '] = gpsmap.' . $down_base . ";\n";
 	}
 }
 
-//DO NOT REMOVE THESE
+// DO NOT REMOVE THESE
 $customiconlist .= "gpsmap.customIcons['up'] = gpsmap.Green;\n";
 $customiconlist .= "gpsmap.customIcons['recovering'] = gpsmap.Orange;\n";
+$customiconlist .= "gpsmap.customIcons['alert'] = gpsmap.Red;\n";
 $customiconlist .= "gpsmap.customIcons['down'] = gpsmap.Red;\n";
 $customiconlist .= "gpsmap.customIcons['disabled'] = gpsmap.Black;\n";
 $customiconlist .= "gpsmap.customIcons['undefined'] = gpsmap.Black;\n";
 
-echo $customiconlist;
-
+print $customiconlist;

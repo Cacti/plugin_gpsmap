@@ -20,7 +20,7 @@
 */
 
 require_once(__DIR__ . '/../../gpsmap_security.php');
-//---------------------------------------------------------------
+// ---------------------------------------------------------------
 function callRegion(string $subnet): void {
 	global $config;
 
@@ -30,18 +30,18 @@ function callRegion(string $subnet): void {
 	region($subnet);
 }
 
-//---------------------------------------------------------------
+// ---------------------------------------------------------------
 function getTowerIds(): array {
 	$results = db_fetch_assoc_prepared('SELECT `templateID`
 		FROM `gpsmap_templates`
-		WHERE `AP` = 1', array());
+		WHERE `AP` = 1', []);
 
 	/* 9999 is a sentinel that matches no host_template_id, so an empty
 	 * result set still produces a usable in_array() haystack. */
-	return cacti_sizeof($results) ? array_column($results, 'templateID') : array(9999);
+	return cacti_sizeof($results) ? array_column($results, 'templateID') : [9999];
 }
 
-//---------------------------------------------------------------
+// ---------------------------------------------------------------
 /* Returns the great-circle distance in kilometres (not metres, the constant
  * 6378.7 is Earth's mean radius in km).  Renamed from calcMeters to reflect
  * the actual unit; callers treating the result as metres will be off by 1000x.
@@ -58,15 +58,15 @@ function calcMeters(float $Lat1, float $Lon1, float $Lat2, float $Lon2): float {
 	return calcKm($Lat1, $Lon1, $Lat2, $Lon2);
 }
 
-//---------------------------------------------------------------
+// ---------------------------------------------------------------
 function coordCheck(string $coords): string {
 	$coords = trim($coords);
 
-	//return 0.000 for anything unparseable, the user can correct the device
+	// return 0.000 for anything unparseable, the user can correct the device
 	return preg_match('#^-?\d{1,3}\.\d+$#', $coords) ? $coords : '0.000';
 }
 
-//---------------------------------------------------------------
+// ---------------------------------------------------------------
 /* Single writer for every generated artefact (XML, KML, top HTML) so the
  * failure path and its log message stay identical across all three. */
 function gpsmap_write_file(string $filename, string $contents): bool {
@@ -116,20 +116,97 @@ function gpsmap_write_file(string $filename, string $contents): bool {
 	return true;
 }
 
-//---------------------------------------------------------------
+// ---------------------------------------------------------------
 function gpsmap_xml_path(string $preemptive, string $extension): string {
 	global $config;
 
-	return $config['base_path'] . '/plugins/gpsmap/XML/' . trim($preemptive, '.') . '.' . $extension;
+	return $config['base_path'] . '/plugins/gpsmap/XML/' . gpsmap_artifact_stem($preemptive) . '.' . $extension;
 }
 
-//---------------------------------------------------------------
+// ---------------------------------------------------------------
+/* IPv4 keeps its historical dotted tokens.  IPv6 uses a reversible, filename
+ * safe token: v6-<prefix length>-<significant hex>. */
+function gpsmap_ipv6_prefix_token(string $address, int $length): ?string {
+	$packed = @inet_pton($address);
+
+	if ($packed === false || strlen($packed) !== 16 || !in_array($length, [16, 32, 48], true)) {
+		return null;
+	}
+
+	return 'v6-' . $length . '-' . substr(bin2hex($packed), 0, intdiv($length, 4));
+}
+
+// ---------------------------------------------------------------
+function gpsmap_ipv6_prefix_label(string $token): ?string {
+	if (!preg_match('/^v6-(16|32|48)-([0-9a-f]+)$/', $token, $matches)) {
+		return null;
+	}
+
+	$length = (int) $matches[1];
+
+	if (strlen($matches[2]) !== intdiv($length, 4)) {
+		return null;
+	}
+
+	$packed = hex2bin(str_pad($matches[2], 32, '0'));
+
+	return inet_ntop($packed) . '/' . $length;
+}
+
+// ---------------------------------------------------------------
+function gpsmap_ipv6_prefix_contains(string $token, string $address): bool {
+	if (!preg_match('/^v6-(16|32|48)-([0-9a-f]+)$/', $token, $matches)) {
+		return false;
+	}
+
+	if (strlen($matches[2]) !== intdiv((int) $matches[1], 4)) {
+		return false;
+	}
+
+	$packed = @inet_pton($address);
+
+	return $packed !== false && strlen($packed) === 16 && str_starts_with(bin2hex($packed), $matches[2]);
+}
+
+// ---------------------------------------------------------------
+function gpsmap_artifact_stem(string $subnet): string {
+	$subnet = $subnet === '' ? 'all' : trim($subnet, '.');
+
+	return preg_match('/^(?:all|[0-9]+(?:\.[0-9]+){0,2}|v6-(?:16-[0-9a-f]{4}|32-[0-9a-f]{8}|48-[0-9a-f]{12}))$/', $subnet)
+		? $subnet
+		: 'all';
+}
+
+// ---------------------------------------------------------------
+function gpsmap_prune_artifacts(int $olderThan): int {
+	global $config;
+
+	$directory = $config['base_path'] . '/plugins/gpsmap/XML';
+	$removed   = 0;
+
+	foreach (glob($directory . '/*') ?: [] as $path) {
+		$name = basename($path);
+
+		if (!is_file($path) || filemtime($path) >= $olderThan ||
+			!preg_match('/^(?:all|[0-9]+(?:\.[0-9]+){0,2}|v6-(?:16-[0-9a-f]{4}|32-[0-9a-f]{8}|48-[0-9a-f]{12}))(?:\.xml|\.kml|-top\.html)$/', $name)) {
+			continue;
+		}
+
+		if (@unlink($path)) {
+			$removed++;
+		}
+	}
+
+	return $removed;
+}
+
+// ---------------------------------------------------------------
 function createDoc(array $hostArrays, string $preemptive): void {
 	xmlCreate($hostArrays, $preemptive);
 	kmlCreate($hostArrays, $preemptive);
 }
 
-//---------------------------------------------------------------
+// ---------------------------------------------------------------
 /* The previous implementation processed '&' last, which re-encoded the '&'
  * already introduced by the earlier substitutions (e.g. '<' -> '&lt;' -> '&amp;lt;').
  * htmlspecialchars() with ENT_XML1 handles the correct order atomically. */
@@ -137,7 +214,7 @@ function parseToXML($htmlStr): string {
 	return htmlspecialchars((string) $htmlStr, ENT_XML1 | ENT_QUOTES, 'UTF-8');
 }
 
-//---------------------------------------------------------------
+// ---------------------------------------------------------------
 function xmlCreate(array $hostArrays, string $preemptive): void {
 	$doc = '<markers>'
 		. createXMLNodes($hostArrays[1])
@@ -147,7 +224,7 @@ function xmlCreate(array $hostArrays, string $preemptive): void {
 	gpsmap_write_file(gpsmap_xml_path($preemptive, 'xml'), $doc);
 }
 
-//---------------------------------------------------------------
+// ---------------------------------------------------------------
 function coverageXML(array $hostArrays): string {
 	global $config;
 
@@ -157,19 +234,19 @@ function coverageXML(array $hostArrays): string {
 	return $doc;
 }
 
-//---------------------------------------------------------------
+// ---------------------------------------------------------------
 function kmlCreate(array $hostArrays, string $preemptive): void {
 	global $config;
 
 	require($config['base_path'] . '/plugins/gpsmap/includes/polling/kmlcreation.php');
 }
 
-//---------------------------------------------------------------
+// ---------------------------------------------------------------
 function createTypeArray(): array {
-	return array_column(db_fetch_assoc_prepared('SELECT `id`, `name` FROM `host_template`', array()), 'name', 'id');
+	return array_column(db_fetch_assoc_prepared('SELECT `id`, `name` FROM `host_template`', []), 'name', 'id');
 }
 
-//---------------------------------------------------------------
+// ---------------------------------------------------------------
 /* Renders one <marker/>.  Device markers carry no radius and no schedule;
  * tower markers carry the computed coverage radius and their active window. */
 function gpsmap_marker(host $host, array $typeArray, string $radius, bool $withSchedule): string {
@@ -194,7 +271,7 @@ function gpsmap_marker(host $host, array $typeArray, string $radius, bool $withS
 	return $doc . 'group="' . parseToXML($host->group) . '" />' . "\n";
 }
 
-//---------------------------------------------------------------
+// ---------------------------------------------------------------
 function createXMLNodes(array $hostArray): string {
 	$typeArray = createTypeArray();
 	$doc       = '';

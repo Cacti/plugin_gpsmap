@@ -1,5 +1,12 @@
 ## Changelog
 
+--- 2.2 ---
+
+* Add IPv6 map and subnet drill-down support with filename-safe prefix tokens
+* Move hostname resolution to an asynchronous, last-known-good DNS cache
+* Surface active thold alarms on otherwise-up Device markers
+* Prune generated subnet artefacts after three poller intervals
+
 --- 2.1 ---
 
 * issue: Add gpsmap_templates table index to be unique by device template

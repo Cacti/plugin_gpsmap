@@ -30,7 +30,7 @@ $kmldoc .= '<Document>';
 $kmldoc .= '<name>Map Points</name>' . "\n";
 $kmldoc .= iconskml();
 
-//fallback style for any placemark whose icon is not in the icon folder
+// fallback style for any placemark whose icon is not in the icon folder
 $kmldoc .= '<Style id="pushpin">'
 	. '<IconStyle id="mystyle">'
 	. '<Icon>'
@@ -42,8 +42,13 @@ $kmldoc .= '<Style id="pushpin">'
 
 foreach ($hostArrays as $hostArray) {
 	foreach ($hostArray as $host) {
+		if ($host->showMap !== 1) {
+			continue;
+		}
+
 		$image = match ($host->status) {
-			'down'       => $host->downimage,
+			'down',
+			'alert'      => $host->downimage,
 			'recovering' => $host->recoverimage,
 			default      => $host->upimage,
 		};

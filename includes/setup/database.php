@@ -52,7 +52,7 @@ function gpsmap_upgrade_database(string $old = ''): void {
 
 	if (version_compare($old, '2.1', '<')) {
 		if (!db_index_exists('gpsmap_templates', 'templateID')) {
-			$ok = db_add_index('gpsmap_templates', 'unique', 'templateID', array('templateID')) && $ok;
+			$ok = db_add_index('gpsmap_templates', 'unique', 'templateID', ['templateID']) && $ok;
 		}
 	}
 
@@ -67,7 +67,7 @@ function gpsmap_upgrade_database(string $old = ''): void {
 		 * plugin_config; gpsmap_check_upgrade() reads the settings option.
 		 * Writing either early reports the plugin current while the schema is
 		 * still behind. */
-		db_execute_prepared('UPDATE plugin_config SET version = ? WHERE directory = "gpsmap"', array($v['version']));
+		db_execute_prepared('UPDATE plugin_config SET version = ? WHERE directory = "gpsmap"', [$v['version']]);
 		set_config_option('plugin_gpsmap_version', $v['version']);
 		set_config_option('plugin_gpsmap_upgrade_retry_after', '0');
 
@@ -86,36 +86,43 @@ function gpsmap_upgrade_database(string $old = ''): void {
 function gpsmap_setup_database(): bool {
 	$v = plugin_gpsmap_version();
 
-	api_plugin_db_add_column('gpsmap', 'host', array('name' => 'latitude', 'type' => 'decimal(13,10)', 'NULL' => false, 'default' => '0', 'after' => 'availability'));
-	api_plugin_db_add_column('gpsmap', 'host', array('name' => 'longitude', 'type' => 'decimal(13,10)', 'NULL' => false, 'default' => '0', 'after' => 'availability'));
-	api_plugin_db_add_column('gpsmap', 'host', array('name' => 'GPScoverage', 'type' => 'varchar(3)', 'NULL' => false, 'default' => 'on', 'after' => 'availability'));
-	api_plugin_db_add_column('gpsmap', 'host', array('name' => 'start', 'type' => 'int(3)', 'NULL' => false, 'default' => '0', 'after' => 'availability'));
-	api_plugin_db_add_column('gpsmap', 'host', array('name' => 'stop', 'type' => 'int(3)', 'NULL' => false, 'default' => '360', 'after' => 'availability'));
-	api_plugin_db_add_column('gpsmap', 'host', array('name' => 'groupnum', 'type' => 'int(3)', 'NULL' => false, 'default' => '0', 'after' => 'availability'));
-	api_plugin_db_add_column('gpsmap', 'host', array('name' => 'rdistance', 'type' => 'decimal(10,6)', 'NULL' => false, 'default' => '0', 'after' => 'availability'));
+	api_plugin_db_add_column('gpsmap', 'host', ['name' => 'latitude', 'type' => 'decimal(13,10)', 'NULL' => false, 'default' => '0', 'after' => 'availability']);
+	api_plugin_db_add_column('gpsmap', 'host', ['name' => 'longitude', 'type' => 'decimal(13,10)', 'NULL' => false, 'default' => '0', 'after' => 'availability']);
+	api_plugin_db_add_column('gpsmap', 'host', ['name' => 'GPScoverage', 'type' => 'varchar(3)', 'NULL' => false, 'default' => 'on', 'after' => 'availability']);
+	api_plugin_db_add_column('gpsmap', 'host', ['name' => 'start', 'type' => 'int(3)', 'NULL' => false, 'default' => '0', 'after' => 'availability']);
+	api_plugin_db_add_column('gpsmap', 'host', ['name' => 'stop', 'type' => 'int(3)', 'NULL' => false, 'default' => '360', 'after' => 'availability']);
+	api_plugin_db_add_column('gpsmap', 'host', ['name' => 'groupnum', 'type' => 'int(3)', 'NULL' => false, 'default' => '0', 'after' => 'availability']);
+	api_plugin_db_add_column('gpsmap', 'host', ['name' => 'rdistance', 'type' => 'decimal(10,6)', 'NULL' => false, 'default' => '0', 'after' => 'availability']);
 
-	$data = array();
-	$data['columns'][] = array('name' => 'templateID', 'type' => 'int(11)', 'NULL' => true);
-	$data['columns'][] = array('name' => 'templateName', 'type' => 'varchar(100)', 'NULL' => true);
-	$data['columns'][] = array('name' => 'upimage', 'type' => 'varchar(255)', 'NULL' => true);
-	$data['columns'][] = array('name' => 'recoverimage', 'type' => 'varchar(255)', 'NULL' => true);
-	$data['columns'][] = array('name' => 'downimage', 'type' => 'varchar(255)', 'NULL' => true);
-	$data['columns'][] = array('name' => 'AP', 'type' => 'int(1)', 'NULL' => true);
-	$data['type'] = 'InnoDB';
-	$data['unique_keys'][] = array('name' => 'templateID' , 'columns' => 'templateID', 'unique' => true);
-	$data['comment'] = 'Map icon template';
+	$data                  = [];
+	$data['columns'][]     = ['name' => 'templateID', 'type' => 'int(11)', 'NULL' => true];
+	$data['columns'][]     = ['name' => 'templateName', 'type' => 'varchar(100)', 'NULL' => true];
+	$data['columns'][]     = ['name' => 'upimage', 'type' => 'varchar(255)', 'NULL' => true];
+	$data['columns'][]     = ['name' => 'recoverimage', 'type' => 'varchar(255)', 'NULL' => true];
+	$data['columns'][]     = ['name' => 'downimage', 'type' => 'varchar(255)', 'NULL' => true];
+	$data['columns'][]     = ['name' => 'AP', 'type' => 'int(1)', 'NULL' => true];
+	$data['type']          = 'InnoDB';
+	$data['unique_keys'][] = ['name' => 'templateID', 'columns' => 'templateID', 'unique' => true];
+	$data['comment']       = 'Map icon template';
 	api_plugin_db_table_create('gpsmap', 'gpsmap_templates', $data);
+
+	$data                  = [];
+	$data['columns'][]     = ['name' => 'hostname', 'type' => 'varchar(255)', 'NULL' => false, 'default' => ''];
+	$data['columns'][]     = ['name' => 'address', 'type' => 'varchar(45)', 'NULL' => false, 'default' => ''];
+	$data['columns'][]     = ['name' => 'refreshed_at', 'type' => 'timestamp', 'NULL' => false, 'default' => 'CURRENT_TIMESTAMP'];
+	$data['primary']       = 'hostname';
+	$data['keys'][]        = ['name' => 'refreshed_at', 'columns' => 'refreshed_at'];
+	$data['type']          = 'InnoDB';
+	$data['comment']       = 'Asynchronously refreshed gpsmap hostname addresses';
+	api_plugin_db_table_create('gpsmap', 'plugin_gpsmap_dns_cache', $data);
 
 	/* The Cacti helpers do not report failure consistently, so confirm the
 	 * schema directly rather than trusting their return values. */
-	foreach (array('latitude', 'longitude', 'GPScoverage', 'start', 'stop', 'groupnum', 'rdistance') as $column) {
+	foreach (['latitude', 'longitude', 'GPScoverage', 'start', 'stop', 'groupnum', 'rdistance'] as $column) {
 		if (!db_column_exists('host', $column)) {
 			return false;
 		}
 	}
 
-	return db_table_exists('gpsmap_templates');
-
-
+	return db_table_exists('gpsmap_templates') && db_table_exists('plugin_gpsmap_dns_cache');
 }
-

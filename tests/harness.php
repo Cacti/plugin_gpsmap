@@ -19,18 +19,19 @@ if (PHP_SAPI !== 'cli') {
 $GLOBALS['gpsmap_test_pass'] = 0;
 $GLOBALS['gpsmap_test_fail'] = 0;
 
-/* Rows the db stubs hand back.  Tests overwrite these per case. */
-$GLOBALS['gpsmap_stub_rows']     = array();
-$GLOBALS['gpsmap_stub_settings'] = array('base_url' => 'https://cacti.example/');
+// Rows the db stubs hand back.  Tests overwrite these per case.
+$GLOBALS['gpsmap_stub_rows']     = [];
+$GLOBALS['gpsmap_stub_settings'] = ['base_url' => 'https://cacti.example/'];
+$GLOBALS['gpsmap_stub_plugins']  = [];
 
 function assert_equal($label, $expected, $actual) {
 	if ($expected === $actual) {
-		echo "PASS  $label\n";
+		print "PASS  $label\n";
 		$GLOBALS['gpsmap_test_pass']++;
 	} else {
-		echo "FAIL  $label\n";
-		echo '      expected: ' . var_export($expected, true) . "\n";
-		echo '      actual:   ' . var_export($actual, true) . "\n";
+		print "FAIL  $label\n";
+		print '      expected: ' . var_export($expected, true) . "\n";
+		print '      actual:   ' . var_export($actual, true) . "\n";
 		$GLOBALS['gpsmap_test_fail']++;
 	}
 }
@@ -52,33 +53,51 @@ function assert_not_contains($label, string $needle, string $haystack) {
 }
 
 function gpsmap_test_summary(): int {
-	echo "\n";
-	echo 'Results: ' . $GLOBALS['gpsmap_test_pass'] . ' passed, ' . $GLOBALS['gpsmap_test_fail'] . " failed\n";
+	print "\n";
+	print 'Results: ' . $GLOBALS['gpsmap_test_pass'] . ' passed, ' . $GLOBALS['gpsmap_test_fail'] . " failed\n";
 
 	return $GLOBALS['gpsmap_test_fail'] > 0 ? 1 : 0;
 }
 
-/* ------------------------------------------------------------------ */
-/* Cacti stubs                                                         */
-/* ------------------------------------------------------------------ */
+// ------------------------------------------------------------------
+// Cacti stubs
+// ------------------------------------------------------------------
 
 if (!isset($GLOBALS['config'])) {
-	$GLOBALS['config'] = array(
+	$GLOBALS['config'] = [
 		'base_path' => dirname(__DIR__, 3) . '/cacti-stub',
 		'url_path'  => '/cacti/',
-	);
+	];
 }
 
 if (!function_exists('cacti_sizeof')) {
-	function cacti_sizeof($var) { return is_array($var) ? count($var) : 0; }
+	function cacti_sizeof($var) {
+		return is_array($var) ? count($var) : 0;
+	}
 }
 
 if (!function_exists('db_fetch_assoc')) {
-	function db_fetch_assoc($sql) { return gpsmap_stub_query($sql); }
+	function db_fetch_assoc($sql) {
+		return gpsmap_stub_query($sql);
+	}
 }
 
 if (!function_exists('db_fetch_assoc_prepared')) {
-	function db_fetch_assoc_prepared($sql, $params = array()) { return gpsmap_stub_query($sql); }
+	function db_fetch_assoc_prepared($sql, $params = []) {
+		return gpsmap_stub_query($sql);
+	}
+}
+
+if (!function_exists('db_table_exists')) {
+	function db_table_exists($table, $log = true, $db_conn = false) {
+		return !in_array($table, $GLOBALS['gpsmap_stub_missing_tables'] ?? [], true);
+	}
+}
+
+if (!function_exists('api_plugin_is_enabled')) {
+	function api_plugin_is_enabled($plugin) {
+		return in_array($plugin, $GLOBALS['gpsmap_stub_plugins'], true);
+	}
 }
 
 /* Route each query to a named fixture bucket so a test can set them
@@ -89,22 +108,26 @@ function gpsmap_stub_query($sql) {
 	if (str_contains($sql, 'FROM `host` AS h')) {
 		$GLOBALS['gpsmap_stub_host_sql'] = $sql;
 
-		return $GLOBALS['gpsmap_stub_rows']['hosts'] ?? array();
+		return $GLOBALS['gpsmap_stub_rows']['hosts'] ?? [];
 	}
 
 	if (str_contains($sql, '`AP` = 1')) {
-		return $GLOBALS['gpsmap_stub_rows']['towers'] ?? array();
+		return $GLOBALS['gpsmap_stub_rows']['towers'] ?? [];
 	}
 
 	if (str_contains($sql, '`host_template`')) {
-		return $GLOBALS['gpsmap_stub_rows']['templates'] ?? array();
+		return $GLOBALS['gpsmap_stub_rows']['templates'] ?? [];
 	}
 
 	if (str_contains($sql, 'gpsmap_templates')) {
-		return $GLOBALS['gpsmap_stub_rows']['icons'] ?? array();
+		if (str_contains($sql, 'SELECT DISTINCT h.hostname')) {
+			return $GLOBALS['gpsmap_stub_rows']['dns'] ?? [];
+		}
+
+		return $GLOBALS['gpsmap_stub_rows']['icons'] ?? [];
 	}
 
-	return array();
+	return [];
 }
 
 if (!function_exists('read_config_option')) {
@@ -119,25 +142,39 @@ if (!function_exists('cacti_log')) {
 	}
 }
 
+if (!function_exists('exec_background')) {
+	function exec_background($command, $args) {
+		$GLOBALS['gpsmap_stub_background'][] = [$command, $args];
+	}
+}
+
 if (!function_exists('is_ipaddress')) {
-	function is_ipaddress($ip) { return filter_var($ip, FILTER_VALIDATE_IP) !== false; }
+	function is_ipaddress($ip) {
+		return filter_var($ip, FILTER_VALIDATE_IP) !== false;
+	}
 }
 
 if (!function_exists('html_escape')) {
-	function html_escape($text) { return htmlspecialchars((string) $text, ENT_QUOTES, 'UTF-8'); }
+	function html_escape($text) {
+		return htmlspecialchars((string) $text, ENT_QUOTES, 'UTF-8');
+	}
 }
 
 if (!function_exists('__')) {
 	function __($format, ...$args) {
-		/* Cacti's last argument is the text domain when more than one is given. */
-		if (count($args) > 1) { array_pop($args); }
+		// Cacti's last argument is the text domain when more than one is given.
+		if (count($args) > 1) {
+			array_pop($args);
+		}
 
-		return $args === array() ? $format : vsprintf($format, $args);
+		return $args === [] ? $format : vsprintf($format, $args);
 	}
 }
 
 if (!function_exists('__esc')) {
-	function __esc($format, ...$args) { return html_escape(__($format, ...$args)); }
+	function __esc($format, ...$args) {
+		return html_escape(__($format, ...$args));
+	}
 }
 
 /* Scratch Cacti root.  class/ and includes/ are symlinked back to the real
@@ -157,7 +194,7 @@ function gpsmap_test_tmpdir(): string {
 	@mkdir($plugin . '/XML', 0700, true);
 	@mkdir($plugin . '/images/icons', 0700, true);
 
-	foreach (array('class', 'includes', 'INFO', 'setup.php', 'gpsmap_security.php') as $link) {
+	foreach (['class', 'includes', 'INFO', 'setup.php', 'gpsmap_security.php'] as $link) {
 		if (!file_exists($plugin . '/' . $link)) {
 			@symlink($repo . '/' . $link, $plugin . '/' . $link);
 		}
@@ -181,18 +218,18 @@ function gpsmap_test_rmtree(string $path): void {
 		return;
 	}
 
-	foreach (array_diff(scandir($path), array('.', '..')) as $entry) {
+	foreach (array_diff(scandir($path), ['.', '..']) as $entry) {
 		gpsmap_test_rmtree($path . '/' . $entry);
 	}
 
 	@rmdir($path);
 }
 
-/* Replaces the icon fixture folder with exactly the given file names. */
+// Replaces the icon fixture folder with exactly the given file names.
 function gpsmap_test_icons(array $names): string {
 	$dir = gpsmap_test_tmpdir() . '/plugins/gpsmap/images/icons';
 
-	foreach (array_diff(scandir($dir), array('.', '..')) as $entry) {
+	foreach (array_diff(scandir($dir), ['.', '..']) as $entry) {
 		@unlink($dir . '/' . $entry);
 	}
 
@@ -203,7 +240,7 @@ function gpsmap_test_icons(array $names): string {
 	return $dir;
 }
 
-/* Points $config at the scratch root for the duration of a test file. */
+// Points $config at the scratch root for the duration of a test file.
 function gpsmap_test_use_tmp_root(): void {
 	$GLOBALS['config']['base_path'] = gpsmap_test_tmpdir();
 }
@@ -213,15 +250,33 @@ function gpsmap_test_use_tmp_root(): void {
 class GpsmapShortWriteStream {
 	public $context;
 
-	public function stream_open($path, $mode, $options, &$opened_path) { return true; }
-	public function stream_write($data) { return max(0, strlen($data) - 1); }
-	public function stream_close() { return true; }
-	public function stream_flush() { return true; }
-	public function stream_eof() { return true; }
-	public function stream_stat() { return array(); }
-	public function url_stat($path, $flags) { return array(); }
-	public function unlink($path) { return true; }
-	public function rename($from, $to) { return false; }
+	public function stream_open($path, $mode, $options, &$opened_path) {
+		return true;
+	}
+	public function stream_write($data) {
+		return max(0, strlen($data) - 1);
+	}
+	public function stream_close() {
+		return true;
+	}
+	public function stream_flush() {
+		return true;
+	}
+	public function stream_eof() {
+		return true;
+	}
+	public function stream_stat() {
+		return [];
+	}
+	public function url_stat($path, $flags) {
+		return [];
+	}
+	public function unlink($path) {
+		return true;
+	}
+	public function rename($from, $to) {
+		return false;
+	}
 }
 
 if (!in_array('gpsmapshort', stream_get_wrappers(), true)) {
