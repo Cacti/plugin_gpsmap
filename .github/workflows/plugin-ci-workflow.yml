@@ -117,6 +117,7 @@ jobs:
       uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
       with:
         path: cacti/plugins/gpsmap
+        fetch-depth: 0
 
     - name: Install PHP ${{ matrix.php }}
       uses: shivammathur/setup-php@cf4cade2721270509d5b1c766ab3549210a39a2a # v2
@@ -243,12 +244,34 @@ jobs:
       working-directory: ${{ github.workspace }}/cacti
 
     - name: Checking coding standards on base code
+      env:
+        BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
       run: |
-        if composer --no-ansi run-script --list | grep -qE '^[[:space:]]+phpcsfixer([[:space:]]|$)'; then
-          composer run-script phpcsfixer ${{ github.workspace }}/cacti/plugins/gpsmap
-        else
+        if ! composer --no-ansi run-script --list | grep -qE '^[[:space:]]+phpcsfixer([[:space:]]|$)'; then
           echo 'Composer phpcsfixer script is not defined; skipping.'
+          exit 0
         fi
+
+        if ! git -C plugins/gpsmap cat-file -e "${BASE_SHA}^{commit}" 2>/dev/null; then
+          BASE_SHA=$(git -C plugins/gpsmap rev-parse HEAD^)
+        fi
+
+        mapfile -d '' changed_php < <(
+          git -C plugins/gpsmap diff --name-only --diff-filter=ACMR -z \
+            "$BASE_SHA" HEAD -- '*.php'
+        )
+
+        if [ "${#changed_php[@]}" -eq 0 ]; then
+          echo 'No PHP files changed; skipping coding standards.'
+          exit 0
+        fi
+
+        php_files=()
+        for file in "${changed_php[@]}"; do
+          php_files+=("${{ github.workspace }}/cacti/plugins/gpsmap/$file")
+        done
+
+        composer run-script phpcsfixer "${php_files[@]}"
       working-directory: ${{ github.workspace }}/cacti
 
     # gpsmap adds columns to the core host table, so a device with coordinates
