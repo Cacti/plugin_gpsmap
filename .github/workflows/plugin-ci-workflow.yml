@@ -243,16 +243,18 @@ jobs:
         fi
       working-directory: ${{ github.workspace }}/cacti
 
-    - name: Checking coding standards on base code
+    - name: Check coding standards on changed plugin PHP
       env:
-        BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+        BASE_SHA: ${{ github.event.before }}
       run: |
         if ! composer --no-ansi run-script --list | grep -qE '^[[:space:]]+phpcsfixer([[:space:]]|$)'; then
           echo 'Composer phpcsfixer script is not defined; skipping.'
           exit 0
         fi
 
-        if ! git -C plugins/gpsmap cat-file -e "${BASE_SHA}^{commit}" 2>/dev/null; then
+        if [ "$GITHUB_EVENT_NAME" = 'pull_request' ]; then
+          BASE_SHA=$(git -C plugins/gpsmap rev-parse HEAD^1)
+        elif ! git -C plugins/gpsmap cat-file -e "${BASE_SHA}^{commit}" 2>/dev/null; then
           BASE_SHA=$(git -C plugins/gpsmap rev-parse HEAD^)
         fi
 
