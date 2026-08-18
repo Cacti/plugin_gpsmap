@@ -126,7 +126,7 @@ jobs:
         ini-values: "post_max_size=256M, max_execution_time=60, date.timezone=America/New_York"
 
     - name: Check PHP version
-      run: | 
+      run: |
         php -v
         echo "PHP_BINARY=$(command -v php)" >> "$GITHUB_ENV"
 
@@ -181,7 +181,7 @@ jobs:
         sed -r "s/'cactiuser'/'cactiuser'/g" | \
         sed -r "s/'cactiuser'/'cactiuser'/g" > ${{ github.workspace }}/cacti/include/config.php
         sudo chmod 664 ${{ github.workspace }}/cacti/include/config.php
-    
+
     - name: Configure Apache
       run: |
         cat << 'EOF' | sed 's#GITHUB_WORKSPACE#${{ github.workspace }}#g' > /tmp/cacti.conf
@@ -236,7 +236,7 @@ jobs:
     - name: Run Linter on base code
       run: |
         if composer --no-ansi run-script --list | grep -qE '^[[:space:]]+lint([[:space:]]|$)'; then
-          composer run-script lint ${{ github.workspace }}/cacti/plugins/gpsmaps
+          composer run-script lint ${{ github.workspace }}/cacti/plugins/gpsmap
         else
           echo 'Composer lint script is not defined; skipping.'
         fi
@@ -245,7 +245,7 @@ jobs:
     - name: Checking coding standards on base code
       run: |
         if composer --no-ansi run-script --list | grep -qE '^[[:space:]]+phpcsfixer([[:space:]]|$)'; then
-          composer run-script phpcsfixer ${{ github.workspace }}/cacti/plugins/gpsmaps
+          composer run-script phpcsfixer ${{ github.workspace }}/cacti/plugins/gpsmap
         else
           echo 'Composer phpcsfixer script is not defined; skipping.'
         fi
