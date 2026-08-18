@@ -281,13 +281,15 @@ jobs:
     - name: Add a mapped Device
       run: |
         cd ${{ github.workspace }}/cacti
-        # add_device.php exits 1 on an unknown template id, so take a real one
-        # rather than assuming what cacti.sql ships.
+        # A bare develop install may contain no templates. Seed the smallest
+        # valid template fixture so add_device.php can exercise the real API.
         TPL=$(mysql -u cactiuser -p'cactiuser' -h 127.0.0.1 cacti -sN \
           -e "SELECT id FROM host_template ORDER BY id LIMIT 1;")
         if [ -z "$TPL" ]; then
-          echo "No host_template rows found after install"
-          exit 1
+          mysql -u cactiuser -p'cactiuser' -h 127.0.0.1 cacti \
+            -e "INSERT INTO host_template (name) VALUES ('CI Device');"
+          TPL=$(mysql -u cactiuser -p'cactiuser' -h 127.0.0.1 cacti -sN \
+            -e "SELECT id FROM host_template WHERE name = 'CI Device' ORDER BY id DESC LIMIT 1;")
         fi
         echo "Using host_template id $TPL"
         sudo php cli/add_device.php --description=mapped --ip=127.0.0.1 --template="$TPL"
