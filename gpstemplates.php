@@ -23,9 +23,9 @@ chdir('../../');
 include_once('./include/auth.php');
 include_once('./plugins/gpsmap/gpsmap_security.php');
 
-$ds_actions = array(
+$ds_actions = [
 	1 => __('Delete')
-);
+];
 
 set_default_action();
 
@@ -52,10 +52,11 @@ switch (get_nfilter_request_var('action')) {
 		top_header();
 		templates();
 		bottom_footer();
+
 		break;
 }
 
-//------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------
 function templates() {
 	global $config, $ds_actions;
 
@@ -63,13 +64,13 @@ function templates() {
 
 	html_start_box(__('Map Templates', 'gpsmap'), '100%', false, '3', 'center', 'gpstemplates.php?action=edit');
 
-	$display_text = array(
-		__('Host Template', 'gpsmap'), 
-		__('Up Image', 'gpsmap'), 
-		__('Recovering Image', 'gpsmap'), 
-		__('Down Image', 'gpsmap'), 
+	$display_text = [
+		__('Host Template', 'gpsmap'),
+		__('Up Image', 'gpsmap'),
+		__('Recovering Image', 'gpsmap'),
+		__('Down Image', 'gpsmap'),
 		__('Is AP', 'gpsmap')
-	);
+	];
 
 	html_header_checkbox($display_text);
 
@@ -79,7 +80,7 @@ function templates() {
 
 	if (cacti_sizeof($template_list)) {
 		foreach ($template_list as $template) {
-			if($template['AP']) {
+			if ($template['AP']) {
 				$isAP = __('True', 'gpsmap');
 			} else {
 				$isAP = __('False', 'gpsmap');
@@ -88,7 +89,7 @@ function templates() {
 			$url = $config['url_path'] . 'plugins/gpsmap/gpstemplates.php?action=edit&id=' . $template['templateID'];
 
 			form_alternate_row('line' . $template['templateID'], true);
-			form_selectable_cell("<a class='linkEditMain' href='" . html_escape($url) . "'>" . html_escape($template['templateName']) . "</a>", $template['templateID']);
+			form_selectable_cell("<a class='linkEditMain' href='" . html_escape($url) . "'>" . html_escape($template['templateName']) . '</a>', $template['templateID']);
 			form_selectable_cell("<img src='" . $config['url_path'] . 'plugins/gpsmap/images/icons/' . html_escape($template['upimage']) . "'>", $template['templateID']);
 			form_selectable_cell("<img src='" . $config['url_path'] . 'plugins/gpsmap/images/icons/' . html_escape($template['recoverimage']) . "'>", $template['templateID']);
 			form_selectable_cell("<img src='" . $config['url_path'] . 'plugins/gpsmap/images/icons/' . html_escape($template['downimage']) . "'>", $template['templateID']);
@@ -107,12 +108,12 @@ function templates() {
 	form_end();
 }
 
-//------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------
 function template_delete() {
-	foreach($_POST as $t=>$v) {
+	foreach ($_POST as $t=>$v) {
 		if (substr($t, 0,4) == 'chk_') {
 			$id = substr($t, 4);
-			db_execute_prepared('DELETE FROM gpsmap_templates WHERE templateID = ?', array($id));
+			db_execute_prepared('DELETE FROM gpsmap_templates WHERE templateID = ?', [$id]);
 		}
 	}
 
@@ -120,61 +121,61 @@ function template_delete() {
 	exit;
 }
 
-//------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------
 function template_edit() {
 	global $config;
 
 	$template = db_fetch_row_prepared('SELECT * 
 		FROM `gpsmap_templates` 
-		WHERE templateID = ?', 
-		array(get_filter_request_var('id')));
+		WHERE templateID = ?',
+		[get_filter_request_var('id')]);
 
-	//get all icons in the icon folder
+	// get all icons in the icon folder
 	$iconArray = getIcons();
 
-	$form_template = array(
-		'templateID' => array(
+	$form_template = [
+		'templateID' => [
 			'method'        => 'drop_sql',
 			'friendly_name' => __('Device Template', 'gpsmap'),
 			'description'   => __('Choose the Device Template to base this Map Template type.', 'gpsmap'),
 			'value'         => '|arg1:templateID|',
 			'sql'           => 'SELECT id, name FROM host_template ORDER BY name ASC'
-		),
-		'upimage' => array(
+		],
+		'upimage' => [
 			'method'        => 'drop_array',
 			'friendly_name' => __('Up Image', 'gpsmap'),
 			'description'   => __('Select the Image to Show for an Up Device', 'gpsmap'),
 			'value'         => '|arg1:upimage|',
 			'default'       => 'Green.png',
 			'array'         => $iconArray
-		),
-		'recoverimage' => array(
+		],
+		'recoverimage' => [
 			'method'        => 'drop_array',
 			'friendly_name' => __('Recovering Image', 'gpsmap'),
 			'description'   => __('Select the Image to Show for a Recovering Device', 'gpsmap'),
 			'value'         => '|arg1:recoverimage|',
 			'default'       => 'Orange.png',
 			'array'         => $iconArray
-		),
-		'downimage' => array(
+		],
+		'downimage' => [
 			'method'        => 'drop_array',
 			'friendly_name' => __('Down Image', 'gpsmap'),
 			'description'   => __('Select the Image to Show for a Down Device', 'gpsmap'),
 			'value'         => '|arg1:downimage|',
 			'default'       => 'Red.png',
 			'array'         => $iconArray
-		),
-		'AP' => array(
+		],
+		'AP' => [
 			'method'        => 'drop_array',
 			'friendly_name' => __('Access Point', 'gpsmap'),
 			'description'   => __('Does this Device Template Represent an Access Point.', 'gpsmap'),
 			'value'         => '|arg1:AP|',
-			'array'         => array(
+			'array'         => [
 				0 => __('No', 'gpsmap'),
 				1 => __('Yes', 'gpsmap')
-			)
-		)
-	);
+			]
+		]
+	];
 
 	top_header();
 
@@ -183,10 +184,10 @@ function template_edit() {
 	html_start_box(__('Map Template Edit', 'gpsmap'), '100%', '', '3', 'center', '');
 
 	draw_edit_form(
-		array(
-			'config' => array('no_form_tag' => true),
+		[
+			'config' => ['no_form_tag' => true],
 			'fields' => inject_form_variables($form_template, $template)
-		)
+		]
 	);
 
 	?>
@@ -225,15 +226,14 @@ function template_edit() {
 	bottom_footer();
 }
 
-
-//------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------
 function gpsmap_save_template() {
 	global $config;
 
 	$iconArray            = getIcons();
-	$save                 = array();
+	$save                 = [];
 	$save['templateID']   = get_filter_request_var('templateID');
-	$save['templateName'] = db_fetch_cell_prepared('SELECT name FROM host_template WHERE id = ?', array($save['templateID']));
+	$save['templateName'] = db_fetch_cell_prepared('SELECT name FROM host_template WHERE id = ?', [$save['templateID']]);
 	$save['upimage']      = gpsmap_normalize_icon_name(get_nfilter_request_var('upimage'), $iconArray, 'Green.png');
 	$save['recoverimage'] = gpsmap_normalize_icon_name(get_nfilter_request_var('recoverimage'), $iconArray, 'Orange.png');
 	$save['downimage']    = gpsmap_normalize_icon_name(get_nfilter_request_var('downimage'), $iconArray, 'Red.png');
@@ -251,4 +251,4 @@ function gpsmap_save_template() {
 	exit;
 }
 
-//------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------

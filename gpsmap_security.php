@@ -13,7 +13,7 @@
  * includes setup.php on install, uninstall and config check, so the poller
  * would not have them. */
 if (!defined('GPSMAP_ICON_EXTENSIONS')) {
-	define('GPSMAP_ICON_EXTENSIONS', array('png', 'jpg', 'jpeg', 'gif'));
+	define('GPSMAP_ICON_EXTENSIONS', ['png', 'jpg', 'jpeg', 'gif']);
 }
 
 /* An icon's base name is emitted as a JavaScript assignment target
@@ -39,9 +39,9 @@ function gpsmap_normalize_icon_name($value, $icon_array, $default = 'Green.png')
 	return $value;
 }
 
-//---------------------------------------------------------------
+// ---------------------------------------------------------------
 function getIcons() {
-	$iconArray = array();
+	$iconArray = [];
 	global $config;
 
 	/* Built from base_path so poller and CLI callers resolve it too; only web
