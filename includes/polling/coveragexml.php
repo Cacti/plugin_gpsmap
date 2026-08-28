@@ -19,19 +19,21 @@
  +-------------------------------------------------------------------------+
 */
 
-/* Included from coverageXML(); $doc and $hostArrays come from that scope. */
+// Included from coverageXML(); $doc and $hostArrays come from that scope.
 $typeArray  = createTypeArray();
 $towerArray = $hostArrays[0];
 $hostArray  = $hostArrays[1];
 
-/* Grow each tower's radius to reach the furthest device sharing its group. */
+// Grow each tower's radius to reach the furthest device sharing its group.
 foreach ($hostArray as $host) {
 	if ($host->showMap != 1 || $host->coverage != 1) {
 		continue;
 	}
 
 	foreach ($towerArray as $tower) {
-		if ($host->group != $tower->group) {
+		/* A non-zero Specify Radius value is operator policy, not a seed for
+		 * automatic growth. Zero retains the geometry-derived behaviour. */
+		if ((float) $tower->configuredRadius > 0.0 || $host->group != $tower->group) {
 			continue;
 		}
 

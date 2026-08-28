@@ -81,7 +81,7 @@ assert_equal(
 // Subnet parameter validation regex (mirrors gpsmap.php logic)
 // ------------------------------------------------------------------
 
-$valid_re   = '/^(?:all|[0-9]+(?:\.[0-9]+){0,2}|v6-(?:16-[0-9a-f]{4}|32-[0-9a-f]{8}|48-[0-9a-f]{12}))$/';
+$valid_re = GPSMAP_ARTIFACT_STEM_PATTERN;
 
 // Valid values.
 assert_true('subnet regex: "all"',              preg_match($valid_re, 'all'));
@@ -95,11 +95,32 @@ assert_false('subnet regex: "."',               preg_match($valid_re, '.'));
 assert_false('subnet regex: "../etc/passwd"',   preg_match($valid_re, '../etc/passwd'));
 assert_false('subnet regex: leading dot',       preg_match($valid_re, '.foo'));
 assert_false('subnet regex: trailing dot',      preg_match($valid_re, 'foo.'));
+assert_false('subnet contract: trailing-dot IPv6 token is rejected',
+	gpsmap_artifact_subnet_is_valid('v6-32-20010db8.'));
 assert_false('subnet regex: null byte',         preg_match($valid_re, "foo\x00bar"));
+assert_false('subnet regex: trailing newline',  preg_match($valid_re, "all\n"));
 assert_false('subnet regex: slash',             preg_match($valid_re, 'a/b'));
 assert_false('subnet regex: backslash',         preg_match($valid_re, 'a\\b'));
 assert_false('subnet regex: percent-encoded',   preg_match($valid_re, '..%2fetc'));
 assert_false('subnet regex: space',             preg_match($valid_re, 'a b'));
+
+foreach (['all', '10', '10.20', '10.20.30', 'v6-16-2001', 'v6-32-20010db8', '../escape', 'v6-64-20010db800000000'] as $candidate) {
+	assert_equal('subnet contract: page and poller agree for ' . $candidate,
+		gpsmap_artifact_parameter_is_valid($candidate), gpsmap_artifact_stem($candidate) === $candidate);
+}
+
+foreach (['all.xml', '10.20.kml', 'v6-16-2001-top.html'] as $filename) {
+	assert_true('artefact filename: accepts generated file ' . $filename,
+		gpsmap_artifact_filename_is_valid($filename));
+}
+
+assert_false('artefact filename: rejects a foreign suffix', gpsmap_artifact_filename_is_valid('all.txt'));
+assert_false('artefact filename: rejects a trailing newline in the stem',
+	gpsmap_artifact_filename_is_valid("all\n.xml"));
+assert_true('artefact temp filename: accepts an interrupted writer file',
+	gpsmap_artifact_temporary_filename_is_valid('10.20.xml.123.tmp'));
+assert_false('artefact temp filename: rejects a foreign staging file',
+	gpsmap_artifact_temporary_filename_is_valid('operator-note.txt.123.tmp'));
 
 // ------------------------------------------------------------------
 // parseToXML — multibyte UTF-8

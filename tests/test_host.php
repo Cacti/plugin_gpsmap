@@ -44,11 +44,13 @@ assert_equal('host: start promoted',       '0',           $h->start);
 assert_equal('host: stop promoted',        '360',         $h->stop);
 assert_equal('host: group promoted',       '2',           $h->group);
 
-/* radius arrives as int and is stored as the string the XML writer emits. */
+// radius arrives as int and is stored as the string the XML writer emits.
 assert_equal('host: radius int cast to string', '0', $h->radius);
 assert_equal('host: radius non-zero', '15', gpsmap_test_make_host('on', 15)->radius);
+assert_equal('host: configured radius retains its reset baseline', '15',
+	gpsmap_test_make_host('on', 15)->configuredRadius);
 
-/* Cacti checkbox contract: 'on' means ticked, anything else means unticked. */
+// Cacti checkbox contract: 'on' means ticked, anything else means unticked.
 assert_equal('host: coverage on',    1, gpsmap_test_make_host('on')->coverage);
 assert_equal('host: coverage empty', 0, gpsmap_test_make_host('')->coverage);
 assert_equal('host: coverage off',   0, gpsmap_test_make_host('off')->coverage);

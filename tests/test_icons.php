@@ -125,7 +125,8 @@ assert_equal('gpsmap_safe_icon_base: bad name',    'undefined', gpsmap_safe_icon
 // ------------------------------------------------------------------
 
 // getIcons() reads a path relative to the Cacti root.
-gpsmap_test_icons(['Green.png', 'Node2.gif', 'my-icon.png', 'ap.v2.png', 'notes.txt', 'noext']);
+$iconDir = gpsmap_test_icons(['Green.png', 'Node2.gif', 'my-icon.png', 'ap.v2.png', 'notes.txt', 'noext']);
+mkdir($iconDir . '/Nested.png');
 
 $cwd = getcwd();
 chdir(gpsmap_test_tmpdir());
@@ -138,6 +139,7 @@ assert_false('getIcons: hides hyphenated name',        isset($offered['my-icon.p
 assert_false('getIcons: hides dotted name',            isset($offered['ap.v2.png']));
 assert_false('getIcons: hides non-images',             isset($offered['notes.txt']));
 assert_false('getIcons: hides extensionless files',    isset($offered['noext']));
+assert_false('getIcons: hides directories with image-like names', isset($offered['Nested.png']));
 
 /* The dropdown and the JavaScript emitter must never disagree: anything
  * offered here has to survive gpsmap_icon_identifier(). */
@@ -154,7 +156,10 @@ assert_true('getIcons: resolves regardless of the working directory', isset(getI
 chdir($cwd);
 
 $GLOBALS['config']['base_path'] = sys_get_temp_dir() . '/gpsmap-no-such-root';
+$GLOBALS['gpsmap_stub_log']     = [];
 assert_equal('getIcons: missing directory yields no icons', [], @getIcons());
+assert_true('getIcons: missing directory is logged',
+	(bool) preg_grep('/could not open icon directory/', $GLOBALS['gpsmap_stub_log']));
 $GLOBALS['config']['base_path'] = $savedRoot;
 
 // Saving still falls back when a name is not on the list.

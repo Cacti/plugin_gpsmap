@@ -28,7 +28,11 @@ if (!defined('GPSMAP_UPGRADE_RETRY_SECONDS')) {
 	define('GPSMAP_UPGRADE_RETRY_SECONDS', 300);
 }
 
-function gpsmap_upgrade_database(string $old = ''): void {
+if (!defined('GPSMAP_UPGRADE_MAX_FAILURES')) {
+	define('GPSMAP_UPGRADE_MAX_FAILURES', 5);
+}
+
+function gpsmap_upgrade_database(string $old = '', bool $force = false): void {
 	global $config;
 
 	include_once($config['library_path'] . '/database.php');
@@ -36,8 +40,17 @@ function gpsmap_upgrade_database(string $old = ''): void {
 	$v = plugin_gpsmap_version();
 
 	$retry_after = (int) read_config_option('plugin_gpsmap_upgrade_retry_after', true);
+	$failures    = (int) read_config_option('plugin_gpsmap_upgrade_failures', true);
 
-	if ($retry_after > time()) {
+	if (!$force && $failures >= GPSMAP_UPGRADE_MAX_FAILURES) {
+		cacti_log('ERROR: gpsmap schema upgrade is suspended after repeated failures; use Plugin Management to retry after correcting the database error', false, 'GPSMAP');
+
+		return;
+	}
+
+	if (!$force && $retry_after > time()) {
+		cacti_log('NOTICE: gpsmap schema upgrade retry is deferred for another ' . ($retry_after - time()) . ' seconds', false, 'GPSMAP');
+
 		return;
 	}
 
@@ -67,9 +80,13 @@ function gpsmap_upgrade_database(string $old = ''): void {
 		 * plugin_config; gpsmap_check_upgrade() reads the settings option.
 		 * Writing either early reports the plugin current while the schema is
 		 * still behind. */
-		db_execute_prepared('UPDATE plugin_config SET version = ? WHERE directory = "gpsmap"', [$v['version']]);
+		$ok = db_execute_prepared('UPDATE plugin_config SET version = ? WHERE directory = ?', [$v['version'], 'gpsmap']);
+	}
+
+	if ($ok) {
 		set_config_option('plugin_gpsmap_version', $v['version']);
 		set_config_option('plugin_gpsmap_upgrade_retry_after', '0');
+		set_config_option('plugin_gpsmap_upgrade_failures', '0');
 
 		return;
 	}
@@ -78,14 +95,15 @@ function gpsmap_upgrade_database(string $old = ''): void {
 	 * knows is incomplete as current, and nothing would re-arm the migration
 	 * when the transient cause clears.  Back off instead, so a lock timeout
 	 * cannot turn ordinary page views into sustained contention on host. */
-	set_config_option('plugin_gpsmap_upgrade_retry_after', (string) (time() + GPSMAP_UPGRADE_RETRY_SECONDS));
+	$failures++;
+	$retry_seconds = min(3600, GPSMAP_UPGRADE_RETRY_SECONDS * (2 ** min($failures - 1, 4)));
+	set_config_option('plugin_gpsmap_upgrade_failures', (string) $failures);
+	set_config_option('plugin_gpsmap_upgrade_retry_after', (string) (time() + $retry_seconds));
 
-	cacti_log('WARNING: gpsmap schema upgrade did not complete and will be retried after ' . GPSMAP_UPGRADE_RETRY_SECONDS . ' seconds.  If it keeps failing, run the ALTER TABLE statements in plugins/gpsmap/includes/setup/database.php by hand; the plugin will then record itself current on the next attempt.', false, 'GPSMAP');
+	cacti_log('WARNING: gpsmap schema upgrade did not complete and will be retried after ' . $retry_seconds . ' seconds.  If it keeps failing, correct the database error and retry from Plugin Management.', false, 'GPSMAP');
 }
 
 function gpsmap_setup_database(): bool {
-	$v = plugin_gpsmap_version();
-
 	api_plugin_db_add_column('gpsmap', 'host', ['name' => 'latitude', 'type' => 'decimal(13,10)', 'NULL' => false, 'default' => '0', 'after' => 'availability']);
 	api_plugin_db_add_column('gpsmap', 'host', ['name' => 'longitude', 'type' => 'decimal(13,10)', 'NULL' => false, 'default' => '0', 'after' => 'availability']);
 	api_plugin_db_add_column('gpsmap', 'host', ['name' => 'GPScoverage', 'type' => 'varchar(3)', 'NULL' => false, 'default' => 'on', 'after' => 'availability']);
@@ -107,14 +125,24 @@ function gpsmap_setup_database(): bool {
 	api_plugin_db_table_create('gpsmap', 'gpsmap_templates', $data);
 
 	$data                  = [];
+	/* The fixed-width hash supports the full DNS hostname length without
+	 * exceeding the 767-byte key limit on older InnoDB installations. */
+	$data['columns'][]     = ['name' => 'hostname_hash', 'type' => 'binary(32)', 'NULL' => false];
 	$data['columns'][]     = ['name' => 'hostname', 'type' => 'varchar(255)', 'NULL' => false, 'default' => ''];
 	$data['columns'][]     = ['name' => 'address', 'type' => 'varchar(45)', 'NULL' => false, 'default' => ''];
-	$data['columns'][]     = ['name' => 'refreshed_at', 'type' => 'timestamp', 'NULL' => false, 'default' => 'CURRENT_TIMESTAMP'];
-	$data['primary']       = 'hostname';
+	/* Nullable DATETIME columns behave consistently even when older MySQL or
+	 * MariaDB servers run with explicit_defaults_for_timestamp disabled. */
+	$data['columns'][]     = ['name' => 'refreshed_at', 'type' => 'datetime', 'NULL' => true, 'default' => null];
+	$data['columns'][]     = ['name' => 'attempted_at', 'type' => 'datetime', 'NULL' => true, 'default' => null];
+	$data['columns'][]     = ['name' => 'failure_count', 'type' => 'int(5) unsigned', 'NULL' => false, 'default' => '0'];
+	$data['primary']       = 'hostname_hash';
 	$data['keys'][]        = ['name' => 'refreshed_at', 'columns' => 'refreshed_at'];
+	$data['keys'][]        = ['name' => 'attempted_at', 'columns' => 'attempted_at'];
 	$data['type']          = 'InnoDB';
 	$data['comment']       = 'Asynchronously refreshed gpsmap hostname addresses';
 	api_plugin_db_table_create('gpsmap', 'plugin_gpsmap_dns_cache', $data);
+	api_plugin_db_add_column('gpsmap', 'plugin_gpsmap_dns_cache', ['name' => 'attempted_at', 'type' => 'datetime', 'NULL' => true, 'default' => null, 'after' => 'refreshed_at']);
+	api_plugin_db_add_column('gpsmap', 'plugin_gpsmap_dns_cache', ['name' => 'failure_count', 'type' => 'int(5) unsigned', 'NULL' => false, 'default' => '0', 'after' => 'attempted_at']);
 
 	/* The Cacti helpers do not report failure consistently, so confirm the
 	 * schema directly rather than trusting their return values. */
@@ -124,5 +152,9 @@ function gpsmap_setup_database(): bool {
 		}
 	}
 
-	return db_table_exists('gpsmap_templates') && db_table_exists('plugin_gpsmap_dns_cache');
+	return db_table_exists('gpsmap_templates')
+		&& db_table_exists('plugin_gpsmap_dns_cache')
+		&& db_column_exists('plugin_gpsmap_dns_cache', 'hostname_hash')
+		&& db_column_exists('plugin_gpsmap_dns_cache', 'attempted_at')
+		&& db_column_exists('plugin_gpsmap_dns_cache', 'failure_count');
 }

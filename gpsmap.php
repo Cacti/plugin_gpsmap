@@ -21,6 +21,7 @@
 
 chdir('../../');
 include('./include/auth.php');
+require_once('./plugins/gpsmap/gpsmap_security.php');
 include_once('./plugins/gpsmap/includes/setup/show.php');
 include_once('./plugins/gpsmap/includes/setup/gpsmapinitial.php');
 $body = '';
@@ -47,7 +48,7 @@ switch ($show) {
 		/* Reject any parameter that contains directory traversal sequences or
 		 * characters outside the safe set.  basename() alone does not strip
 		 * embedded ../ so we validate the whole value first. */
-		if (!preg_match('/^(?:all|[0-9]+(?:\.[0-9]+){0,2}|v6-(?:16-[0-9a-f]{4}|32-[0-9a-f]{8}|48-[0-9a-f]{12}))$/', $parameter)) {
+		if (!gpsmap_artifact_parameter_is_valid($parameter)) {
 			$parameter = 'all';
 		}
 

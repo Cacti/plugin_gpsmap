@@ -84,6 +84,8 @@ if (!function_exists('db_fetch_assoc')) {
 
 if (!function_exists('db_fetch_assoc_prepared')) {
 	function db_fetch_assoc_prepared($sql, $params = []) {
+		$GLOBALS['gpsmap_stub_last_params'] = $params;
+
 		return gpsmap_stub_query($sql);
 	}
 }
@@ -91,6 +93,13 @@ if (!function_exists('db_fetch_assoc_prepared')) {
 if (!function_exists('db_table_exists')) {
 	function db_table_exists($table, $log = true, $db_conn = false) {
 		return !in_array($table, $GLOBALS['gpsmap_stub_missing_tables'] ?? [], true);
+	}
+}
+
+if (!function_exists('db_column_exists')) {
+	function db_column_exists($table, $column, $log = true, $db_conn = false) {
+		return empty($GLOBALS['gpsmap_stub_missing_column'])
+			&& !in_array($table . '.' . $column, $GLOBALS['gpsmap_stub_missing_columns'] ?? [], true);
 	}
 }
 
@@ -120,8 +129,15 @@ function gpsmap_stub_query($sql) {
 	}
 
 	if (str_contains($sql, 'gpsmap_templates')) {
-		if (str_contains($sql, 'SELECT DISTINCT h.hostname')) {
-			return $GLOBALS['gpsmap_stub_rows']['dns'] ?? [];
+		if (str_contains($sql, 'MIN(dc.attempted_at)')) {
+			$rows = $GLOBALS['gpsmap_stub_rows']['dns'] ?? [];
+
+			if (is_array($rows) && str_contains($sql, 'INET6_ATON(h.hostname) IS NULL')) {
+				$rows = array_values(array_filter($rows,
+					static fn (array $row): bool => filter_var($row['hostname'], FILTER_VALIDATE_IP) === false));
+			}
+
+			return $rows;
 		}
 
 		return $GLOBALS['gpsmap_stub_rows']['icons'] ?? [];
@@ -133,6 +149,18 @@ function gpsmap_stub_query($sql) {
 if (!function_exists('read_config_option')) {
 	function read_config_option($name, $force = false) {
 		return $GLOBALS['gpsmap_stub_settings'][$name] ?? '';
+	}
+}
+
+if (!function_exists('set_config_option')) {
+	function set_config_option($name, $value) {
+		$GLOBALS['gpsmap_stub_settings'][$name] = (string) $value;
+	}
+}
+
+if (!function_exists('cacti_escapeshellarg')) {
+	function cacti_escapeshellarg($arg) {
+		return escapeshellarg((string) $arg);
 	}
 }
 

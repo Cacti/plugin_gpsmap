@@ -37,7 +37,15 @@ function plugin_gpsmap_install() {
 
 	include_once($config['base_path'] . '/plugins/gpsmap/includes/setup/database.php');
 
-	gpsmap_setup_database();
+	if (gpsmap_setup_database()) {
+		$version = plugin_gpsmap_version()['version'];
+
+		if (db_execute_prepared('UPDATE plugin_config SET version = ? WHERE directory = ?', [$version, 'gpsmap'])) {
+			set_config_option('plugin_gpsmap_version', $version);
+		}
+	} else {
+		cacti_log('ERROR: gpsmap installation could not create or verify the required database schema; correct the database error and retry from Plugin Management', false, 'GPSMAP');
+	}
 }
 
 function plugin_gpsmap_uninstall() {
@@ -54,7 +62,7 @@ function plugin_gpsmap_check_config() {
 }
 
 function plugin_gpsmap_upgrade() {
-	gpsmap_check_upgrade();
+	gpsmap_check_upgrade(true);
 
 	return false;
 }
@@ -63,12 +71,12 @@ function plugin_gpsmap_version() {
 	return gpsmap_version();
 }
 
-function gpsmap_check_upgrade() {
+function gpsmap_check_upgrade(bool $force = false) {
 	global $config;
 
-	$files = ['gpsmap.php', 'gpstemplates.php', 'poller.php'];
+	$files = ['gpsmap.php', 'gpstemplates.php', 'plugins.php', 'poller.php'];
 
-	if (!in_array(get_current_page(), $files, true)) {
+	if (!$force && !in_array(get_current_page(), $files, true)) {
 		return;
 	}
 
@@ -78,7 +86,7 @@ function gpsmap_check_upgrade() {
 
 	if ($current != $old) {
 		include_once($config['base_path'] . '/plugins/gpsmap/includes/setup/database.php');
-		gpsmap_upgrade_database((string) $old);
+		gpsmap_upgrade_database((string) $old, $force);
 	}
 
 	/* Migrate the misspelled 'gpsmap_latutude' key to 'gpsmap_latitude'.

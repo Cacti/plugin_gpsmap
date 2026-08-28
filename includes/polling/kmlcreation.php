@@ -77,6 +77,14 @@ foreach ($hostArrays as $hostArray) {
 	}
 }
 
-$kmldoc .= '</Document></kml>';
+$stem = gpsmap_require_artifact_stem($preemptive);
 
-gpsmap_write_file(gpsmap_xml_path($preemptive, 'kml'), $kmldoc);
+/* createDoc() passes the state that xmlCreate() just populated. Avoid parsing
+ * the freshly written XML when that render preserved no markers. Direct
+ * kmlCreate() callers without state retain the conservative legacy path. */
+if ($state === null || isset($state->preservedArtifacts[$stem])) {
+	$kmldoc .= gpsmap_preserved_kml_placemarks($stem);
+}
+
+$kmldoc .= '</Document></kml>';
+$kml_written = gpsmap_write_file(gpsmap_xml_path($preemptive, 'kml'), $kmldoc);

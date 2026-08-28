@@ -24,11 +24,16 @@
  * happens once in gpsmap_load_devices() and every render reuses the result.
  * region() keeps the old load-then-render shape for single callers. */
 
+if (!defined('GPSMAP_DNS_PRESERVE_FAILURE_LIMIT')) {
+	define('GPSMAP_DNS_PRESERVE_FAILURE_LIMIT', 3);
+}
+
 // ---------------------------------------------------------------
 function region(string $subnet): void {
-	$hostArrays = gpsmap_load_devices(gpsmap_enable_all());
+	$state      = gpsmap_poll_state();
+	$hostArrays = gpsmap_load_devices(gpsmap_enable_all(), $state);
 
-	gpsmap_render_region($hostArrays, $subnet);
+	gpsmap_render_region($hostArrays, $subnet, $state);
 }
 
 // ---------------------------------------------------------------
@@ -42,8 +47,10 @@ function gpsmap_enable_all(): bool {
 }
 
 // ---------------------------------------------------------------
-function gpsmap_load_devices(bool $enableAll): array {
+function gpsmap_load_devices(bool $enableAll, ?GpsmapPollState $state = null): array {
 	global $config;
+	$state ??= gpsmap_poll_state();
+	$state->reset();
 
 	include_once($config['base_path'] . '/plugins/gpsmap/class/hosts_class.php');
 
@@ -52,31 +59,52 @@ function gpsmap_load_devices(bool $enableAll): array {
 	/* Select only the columns used by the renderers.  Avoids pulling SNMP
 	 * credentials (snmp_community, snmp_auth_passphrase, etc.) into PHP
 	 * memory on every poller cycle. */
-	$has_dns   = db_table_exists('plugin_gpsmap_dns_cache');
-	$has_thold = api_plugin_is_enabled('thold') && db_table_exists('thold_data');
+	$has_dns                       = db_table_exists('plugin_gpsmap_dns_cache');
+	$poller_interval               = max(60, (int) read_config_option('poller_interval'));
+	$last_dns_success              = (int) read_config_option('plugin_gpsmap_dns_last_success');
+	$state->dnsResolverUnavailable = !$has_dns
+		|| gpsmap_dns_worker_is_stale($last_dns_success, $poller_interval);
+
+	if (!$has_dns) {
+		cacti_log('ERROR: gpsmap DNS cache table is unavailable; named Devices are deferred without blocking the poller until the plugin upgrade succeeds', false, 'GPSMAP');
+	}
+
+	$has_thold = api_plugin_is_enabled('thold')
+		&& db_table_exists('thold_data')
+		&& db_column_exists('thold_data', 'host_id', false)
+		&& db_column_exists('thold_data', 'thold_alert', false)
+		&& db_column_exists('thold_data', 'thold_enabled', false);
 	$sql       = 'SELECT h.id, h.host_template_id, h.hostname, h.description,
 		h.status, h.disabled, h.availability, h.cur_time,
 		h.latitude, h.longitude, h.start, h.stop, h.rdistance,
 		h.groupnum, h.GPScoverage,
 		gt.AP, gt.upimage, gt.downimage, gt.recoverimage'
-		. ($has_dns ? ', dc.address AS cached_address' : ', NULL AS cached_address')
+		. ($has_dns ? ', dc.address AS cached_address,
+			dc.failure_count AS cache_failures,
+			(dc.refreshed_at >= NOW() - INTERVAL 24 HOUR) AS cache_is_fresh' : ', NULL AS cached_address,
+			0 AS cache_failures, 0 AS cache_is_fresh')
 		. ($has_thold ? ', COALESCE(td.thold_alarm, 0) AS thold_alarm' : ', 0 AS thold_alarm') . '
 		FROM `host` AS h
 		INNER JOIN gpsmap_templates AS gt
 		ON h.host_template_id = gt.templateID'
 		. ($has_dns ? '
-		LEFT JOIN plugin_gpsmap_dns_cache AS dc ON dc.hostname = h.hostname' : '')
+		LEFT JOIN plugin_gpsmap_dns_cache AS dc
+			ON dc.hostname_hash = UNHEX(SHA2(h.hostname, 256))' : '')
 		. ($has_thold ? '
 		LEFT JOIN (
 			SELECT host_id, MAX(thold_alert > 0) AS thold_alarm
 			FROM thold_data
-			WHERE thold_enabled = "on"
+			WHERE thold_enabled = ?
 			GROUP BY host_id
 		) AS td ON td.host_id = h.id' : '');
 
 	// Cacti stores '' for enabled and 'on' for disabled.
 	$sql_where  = $enableAll ? '' : ' WHERE h.disabled = ?';
-	$sql_params = $enableAll ? [] : [''];
+	$sql_params = $has_thold ? ['on'] : [];
+
+	if (!$enableAll) {
+		$sql_params[] = '';
+	}
 
 	$results = db_fetch_assoc_prepared($sql . $sql_where . ' ORDER BY h.hostname', $sql_params);
 
@@ -89,7 +117,7 @@ function gpsmap_load_devices(bool $enableAll): array {
 	 * failed re-connect and an exhausted retry loop, and db_fetch_assoc_return()
 	 * documents itself as returning "the associated array of data, or false on
 	 * failure" (Cacti 1.2.x lib/database.php). */
-	$GLOBALS['gpsmap_load_failed'] = ($results === false);
+	$state->loadFailed = ($results === false);
 
 	$towerArray = [];
 	$hostArray  = [];
@@ -103,11 +131,33 @@ function gpsmap_load_devices(bool $enableAll): array {
 			continue;
 		}
 
-		/* Literal addresses need no DNS.  Names use the last asynchronously
+		/* Literal addresses need no DNS. Names use a recent asynchronously
 		 * refreshed cache value; the poller never blocks on a resolver. */
-		$hostip = is_ipaddress($row['hostname']) ? $row['hostname'] : ($row['cached_address'] ?? '');
+		$is_literal = is_ipaddress($row['hostname']);
+		$cached     = (string) ($row['cached_address'] ?? '');
+
+		$hostip     = $is_literal ? $row['hostname'] : $cached;
+
+		/* A stale last-known-good address is degraded, not silently fresh. Maps are
+		 * operational context rather than an authorization boundary, so retaining
+		 * the last known position is safer than making the Device disappear when
+		 * the background worker is unavailable. */
+		if (!$is_literal && is_ipaddress($cached) && empty($row['cache_is_fresh'])) {
+			$state->staleHostnames[] = (string) $row['hostname'];
+			$state->staleDeviceIds[] = (string) $row['id'];
+		}
 
 		if (!is_ipaddress($hostip)) {
+			$failures = (int) ($row['cache_failures'] ?? 0);
+
+			if ($failures <= GPSMAP_DNS_PRESERVE_FAILURE_LIMIT) {
+				$state->unresolvedHostnames[] = (string) $row['hostname'];
+				$state->unresolvedDeviceIds[] = (string) $row['id'];
+			} else {
+				$state->expiredHostnames[] = (string) $row['hostname'];
+				$state->expiredDeviceIds[] = (string) $row['id'];
+			}
+
 			continue;
 		}
 
@@ -134,7 +184,7 @@ function gpsmap_load_devices(bool $enableAll): array {
 			$hostip,
 			$row['description'],
 			$row['hostname'],
-			0,
+			$is_tower ? $row['rdistance'] : 0,
 			$row['availability'],
 			$status,
 			$row['cur_time'],
@@ -165,7 +215,7 @@ function gpsmap_reset_devices(array $hostArrays): void {
 	foreach ($hostArrays as $group) {
 		foreach ($group as $host) {
 			$host->showMap = 1;
-			$host->radius  = '0';
+			$host->radius  = $host->configuredRadius;
 		}
 	}
 }
@@ -185,7 +235,7 @@ function gpsmap_subnet_prefixes(array $hostArrays): array {
 					$token = gpsmap_ipv6_prefix_token($host->iprange, $depth * 16);
 
 					if ($token !== null) {
-						$prefixes[$token] = true;
+						$prefixes['v:' . $token] = $token;
 					}
 				}
 
@@ -195,17 +245,81 @@ function gpsmap_subnet_prefixes(array $hostArrays): array {
 			$octets = array_pad(explode('.', $host->iprange), 4, '0');
 
 			for ($depth = 1; $depth <= 3; $depth++) {
-				$prefixes[implode('.', array_slice($octets, 0, $depth)) . '.'] = true;
+				$prefix                   = implode('.', array_slice($octets, 0, $depth));
+				$prefixes['v:' . $prefix] = $prefix;
 			}
 		}
 	}
 
-	return array_keys($prefixes);
+	return array_values($prefixes);
 }
 
 // ---------------------------------------------------------------
-function gpsmap_render_region(array $hostArrays, string $subnet): void {
+/* Keep subnet snapshots consistent with all.xml while DNS is unavailable.
+ * The previous subnet files are the only durable record of an unresolved
+ * Device's last address, so retain every owned prefix that still contains one
+ * of the markers eligible for last-known-good preservation. */
+function gpsmap_preserved_subnet_prefixes(GpsmapPollState $state): array {
+	if ($state->unresolvedDeviceIds === []) {
+		return [];
+	}
+
+	$unresolved = array_fill_keys($state->unresolvedDeviceIds, true);
+	$prefixes   = [];
+	$directory  = dirname(gpsmap_xml_path('all', 'xml'));
+
+	foreach (glob($directory . '/*.xml') ?: [] as $path) {
+		$filename = basename($path);
+
+		if ($filename === 'all.xml' || !gpsmap_artifact_filename_is_valid($filename)) {
+			continue;
+		}
+
+		$xml = new DOMDocument();
+
+		if (!@$xml->load($path, LIBXML_NONET)) {
+			continue;
+		}
+
+		foreach ($xml->getElementsByTagName('marker') as $marker) {
+			if (!isset($unresolved[$marker->getAttribute('id')])) {
+				continue;
+			}
+
+			$preserved_at = (int) $marker->getAttribute('gpsmapPreservedAt');
+
+			if (!$state->dnsResolverUnavailable
+				&& $preserved_at > 0
+				&& $preserved_at < time() - GPSMAP_PRESERVED_MARKER_TTL) {
+				continue;
+			}
+
+			if ($marker->getAttribute('status') === 'undefined' && $preserved_at > 0) {
+				continue;
+			}
+
+			$stem                    = substr($filename, 0, -4);
+			$prefixes['v:' . $stem]  = $stem;
+
+			break;
+		}
+	}
+
+	return array_values($prefixes);
+}
+
+// ---------------------------------------------------------------
+function gpsmap_render_region(array $hostArrays, string $subnet, ?GpsmapPollState $state = null): bool {
 	global $config;
+	$state ??= gpsmap_poll_state();
+
+	if (!gpsmap_artifact_subnet_is_valid($subnet)) {
+		cacti_log('WARNING: gpsmap refused to render an invalid subnet artifact target', false, 'GPSMAP');
+
+		return false;
+	}
+
+	$subnet = gpsmap_require_artifact_stem($subnet);
 
 	gpsmap_reset_devices($hostArrays);
 
@@ -213,10 +327,9 @@ function gpsmap_render_region(array $hostArrays, string $subnet): void {
 	$body       = '';
 	$iparray    = [];
 	$ipwriteout = [];
-	$subnet     = $subnet === '' ? 'all' : $subnet;
 	$is_all     = $subnet === 'all';
 	$is_v6      = str_starts_with($subnet, 'v6-');
-	$preempt    = $is_all ? 0 : ($is_v6 ? (int) explode('-', $subnet, 3)[1] / 16 : str_word_count($subnet, 0, '.'));
+	$preempt    = $is_all ? 0 : ($is_v6 ? (int) explode('-', $subnet, 3)[1] / 16 : substr_count($subnet, '.') + 1);
 
 	// This section deals with traversal of the subnets
 	// sort by top level, and display all top IP range so they can be selected, and iterate this down through level 4
@@ -258,7 +371,7 @@ function gpsmap_render_region(array $hostArrays, string $subnet): void {
 
 			/* The prefix this host would contribute at the current depth, and
 			 * the prefix the requested subnet has to match for it to count. */
-			$parent = implode('.', array_slice($octets, 0, $preempt)) . '.';
+			$parent = implode('.', array_slice($octets, 0, $preempt));
 			$child  = implode('.', array_slice($octets, 0, $preempt + 1)) . '.';
 
 			if ($preempt > 3 || ($preempt > 0 && strcasecmp($subnet, $parent) !== 0)) {
@@ -290,7 +403,8 @@ function gpsmap_render_region(array $hostArrays, string $subnet): void {
 			$token = trim($ipout, '.');
 			$label = gpsmap_ipv6_prefix_label($token) ?? $token;
 
-			$ipwriteout[] = '<a href="' . html_escape($config['url_path'] . 'plugins/gpsmap/gpsmap.php?subnet=' . rawurlencode($token)) . '">' . __('IP %s', html_escape($label), 'gpsmap') . '</a>-(<a href="' . $kmlDomain . $config['url_path'] . 'plugins/gpsmap/XML/' . $token . '.xml">X</a>-<a href="' . $kmlDomain . $config['url_path'] . 'plugins/gpsmap/XML/' . $token . '.kml">K</a>)<br/>';
+			$artifactUrl  = $kmlDomain . $config['url_path'] . 'plugins/gpsmap/XML/' . rawurlencode($token);
+			$ipwriteout[] = '<a href="' . html_escape($config['url_path'] . 'plugins/gpsmap/gpsmap.php?subnet=' . rawurlencode($token)) . '">' . __('IP %s', html_escape($label), 'gpsmap') . '</a>-(<a href="' . html_escape($artifactUrl . '.xml') . '">X</a>-<a href="' . html_escape($artifactUrl . '.kml') . '">K</a>)<br/>';
 		}
 	}
 
@@ -307,9 +421,9 @@ function gpsmap_render_region(array $hostArrays, string $subnet): void {
 
 	$body .= '</div>';
 
-	$name = $subnet;
+	$documents_written = createDoc($hostArrays, $subnet, $state);
+	$menu_path         = $config['base_path'] . '/plugins/gpsmap/XML/' . $subnet . '-top.html';
+	$menu_written      = gpsmap_write_file($menu_path, $body);
 
-	createDoc($hostArrays, $name);
-
-	gpsmap_write_file($config['base_path'] . '/plugins/gpsmap/XML/' . gpsmap_artifact_stem($name) . '-top.html', $body);
+	return $documents_written && $menu_written;
 }

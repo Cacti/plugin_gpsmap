@@ -65,6 +65,7 @@ function gpsmap_coverage_report(array $targets): void {
 	$root       = dirname(__DIR__);
 	$totalLines = 0;
 	$missing    = [];
+	$uncovered  = [];
 	$hitLines   = 0;
 	$rows       = [];
 
@@ -84,7 +85,7 @@ function gpsmap_coverage_report(array $targets): void {
 		$executable = 0;
 		$hit        = 0;
 
-		foreach ($coverage[$abs] as $state) {
+		foreach ($coverage[$abs] as $line => $state) {
 			// 1 = executed, -1 = executable but not executed, -2 = dead code.
 			if ($state === -2) {
 				continue;
@@ -94,6 +95,8 @@ function gpsmap_coverage_report(array $targets): void {
 
 			if ($state === 1) {
 				$hit++;
+			} else {
+				$uncovered[$rel][] = $line;
 			}
 		}
 
@@ -116,6 +119,10 @@ function gpsmap_coverage_report(array $targets): void {
 	if ($missing !== []) {
 		printf("FAIL: never executed, so not counted: %s\n", implode(', ', $missing));
 		exit(1);
+	}
+
+	foreach ($uncovered as $rel => $lines) {
+		printf("MISS: %s:%s\n", $rel, implode(',', $lines));
 	}
 
 	$threshold = (float) (getenv('GPSMAP_COVERAGE_MIN') ?: 100);

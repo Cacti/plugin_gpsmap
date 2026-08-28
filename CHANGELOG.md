@@ -2,10 +2,7 @@
 
 --- 2.2 ---
 
-* Add IPv6 map and subnet drill-down support with filename-safe prefix tokens
-* Move hostname resolution to an asynchronous, last-known-good DNS cache
-* Surface active thold alarms on otherwise-up Device markers
-* Prune generated subnet artefacts after three poller intervals
+* issue#6, issue#104, issue#107, issue#109, issue#110: Refactor the poller for single-load dual-stack maps, asynchronous last-known-good DNS, thold-aware markers, and safe artifact pruning
 
 --- 2.1 ---
 

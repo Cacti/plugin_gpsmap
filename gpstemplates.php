@@ -110,11 +110,8 @@ function templates() {
 
 // ------------------------------------------------------------------------------
 function template_delete() {
-	foreach ($_POST as $t=>$v) {
-		if (substr($t, 0,4) == 'chk_') {
-			$id = substr($t, 4);
-			db_execute_prepared('DELETE FROM gpsmap_templates WHERE templateID = ?', [$id]);
-		}
+	foreach (gpsmap_template_ids_from_request($_POST) as $id) {
+		db_execute_prepared('DELETE FROM gpsmap_templates WHERE templateID = ?', [$id]);
 	}
 
 	header('Location: gpstemplates.php?header=false');

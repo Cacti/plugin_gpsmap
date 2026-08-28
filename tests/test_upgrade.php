@@ -35,7 +35,11 @@ if (!function_exists('db_execute_prepared')) {
 			$GLOBALS['gpsmap_stub_execute'][] = [$sql, $params];
 		}
 
-		return true;
+		if (!empty($GLOBALS['gpsmap_stub_reject_double_quoted_literals']) && str_contains($sql, '"gpsmap"')) {
+			return false;
+		}
+
+		return $GLOBALS['gpsmap_stub_execute_result'] ?? true;
 	}
 }
 
@@ -79,7 +83,51 @@ if (!function_exists('api_plugin_db_add_column')) {
 
 if (!function_exists('api_plugin_db_table_create')) {
 	function api_plugin_db_table_create($plugin, $table, $data) {
+		$GLOBALS['gpsmap_stub_tables'][$table] = $data;
+		$sql                                   = 'CREATE TABLE `' . $table . '` (';
+		$definitions                           = [];
+
+		/* Mirror Cacti's column renderer so schema tests assert the SQL emitted by
+		 * the supported helper contract, not only the plugin's input array. */
+		foreach ($data['columns'] as $column) {
+			$definition = '`' . $column['name'] . '` ' . $column['type'];
+
+			if (isset($column['NULL']) && $column['NULL'] == false) {
+				$definition .= ' NOT NULL';
+			}
+
+			if (isset($column['NULL']) && $column['NULL'] == true && !isset($column['default'])) {
+				$definition .= ' default NULL';
+			}
+
+			if (isset($column['default'])) {
+				$definition .= ' default ' . (is_numeric($column['default'])
+					? $column['default']
+					: "'" . $column['default'] . "'");
+			}
+
+			$definitions[] = $definition;
+		}
+
+		$GLOBALS['gpsmap_stub_ddl'][] = $sql . implode(', ', $definitions) . ') ENGINE = ' . $data['type'];
+
 		return true;
+	}
+}
+
+if (!function_exists('api_plugin_register_hook')) {
+	function api_plugin_register_hook(...$args) {
+	}
+}
+
+if (!function_exists('api_plugin_register_realm')) {
+	function api_plugin_register_realm(...$args) {
+	}
+}
+
+if (!function_exists('get_current_page')) {
+	function get_current_page() {
+		return $GLOBALS['gpsmap_stub_current_page'] ?? 'gpsmap.php';
 	}
 }
 
@@ -92,13 +140,64 @@ require_once __DIR__ . '/../includes/setup/database.php';
 
 $info = plugin_gpsmap_version();
 
+// A successful fresh install records its schema version before any page check.
+$GLOBALS['gpsmap_stub_settings']['plugin_gpsmap_version'] = '';
+$GLOBALS['gpsmap_stub_ddl']                               = [];
+$GLOBALS['gpsmap_stub_execute']                           = [];
+plugin_gpsmap_install();
+assert_equal('install: a successful schema install records the current version', $info['version'],
+	read_config_option('plugin_gpsmap_version', true));
+assert_equal('install: plugin_config version update uses two placeholders',
+	'UPDATE plugin_config SET version = ? WHERE directory = ?', $GLOBALS['gpsmap_stub_execute'][0][0]);
+assert_equal('install: plugin_config directory is bound safely under ANSI_QUOTES',
+	[$info['version'], 'gpsmap'], $GLOBALS['gpsmap_stub_execute'][0][1]);
+
+$GLOBALS['gpsmap_stub_settings']['plugin_gpsmap_version']  = '';
+$GLOBALS['gpsmap_stub_missing_column']                     = true;
+$GLOBALS['gpsmap_stub_log']                                = [];
+$GLOBALS['gpsmap_stub_execute']                            = [];
+plugin_gpsmap_install();
+assert_equal('install: a failed schema install writes no version', '',
+	read_config_option('plugin_gpsmap_version', true));
+assert_equal('install: a failed schema install skips the plugin_config version write', [],
+	$GLOBALS['gpsmap_stub_execute']);
+assert_true('install: a failed schema install logs the database failure',
+	(bool) preg_grep('/ERROR: gpsmap installation could not create or verify/', $GLOBALS['gpsmap_stub_log']));
+unset($GLOBALS['gpsmap_stub_missing_column']);
+$GLOBALS['gpsmap_stub_settings']['plugin_gpsmap_version'] = $info['version'];
+
+$GLOBALS['gpsmap_stub_current_page'] = 'plugins.php';
+$GLOBALS['gpsmap_stub_ddl']          = [];
+gpsmap_check_upgrade();
+assert_equal('install: the first plugins.php check issues no ALTER TABLE', [],
+	preg_grep('/ALTER TABLE/', $GLOBALS['gpsmap_stub_ddl']));
+$GLOBALS['gpsmap_stub_current_page']                      = 'gpsmap.php';
+$GLOBALS['gpsmap_stub_settings']['plugin_gpsmap_version'] = '';
+unset($GLOBALS['gpsmap_stub_execute']);
+
 // First run from an unknown previous version: the migrations fire.
-$GLOBALS['gpsmap_stub_ddl'] = [];
+$GLOBALS['gpsmap_stub_ddl']                           = [];
+$GLOBALS['gpsmap_stub_reject_double_quoted_literals'] = true;
 gpsmap_upgrade_database('');
 $first = $GLOBALS['gpsmap_stub_ddl'];
+unset($GLOBALS['gpsmap_stub_reject_double_quoted_literals']);
 
 assert_true('upgrade: a fresh install runs the column migration', (bool) preg_grep('/ALTER TABLE host CHANGE COLUMN latitude/', $first));
 assert_equal('upgrade: no backticked literal default reaches MySQL', [], preg_grep('/SET DEFAULT `/', $first));
+assert_equal('upgrade: plugin_config update remains valid under ANSI_QUOTES', $info['version'],
+	read_config_option('plugin_gpsmap_version', true));
+assert_equal('upgrade: DNS cache key fits legacy InnoDB limits', 'binary(32)',
+	$GLOBALS['gpsmap_stub_tables']['plugin_gpsmap_dns_cache']['columns'][0]['type']);
+assert_equal('upgrade: DNS cache retains the full configured hostname', 'varchar(255)',
+	$GLOBALS['gpsmap_stub_tables']['plugin_gpsmap_dns_cache']['columns'][1]['type']);
+assert_equal('upgrade: DNS cache freshness avoids implicit TIMESTAMP defaults', 'datetime',
+	$GLOBALS['gpsmap_stub_tables']['plugin_gpsmap_dns_cache']['columns'][3]['type']);
+assert_equal('upgrade: DNS cache attempts avoid implicit TIMESTAMP defaults', 'datetime',
+	$GLOBALS['gpsmap_stub_tables']['plugin_gpsmap_dns_cache']['columns'][4]['type']);
+$dnsCacheDdl = implode("\n", preg_grep('/CREATE TABLE `plugin_gpsmap_dns_cache`/', $first));
+assert_contains('upgrade: rendered refresh time is nullable DATETIME', '`refreshed_at` datetime default NULL', $dnsCacheDdl);
+assert_contains('upgrade: rendered attempt time is nullable DATETIME', '`attempted_at` datetime default NULL', $dnsCacheDdl);
+assert_not_contains('upgrade: rendered DNS cache DDL has no TIMESTAMP dependency', 'timestamp', strtolower($dnsCacheDdl));
 
 // The version has to be persisted where gpsmap_check_upgrade() reads it.
 assert_equal(
@@ -169,10 +268,77 @@ assert_true('upgrade: a backoff is recorded',
 
 // While the backoff is live, no further DDL is attempted.
 $GLOBALS['gpsmap_stub_ddl'] = [];
+$GLOBALS['gpsmap_stub_log'] = [];
 gpsmap_upgrade_database('');
 assert_equal('upgrade: the backoff suppresses the retry', [], $GLOBALS['gpsmap_stub_ddl']);
+assert_true('upgrade: the deferred retry is logged',
+	(bool) preg_grep('/retry is deferred/', $GLOBALS['gpsmap_stub_log']));
+
+foreach ([[1, 600], [4, 3600]] as [$priorFailures, $expectedDelay]) {
+	$GLOBALS['gpsmap_stub_settings']['plugin_gpsmap_upgrade_failures']    = (string) $priorFailures;
+	$GLOBALS['gpsmap_stub_settings']['plugin_gpsmap_upgrade_retry_after'] = '0';
+	$beforeRetry                                                          = time();
+	gpsmap_upgrade_database('');
+	$retryAfter = (int) read_config_option('plugin_gpsmap_upgrade_retry_after', true);
+	assert_true('upgrade: failure backoff grows and caps at ' . $expectedDelay . ' seconds',
+		$retryAfter >= $beforeRetry + $expectedDelay && $retryAfter <= time() + $expectedDelay);
+}
+
+// An explicit operator upgrade bypasses the automatic retry backoff.
+$GLOBALS['gpsmap_stub_fail_ddl'] = false;
+$GLOBALS['gpsmap_stub_ddl']      = [];
+gpsmap_upgrade_database('', true);
+assert_true('upgrade: an operator retry bypasses the backoff',
+	(bool) preg_grep('/ALTER TABLE/', $GLOBALS['gpsmap_stub_ddl']));
+assert_equal('upgrade: an operator retry records the version', $info['version'],
+	read_config_option('plugin_gpsmap_version', true));
+
+/* Automatic requests stop issuing schema DDL after a bounded number of
+ * failures. An explicit Plugin Management action remains the recovery path. */
+$GLOBALS['gpsmap_stub_settings']['plugin_gpsmap_version']             = '';
+$GLOBALS['gpsmap_stub_settings']['plugin_gpsmap_upgrade_retry_after'] = '0';
+$GLOBALS['gpsmap_stub_settings']['plugin_gpsmap_upgrade_failures']    = (string) GPSMAP_UPGRADE_MAX_FAILURES;
+$GLOBALS['gpsmap_stub_ddl']                                           = [];
+$GLOBALS['gpsmap_stub_log']                                           = [];
+gpsmap_upgrade_database('');
+assert_equal('upgrade: repeated failures suspend automatic DDL', [], $GLOBALS['gpsmap_stub_ddl']);
+assert_true('upgrade: suspended automatic DDL is logged',
+	(bool) preg_grep('/suspended after repeated failures/', $GLOBALS['gpsmap_stub_log']));
+
+$GLOBALS['gpsmap_stub_ddl'] = [];
+gpsmap_upgrade_database('', true);
+assert_true('upgrade: an explicit retry bypasses the failure limit',
+	(bool) preg_grep('/ALTER TABLE/', $GLOBALS['gpsmap_stub_ddl']));
+assert_equal('upgrade: a successful explicit retry clears the failure count', '0',
+	(string) read_config_option('plugin_gpsmap_upgrade_failures', true));
+
+/* Plugin Management invokes the explicit upgrade hook from plugins.php. That
+ * operator action must bypass both the page filter and the retry backoff. */
+$GLOBALS['gpsmap_stub_current_page']                                  = 'plugins.php';
+$GLOBALS['gpsmap_stub_settings']['plugin_gpsmap_version']             = '';
+$GLOBALS['gpsmap_stub_settings']['plugin_gpsmap_upgrade_retry_after'] = (string) (time() + 300);
+$GLOBALS['gpsmap_stub_ddl']                                           = [];
+gpsmap_check_upgrade(true);
+assert_true('upgrade: Plugin Management bypasses the page filter',
+	(bool) preg_grep('/ALTER TABLE/', $GLOBALS['gpsmap_stub_ddl']));
+assert_equal('upgrade: Plugin Management records the version', $info['version'],
+	read_config_option('plugin_gpsmap_version', true));
+$GLOBALS['gpsmap_stub_current_page'] = 'gpsmap.php';
+
+// The normal plugins.php configuration check also performs a pending upgrade.
+$GLOBALS['gpsmap_stub_current_page']                                  = 'plugins.php';
+$GLOBALS['gpsmap_stub_settings']['plugin_gpsmap_version']             = '';
+$GLOBALS['gpsmap_stub_settings']['plugin_gpsmap_upgrade_retry_after'] = '0';
+$GLOBALS['gpsmap_stub_ddl']                                           = [];
+gpsmap_check_upgrade();
+assert_true('upgrade: plugins.php automatically runs a pending migration',
+	(bool) preg_grep('/ALTER TABLE/', $GLOBALS['gpsmap_stub_ddl']));
+assert_equal('upgrade: plugins.php records the completed version', $info['version'],
+	read_config_option('plugin_gpsmap_version', true));
+$GLOBALS['gpsmap_stub_current_page'] = 'gpsmap.php';
 
 // Once it expires and the cause clears, the upgrade completes and re-arms.
+$GLOBALS['gpsmap_stub_settings']['plugin_gpsmap_version']             = '';
 $GLOBALS['gpsmap_stub_settings']['plugin_gpsmap_upgrade_retry_after'] = '0';
 $GLOBALS['gpsmap_stub_fail_ddl']                                      = false;
 gpsmap_upgrade_database('');
