@@ -21,6 +21,7 @@
 
 class host {
 	public string $radius;
+	public string $configuredRadius;
 	public int    $coverage;
 	public int    $showMap = 1;
 
@@ -32,7 +33,7 @@ class host {
 		public string $iprange,
 		public string $description,
 		public string $hostname,
-		int $radius,
+		int|float|string $radius,
 		public string $avail,
 		public string $status,
 		public string $latency,
@@ -44,9 +45,10 @@ class host {
 		public string $stop,
 		public string $group,
 	) {
-		$this->radius = (string) $radius;
+		$this->radius           = (string) $radius;
+		$this->configuredRadius = $this->radius;
 
-		/* Cacti checkbox convention: 'on' when ticked, '' otherwise. */
+		// Cacti checkbox convention: 'on' when ticked, '' otherwise.
 		$this->coverage = ($coverage === 'on') ? 1 : 0;
 	}
 }

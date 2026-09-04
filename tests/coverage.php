@@ -28,12 +28,15 @@ if (!function_exists('xdebug_start_code_coverage')) {
 }
 
 /* Files that hold logic.  The web entry points (gpsmap.php, gpstemplates.php,
- * print.php, includes/towerSelect.php) chdir() to the Cacti root and include
+ * print.php) chdir() to the Cacti root and include
  * include/auth.php, so they cannot execute outside a real installation and are
  * deliberately out of scope here. */
-$targets = array(
+$targets = [
 	'class/hosts_class.php',
 	'gpsmap_security.php',
+	'includes/dns.php',
+	'includes/setup/database.php',
+	'includes/polling.php',
 	'includes/polling/functions.php',
 	'includes/polling/processregion.php',
 	'includes/polling/coveragexml.php',
@@ -41,7 +44,7 @@ $targets = array(
 	'includes/polling/iconskml.php',
 	'includes/icons.php',
 	'includes/customicons.php',
-);
+];
 
 /* run.php ends in exit(), so the report runs from a shutdown
  * handler and preserves the suite's own exit status when it fails. */
@@ -54,16 +57,17 @@ xdebug_start_code_coverage(XDEBUG_CC_UNUSED | XDEBUG_CC_DEAD_CODE);
 require __DIR__ . '/run.php';
 
 function gpsmap_coverage_report(array $targets): void {
-		$status = 0;
+	$status = 0;
 
-		$coverage = xdebug_get_code_coverage();
-		xdebug_stop_code_coverage();
+	$coverage = xdebug_get_code_coverage();
+	xdebug_stop_code_coverage();
 
 	$root       = dirname(__DIR__);
 	$totalLines = 0;
-	$missing    = array();
+	$missing    = [];
+	$uncovered  = [];
 	$hitLines   = 0;
-	$rows       = array();
+	$rows       = [];
 
 	foreach ($targets as $rel) {
 		$abs = $root . '/' . $rel;
@@ -72,7 +76,7 @@ function gpsmap_coverage_report(array $targets): void {
 			/* A target that never executed would otherwise score 0/0 and drop
 			 * out of the total, letting the gate pass on a file the suite
 			 * never loaded. */
-			$rows[]    = array($rel, 0, 0, 0.0);
+			$rows[]    = [$rel, 0, 0, 0.0];
 			$missing[] = $rel;
 
 			continue;
@@ -81,8 +85,8 @@ function gpsmap_coverage_report(array $targets): void {
 		$executable = 0;
 		$hit        = 0;
 
-		foreach ($coverage[$abs] as $state) {
-			/* 1 = executed, -1 = executable but not executed, -2 = dead code. */
+		foreach ($coverage[$abs] as $line => $state) {
+			// 1 = executed, -1 = executable but not executed, -2 = dead code.
 			if ($state === -2) {
 				continue;
 			}
@@ -91,38 +95,44 @@ function gpsmap_coverage_report(array $targets): void {
 
 			if ($state === 1) {
 				$hit++;
+			} else {
+				$uncovered[$rel][] = $line;
 			}
 		}
 
 		$totalLines += $executable;
 		$hitLines   += $hit;
-		$rows[]      = array($rel, $hit, $executable, $executable ? $hit / $executable * 100 : 0.0);
-}
+		$rows[]      = [$rel, $hit, $executable, $executable ? $hit / $executable * 100 : 0.0];
+	}
 
-	echo "\nLine coverage\n";
-	echo str_repeat('-', 62) . "\n";
+	print "\nLine coverage\n";
+	print str_repeat('-', 62) . "\n";
 
 	foreach ($rows as $r) {
 		printf("%-42s %4d/%-4d %6.1f%%\n", $r[0], $r[1], $r[2], $r[3]);
-}
+	}
 
-	echo str_repeat('-', 62) . "\n";
+	print str_repeat('-', 62) . "\n";
 	$pct = $totalLines ? $hitLines / $totalLines * 100 : 0.0;
 	printf("%-42s %4d/%-4d %6.1f%%\n\n", 'TOTAL', $hitLines, $totalLines, $pct);
 
-		if ($missing !== array()) {
-			printf("FAIL: never executed, so not counted: %s\n", implode(', ', $missing));
-			exit(1);
-		}
+	if ($missing !== []) {
+		printf("FAIL: never executed, so not counted: %s\n", implode(', ', $missing));
+		exit(1);
+	}
 
-		$threshold = (float) (getenv('GPSMAP_COVERAGE_MIN') ?: 100);
+	foreach ($uncovered as $rel => $lines) {
+		printf("MISS: %s:%s\n", $rel, implode(',', $lines));
+	}
 
-		if ($pct + 0.001 < $threshold) {
-			printf("FAIL: coverage %.1f%% is below the %.1f%% threshold\n", $pct, $threshold);
-			$status = 1;
-		}
+	$threshold = (float) (getenv('GPSMAP_COVERAGE_MIN') ?: 100);
 
-		if ($status !== 0) {
-			exit($status);
-		}
+	if ($pct + 0.001 < $threshold) {
+		printf("FAIL: coverage %.1f%% is below the %.1f%% threshold\n", $pct, $threshold);
+		$status = 1;
+	}
+
+	if ($status !== 0) {
+		exit($status);
+	}
 }

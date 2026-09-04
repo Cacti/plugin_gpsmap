@@ -37,9 +37,16 @@ function plugin_gpsmap_install() {
 
 	include_once($config['base_path'] . '/plugins/gpsmap/includes/setup/database.php');
 
-	gpsmap_setup_database();
-}
+	if (gpsmap_setup_database()) {
+		$version = plugin_gpsmap_version()['version'];
 
+		if (db_execute_prepared('UPDATE plugin_config SET version = ? WHERE directory = ?', [$version, 'gpsmap'])) {
+			set_config_option('plugin_gpsmap_version', $version);
+		}
+	} else {
+		cacti_log('ERROR: gpsmap installation could not create or verify the required database schema; correct the database error and retry from Plugin Management', false, 'GPSMAP');
+	}
+}
 
 function plugin_gpsmap_uninstall() {
 	/* Tables and settings created on install are intentionally left in place
@@ -50,11 +57,13 @@ function plugin_gpsmap_uninstall() {
 
 function plugin_gpsmap_check_config() {
 	gpsmap_check_upgrade();
+
 	return true;
 }
 
 function plugin_gpsmap_upgrade() {
-	gpsmap_check_upgrade();
+	gpsmap_check_upgrade(true);
+
 	return false;
 }
 
@@ -62,21 +71,22 @@ function plugin_gpsmap_version() {
 	return gpsmap_version();
 }
 
-function gpsmap_check_upgrade() {
+function gpsmap_check_upgrade(bool $force = false) {
 	global $config;
 
-	$files = array('gpsmap.php','gpstemplates.php','poller.php');
+	$files = ['gpsmap.php', 'gpstemplates.php', 'plugins.php', 'poller.php'];
 
-	if (!in_array(get_current_page(), $files)) {
+	if (!$force && !in_array(get_current_page(), $files, true)) {
 		return;
 	}
 
-	$info = plugin_gpsmap_version();
+	$info    = plugin_gpsmap_version();
 	$current = $info['version'];
-	$old = read_config_option('plugin_gpsmap_version', TRUE);
+	$old     = read_config_option('plugin_gpsmap_version', true);
+
 	if ($current != $old) {
 		include_once($config['base_path'] . '/plugins/gpsmap/includes/setup/database.php');
-		gpsmap_upgrade_database();
+		gpsmap_upgrade_database((string) $old, $force);
 	}
 
 	/* Migrate the misspelled 'gpsmap_latutude' key to 'gpsmap_latitude'.
@@ -86,12 +96,14 @@ function gpsmap_check_upgrade() {
 	 * against all known return values so the DELETE only fires when the old
 	 * key actually exists with a non-empty value. */
 	$old_lat = read_config_option('gpsmap_latutude');
+
 	if ($old_lat !== false && $old_lat !== null && $old_lat !== '') {
 		$current_lat = read_config_option('gpsmap_latitude');
+
 		if ($current_lat === false || $current_lat === null || $current_lat === '') {
 			set_config_option('gpsmap_latitude', $old_lat);
 		}
-		db_execute_prepared("DELETE FROM settings WHERE name = ?", array('gpsmap_latutude'));
+		db_execute_prepared('DELETE FROM settings WHERE name = ?', ['gpsmap_latutude']);
 	}
 }
 
@@ -108,49 +120,51 @@ function gpsmap_page_head() {
 function gpsmap_version() {
 	global $config;
 	$info = parse_ini_file($config['base_path'] . '/plugins/gpsmap/INFO', true);
+
 	return $info['info'];
 }
 
-//defines latitude and longitude for devices
+// defines latitude and longitude for devices
 function gpsmap_config_form() {
 	global $fields_host_edit, $url_path;
 
 	$fields_host_edit2 = $fields_host_edit;
-	$fields_host_edit3 = array();
+	$fields_host_edit3 = [];
 
 	foreach ($fields_host_edit2 as $f => $a) {
 		$fields_host_edit3[$f] = $a;
+
 		if ($f == 'disabled') {
-			$fields_host_edit3['gpsSpacer'] = array(
+			$fields_host_edit3['gpsSpacer'] = [
 				'friendly_name' => __('Map Settings', 'gpsmap'),
-				'method' => 'spacer',
-			);
+				'method'        => 'spacer',
+			];
 
-			$fields_host_edit3['GPScoverage'] = array(
+			$fields_host_edit3['GPScoverage'] = [
 				'friendly_name' => __('Overlay Inclusion', 'gpsmap'),
-				'description' => __('Disable to plot host only, not included in coverage overlay.', 'gpsmap'),
-				'method' => 'checkbox',
-				'value' => '|arg1:GPScoverage|',
-				'default' => 'on',
-			);
+				'description'   => __('Disable to plot host only, not included in coverage overlay.', 'gpsmap'),
+				'method'        => 'checkbox',
+				'value'         => '|arg1:GPScoverage|',
+				'default'       => 'on',
+			];
 
-			$fields_host_edit3['latitude'] = array(
+			$fields_host_edit3['latitude'] = [
 				'friendly_name' => __('Latitude', 'gpsmap'),
-				'description' => __('The devices latitude coordinates', 'gpsmap'),
-				'method' => 'textbox',
-				'max_length' => 13,
-				'value' => '|arg1:latitude|',
-				'default' => '',
-			);
+				'description'   => __('The devices latitude coordinates', 'gpsmap'),
+				'method'        => 'textbox',
+				'max_length'    => 13,
+				'value'         => '|arg1:latitude|',
+				'default'       => '',
+			];
 
-			$fields_host_edit3['longitude'] = array(
+			$fields_host_edit3['longitude'] = [
 				'friendly_name' => __('Longitude', 'gpsmap'),
-				'description' => __('The devices longitude coordinates', 'gpsmap'),
-				'method' => 'textbox',
-				'max_length' => 13,
-				'value' => '|arg1:longitude|',
-				'default' => '',
-			);
+				'description'   => __('The devices longitude coordinates', 'gpsmap'),
+				'method'        => 'textbox',
+				'max_length'    => 13,
+				'value'         => '|arg1:longitude|',
+				'default'       => '',
+			];
 
 			if (isset_request_var('id') && get_current_page() == $url_path . 'host.php') {
 				$did = get_filter_request_var('id');
@@ -160,50 +174,48 @@ function gpsmap_config_form() {
 					RIGHT JOIN gpsmap_templates
 					ON host.host_template_id = gpsmap_templates.templateID
 					WHERE id = ?',
-					array($did));
+					[$did]);
 
 				if (cacti_sizeof($row) && $row['AP'] == 1) {
-					$fields_host_edit3['start'] = array(
+					$fields_host_edit3['start'] = [
 						'friendly_name' => __('Starting Degree', 'gpsmap'),
-						'description' => __('Starting degree for directional area between 0-360', 'gpsmap'),
-						'method' => 'textbox',
-						'max_length' => 4,
-						'value' => '|arg1:start|',
-						'default' => '0',
-					);
+						'description'   => __('Starting degree for directional area between 0-360', 'gpsmap'),
+						'method'        => 'textbox',
+						'max_length'    => 4,
+						'value'         => '|arg1:start|',
+						'default'       => '0',
+					];
 
-					$fields_host_edit3['stop'] = array(
+					$fields_host_edit3['stop'] = [
 						'friendly_name' => __('Stopping Degree', 'gpsmap'),
-						'description' => __('Stopping degree for directional area, must be greater than the Starting Degree', 'gpsmap'),
-						'method' => 'textbox',
-						'max_length' => 4,
-						'value' => '|arg1:stop|',
-						'default' => '360',
-					);
+						'description'   => __('Stopping degree for directional area, must be greater than the Starting Degree', 'gpsmap'),
+						'method'        => 'textbox',
+						'max_length'    => 4,
+						'value'         => '|arg1:stop|',
+						'default'       => '360',
+					];
 
-					$fields_host_edit3['rdistance'] = array(
+					$fields_host_edit3['rdistance'] = [
 						'friendly_name' => __('Specify Radius', 'gpsmap'),
-						'description' => __('Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices', 'gpsmap'),
-						'method' => 'textbox',
-						'max_length' => 10,
-						'value' => '|arg1:rdistance|',
-						'default' => '0',
-					);
+						'description'   => __('Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices', 'gpsmap'),
+						'method'        => 'textbox',
+						'max_length'    => 10,
+						'value'         => '|arg1:rdistance|',
+						'default'       => '0',
+					];
 				}
 			}
 
-			$fields_host_edit3['groupnum'] = array(
+			$fields_host_edit3['groupnum'] = [
 				'friendly_name' => __('Group ID', 'gpsmap'),
-				'description' => __('Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable', 'gpsmap'),
-				'method' => 'textbox',
-				'max_length' => 3,
-				'value' => '|arg1:groupnum|',
-				'default' => '0',
-			);
-
+				'description'   => __('Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable', 'gpsmap'),
+				'method'        => 'textbox',
+				'max_length'    => 3,
+				'value'         => '|arg1:groupnum|',
+				'default'       => '0',
+			];
 		}
 	}
 
 	$fields_host_edit = $fields_host_edit3;
 }
-

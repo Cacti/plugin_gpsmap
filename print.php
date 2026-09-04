@@ -20,9 +20,9 @@
 */
 
 chdir('../../');
+/* auth.php halts execution (exit/redirect) for unauthenticated users, so the
+ * markup below is only reached after successful authentication. */
 require_once('./include/auth.php');
-
-
 ?>
 <script language='javascript'>
 var mapEl = window.opener.document.getElementById('map');
