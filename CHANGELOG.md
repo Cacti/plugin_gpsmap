@@ -1,4 +1,7 @@
 ## Changelog
+--- develop ---
+* issue: Display Disabled Devices is inert, and a short write can publish a truncated artefact (PR #101)
+* issue: Correct database include path in gpsmap_check_upgrade (PR #93)
 
 --- 2.1 ---
 
