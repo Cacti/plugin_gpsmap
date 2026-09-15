@@ -152,7 +152,9 @@ api_plugin_register_hook('gpsmap', 'config_arrays',         'gpsmap_config_array
 api_plugin_register_hook('gpsmap', 'config_settings',       'gpsmap_config_settings',      'includes/setup/settings.php');
 api_plugin_register_hook('gpsmap', 'draw_navigation_text',  'gpsmap_draw_navigation_text', 'includes/setup/settings.php');
 api_plugin_register_hook('gpsmap', 'api_device_save',       'gpsmap_api_device_save',      'includes/setup/settings.php');
-api_plugin_register_hook('gpsmap', 'poller_bottom',         'gpsmap_poller_bottom',        'includes/polling.php');
+api_plugin_register_hook('gpsmap', 'config_form',            'gpsmap_config_form',          'setup.php');
+api_plugin_register_hook('gpsmap', 'poller_bottom',          'gpsmap_poller_bottom',        'includes/polling.php');
+api_plugin_register_hook('gpsmap', 'page_head',              'gpsmap_page_head',            'setup.php');
 
 api_plugin_register_realm('gpsmap', 'gpstemplates.php,gpstemplates_add.php', __('Configure Maps', 'gpsmap'), 1);
 api_plugin_register_realm('gpsmap', 'gpsmap.php', __('View Maps', 'gpsmap'), 1);
