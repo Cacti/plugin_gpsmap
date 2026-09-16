@@ -295,6 +295,7 @@ if (!function_exists('read_config_option')) {
 
 if (!function_exists('set_config_option')) {
 	function set_config_option($name, $value) {
+		$GLOBALS['gpsmap_stub_settings'][$name] = (string) $value;
 	}
 }
 
