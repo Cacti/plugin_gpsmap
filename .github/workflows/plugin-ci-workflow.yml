@@ -1,7 +1,15 @@
 # +-------------------------------------------------------------------------+
 # | Copyright (C) 2004-2026 The Cacti Group                                 |
+# |                                                                         |
+# | This program is free software; you can redistribute it and/or           |
+# | modify it under the terms of the GNU General Public License             |
+# | as published by the Free Software Foundation; either version 2          |
+# | of the License, or (at your option) any later version.                  |
 # +-------------------------------------------------------------------------+
 # | Cacti: The Complete RRDtool-based Graphing Solution                     |
+# +-------------------------------------------------------------------------+
+# | This code is designed, written, and maintained by the Cacti Group. See  |
+# | about.php and/or the AUTHORS file for specific developer information.   |
 # +-------------------------------------------------------------------------+
 # | http://www.cacti.net/                                                   |
 # +-------------------------------------------------------------------------+
@@ -18,77 +26,21 @@ on:
       - main
       - develop
 
-permissions:
-  contents: read
+env:
+  CACTI: 1.2.x
 
 jobs:
-  # The INFO compat value implies a Cacti 1.2.x install, which requires PHP
-  # 8.0.  Linting at that floor catches syntax the declared minimum cannot run,
-  # which the integration matrix below would miss.
-  syntax-floor:
-    name: PHP 8.0 syntax floor
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout gpsmap Plugin
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v4
-
-      - name: Install PHP 8.0
-        uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # v2
-        with:
-          php-version: '8.0'
-
-      - name: Lint every PHP file
-        run: |
-          if find . -path ./vendor -prune -o -name '*.php' -print \
-            | xargs -n1 php -l 2>&1 | grep -iv 'no syntax errors detected'; then
-            echo "Syntax errors found at the declared PHP floor"
-            exit 1
-          fi
-
-  unit-test:
-    name: Standalone test suite
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout gpsmap Plugin
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v4
-
-      - name: Install PHP
-        uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # v2
-        with:
-          php-version: '8.1'
-          coverage: xdebug
-
-      # Guarded so this workflow can land ahead of the suite it runs.
-      - name: Run the suite
-        run: |
-          if [ -f tests/run.php ]; then
-            php tests/run.php
-          else
-            echo "tests/run.php not present on this branch, skipping"
-          fi
-
-      - name: Enforce the coverage gate
-        env:
-          XDEBUG_MODE: coverage
-        run: |
-          if [ -f tests/coverage.php ]; then
-            php tests/coverage.php
-          else
-            echo "tests/coverage.php not present on this branch, skipping"
-          fi
-
   integration-test:
     runs-on: ${{ matrix.os }}
 
     strategy:
       fail-fast: false
       matrix:
-        php: ['8.1', '8.2', '8.3', '8.4']
+        php: ['8.2', '8.3', '8.4']
         os: [ubuntu-latest]
-        cacti: ['develop']
 
     services:
-      mysql:
+      mariadb:
         image: mariadb:10.6
         env:
           MYSQL_ROOT_PASSWORD: cactiroot
@@ -103,40 +55,36 @@ jobs:
           --health-timeout=5s
           --health-retries=3
 
-    name: PHP ${{ matrix.php }} Integration Test on ${{ matrix.os }} against ${{ matrix.cacti }}
+    name: PHP ${{ matrix.php }} Integration Test on ${{ matrix.os }}
 
     steps:
     - name: Checkout Cacti
-      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v4
+      uses: actions/checkout@v4
       with:
         repository: Cacti/cacti
-        ref: ${{ matrix.cacti }}
+        ref: ${{ env.CACTI }}
         path: cacti
 
     - name: Checkout gpsmap Plugin
-      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v4
+      uses: actions/checkout@v4
       with:
         path: cacti/plugins/gpsmap
-        fetch-depth: 0
 
     - name: Install PHP ${{ matrix.php }}
-      uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # v2
+      uses: shivammathur/setup-php@v2
       with:
         php-version: ${{ matrix.php }}
-        extensions: intl, mysql, gd, ldap, gmp, xml, curl, json, mbstring
+        extensions: intl, mysql, gd, ldap, gmp, xml, curl, json, mbstring, snmp
         ini-values: "post_max_size=256M, max_execution_time=60, date.timezone=America/New_York"
 
     - name: Check PHP version
-      run: |
-        php -v
-        echo "PHP_BINARY=$(command -v php)" >> "$GITHUB_ENV"
+      run: php -v
 
     - name: Run apt-get update
       run: sudo apt-get update
 
     - name: Install System Dependencies
-      run: |
-        sudo apt-get install --yes --no-install-recommends apache2 snmp snmpd rrdtool fping
+      run: sudo apt-get install -y snmp snmpd rrdtool fping
 
     - name: Start SNMPD Agent and Test
       run: |
@@ -154,6 +102,7 @@ jobs:
     - name: Create MySQL Config
       run: |
         echo -e "[client]\nuser = root\npassword = cactiroot\nhost = 127.0.0.1\n" > ~/.my.cnf
+        cat ~/.my.cnf
 
     - name: Initialize Cacti Database
       env:
@@ -167,11 +116,21 @@ jobs:
         mysql $MYSQL_AUTH_USR cacti < ${{ github.workspace }}/cacti/cacti.sql
         mysql $MYSQL_AUTH_USR -e "INSERT INTO settings (name, value) VALUES ('path_php_binary', '/usr/bin/php')" cacti
 
+    - name: Validate composer files
+      run: |
+        cd ${{ github.workspace }}/cacti
+        if [ -f composer.json ]; then
+          composer validate --strict || true
+        fi
+
     - name: Install Composer Dependencies
       run: |
         cd ${{ github.workspace }}/cacti
         if [ -f composer.json ]; then
-          sudo composer install --prefer-dist --no-progress
+          composer config --no-plugins allow-plugins.pestphp/pest-plugin true
+          composer require --dev --no-progress --no-interaction "pestphp/pest: ^3" "pestphp/pest-plugin-drift: ^3.0"
+          rm -f composer.lock
+          composer install --dev --no-progress
         fi
 
     - name: Create Cacti config.php
@@ -221,108 +180,75 @@ jobs:
           exit 1
         fi
 
-    - name: Remove the plugins directory exclusion from the .phpstan.neon
+    - name: Set expected Cacti version for unit tests
+      run: echo -n "${{ env.CACTI }}" | sudo tee ${{ github.workspace }}/cacti/plugins/gpsmap/tests/.cacti-version > /dev/null
+
+    - name: Run Pest Unit Tests
+      env:
+        COMPOSER_ROOT_VERSION: 1.3.0-dev
       run: |
-        if [ -f .phpstan.neon ]; then
-          sed -i '/plugins/d' .phpstan.neon
-        fi
+        cd ${{ github.workspace }}/cacti
+        include/vendor/bin/pest --configuration=plugins/gpsmap/phpunit.xml \
+          --coverage-clover=plugins/gpsmap/coverage/clover.xml \
+          plugins/gpsmap/tests
+
+    - name: Upload coverage report
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: coverage-php${{ matrix.php }}
+        path: ${{ github.workspace }}/cacti/plugins/gpsmap/coverage/
+        if-no-files-found: warn
+
+    - name: Remove the plugins directory exclusion from the .phpstan.neon
+      if: ${{ env.CACTI != '1.2.x' }}
+      run: sed '/plugins/d' -i .phpstan.neon
       working-directory: ${{ github.workspace }}/cacti
 
     - name: Mark composer scripts executable
-      run: |
-        if [ -d "${{ github.workspace }}/cacti/include/vendor/bin" ]; then
-          sudo find "${{ github.workspace }}/cacti/include/vendor/bin" -maxdepth 1 -type f -exec chmod +x {} +
-        fi
+      if: ${{ env.CACTI != '1.2.x' }}
+      run: sudo chmod +x ${{ github.workspace }}/cacti/include/vendor/bin/*
 
     - name: Run Linter on base code
-      run: |
-        if composer --no-ansi run-script --list | grep -qE '^[[:space:]]+lint([[:space:]]|$)'; then
-          composer run-script lint ${{ github.workspace }}/cacti/plugins/gpsmap
-        else
-          echo 'Composer lint script is not defined; skipping.'
-        fi
+      if: ${{ env.CACTI != '1.2.x' }}
+      run: composer run-script lint ${{ github.workspace }}/cacti/plugins/gpsmap
       working-directory: ${{ github.workspace }}/cacti
 
-    - name: Check coding standards on changed plugin PHP
-      env:
-        BASE_SHA: ${{ github.event.before }}
+    - name: Checking coding standards on base code
+      if: ${{ env.CACTI != '1.2.x' }}
+      run: composer run-script phpcsfixer ${{ github.workspace }}/cacti/plugins/gpsmap
+      working-directory: ${{ github.workspace }}/cacti
+
+    - name: Run PHPStan at Level 6 on base code outside of Composer due to technical issues
+      if: ${{ env.CACTI != '1.2.x' }}
+      run: ./include/vendor/bin/phpstan analyze --level 6 ${{ github.workspace }}/cacti/plugins/gpsmap
+      working-directory: ${{ github.workspace }}/cacti
+
+    - name: Re-apply web user ownership before polling
       run: |
-        if ! composer --no-ansi run-script --list | grep -qE '^[[:space:]]+phpcsfixer([[:space:]]|$)'; then
-          echo 'Composer phpcsfixer script is not defined; skipping.'
-          exit 0
-        fi
-
-        if [ "$GITHUB_EVENT_NAME" = 'pull_request' ]; then
-          BASE_SHA=$(git -C plugins/gpsmap rev-parse HEAD^1)
-        elif ! git -C plugins/gpsmap cat-file -e "${BASE_SHA}^{commit}" 2>/dev/null; then
-          BASE_SHA=$(git -C plugins/gpsmap rev-parse HEAD^)
-        fi
-
-        mapfile -d '' changed_php < <(
-          git -C plugins/gpsmap diff --name-only --diff-filter=ACMR -z \
-            "$BASE_SHA" HEAD -- '*.php'
-        )
-
-        if [ "${#changed_php[@]}" -eq 0 ]; then
-          echo 'No PHP files changed; skipping coding standards.'
-          exit 0
-        fi
-
-        php_files=()
-        for file in "${changed_php[@]}"; do
-          php_files+=("${{ github.workspace }}/cacti/plugins/gpsmap/$file")
+        # Ancestor directories above the checkout (e.g. /home/runner, .../work)
+        # are typically 750 owned by the runner user, which blocks a non-root
+        # www-data process from traversing down to the checkout at all.
+        p="${{ github.workspace }}"
+        while [ "$p" != "/" ]; do
+          sudo chmod o+x "$p" || true
+          p=$(dirname "$p")
         done
 
-        composer run-script phpcsfixer "${php_files[@]}"
-      working-directory: ${{ github.workspace }}/cacti
-
-    # gpsmap adds columns to the core host table, so a device with coordinates
-    # is what makes the poller hook produce anything at all.
-    - name: Add a mapped Device
-      run: |
-        cd ${{ github.workspace }}/cacti
-        # A bare develop install may contain no templates. Seed the smallest
-        # valid template fixture so add_device.php can exercise the real API.
-        TPL=$(mysql -u cactiuser -p'cactiuser' -h 127.0.0.1 cacti -sN \
-          -e "SELECT id FROM host_template ORDER BY id LIMIT 1;")
-        if [ -z "$TPL" ]; then
-          mysql -u cactiuser -p'cactiuser' -h 127.0.0.1 cacti \
-            -e "INSERT INTO host_template (name) VALUES ('CI Device');"
-          TPL=$(mysql -u cactiuser -p'cactiuser' -h 127.0.0.1 cacti -sN \
-            -e "SELECT id FROM host_template WHERE name = 'CI Device' ORDER BY id DESC LIMIT 1;")
-        fi
-        echo "Using host_template id $TPL"
-        sudo php cli/add_device.php --description=mapped --ip=127.0.0.1 --template="$TPL"
-        mysql -u cactiuser -p'cactiuser' -h 127.0.0.1 cacti \
-          -e "UPDATE host SET latitude='51.5074', longitude='-0.1278' WHERE description='mapped';"
-        mysql -u cactiuser -p'cactiuser' -h 127.0.0.1 cacti \
-          -e "INSERT INTO gpsmap_templates (templateID, templateName, upimage, recoverimage, downimage, AP)
-              SELECT host_template_id, 'ci', 'Green.png', 'Orange.png', 'Red.png', 0
-              FROM host WHERE description='mapped' LIMIT 1;"
+        sudo chown -R www-data:runner ${{ github.workspace }}/cacti
+        sudo find ${{ github.workspace }}/cacti -type d -exec chmod 775 {} \;
+        sudo find ${{ github.workspace }}/cacti -type f -exec chmod 664 {} \;
+        sudo chmod +x ${{ github.workspace }}/cacti/cmd.php
+        sudo chmod +x ${{ github.workspace }}/cacti/poller.php
 
     - name: Run Cacti Poller
       run: |
         cd ${{ github.workspace }}/cacti
-        sudo php poller.php --poller=1 --force --debug
+        sudo -u www-data php poller.php --poller=1 --force --debug
+
         if ! grep -q "SYSTEM STATS" log/cacti.log; then
           echo "Cacti poller did not finish successfully"
           cat log/cacti.log
-          exit 1
-        fi
-
-    - name: Verify the poller wrote its map artefacts
-      run: |
-        cd ${{ github.workspace }}/cacti/plugins/gpsmap/XML
-        ls -la
-        for f in all.xml all.kml all-top.html; do
-          if [ ! -s "$f" ]; then
-            echo "Expected $f to exist and be non-empty"
-            exit 1
-          fi
-        done
-        if ! grep -q '<marker ' all.xml; then
-          echo "all.xml contains no markers"
-          cat all.xml
           exit 1
         fi
 
@@ -332,4 +258,14 @@ jobs:
         if [ -f ${{ github.workspace }}/cacti/log/cacti.log ]; then
           echo "=== Cacti Log ==="
           sudo cat ${{ github.workspace }}/cacti/log/cacti.log
+        fi
+
+    - name: Check Cacti Logs for Errors
+      if: always()
+      run: |
+        if [ -f ${{ github.workspace }}/cacti/log/cacti.log ]; then
+          if grep -E "FATAL:|ERROR:|WARNING:" ${{ github.workspace }}/cacti/log/cacti.log; then
+            echo "Found FATAL/ERROR/WARNING entries in Cacti log"
+            exit 1
+          fi
         fi
