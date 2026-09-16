@@ -141,31 +141,32 @@ describe('iconskml() - KML Style ids', function () {
 });
 
 describe('customicons.php - property-access position, degrades to undefined', function () {
-	beforeEach(function () {
-		$GLOBALS['gpsmap_stub_rows']['icons'] = array(
-			array('templateID' => '10', 'upimage' => 'Green.png', 'downimage' => 'Red.png',    'recoverimage' => 'Yellow.png'),
-			array('templateID' => '11', 'upimage' => 'ap.v2.png', 'downimage' => 'my-icon.png', 'recoverimage' => ''),
-		);
+	// customicons.php declares gpsmap_safe_icon_base() unconditionally, so it can
+	// only be included once per process; do it here rather than in a
+	// beforeEach() that would re-run for every it() below and fatal on redeclare.
+	$GLOBALS['gpsmap_stub_rows']['icons'] = array(
+		array('templateID' => '10', 'upimage' => 'Green.png', 'downimage' => 'Red.png',    'recoverimage' => 'Yellow.png'),
+		array('templateID' => '11', 'upimage' => 'ap.v2.png', 'downimage' => 'my-icon.png', 'recoverimage' => ''),
+	);
 
-		ob_start();
-		include __DIR__ . '/../../includes/customicons.php';
-		$this->custom = ob_get_clean();
+	ob_start();
+	include __DIR__ . '/../../includes/customicons.php';
+	$custom = ob_get_clean();
+
+	it('maps a good icon', function () use ($custom) {
+		expect($custom)->toContain('["10up"] = gpsmap.Green;');
 	});
 
-	it('maps a good icon', function () {
-		expect($this->custom)->toContain('["10up"] = gpsmap.Green;');
+	it('degrades an unsafe icon to undefined', function () use ($custom) {
+		expect($custom)->toContain('["11up"] = gpsmap.undefined;');
 	});
 
-	it('degrades an unsafe icon to undefined', function () {
-		expect($this->custom)->toContain('["11up"] = gpsmap.undefined;');
+	it('keeps the builtin up icon', function () use ($custom) {
+		expect($custom)->toContain("gpsmap.customIcons['up'] = gpsmap.Green;");
 	});
 
-	it('keeps the builtin up icon', function () {
-		expect($this->custom)->toContain("gpsmap.customIcons['up'] = gpsmap.Green;");
-	});
-
-	it('keeps the builtin disabled icon', function () {
-		expect($this->custom)->toContain("gpsmap.customIcons['disabled'] = gpsmap.Black;");
+	it('keeps the builtin disabled icon', function () use ($custom) {
+		expect($custom)->toContain("gpsmap.customIcons['disabled'] = gpsmap.Black;");
 	});
 
 	it('maps a good name via gpsmap_safe_icon_base', function () {
