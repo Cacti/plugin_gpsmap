@@ -108,6 +108,14 @@ db_execute("DELETE FROM settings WHERE name = '$name'");
 ### Input Validation
 Use Cacti's built-in input validation for anything derived from request data, and check `api_user_realm_auth()` before rendering map/template pages or actions.
 
+`get_filter_request_var()` (and its `gfrv()` shorthand, where available) called with only the
+`$name` argument (no regex/filter as the 2nd/3rd argument) already validates the value as numeric
+and returns it as a **string** -- it does not return an int, and it halts execution if the request
+value is not numeric. Because of this, do NOT cast its output to `(int)` when the result is only
+used for string output (e.g. `print`/`echo`, string concatenation, embedding in HTML/JS); the cast
+is redundant. Only cast when the value is genuinely used in an integer/numeric context (e.g.
+arithmetic, strict `===` comparisons).
+
 ### Google Maps API Key
 The API key (`gpsmap_apikey`) is emitted directly into a `<script src=...>` URL in `gpsmap_page_head()`. Always `rawurlencode()` it before interpolating, and never log or echo it elsewhere.
 
