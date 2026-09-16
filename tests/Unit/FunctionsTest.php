@@ -110,20 +110,20 @@ describe('calcKm - distance calculation and backward-compat alias', function () 
 
 describe('subnet parameter validation regex (mirrors gpsmap.php logic)', function () {
 	beforeEach(function () {
-		$this->validRe = '/^[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)*$/';
+		$this->validRe = GPSMAP_ARTIFACT_STEM_PATTERN;
 	});
 
 	it('accepts valid values', function (string $value) {
 		expect((bool) preg_match($this->validRe, $value))->toBeTrue();
 	})->with([
 		'all',
-		'192-168-1',
-		'region1',
-		'region_1',
-		'RegionA',
+		'IPv6 token' => 'v6-32-20010db8',
 		'10.0.0',
-		'192-168-1.0',
 	]);
+
+	it('rejects an arbitrary region name', function () {
+		expect((bool) preg_match($this->validRe, 'region1'))->toBeFalse();
+	});
 
 	it('rejects path traversal and other dangerous input', function (string $value) {
 		expect((bool) preg_match($this->validRe, $value))->toBeFalse();
@@ -134,11 +134,51 @@ describe('subnet parameter validation regex (mirrors gpsmap.php logic)', functio
 		'.foo',
 		'foo.',
 		"foo\x00bar",
+		"trailing newline" => "all\n",
 		'a/b',
 		'a\\b',
 		'..%2fetc',
 		'a b',
 	]);
+
+	it('rejects a trailing-dot IPv6 token via the full subnet contract', function () {
+		expect(gpsmap_artifact_subnet_is_valid('v6-32-20010db8.'))->toBeFalse();
+	});
+
+	it('keeps the page and poller validators in agreement', function (string $candidate) {
+		expect(gpsmap_artifact_parameter_is_valid($candidate))->toBe(gpsmap_artifact_stem($candidate) === $candidate);
+	})->with([
+		'all',
+		'10',
+		'10.20',
+		'10.20.30',
+		'v6-16-2001',
+		'v6-32-20010db8',
+		'../escape',
+		'v6-64-20010db800000000',
+	]);
+});
+
+describe('generated artifact filenames', function () {
+	it('accepts a generated file name', function (string $filename) {
+		expect(gpsmap_artifact_filename_is_valid($filename))->toBeTrue();
+	})->with(['all.xml', '10.20.kml', 'v6-16-2001-top.html']);
+
+	it('rejects a foreign suffix', function () {
+		expect(gpsmap_artifact_filename_is_valid('all.txt'))->toBeFalse();
+	});
+
+	it('rejects a trailing newline in the stem', function () {
+		expect(gpsmap_artifact_filename_is_valid("all\n.xml"))->toBeFalse();
+	});
+
+	it('accepts an interrupted writer temp file', function () {
+		expect(gpsmap_artifact_temporary_filename_is_valid('10.20.xml.123.tmp'))->toBeTrue();
+	});
+
+	it('rejects a foreign staging file', function () {
+		expect(gpsmap_artifact_temporary_filename_is_valid('operator-note.txt.123.tmp'))->toBeFalse();
+	});
 });
 
 describe('coordCheck - validation', function () {

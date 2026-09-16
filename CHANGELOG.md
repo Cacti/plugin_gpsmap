@@ -3,6 +3,10 @@
 * issue: Display Disabled Devices is inert, and a short write can publish a truncated artefact (PR #101)
 * issue: Correct database include path in gpsmap_check_upgrade (PR #93)
 
+--- 2.2 ---
+
+* issue#6, issue#104, issue#107, issue#109, issue#110: Refactor the poller for single-load dual-stack maps, asynchronous last-known-good DNS, thold-aware markers, and safe artifact pruning
+
 --- 2.1 ---
 
 * issue: Add gpsmap_templates table index to be unique by device template

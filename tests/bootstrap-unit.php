@@ -89,6 +89,45 @@ $GLOBALS['__test_db_calls'] = array();
 $GLOBALS['gpsmap_stub_rows']     = array();
 $GLOBALS['gpsmap_stub_settings'] = array('base_url' => 'https://cacti.example/');
 $GLOBALS['gpsmap_stub_log']      = array();
+$GLOBALS['gpsmap_stub_plugins']  = array();
+
+/*
+ * Local, throwing assertions for tests ported as a single procedural it()
+ * block (large integration-style scenarios where a per-assertion expect()
+ * conversion would risk transcription errors). Unlike the old standalone
+ * harness these throw on the first failure, so Pest sees a real failure.
+ */
+if (!function_exists('assert_equal')) {
+	function assert_equal($label, $expected, $actual) {
+		if ($expected !== $actual) {
+			throw new RuntimeException($label . "\n  expected: " . var_export($expected, true) . "\n  actual:   " . var_export($actual, true));
+		}
+	}
+}
+
+if (!function_exists('assert_true')) {
+	function assert_true($label, $value) {
+		assert_equal($label, true, (bool) $value);
+	}
+}
+
+if (!function_exists('assert_false')) {
+	function assert_false($label, $value) {
+		assert_equal($label, false, (bool) $value);
+	}
+}
+
+if (!function_exists('assert_contains')) {
+	function assert_contains($label, $needle, $haystack) {
+		assert_true($label, str_contains((string) $haystack, $needle));
+	}
+}
+
+if (!function_exists('assert_not_contains')) {
+	function assert_not_contains($label, $needle, $haystack) {
+		assert_false($label, str_contains((string) $haystack, $needle));
+	}
+}
 
 if (!function_exists('db_execute')) {
 	function db_execute($sql) {
@@ -98,9 +137,25 @@ if (!function_exists('db_execute')) {
 }
 
 if (!function_exists('db_execute_prepared')) {
-	function db_execute_prepared($sql, $params = array()) {
-		$GLOBALS['__test_db_calls'][] = array('fn' => 'db_execute_prepared', 'sql' => $sql, 'params' => $params);
-		return true;
+	function db_execute_prepared($sql, $params = array(), $log = true, $db_conn = false) {
+		$GLOBALS['__test_db_calls'][]     = array('fn' => 'db_execute_prepared', 'sql' => $sql, 'params' => $params);
+		$GLOBALS['gpsmap_stub_execute'][] = array($sql, $params);
+
+		return $GLOBALS['gpsmap_stub_execute_result'] ?? true;
+	}
+}
+
+if (!function_exists('register_process_start')) {
+	function register_process_start($process, $task, $id = 0, $timeout = 0) {
+		$GLOBALS['gpsmap_stub_process_timeout'] = $timeout;
+
+		return $GLOBALS['gpsmap_stub_process_registration'] ?? true;
+	}
+}
+
+if (!function_exists('unregister_process')) {
+	function unregister_process($process, $task, $id = 0) {
+		$GLOBALS['gpsmap_stub_process_unregisters'] = ($GLOBALS['gpsmap_stub_process_unregisters'] ?? 0) + 1;
 	}
 }
 
@@ -124,6 +179,21 @@ function gpsmap_stub_query($sql) {
 	}
 
 	if (str_contains($sql, 'gpsmap_templates')) {
+		/* The DNS refresh work queue joins gpsmap_templates against the DNS
+		 * cache; route it to its own fixture bucket rather than the icon one. */
+		if (str_contains($sql, 'MIN(dc.attempted_at)')) {
+			$rows = $GLOBALS['gpsmap_stub_rows']['dns'] ?? array();
+
+			if (is_array($rows) && str_contains($sql, 'INET6_ATON(h.hostname) IS NULL')) {
+				$rows = array_values(array_filter($rows,
+					static function (array $row): bool {
+						return filter_var($row['hostname'], FILTER_VALIDATE_IP) === false;
+					}));
+			}
+
+			return $rows;
+		}
+
 		return $GLOBALS['gpsmap_stub_rows']['icons'] ?? array();
 	}
 
@@ -138,7 +208,33 @@ if (!function_exists('db_fetch_assoc')) {
 
 if (!function_exists('db_fetch_assoc_prepared')) {
 	function db_fetch_assoc_prepared($sql, $params = array()) {
+		$GLOBALS['gpsmap_stub_last_params'] = $params;
+
 		return gpsmap_stub_query($sql);
+	}
+}
+
+if (!function_exists('db_table_exists')) {
+	function db_table_exists($table, $log = true, $db_conn = false) {
+		return !in_array($table, $GLOBALS['gpsmap_stub_missing_tables'] ?? array(), true);
+	}
+}
+
+if (!function_exists('api_plugin_is_enabled')) {
+	function api_plugin_is_enabled($plugin) {
+		return in_array($plugin, $GLOBALS['gpsmap_stub_plugins'], true);
+	}
+}
+
+if (!function_exists('cacti_escapeshellarg')) {
+	function cacti_escapeshellarg($arg) {
+		return escapeshellarg((string) $arg);
+	}
+}
+
+if (!function_exists('exec_background')) {
+	function exec_background($command, $args) {
+		$GLOBALS['gpsmap_stub_background'][] = array($command, $args);
 	}
 }
 
@@ -174,7 +270,8 @@ if (!function_exists('db_index_exists')) {
 
 if (!function_exists('db_column_exists')) {
 	function db_column_exists($table, $column) {
-		return false;
+		return empty($GLOBALS['gpsmap_stub_missing_column'])
+			&& !in_array($table . '.' . $column, $GLOBALS['gpsmap_stub_missing_columns'] ?? array(), true);
 	}
 }
 
@@ -198,6 +295,7 @@ if (!function_exists('read_config_option')) {
 
 if (!function_exists('set_config_option')) {
 	function set_config_option($name, $value) {
+		$GLOBALS['gpsmap_stub_settings'][$name] = (string) $value;
 	}
 }
 
@@ -245,6 +343,26 @@ if (!function_exists('is_realm_allowed')) {
 if (!function_exists('is_ipaddress')) {
 	function is_ipaddress($ip) {
 		return filter_var($ip, FILTER_VALIDATE_IP) !== false;
+	}
+}
+
+/*
+ * PHPUnit's failOnWarning does not honor "@" suppression on the expected
+ * failure paths this suite exercises (an unwritable directory, a missing
+ * icon folder, etc.), so those calls install their own silent handler for
+ * their duration instead of relying on "@".
+ */
+if (!function_exists('gpsmap_test_silence')) {
+	function gpsmap_test_silence(callable $fn) {
+		set_error_handler(static function () {
+			return true;
+		});
+
+		try {
+			return $fn();
+		} finally {
+			restore_error_handler();
+		}
 	}
 }
 
@@ -376,7 +494,7 @@ function gpsmap_test_tmpdir(): string {
 	@mkdir($plugin . '/XML', 0700, true);
 	@mkdir($plugin . '/images/icons', 0700, true);
 
-	foreach (array('class', 'includes') as $link) {
+	foreach (array('class', 'includes', 'INFO', 'setup.php', 'gpsmap_security.php') as $link) {
 		if (!file_exists($plugin . '/' . $link)) {
 			@symlink($repo . '/' . $link, $plugin . '/' . $link);
 		}
@@ -412,7 +530,11 @@ function gpsmap_test_icons(array $names): string {
 	$dir = gpsmap_test_tmpdir() . '/plugins/gpsmap/images/icons';
 
 	foreach (array_diff(scandir($dir), array('.', '..')) as $entry) {
-		@unlink($dir . '/' . $entry);
+		// A prior test may have left a directory entry (e.g. to exercise
+		// "hides directories with image-like names"); unlink() alone cannot
+		// remove that, and PHPUnit's failOnWarning does not tolerate the
+		// resulting warning even when suppressed with "@".
+		gpsmap_test_rmtree($dir . '/' . $entry);
 	}
 
 	foreach ($names as $name) {

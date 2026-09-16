@@ -59,14 +59,14 @@ jobs:
 
     steps:
     - name: Checkout Cacti
-      uses: actions/checkout@v4
+      uses: actions/checkout@v7
       with:
         repository: Cacti/cacti
         ref: ${{ env.CACTI }}
         path: cacti
 
     - name: Checkout gpsmap Plugin
-      uses: actions/checkout@v4
+      uses: actions/checkout@v7
       with:
         path: cacti/plugins/gpsmap
 
@@ -184,8 +184,6 @@ jobs:
       run: echo -n "${{ env.CACTI }}" | sudo tee ${{ github.workspace }}/cacti/plugins/gpsmap/tests/.cacti-version > /dev/null
 
     - name: Run Pest Unit Tests
-      env:
-        COMPOSER_ROOT_VERSION: 1.3.0-dev
       run: |
         cd ${{ github.workspace }}/cacti
         include/vendor/bin/pest --configuration=plugins/gpsmap/phpunit.xml \
@@ -194,7 +192,7 @@ jobs:
 
     - name: Upload coverage report
       if: always()
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: coverage-php${{ matrix.php }}
         path: ${{ github.workspace }}/cacti/plugins/gpsmap/coverage/
@@ -240,6 +238,16 @@ jobs:
         sudo find ${{ github.workspace }}/cacti -type f -exec chmod 664 {} \;
         sudo chmod +x ${{ github.workspace }}/cacti/cmd.php
         sudo chmod +x ${{ github.workspace }}/cacti/poller.php
+
+    - name: Warm the gpsmap DNS worker cache
+      run: |
+        # The poller normally kicks off gpsmap_dns.php in the background and only
+        # reports success on a later cycle. CI only runs the poller once, so run
+        # the DNS worker synchronously first to record a successful completion
+        # before that single cycle, matching a steady-state install instead of
+        # the expected cold-start warning on a brand-new plugin.
+        cd ${{ github.workspace }}/cacti
+        sudo -u www-data php plugins/gpsmap/gpsmap_dns.php
 
     - name: Run Cacti Poller
       run: |

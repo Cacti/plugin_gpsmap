@@ -2,3 +2,4 @@
 # review pipeline scratch
 .diffcheck.php
 .rv.tar
+tests/_dbg.php

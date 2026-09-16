@@ -11,8 +11,9 @@ Maps tab reads a static file instead of querying the database.
 
 ## Features
 
-* Devices plotted by latitude and longitude, coloured by Up, Recovering, Down,
-  Disabled or Undefined status
+* IPv4 and IPv6 Devices plotted by latitude and longitude, coloured by Up,
+  Recovering, Down, Disabled or Undefined status.  When thold is enabled, an
+  otherwise-up Device with an active threshold uses its Down icon
 
 * Per Device Template marker icons for the Up, Recovering and Down states
 
@@ -20,7 +21,7 @@ Maps tab reads a static file instead of querying the database.
   furthest Device sharing the Access Point's group number, and optionally
   limited to an arc
 
-* Drill down by subnet, from the first octet through to individual Devices
+* Drill down by subnet: /8, /16 and /24 for IPv4, and /16, /32 and /48 for IPv6
 
 * KML export alongside the XML, so the same data opens in Google Earth
 
@@ -55,8 +56,8 @@ JavaScript, and there is no workaround inside Cacti.
 
 Installing adds seven columns to Cacti's `host` table (`latitude`, `longitude`,
 `GPScoverage`, `start`, `stop`, `groupnum`, `rdistance`) and creates the
-`gpsmap_templates` table.  Uninstalling deliberately leaves both in place so
-coordinates survive an accidental removal.
+`gpsmap_templates` and `plugin_gpsmap_dns_cache` tables.  Uninstalling
+deliberately leaves them in place so coordinates survive an accidental removal.
 
 ## Configuration
 
@@ -139,13 +140,21 @@ Understanding the order of events explains most of what can go wrong.
 1. The poller runs and Cacti calls the plugin's `poller_bottom` hook.
 
 2. The plugin selects every Device whose Device Template appears in
-   `gpsmap_templates`, resolves each hostname to an address, and discards any
-   Device without coordinates or whose name does not resolve to IPv4.
+   `gpsmap_templates`.  Literal IPv4 and IPv6 addresses are used directly;
+   configured names use the last address in `plugin_gpsmap_dns_cache`.
 
 3. It writes `plugins/gpsmap/XML/all.xml`, `all.kml` and `all-top.html`, then
    repeats for each subnet prefix so the drill-down views are prebuilt.
 
-4. Opening the Maps tab serves a page that loads Google's map library and
+4. It starts a separate DNS refresh worker after publishing.  A newly configured
+   hostname can therefore appear on the following poll, while slow DNS never
+   holds up the poller.  A failed refresh retains the last-known address.
+
+5. Generated subnet files not refreshed for three poller intervals are removed.
+   Cleanup runs only after a successful Device query; unrelated files are never
+   touched.
+
+6. Opening the Maps tab serves a page that loads Google's map library and
    fetches the matching `.xml` file over HTTP.
 
 Nothing appears until a poll cycle has completed after configuration.  If
@@ -165,9 +174,14 @@ cycle has completed since both were set; and `plugins/gpsmap/XML` contains
 files newer than the last poll.
 
 **Some Devices are missing.**  A Device is skipped when it has no coordinates,
-when its hostname does not resolve to an IPv4 address, when its Device Template
-is not in Map Templates, or when it is disabled and Display Disabled Devices is
-off.
+when its hostname has no cached address yet, when its Device Template is not in
+Map Templates, or when it is disabled and Display Disabled Devices is off.  For
+a newly added hostname, allow one additional poll cycle for the asynchronous DNS
+worker to populate the cache.
+
+**An Up Device has a red marker.**  When the thold plugin is enabled, gpsmap
+uses the configured Down icon for an otherwise-up Device with any active,
+enabled threshold.  Disable or clear the threshold to restore the Up icon.
 
 **The XML directory is empty.**  The Data Collector cannot write to it.  Check
 ownership, permissions and SELinux context.  The Cacti log records a failure
