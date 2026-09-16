@@ -529,7 +529,11 @@ function gpsmap_test_icons(array $names): string {
 	$dir = gpsmap_test_tmpdir() . '/plugins/gpsmap/images/icons';
 
 	foreach (array_diff(scandir($dir), array('.', '..')) as $entry) {
-		@unlink($dir . '/' . $entry);
+		// A prior test may have left a directory entry (e.g. to exercise
+		// "hides directories with image-like names"); unlink() alone cannot
+		// remove that, and PHPUnit's failOnWarning does not tolerate the
+		// resulting warning even when suppressed with "@".
+		gpsmap_test_rmtree($dir . '/' . $entry);
 	}
 
 	foreach ($names as $name) {
