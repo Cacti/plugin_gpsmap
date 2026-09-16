@@ -45,6 +45,10 @@ it('casts the radius int to the string the XML writer emits', function () {
 	expect(gpsmap_test_make_host('on', 15)->radius)->toBe('15');
 });
 
+it('retains the configured radius as a reset baseline', function () {
+	expect(gpsmap_test_make_host('on', 15)->configuredRadius)->toBe('15');
+});
+
 it('follows the Cacti checkbox contract for coverage: on means ticked', function () {
 	expect(gpsmap_test_make_host('on')->coverage)->toBe(1);
 	expect(gpsmap_test_make_host('')->coverage)->toBe(0);

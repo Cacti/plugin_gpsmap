@@ -52,6 +52,19 @@ describe('gpsmap_normalize_icon_name', function () {
 	});
 });
 
+it('accepts only positive numeric checkbox ids from a template delete request', function () {
+	expect(gpsmap_template_ids_from_request(array(
+		'chk_7'   => 'on',
+		'chk_42'  => 'on',
+		'chk_007' => 'duplicate numeric id',
+		'chk_0'   => 'invalid zero',
+		'chk_abc' => 'invalid text',
+		'chk_'    => 'missing id',
+		'action'  => 'delete',
+		3         => 'integer key',
+	)))->toBe(array(7, 42));
+});
+
 describe('coordCheck boundaries against the anchored pattern', function () {
 	it('rejects four integer digits', function () {
 		expect(coordCheck('1234.5'))->toBe('0.000');

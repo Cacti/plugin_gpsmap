@@ -36,6 +36,8 @@
             <file>includes/polling/iconskml.php</file>
             <file>includes/icons.php</file>
             <file>includes/customicons.php</file>
+            <file>includes/dns.php</file>
+            <file>includes/polling.php</file>
         </include>
     </source>
 </phpunit>

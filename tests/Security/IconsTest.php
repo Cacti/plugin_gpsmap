@@ -84,9 +84,12 @@ describe('includes/icons.php - JavaScript emitted into an inline <script>', func
 	it('emits nothing for an unreadable icon directory', function () {
 		$cwd = getcwd();
 		chdir(sys_get_temp_dir());
-		ob_start();
-		@include __DIR__ . '/../../includes/icons.php';
-		$empty = ob_get_clean();
+		$empty = gpsmap_test_silence(function () {
+			ob_start();
+			include __DIR__ . '/../../includes/icons.php';
+
+			return ob_get_clean();
+		});
 		chdir($cwd);
 
 		expect($empty)->not->toContain('gpsmap.');
@@ -133,7 +136,7 @@ describe('iconskml() - KML Style ids', function () {
 		$saved                      = $GLOBALS['config']['base_path'];
 		$GLOBALS['config']['base_path'] = sys_get_temp_dir() . '/gpsmap-no-such-root';
 
-		expect(@iconskml())->toBe('');
+		expect(gpsmap_test_silence(fn () => iconskml()))->toBe('');
 		expect($GLOBALS['gpsmap_stub_log'][0] ?? '')->toContain('could not open icon directory');
 
 		$GLOBALS['config']['base_path'] = $saved;
@@ -161,6 +164,10 @@ describe('customicons.php - property-access position, degrades to undefined', fu
 		expect($custom)->toContain('["11up"] = gpsmap.undefined;');
 	});
 
+	it('uses the down icon for the alert state', function () use ($custom) {
+		expect($custom)->toContain('["10alert"] = gpsmap.Red;');
+	});
+
 	it('keeps the builtin up icon', function () use ($custom) {
 		expect($custom)->toContain("gpsmap.customIcons['up'] = gpsmap.Green;");
 	});
@@ -175,5 +182,77 @@ describe('customicons.php - property-access position, degrades to undefined', fu
 
 	it('degrades a bad name via gpsmap_safe_icon_base', function () {
 		expect(gpsmap_safe_icon_base('ap.v2.png'))->toBe('undefined');
+	});
+});
+
+describe('getIcons() offers exactly what the renderers can draw', function () {
+	beforeEach(function () {
+		// getIcons() reads a path relative to the Cacti root.
+		$iconDir = gpsmap_test_icons(array('Green.png', 'Node2.gif', 'my-icon.png', 'ap.v2.png', 'notes.txt', 'noext'));
+		mkdir($iconDir . '/Nested.png');
+
+		$cwd            = getcwd();
+		chdir(gpsmap_test_tmpdir());
+		$this->offered  = getIcons();
+		chdir($cwd);
+	});
+
+	it('offers a renderable icon', function () {
+		expect($this->offered)->toHaveKey('Green.png');
+	});
+
+	it('offers a digit-bearing name', function () {
+		expect($this->offered)->toHaveKey('Node2.gif');
+	});
+
+	it('hides a hyphenated name', function () {
+		expect($this->offered)->not->toHaveKey('my-icon.png');
+	});
+
+	it('hides a dotted name', function () {
+		expect($this->offered)->not->toHaveKey('ap.v2.png');
+	});
+
+	it('hides non-images', function () {
+		expect($this->offered)->not->toHaveKey('notes.txt');
+	});
+
+	it('hides extensionless files', function () {
+		expect($this->offered)->not->toHaveKey('noext');
+	});
+
+	it('hides directories with image-like names', function () {
+		expect($this->offered)->not->toHaveKey('Nested.png');
+	});
+
+	it('never offers a name that gpsmap_icon_identifier() would reject', function () {
+		foreach (array_keys($this->offered) as $name) {
+			expect(gpsmap_icon_identifier($name))->not->toBeNull();
+		}
+	});
+
+	it('resolves regardless of the current working directory', function () {
+		$cwd = getcwd();
+		chdir(sys_get_temp_dir());
+		$offered = getIcons();
+		chdir($cwd);
+
+		expect($offered)->toHaveKey('Green.png');
+	});
+
+	it('yields no icons and logs when the directory is missing', function () {
+		$saved                           = $GLOBALS['config']['base_path'];
+		$GLOBALS['gpsmap_stub_log']       = array();
+		$GLOBALS['config']['base_path']   = sys_get_temp_dir() . '/gpsmap-no-such-root';
+
+		expect(gpsmap_test_silence(fn () => getIcons()))->toBe(array());
+		expect((bool) preg_grep('/could not open icon directory/', $GLOBALS['gpsmap_stub_log']))->toBeTrue();
+
+		$GLOBALS['config']['base_path'] = $saved;
+	});
+
+	it('still falls back on save when a name is not on the offered list', function () {
+		expect(gpsmap_normalize_icon_name('my-icon.png', $this->offered))->toBe('Green.png');
+		expect(gpsmap_normalize_icon_name('Green.png', $this->offered))->toBe('Green.png');
 	});
 });
