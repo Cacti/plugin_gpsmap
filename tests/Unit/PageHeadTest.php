@@ -14,7 +14,14 @@ beforeAll(function () {
 });
 
 beforeEach(function () {
+	// Save/restore rather than leave cleared: bootstrap-unit.php's settings
+	// (e.g. base_url) must survive for later test files sharing this process.
+	$this->savedGpsmapStubSettings = $GLOBALS['gpsmap_stub_settings'];
 	$GLOBALS['gpsmap_stub_settings'] = array();
+});
+
+afterEach(function () {
+	$GLOBALS['gpsmap_stub_settings'] = $this->savedGpsmapStubSettings;
 });
 
 it('omits the Google Maps API key when none is configured', function () {

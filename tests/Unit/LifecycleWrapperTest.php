@@ -22,9 +22,9 @@ beforeAll(function () {
 });
 
 beforeEach(function () {
-	$GLOBALS['gpsmap_stub_settings'] = array(
-		'plugin_gpsmap_version' => plugin_gpsmap_version()['version'],
-	);
+	// Merge rather than replace: bootstrap-unit.php's settings (e.g. base_url)
+	// must survive for later test files sharing this process.
+	$GLOBALS['gpsmap_stub_settings']['plugin_gpsmap_version'] = plugin_gpsmap_version()['version'];
 	$GLOBALS['__test_current_page'] = 'gpsmap.php';
 });
 
