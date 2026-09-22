@@ -4,85 +4,97 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: Cacti\nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2020-12-12 22:15-0500\nPO-Revision-Date: 2025-07-01 04:26+0000\nLast-Translator: Ekaterine papava <papava.e@gtu.ge>\nLanguage-Team: Georgian <https://translate.cacti.net/projects/cacti/gpsmaps/ka/>\nLanguage: ka-GE\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.11.4\n"
+msgstr ""
+"Project-Id-Version: Cacti\n"
+"Report-Msgid-Bugs-To: developers@cacti.net\n"
+"POT-Creation-Date: 2026-09-21 13:13-0400\n"
+"PO-Revision-Date: 2025-07-01 04:26+0000\n"
+"Last-Translator: Ekaterine papava <papava.e@gtu.ge>\n"
+"Language-Team: Georgian <https://translate.cacti.net/projects/cacti/gpsmaps/ka/>\n"
+"Language: ka-GE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.11.4\n"
 
-#: gpsmap.php:39
+#: gpsmap.php:40
 msgid "Please make sure to properly configure Maps first under Settings > Maps"
 msgstr "დარწმუნდით, რომ სწორად მოირგეთ რუკები მენიუში მორგება > რუკები"
 
-#: gpstemplates.php:26
+#: gpstemplates.php:27
 msgid "Delete"
 msgstr "წაშლა"
 
-#: gpstemplates.php:63
+#: gpstemplates.php:65
 msgid "Map Templates"
 msgstr "რუკის ნიმუშები"
 
-#: gpstemplates.php:66
+#: gpstemplates.php:68
 msgid "Host Template"
 msgstr "ჰოსტის ნიმუში"
 
-#: gpstemplates.php:67 gpstemplates.php:144
+#: gpstemplates.php:69 gpstemplates.php:143
 msgid "Up Image"
 msgstr "გამოსახულების აწევა"
 
-#: gpstemplates.php:68 gpstemplates.php:152
+#: gpstemplates.php:70 gpstemplates.php:151
 msgid "Recovering Image"
 msgstr "მიმდინარეობს გამოსახულების აღდგენა"
 
-#: gpstemplates.php:69 gpstemplates.php:160
+#: gpstemplates.php:71 gpstemplates.php:159
 msgid "Down Image"
 msgstr "გამოსახულების ჩამოწევა"
 
-#: gpstemplates.php:70
+#: gpstemplates.php:72
 msgid "Is AP"
 msgstr "წვდომის წერტილია"
 
-#: gpstemplates.php:82
+#: gpstemplates.php:84
 msgid "True"
 msgstr "ჭეშმარიტი"
 
-#: gpstemplates.php:84
+#: gpstemplates.php:86
 msgid "False"
 msgstr "ცრუ"
 
-#: gpstemplates.php:137
+#: gpstemplates.php:136
 msgid "Device Template"
 msgstr "მოწყობილობის შაბლონი"
 
-#: gpstemplates.php:138
+#: gpstemplates.php:137
 msgid "Choose the Device Template to base this Map Template type."
 msgstr "აირჩიეთ მოწყობილობის ნიმუში, რომ მასზე ეს რუკის ნიმუშის ტიპი დაეყრდნოს."
 
-#: gpstemplates.php:145
+#: gpstemplates.php:144
 msgid "Select the Image to Show for an Up Device"
 msgstr "აირჩიეთ გამოსახულება, რომელიც აჩვენებს, რომ მოწყობილობა ჩართულია"
 
-#: gpstemplates.php:153
+#: gpstemplates.php:152
 msgid "Select the Image to Show for a Recovering Device"
 msgstr "აირჩიეთ გამოსახულება, რომელიც აჩვენებს, რომ მიმდინარეობს მოწყობილობის აღდგენა"
 
-#: gpstemplates.php:161
+#: gpstemplates.php:160
 msgid "Select the Image to Show for a Down Device"
 msgstr "აირჩიეთ მოწყობილობა, რომელიც აჩვენებს, რომ მოწყობილობა გამორთულია"
 
-#: gpstemplates.php:168
+#: gpstemplates.php:167
 msgid "Access Point"
 msgstr "წვდომის წერტილი"
 
-#: gpstemplates.php:169
+#: gpstemplates.php:168
 msgid "Does this Device Template Represent an Access Point."
 msgstr "წარმოადგენს თუ არა ეს მოწყობილობის ნიმუში წვდომის წერტილს."
 
-#: gpstemplates.php:172
+#: gpstemplates.php:171
 msgid "No"
 msgstr "არა"
 
-#: gpstemplates.php:173
+#: gpstemplates.php:172
 msgid "Yes"
 msgstr "კი"
 
-#: gpstemplates.php:182
+#: gpstemplates.php:181
 msgid "Map Template Edit"
 msgstr "რუკის ნიმუშის ჩასწორება"
 
@@ -94,62 +106,62 @@ msgstr "რუკების მორგება"
 msgid "View Maps"
 msgstr "რუკების ნახვა"
 
-#: setup.php:107
+#: setup.php:139
 msgid "Map Settings"
 msgstr "რუკის პარამეტრები"
 
-#: setup.php:112
+#: setup.php:144
 msgid "Overlay Inclusion"
 msgstr "განლაგების ჩასმა"
 
-#: setup.php:113
+#: setup.php:145
 msgid "Disable to plot host only, not included in coverage overlay."
 msgstr "გამორთვა, მხოლოდ, ჰოსტისთვის, რომელიც დაფარვის გადაფარვაში არაა ჩასმული."
 
-#: setup.php:120
+#: setup.php:152
 msgid "Latitude"
 msgstr "განედი"
 
-#: setup.php:121
+#: setup.php:153
 msgid "The devices latitude coordinates"
 msgstr "მოწყობილობის კოორდინატების განედი"
 
-#: setup.php:129
+#: setup.php:161
 msgid "Longitude"
 msgstr "გრძედი"
 
-#: setup.php:130
+#: setup.php:162
 msgid "The devices longitude coordinates"
 msgstr "მოწყობილობის კოორდინატების გრძედი"
 
-#: setup.php:149
+#: setup.php:181
 msgid "Starting Degree"
 msgstr "დაწყება გრადუსებში"
 
-#: setup.php:150
+#: setup.php:182
 msgid "Starting degree for directional area between 0-360"
 msgstr "საწყისი კუთხე მიმართული არესთვის. 0-360"
 
-#: setup.php:158
+#: setup.php:190
 msgid "Stopping Degree"
 msgstr "გაჩერება გრადუსებში"
 
-#: setup.php:159
+#: setup.php:191
 msgid "Stopping degree for directional area, must be greater than the Starting Degree"
 msgstr "მიმართული არეს საბოლოო კუთხე. უნდა იყოს საწყის კუთხეზე მეტი"
 
-#: setup.php:167
+#: setup.php:199
 msgid "Specify Radius"
 msgstr "მიუთითეთ რადიუსი"
 
-#: setup.php:168
+#: setup.php:200
 msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
 msgstr "წვდომის წერტილისთვის რადიუსის ხელით მითითება. დააყენეთ 0, რომ რადიუსი დაჯგუფებული მოწყობილობების მიხედვით იქნეს გამოთვლილი"
 
-#: setup.php:178
+#: setup.php:210
 msgid "Group ID"
 msgstr "ჯგუფის ID"
 
-#: setup.php:179
+#: setup.php:211
 msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
 msgstr "ჯგუფები განსაზღვრავს, რომელი მოწყობილობებია ჩასმული გადაფარვის განლაგებაში. შემოწმდება წვდომის წერტილების მოწყობილობების ჯგუფთან. დააყენეთ 0 გამოსართავად"
