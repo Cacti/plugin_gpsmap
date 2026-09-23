@@ -298,6 +298,18 @@ if (!function_exists('set_config_option')) {
 	}
 }
 
+if (!function_exists('get_current_page')) {
+	function get_current_page() {
+		return isset($GLOBALS['__test_current_page']) ? $GLOBALS['__test_current_page'] : '';
+	}
+}
+
+if (!function_exists('isset_request_var')) {
+	function isset_request_var($name) {
+		return isset($_REQUEST[$name]);
+	}
+}
+
 if (!function_exists('html_escape')) {
 	function html_escape($string) {
 		return htmlspecialchars((string) $string, ENT_QUOTES | ENT_HTML5, 'UTF-8');
