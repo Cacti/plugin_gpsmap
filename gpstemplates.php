@@ -56,7 +56,20 @@ switch (get_nfilter_request_var('action')) {
 		break;
 }
 
-// ------------------------------------------------------------------------------
+/**
+ * Renders the main Map Templates list page: a checkbox table of every
+ * gpsmap_templates row (host template mapping, up/down/recovering icons,
+ * Access Point flag), with a bulk-delete action. Invoked from this
+ * file's dispatcher for the default (no 'action') request.
+ *
+ * @return void Outputs the list page HTML directly.
+ *
+ * @global array $config     Cacti global configuration array; used to
+ *                           build each icon's image URL.
+ * @global array $ds_actions Map of bulk-action ids to their display
+ *                           labels (only '1' => Delete), used to
+ *                           populate the actions dropdown.
+ */
 function templates() {
 	global $config, $ds_actions;
 
@@ -108,7 +121,14 @@ function templates() {
 	form_end();
 }
 
-// ------------------------------------------------------------------------------
+/**
+ * Deletes every Map Template selected via the templates list's bulk-
+ * delete checkboxes. Invoked from this file's dispatcher when the
+ * request's 'action' (derived from 'drp_action') is 'delete'.
+ *
+ * @return void Redirects back to the template list; does not return a
+ *              value.
+ */
 function template_delete() {
 	foreach (gpsmap_template_ids_from_request($_POST) as $id) {
 		db_execute_prepared('DELETE FROM gpsmap_templates WHERE templateID = ?', [$id]);
@@ -118,7 +138,19 @@ function template_delete() {
 	exit;
 }
 
-// ------------------------------------------------------------------------------
+/**
+ * Renders the add/edit form for a single Map Template (host template
+ * mapping, up/down/recovering icons, Access Point flag), with a custom
+ * jQuery UI selectmenu that shows each icon's image inline in the
+ * dropdown. Invoked from this file's dispatcher when the request's
+ * 'action' is 'edit'.
+ *
+ * @return void Outputs the edit form HTML and JavaScript directly.
+ *
+ * @global array $config Cacti global configuration array; used to build
+ *                        each icon's image URL in the custom selectmenu
+ *                        widget.
+ */
 function template_edit() {
 	global $config;
 
@@ -223,7 +255,18 @@ function template_edit() {
 	bottom_footer();
 }
 
-// ------------------------------------------------------------------------------
+/**
+ * Validates and saves a single Map Template (deriving its display name
+ * from the mapped host template, and normalizing each selected icon
+ * filename to a known-safe value) from the submitted edit form. Invoked
+ * from this file's dispatcher when the request's 'action' is 'save'.
+ *
+ * @return void
+ *
+ * @global array $config Cacti global configuration array; reserved/
+ *                        declared for parity with other save functions in
+ *                        this file; not used directly here.
+ */
 function gpsmap_save_template() {
 	global $config;
 

@@ -19,6 +19,19 @@
  +-------------------------------------------------------------------------+
 */
 
+/**
+ * Launches gpsmap_dns.php as a background process to asynchronously
+ * refresh the DNS resolution cache used for hostname-based map markers,
+ * when the cache table exists and a PHP binary path is configured.
+ * Called from gpsmap_poller_bottom() on every polling cycle, before
+ * generating this cycle's map artifacts, so a cold cache heals in the
+ * background for the next cycle.
+ *
+ * @return void
+ *
+ * @global array $config Cacti global configuration array; used to locate
+ *                        the plugin's gpsmap_dns.php script.
+ */
 function gpsmap_schedule_dns_refresh(): void {
 	global $config;
 
@@ -39,6 +52,23 @@ function gpsmap_schedule_dns_refresh(): void {
 	exec_background($php, cacti_escapeshellarg($config['base_path'] . '/plugins/gpsmap/gpsmap_dns.php'));
 }
 
+/**
+ * Hook implementation for Cacti's 'poller_bottom' filter (registered via
+ * setup.php). Loads the current set of mapped devices once per cycle,
+ * warns when the DNS resolver hasn't completed successfully or is
+ * running stale, schedules an asynchronous DNS cache refresh, and (when
+ * the device load itself succeeded) regenerates this plugin's map
+ * artifacts (KML/XML/coverage files) for the cycle - withholding
+ * publication only when the device query failed, since an estate with no
+ * mapped devices is still a valid result that must be published. Called
+ * by Cacti's poller via api_plugin_hook('poller_bottom', ...) at the end
+ * of each polling cycle.
+ *
+ * @return void
+ *
+ * @global array $config Cacti global configuration array; used to load
+ *                        this plugin's polling helper files.
+ */
 function gpsmap_poller_bottom() {
 	global $config;
 

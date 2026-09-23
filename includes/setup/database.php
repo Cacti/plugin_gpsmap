@@ -32,6 +32,33 @@ if (!defined('GPSMAP_UPGRADE_MAX_FAILURES')) {
 	define('GPSMAP_UPGRADE_MAX_FAILURES', 5);
 }
 
+/**
+ * Applies this plugin's database schema migrations for versions older
+ * than the current release (host.latitude/longitude precision, the
+ * gpsmap_templates unique index, etc.), gated by an exponential-backoff
+ * failure counter so a persistently failing migration can't turn every
+ * page view into repeated ALTER attempts against Cacti's host table.
+ * Records the new plugin version only when every migration step
+ * succeeds. Called from gpsmap_check_upgrade() when the installed
+ * plugin_config version differs from this plugin's INFO file version.
+ *
+ * $old is the version being upgraded from. It used to be read from a
+ * global that nothing ever set, which made every comparison below true
+ * and re-ran the whole migration history on every version change.
+ * Backoff between attempts, so a failing migration cannot re-run an
+ * ALTER on Cacti's host table from every page view.
+ *
+ * @param string $old   The previously installed plugin version to
+ *                       upgrade from; defaults to ''.
+ * @param bool   $force Whether to bypass the retry/failure-count backoff
+ *                       and attempt the migration regardless; defaults
+ *                       to false.
+ *
+ * @return void
+ *
+ * @global array $config Cacti global configuration array; used to load
+ *                        database.php and this plugin's setup.php.
+ */
 function gpsmap_upgrade_database(string $old = '', bool $force = false): void {
 	global $config;
 
@@ -103,6 +130,16 @@ function gpsmap_upgrade_database(string $old = '', bool $force = false): void {
 	cacti_log('WARNING: gpsmap schema upgrade did not complete and will be retried after ' . $retry_seconds . ' seconds.  If it keeps failing, correct the database error and retry from Plugin Management.', false, 'GPSMAP');
 }
 
+/**
+ * Adds this plugin's columns to Cacti's host table (latitude, longitude,
+ * GPScoverage, start/stop window, groupnum, rdistance) and creates the
+ * gpsmap_templates table. Called from plugin_gpsmap_install() during
+ * installation and from gpsmap_upgrade_database() during upgrades.
+ *
+ * @return bool True once all columns/tables have been created (the
+ *              underlying api_plugin_db_add_column() calls do not report
+ *              failure to this function).
+ */
 function gpsmap_setup_database(): bool {
 	api_plugin_db_add_column('gpsmap', 'host', ['name' => 'latitude', 'type' => 'decimal(13,10)', 'NULL' => false, 'default' => '0', 'after' => 'availability']);
 	api_plugin_db_add_column('gpsmap', 'host', ['name' => 'longitude', 'type' => 'decimal(13,10)', 'NULL' => false, 'default' => '0', 'after' => 'availability']);

@@ -19,6 +19,19 @@
  +-------------------------------------------------------------------------+
 */
 
+/**
+ * Hook implementation for Cacti's 'top_header_tabs'/'top_graph_header_tabs'
+ * filters (registered via setup.php). Prints a clickable tab icon
+ * linking to gpsmap.php, using a different icon when gpsmap.php is the
+ * currently displayed page. Called by Cacti core via
+ * api_plugin_hook('top_header_tabs'/'top_graph_header_tabs', ...) while
+ * rendering the page header tabs, for users with access to gpsmap.php.
+ *
+ * @return void Outputs HTML directly.
+ *
+ * @global array $config Cacti global configuration array; used to build
+ *                        the tab's image/link URLs.
+ */
 function gpsmap_show_tab () {
 	global $config;
 

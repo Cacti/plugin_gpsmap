@@ -19,6 +19,19 @@
  +-------------------------------------------------------------------------+
 */
 
+/**
+ * Hook implementation for Cacti's 'draw_navigation_text' filter. Adds
+ * breadcrumb entries for gpsmap.php's, gpstemplates.php's, and
+ * gpstemplates_add.php's views. Called by Cacti core via
+ * api_plugin_hook('draw_navigation_text', ...) while rendering the page
+ * breadcrumb trail.
+ *
+ * @param array $nav The existing breadcrumb map contributed by Cacti
+ *                    core and other plugins.
+ *
+ * @return array The $nav array with this plugin's breadcrumb entries
+ *               added.
+ */
 function gpsmap_draw_navigation_text($nav) {
    $nav['gpsmap.php:'] = array(
 		'title' => __('Maps', 'gpsmap'),
@@ -65,11 +78,36 @@ function gpsmap_draw_navigation_text($nav) {
    return $nav;
 }
 
+/**
+ * Hook implementation for Cacti's 'config_arrays' filter. Adds the "Map"
+ * entry under the Templates section of Cacti's menu, linking to
+ * gpstemplates.php. Called by Cacti core via
+ * api_plugin_hook('config_arrays', ...) while building the navigation
+ * menu.
+ *
+ * @return void
+ *
+ * @global array $menu Cacti's main navigation menu array, extended here
+ *                      with this plugin's entry.
+ */
 function gpsmap_config_arrays() {
    global $menu;
    $menu[__('Templates')]['plugins/gpsmap/gpstemplates.php'] = __('Map', 'gpsmap');
 }
 
+/**
+ * Hook implementation for Cacti's 'api_device_save' filter. Persists the
+ * submitted GPS coverage flag and location/scheduling fields (latitude,
+ * longitude, start/stop window, coverage radius, group number) onto the
+ * device being saved. Called by Cacti core via
+ * api_plugin_hook('api_device_save', ...) before a device is saved.
+ *
+ * @param array $save The device values being saved.
+ *
+ * @return array The $save array with this plugin's GPS-related fields
+ *               set from the request (or blanked/defaulted when not
+ *               submitted).
+ */
 function gpsmap_api_device_save($save) {
 	if (isset_request_var('GPScoverage')) {
 		$save['GPScoverage'] = 'on';
@@ -116,6 +154,22 @@ function gpsmap_api_device_save($save) {
     return $save;
 }
 
+/**
+ * Hook implementation for Cacti's 'config_settings' filter. Registers the
+ * "Maps" Settings tab's fields (Google API key, geolocation lookup URL,
+ * initial map center/zoom, display options, and coverage-overlay circle
+ * styling), restricted to settings.php. Called by Cacti core via
+ * api_plugin_hook('config_settings', ...) while building the Settings
+ * page.
+ *
+ * @return void
+ *
+ * @global array $tabs     Cacti's registered Settings page tabs, extended
+ *                         here with the 'gpsmap' tab label.
+ * @global array $settings Cacti's registered Settings page fields,
+ *                         extended here with this plugin's settings
+ *                         under the 'gpsmap' tab.
+ */
 function gpsmap_config_settings() {
 	global $tabs, $settings;
 
