@@ -37,9 +37,9 @@ class host {
  *                                            type.
  * @param string            $lat              The host's latitude.
  * @param string            $long             The host's longitude.
- * @param string            $iprange          The host's IP range, when
- *                                            applicable (e.g. for
- *                                            coverage areas).
+ * @param string            $iprange          The host's resolved IP
+ *                                            address, used for subnet
+ *                                            grouping and graph links.
  * @param string            $description      The host's description.
  * @param string            $hostname         The host's hostname.
  * @param int|float|string  $radius           The host's coverage radius,
@@ -67,6 +67,8 @@ class host {
  *                                            window stop time.
  * @param string            $group            The host's group
  *                                            assignment.
+ *
+ * @return void
  */
 public function __construct(
 		public string $id,

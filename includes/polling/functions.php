@@ -23,8 +23,9 @@ require_once(__DIR__ . '/../../gpsmap_security.php');
 /**
  * Loads a single subnet's device set and renders its map artifacts, for
  * ad-hoc single-subnet regeneration (as opposed to the poller's full
- * multi-subnet cycle). Called from gpsmap.php/gpstemplates.php when a
- * specific subnet's map needs to be refreshed on demand.
+ * multi-subnet cycle). Currently a compatibility entry point with no
+ * production call sites in this plugin (gpsmap.php/gpstemplates.php
+ * read the generated map artifacts rather than calling this directly).
  *
  * @param string $subnet The subnet prefix (or 'all'/'v6-...' stem) to
  *                       render.

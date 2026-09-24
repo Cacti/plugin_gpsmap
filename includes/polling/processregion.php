@@ -58,9 +58,6 @@ function region(string $subnet): void {
  * loading/rendering the map, per the 'gpsmap_enableall' setting. Called
  * from gpsmap_poller_bottom() and region() before loading devices.
  *
- * One query and no synchronous DNS. Returns array(towers, devices) in
- * the order coveragexml.php and xmlCreate() expect.
- *
  * pollinginitial.php assigns $enableAll from inside callRegion(), so the
  * global that used to be read here was never bound and the setting was
  * inert. Read it where it is needed instead.
@@ -421,8 +418,10 @@ function gpsmap_preserved_subnet_prefixes(GpsmapPollState $state): array {
  *                                          created automatically when
  *                                          null.
  *
- * @return bool True once the subnet's artifacts have been written; false
- *              when $subnet failed validation and nothing was rendered.
+ * @return bool True once all of the subnet's artifacts (KML/XML/
+ *              coverage/menu documents) have been successfully
+ *              written; false when $subnet failed validation, or when
+ *              createDoc() or the menu artifact write fails.
  *
  * @global array $config Cacti global configuration array; used to build
  *                        graph preview links.
