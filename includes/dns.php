@@ -7,6 +7,28 @@
 
 require_once __DIR__ . '/../gpsmap_security.php';
 
+/**
+ * Resolves a hostname to an IP address for map plotting: returns IP
+ * literals unchanged, otherwise tries DNS A/AAAA records first and falls
+ * back to the operating system's resolver (covering /etc/hosts, NIS, and
+ * mDNS names that dns_get_record() bypasses). Called from
+ * gpsmap_refresh_dns_cache() for each hostname due for a cache refresh.
+ *
+ * dns_get_record() bypasses the operating system's NSS sources. Keep
+ * this fallback in the background worker so /etc/hosts, NIS and mDNS
+ * names work without putting a blocking lookup back on the poller path.
+ *
+ * @param string        $hostname     The hostname (or IP literal) to
+ *                                    resolve.
+ * @param callable|null $lookup       Override for the DNS record lookup
+ *                                    (for testing); defaults to
+ *                                    dns_get_record() for A/AAAA records.
+ * @param callable|null $systemLookup Override for the OS-resolver
+ *                                    fallback (for testing); defaults to
+ *                                    gethostbyname().
+ *
+ * @return string The resolved IP address, or '' when resolution failed.
+ */
 function gpsmap_resolve_hostname(string $hostname, ?callable $lookup = null, ?callable $systemLookup = null): string {
 	if (filter_var($hostname, FILTER_VALIDATE_IP)) {
 		return $hostname;
@@ -45,6 +67,15 @@ if (!defined('GPSMAP_DNS_WORKER_REGISTRATION_TIMEOUT')) {
 	define('GPSMAP_DNS_WORKER_REGISTRATION_TIMEOUT', (int) GPSMAP_DNS_REFRESH_TIME_BUDGET + 30);
 }
 
+/**
+ * Deletes plugin_gpsmap_dns_cache rows for hostnames that no longer
+ * belong to any device using a Map Template, keeping the cache table
+ * from growing unbounded as devices are removed/reassigned. Called from
+ * gpsmap_refresh_dns_cache() after processing a batch of hostname
+ * lookups.
+ *
+ * @return bool True when the cleanup query executed successfully.
+ */
 function gpsmap_reap_dns_cache(): bool {
 	$reaped = db_execute_prepared('DELETE dc
 		FROM plugin_gpsmap_dns_cache AS dc
@@ -62,6 +93,29 @@ function gpsmap_reap_dns_cache(): bool {
 	return $reaped;
 }
 
+/**
+ * Refreshes the DNS cache for a bounded batch of mapped device hostnames
+ * that are due for a lookup (staggered by an increasing backoff based on
+ * each hostname's failure count), stopping early if the configured time
+ * budget is exceeded so a slow batch can't stall the poller. Keeps the
+ * last successful address and its refreshed_at timestamp on failure, but
+ * records the failed attempt so the poller can eventually stop
+ * preserving a permanently unresolved device after a bounded grace
+ * period. Called from gpsmap_run_dns_refresh_worker() (i.e. from
+ * gpsmap_dns.php, launched by gpsmap_schedule_dns_refresh()).
+ *
+ * @param callable|null $resolver Override for hostname resolution (for
+ *                                testing); defaults to
+ *                                gpsmap_resolve_hostname().
+ * @param callable|null $clock    Override for the monotonic clock used
+ *                                to enforce the time budget (for
+ *                                testing); defaults to
+ *                                hrtime(true)/1e9.
+ *
+ * @return int|false The number of hostnames successfully resolved and
+ *                    cached this run, or false when a database error
+ *                    prevented the refresh from completing.
+ */
 function gpsmap_refresh_dns_cache(?callable $resolver = null, ?callable $clock = null): int|false {
 	$resolver ??= static fn (string $name): string => gpsmap_resolve_hostname($name);
 	$clock ??= static fn (): float => hrtime(true) / 1e9;
@@ -142,6 +196,27 @@ function gpsmap_refresh_dns_cache(?callable $resolver = null, ?callable $clock =
 	return gpsmap_reap_dns_cache() ? $updated : false;
 }
 
+/**
+ * Runs the DNS cache refresh as a singleton background worker: claims a
+ * process-registration lock (refusing to start if another worker already
+ * owns it), guarantees the lock is released on completion or failure via
+ * a shutdown handler, runs the refresh, and records the last successful
+ * completion time on success. Called from gpsmap_dns_refresh_exit_code()
+ * (i.e. from gpsmap_dns.php's main flow).
+ *
+ * @param callable|null $refresh           Override for the refresh
+ *                                         operation (for testing);
+ *                                         defaults to
+ *                                         'gpsmap_refresh_dns_cache'.
+ * @param callable|null $shutdownRegistrar Override for registering the
+ *                                         lock-release callback (for
+ *                                         testing); defaults to
+ *                                         'register_shutdown_function'.
+ *
+ * @return bool True when the refresh completed successfully; false when
+ *              another worker already owns the lock or the refresh
+ *              itself failed.
+ */
 function gpsmap_run_dns_refresh_worker(?callable $refresh = null, ?callable $shutdownRegistrar = null): bool {
 	if (!register_process_start('gpsmap', 'dns-refresh', 0, GPSMAP_DNS_WORKER_REGISTRATION_TIMEOUT)) {
 		cacti_log('NOTICE: gpsmap DNS refresh did not start because another worker owns the process registration', false, 'GPSMAP');
@@ -177,6 +252,13 @@ function gpsmap_run_dns_refresh_worker(?callable $refresh = null, ?callable $shu
 	return true;
 }
 
+/**
+ * Runs the DNS cache refresh worker and translates its result to a
+ * process exit code. Called from gpsmap_dns.php's main flow as the
+ * script's final action.
+ *
+ * @return int 0 on success, 1 on failure.
+ */
 function gpsmap_dns_refresh_exit_code(): int {
 	return gpsmap_run_dns_refresh_worker() ? 0 : 1;
 }

@@ -26,8 +26,23 @@ require_once(__DIR__ . '/../gpsmap_security.php');
 
 $customiconlist = "gpsmap.customIcons = {};\n";
 
-/* Property-access position, so an unusable name degrades to gpsmap.undefined
- * (valid JavaScript) rather than being skipped. */
+/**
+ * Resolves an icon filename to its safe JavaScript-identifier base name,
+ * falling back to 'undefined' (itself a valid JavaScript property name)
+ * when the filename doesn't yield a safe identifier, so the generated
+ * script always assigns a usable property rather than being skipped.
+ * Called from this script's main flow for each map template's up/down/
+ * recovering icon while building the gpsmap.customIcons JavaScript
+ * assignment list.
+ *
+ * Property-access position, so an unusable name degrades to
+ * gpsmap.undefined (valid JavaScript) rather than being skipped.
+ *
+ * @param string $filename The icon filename to resolve.
+ *
+ * @return string The safe JavaScript identifier base name, or
+ *                'undefined'.
+ */
 function gpsmap_safe_icon_base(string $filename): string {
 	return gpsmap_icon_identifier($filename) ?? 'undefined';
 }

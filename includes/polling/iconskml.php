@@ -20,6 +20,19 @@
 */
 
 require_once(__DIR__ . '/../../gpsmap_security.php');
+/**
+ * Generates a KML `<Style>` element for every usable icon in this
+ * plugin's icons directory, so map markers can reference them by
+ * `<styleUrl>`. Called from kmlcreation.php while assembling a map's KML
+ * document.
+ *
+ * @return string The concatenated KML `<Style>` elements, or '' when the
+ *                icons directory could not be opened.
+ *
+ * @global array $config Cacti global configuration array; used to locate
+ *                        the icons directory and build each icon's href
+ *                        URL.
+ */
 function iconskml(): string {
 	global $config;
 

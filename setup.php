@@ -19,6 +19,20 @@
  +-------------------------------------------------------------------------+
 */
 
+/**
+ * Installs the GPS Map plugin: registers its Cacti hooks (top_header_tabs,
+ * top_graph_header_tabs, config_arrays, config_settings,
+ * draw_navigation_text, api_device_save, config_form, poller_bottom,
+ * page_head), registers its two realms (Configure Maps, View Maps), and
+ * creates/verifies its database schema. Invoked by Cacti's plugin
+ * architecture when an administrator installs this plugin from Console >
+ * Plugin Management.
+ *
+ * @return void
+ *
+ * @global array $config Cacti global configuration array; used to load
+ *                        includes/setup/database.php.
+ */
 function plugin_gpsmap_install() {
 	global $config;
 
@@ -48,29 +62,82 @@ function plugin_gpsmap_install() {
 	}
 }
 
+/**
+ * Uninstalls the GPS Map plugin; currently a no-op placeholder. Invoked
+ * by Cacti's plugin architecture when an administrator uninstalls this
+ * plugin from Console > Plugin Management.
+ *
+ * Tables and settings created on install are intentionally left in place
+ * on uninstall to prevent data loss on accidental removal. A future
+ * release should call gpsmap_remove_database() here with explicit
+ * confirmation from the administrator.
+ *
+ * @return void
+ */
 function plugin_gpsmap_uninstall() {
-	/* Tables and settings created on install are intentionally left in place
-	 * on uninstall to prevent data loss on accidental removal.  A future
-	 * release should call gpsmap_remove_database() here with explicit
-	 * confirmation from the administrator. */
 }
 
+/**
+ * Verifies the plugin's configuration by triggering its upgrade check.
+ * Invoked by Cacti's plugin architecture on relevant page loads.
+ *
+ * @return bool Always returns true.
+ */
 function plugin_gpsmap_check_config() {
 	gpsmap_check_upgrade();
 
 	return true;
 }
 
+/**
+ * Performs any schema/data migrations needed when upgrading to a newer
+ * version of this plugin, by force-running the upgrade check regardless
+ * of the current page. Invoked by Cacti's plugin architecture when an
+ * installed plugin's version increases.
+ *
+ * @return bool Always returns false.
+ */
 function plugin_gpsmap_upgrade() {
 	gpsmap_check_upgrade(true);
 
 	return false;
 }
 
+/**
+ * Reads this plugin's INFO file and returns its [info] section, via
+ * gpsmap_version(). Used by Cacti's plugin architecture via the
+ * api_plugin_version hook.
+ *
+ * @return array The parsed [info] section of the plugin's INFO file.
+ */
 function plugin_gpsmap_version() {
 	return gpsmap_version();
 }
 
+/**
+ * Detects whether the installed plugin version differs from this
+ * plugin's INFO file version and, if so, runs the database schema
+ * upgrade; also self-heals a legacy misspelled 'gpsmap_latutude' setting
+ * key by migrating it to 'gpsmap_latitude'. Only runs on gpsmap.php/
+ * gpstemplates.php/plugins.php/poller.php unless $force is set. Called
+ * from plugin_gpsmap_check_config()/plugin_gpsmap_upgrade() and on
+ * relevant page loads.
+ *
+ * Migrate the misspelled 'gpsmap_latutude' key to 'gpsmap_latitude'. Runs
+ * on every version transition so it self-heals on first upgrade.
+ * read_config_option() returns '' for missing keys in most Cacti
+ * versions, but some older versions return false or null. The triple-
+ * check guards against all known return values so the DELETE only fires
+ * when the old key actually exists with a non-empty value.
+ *
+ * @param bool $force Whether to run the upgrade check regardless of the
+ *                     current page; defaults to false.
+ *
+ * @return void
+ *
+ * @global array $config Cacti global configuration array; used to load
+ *                        includes/setup/database.php.
+ */
 function gpsmap_check_upgrade(bool $force = false) {
 	global $config;
 
@@ -107,6 +174,18 @@ function gpsmap_check_upgrade(bool $force = false) {
 	}
 }
 
+/**
+ * Hook implementation for Cacti's 'page_head' filter. Includes the
+ * Google Maps JavaScript API (with the configured API key, when set) and
+ * this plugin's GPSMaps.js/infobubble.js scripts on every page. Called by
+ * Cacti core via api_plugin_hook('page_head', ...) while rendering the
+ * page <head> section.
+ *
+ * @return void Outputs HTML directly.
+ *
+ * @global array $config Cacti global configuration array; used to build
+ *                        this plugin's script URLs.
+ */
 function gpsmap_page_head() {
 	global $config;
 
@@ -117,6 +196,17 @@ function gpsmap_page_head() {
 	print "<script type='text/javascript' src='" . $config['url_path'] . "plugins/gpsmap/js/infobubble.js'></script>" . PHP_EOL;
 }
 
+/**
+ * Reads this plugin's INFO file and returns its [info] section. Called
+ * from plugin_gpsmap_version()/gpsmap_check_upgrade() to detect/report
+ * the plugin's version.
+ *
+ * @return array The parsed [info] section of the plugin's INFO file (keys
+ *               such as name, version, author).
+ *
+ * @global array $config Cacti global configuration array; used to locate
+ *                        the plugin's base path.
+ */
 function gpsmap_version() {
 	global $config;
 	$info = parse_ini_file($config['base_path'] . '/plugins/gpsmap/INFO', true);
@@ -124,7 +214,28 @@ function gpsmap_version() {
 	return $info['info'];
 }
 
-// defines latitude and longitude for devices
+/**
+ * Hook implementation for Cacti's 'config_form' filter. Adds this
+ * plugin's Map Settings section (coverage-overlay inclusion, latitude/
+ * longitude, and, for Access Point host templates, directional coverage
+ * start/stop degrees and radius) to the Device edit form, immediately
+ * after the 'disabled' field. Called by Cacti core via
+ * api_plugin_hook('config_form', ...) while building the Device edit
+ * form.
+ *
+ * Defines latitude and longitude for devices.
+ *
+ * @return void
+ *
+ * @global array  $fields_host_edit The Device edit form's field
+ *                                  definitions, rebuilt here with this
+ *                                  plugin's fields inserted after
+ *                                  'disabled'.
+ * @global string $url_path        Cacti's configured URL path; used to
+ *                                  detect whether the current page is
+ *                                  host.php before querying Access Point
+ *                                  fields.
+ */
 function gpsmap_config_form() {
 	global $fields_host_edit, $url_path;
 

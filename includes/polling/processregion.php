@@ -28,7 +28,24 @@ if (!defined('GPSMAP_DNS_PRESERVE_FAILURE_LIMIT')) {
 	define('GPSMAP_DNS_PRESERVE_FAILURE_LIMIT', 3);
 }
 
-// ---------------------------------------------------------------
+/**
+ * Loads the current device/tower set and renders a single subnet's map
+ * artifacts. Kept for single-subnet callers; gpsmap_poller_bottom()
+ * instead calls gpsmap_load_devices() once and reuses the result across
+ * every subnet via gpsmap_render_region(), since the device query and
+ * per-device DNS lookups are the expensive part of a poller cycle.
+ *
+ * The poller renders one file set per subnet prefix. Loading the device
+ * list is the expensive part -- one query plus a DNS lookup per device --
+ * so it happens once in gpsmap_load_devices() and every render reuses
+ * the result. region() keeps the old load-then-render shape for single
+ * callers.
+ *
+ * @param string $subnet The subnet prefix (or 'all'/'v6-...' stem) to
+ *                       render.
+ *
+ * @return void
+ */
 function region(string $subnet): void {
 	$state      = gpsmap_poll_state();
 	$hostArrays = gpsmap_load_devices(gpsmap_enable_all(), $state);
@@ -36,9 +53,17 @@ function region(string $subnet): void {
 	gpsmap_render_region($hostArrays, $subnet, $state);
 }
 
-// ---------------------------------------------------------------
-/* One query and no synchronous DNS. Returns array(towers, devices) in the
- * order coveragexml.php and xmlCreate() expect. */
+/**
+ * Determines whether disabled devices should still be included when
+ * loading/rendering the map, per the 'gpsmap_enableall' setting. Called
+ * from gpsmap_poller_bottom() and region() before loading devices.
+ *
+ * pollinginitial.php assigns $enableAll from inside callRegion(), so the
+ * global that used to be read here was never bound and the setting was
+ * inert. Read it where it is needed instead.
+ *
+ * @return bool True when disabled devices should be included on the map.
+ */
 function gpsmap_enable_all(): bool {
 	/* pollinginitial.php assigns $enableAll from inside callRegion(), so the
 	 * global that used to be read here was never bound and the setting was
@@ -46,7 +71,32 @@ function gpsmap_enable_all(): bool {
 	return read_config_option('gpsmap_enableall') === 'on';
 }
 
-// ---------------------------------------------------------------
+/**
+ * Queries every device using a Map Template (with valid, non-zero
+ * coordinates) and builds the tower/device host object arrays used by
+ * every map artifact renderer, resolving each device's plotted IP from
+ * either a literal hostname or the asynchronously-refreshed DNS cache,
+ * and tracking any stale/unresolved/expired hostnames on the given poll
+ * state for later reporting/preservation logic. Called once per poller
+ * cycle from gpsmap_poller_bottom() (and from region() for single-
+ * subnet renders) so the expensive device query and DNS lookups aren't
+ * repeated per subnet.
+ *
+ * @param bool                 $enableAll Whether to include disabled
+ *                                        devices.
+ * @param GpsmapPollState|null $state     The poll-state object to record
+ *                                        load failures and stale/
+ *                                        unresolved/expired hostnames
+ *                                        onto; created automatically when
+ *                                        null.
+ *
+ * @return array A two-element array [$towerArray, $hostArray] of `host`
+ *               objects, in the order coveragexml.php and xmlCreate()
+ *               expect.
+ *
+ * @global array $config Cacti global configuration array; used to load
+ *                        the `host` class definition.
+ */
 function gpsmap_load_devices(bool $enableAll, ?GpsmapPollState $state = null): array {
 	global $config;
 	$state ??= gpsmap_poll_state();
@@ -208,9 +258,21 @@ function gpsmap_load_devices(bool $enableAll, ?GpsmapPollState $state = null): a
 	return [$towerArray, $hostArray];
 }
 
-// ---------------------------------------------------------------
-/* Rendering mutates showMap and grows tower radii, so the shared device set
- * has to be returned to its loaded state before each subnet. */
+/**
+ * Resets every host object's per-render mutable state (visibility flag
+ * and coverage radius) back to its originally loaded values. Called from
+ * gpsmap_render_region() before rendering each subnet, since rendering
+ * mutates showMap and grows tower radii and the shared device set has to
+ * be returned to its loaded state before each subnet.
+ *
+ * Rendering mutates showMap and grows tower radii, so the shared device
+ * set has to be returned to its loaded state before each subnet.
+ *
+ * @param array $hostArrays The [$towerArray, $hostArray] pair from
+ *                          gpsmap_load_devices() to reset.
+ *
+ * @return void
+ */
 function gpsmap_reset_devices(array $hostArrays): void {
 	foreach ($hostArrays as $group) {
 		foreach ($group as $host) {
@@ -220,9 +282,20 @@ function gpsmap_reset_devices(array $hostArrays): void {
 	}
 }
 
-// ---------------------------------------------------------------
-/* Every distinct /8, /16 and /24 prefix present in the loaded device set.
- * Derived from the already-resolved addresses, so no second DNS pass. */
+/**
+ * Derives every distinct IPv4 /8, /16, and /24 prefix (and IPv6 16/32/48-
+ * bit prefixes) present in the loaded device/tower set, used to
+ * determine which subnet artifact files need to be (re)generated this
+ * cycle. Called from gpsmap_poller_bottom() after loading devices.
+ *
+ * Every distinct /8, /16 and /24 prefix present in the loaded device set.
+ * Derived from the already-resolved addresses, so no second DNS pass.
+ *
+ * @param array $hostArrays The [$towerArray, $hostArray] pair from
+ *                          gpsmap_load_devices() to scan.
+ *
+ * @return array The list of distinct subnet prefix stems found.
+ */
 function gpsmap_subnet_prefixes(array $hostArrays): array {
 	/* Keyed rather than searched: in_array() over a growing list is quadratic in
 	 * the number of prefixes, which is material on a large estate. */
@@ -254,11 +327,27 @@ function gpsmap_subnet_prefixes(array $hostArrays): array {
 	return array_values($prefixes);
 }
 
-// ---------------------------------------------------------------
-/* Keep subnet snapshots consistent with all.xml while DNS is unavailable.
- * The previous subnet files are the only durable record of an unresolved
- * Device's last address, so retain every owned prefix that still contains one
- * of the markers eligible for last-known-good preservation. */
+/**
+ * Determines which existing subnet artifact files must be regenerated
+ * this cycle purely to preserve a last-known-good marker for a device
+ * whose hostname currently can't be resolved (rather than because a live
+ * device still maps to that subnet), by scanning previously generated
+ * subnet XML files for markers matching the poll state's unresolved
+ * device ids. Called from gpsmap_poller_bottom() alongside
+ * gpsmap_subnet_prefixes() to build the full set of subnets to render.
+ *
+ * Keep subnet snapshots consistent with all.xml while DNS is
+ * unavailable. The previous subnet files are the only durable record of
+ * an unresolved Device's last address, so retain every owned prefix that
+ * still contains one of the markers eligible for last-known-good
+ * preservation.
+ *
+ * @param GpsmapPollState $state The current poll state, including the
+ *                              list of unresolved device ids.
+ *
+ * @return array The list of subnet prefix stems whose files must be
+ *               regenerated to preserve an unresolved device's marker.
+ */
 function gpsmap_preserved_subnet_prefixes(GpsmapPollState $state): array {
 	if ($state->unresolvedDeviceIds === []) {
 		return [];
@@ -308,7 +397,35 @@ function gpsmap_preserved_subnet_prefixes(GpsmapPollState $state): array {
 	return array_values($prefixes);
 }
 
-// ---------------------------------------------------------------
+/**
+ * Renders one subnet's (or 'all'/'v6-...' region's) complete set of map
+ * artifacts (KML, XML, coverage overlay, and the drill-down IP link
+ * list), computing which loaded hosts fall within the requested subnet
+ * at the appropriate IPv4/IPv6 prefix depth and marking the rest hidden
+ * for this render. Called from gpsmap_poller_bottom() for each subnet
+ * returned by gpsmap_subnet_prefixes()/gpsmap_preserved_subnet_prefixes(),
+ * and from region() for a single ad-hoc subnet.
+ *
+ * @param array                 $hostArrays The [$towerArray, $hostArray]
+ *                                          pair from gpsmap_load_devices()
+ *                                          to render.
+ * @param string                $subnet     The subnet prefix (or
+ *                                          'all'/'v6-...' stem) to
+ *                                          render.
+ * @param GpsmapPollState|null  $state      The current poll state, used
+ *                                          for last-known-good
+ *                                          preservation decisions;
+ *                                          created automatically when
+ *                                          null.
+ *
+ * @return bool True once all of the subnet's artifacts (KML/XML/
+ *              coverage/menu documents) have been successfully
+ *              written; false when $subnet failed validation, or when
+ *              createDoc() or the menu artifact write fails.
+ *
+ * @global array $config Cacti global configuration array; used to build
+ *                        graph preview links.
+ */
 function gpsmap_render_region(array $hostArrays, string $subnet, ?GpsmapPollState $state = null): bool {
 	global $config;
 	$state ??= gpsmap_poll_state();
