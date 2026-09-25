@@ -32,17 +32,16 @@
  * @global array $config Cacti global configuration array; used to build
  *                        the tab's image/link URLs.
  */
-function gpsmap_show_tab () {
+function gpsmap_show_tab() {
 	global $config;
 
 	if (api_user_realm_auth('gpsmap.php')) {
 		$cp = false;
 
-		if (basename(get_current_page()) == 'gpsmap.php'){
+		if (basename(get_current_page()) == 'gpsmap.php') {
 			$cp = true;
 		}
 
-		print '<a href="' . $config['url_path'] . 'plugins/gpsmap/gpsmap.php"><img src="' . $config['url_path'] . 'plugins/gpsmap/images/tab_gpsmap' . ($cp ? '_down': '') . '.gif" alt="' . __('Maps', 'gpsmap') . '"></a>';
+		print '<a href="' . $config['url_path'] . 'plugins/gpsmap/gpsmap.php"><img src="' . $config['url_path'] . 'plugins/gpsmap/images/tab_gpsmap' . ($cp ? '_down' : '') . '.gif" alt="' . __('Maps', 'gpsmap') . '"></a>';
 	}
 }
-

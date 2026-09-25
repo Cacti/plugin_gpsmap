@@ -20,9 +20,9 @@
 */
 
 require_once(__DIR__ . '/../gpsmap_security.php');
-//get all icons in the icon folder and create an icon list.
-//This a process to dynamically create the javascript for each icon.
-//This is separate from the function in customicons.php
+// get all icons in the icon folder and create an icon list.
+// This a process to dynamically create the javascript for each icon.
+// This is separate from the function in customicons.php
 /* Use relative $config['url_path'] for icon URLs. This avoids injecting
  * an attacker-controlled origin if base_url were set to an external domain. */
 global $config;
@@ -53,10 +53,9 @@ if ($icons !== false) {
 		$icon     = $base;
 
 		echo 'gpsmap.', $icon, ' = {', PHP_EOL,
-			'url : ', json_encode($icon_url, JSON_HEX_TAG | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR), ',', PHP_EOL,
-			'size : new google.maps.Size(12, 20),', PHP_EOL,
-			'anchor : new google.maps.Point(6, 20)};', PHP_EOL, PHP_EOL
-		;
+		'url : ', json_encode($icon_url, JSON_HEX_TAG | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR), ',', PHP_EOL,
+		'size : new google.maps.Size(12, 20),', PHP_EOL,
+		'anchor : new google.maps.Point(6, 20)};', PHP_EOL, PHP_EOL;
 	}
 
 	closedir($icons);

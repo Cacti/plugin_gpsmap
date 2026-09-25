@@ -19,15 +19,16 @@
  +-------------------------------------------------------------------------+
 */
 
-//Setup of base parameters and get info.
-$body = "";
+// Setup of base parameters and get info.
+$body = '';
 
-//DISPLAY SETTINGS
-$enableAll = read_config_option("gpsmap_enableall");
-if ($enableAll === "on") {
+// DISPLAY SETTINGS
+$enableAll = read_config_option('gpsmap_enableall');
+
+if ($enableAll === 'on') {
 	$enableAll = true;
 } else {
 	$enableAll = false;
 }
 
-//KML Output
+// KML Output

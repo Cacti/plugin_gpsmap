@@ -27,55 +27,55 @@
  * breadcrumb trail.
  *
  * @param array $nav The existing breadcrumb map contributed by Cacti
- *                    core and other plugins.
+ *                   core and other plugins.
  *
  * @return array The $nav array with this plugin's breadcrumb entries
  *               added.
  */
 function gpsmap_draw_navigation_text($nav) {
-   $nav['gpsmap.php:'] = array(
-		'title' => __('Maps', 'gpsmap'),
+	$nav['gpsmap.php:'] = [
+		'title'   => __('Maps', 'gpsmap'),
 		'mapping' => '',
-		'url' => 'gpsmap.php',
-		'level' => '0'
-	);
+		'url'     => 'gpsmap.php',
+		'level'   => '0'
+	];
 
-   $nav['gpstemplates.php:'] = array(
-		'title' => __('Map Templates', 'gpsmap'),
+	$nav['gpstemplates.php:'] = [
+		'title'   => __('Map Templates', 'gpsmap'),
 		'mapping' => 'index.php:',
-		'url' => 'gpstemplates.php',
-		'level' => '1'
-	);
+		'url'     => 'gpstemplates.php',
+		'level'   => '1'
+	];
 
-   $nav['gpstemplates.php:save'] = array(
-		'title' => __('Map Templates', 'gpsmap'),
+	$nav['gpstemplates.php:save'] = [
+		'title'   => __('Map Templates', 'gpsmap'),
 		'mapping' => 'index.php:',
-		'url' => 'gpstemplates.php',
-		'level' => '1'
-	);
+		'url'     => 'gpstemplates.php',
+		'level'   => '1'
+	];
 
-   $nav['gpstemplates.php:add'] = array(
-		'title' => __('Map Templates', 'gpsmap'),
+	$nav['gpstemplates.php:add'] = [
+		'title'   => __('Map Templates', 'gpsmap'),
 		'mapping' => 'index.php:',
-		'url' => 'gpstemplates.php',
-		'level' => '1'
-	);
+		'url'     => 'gpstemplates.php',
+		'level'   => '1'
+	];
 
-   $nav['gpstemplates.php:actions'] = array(
-		'title' => __('Map Templates', 'gpsmap'),
+	$nav['gpstemplates.php:actions'] = [
+		'title'   => __('Map Templates', 'gpsmap'),
 		'mapping' => 'index.php:',
-		'url' => 'gpstemplates.php',
-		'level' => '1'
-	);
+		'url'     => 'gpstemplates.php',
+		'level'   => '1'
+	];
 
-   $nav['gpstemplates_add.php:'] = array(
-		'title' => __('Create New Template', 'gpsmap'),
+	$nav['gpstemplates_add.php:'] = [
+		'title'   => __('Create New Template', 'gpsmap'),
 		'mapping' => 'index.php:',
-		'url' => 'gpstemplates_add.php',
-		'level' => '1'
-	);
+		'url'     => 'gpstemplates_add.php',
+		'level'   => '1'
+	];
 
-   return $nav;
+	return $nav;
 }
 
 /**
@@ -91,8 +91,8 @@ function gpsmap_draw_navigation_text($nav) {
  *                      with this plugin's entry.
  */
 function gpsmap_config_arrays() {
-   global $menu;
-   $menu[__('Templates')]['plugins/gpsmap/gpstemplates.php'] = __('Map', 'gpsmap');
+	global $menu;
+	$menu[__('Templates')]['plugins/gpsmap/gpstemplates.php'] = __('Map', 'gpsmap');
 }
 
 /**
@@ -115,43 +115,43 @@ function gpsmap_api_device_save($save) {
 		$save['GPScoverage'] = 'off';
 	}
 
-    if (isset_request_var('latitude')) {
-        $save['latitude'] = form_input_validate(get_nfilter_request_var('latitude'), 'latitude', '', true, 3);
+	if (isset_request_var('latitude')) {
+		$save['latitude'] = form_input_validate(get_nfilter_request_var('latitude'), 'latitude', '', true, 3);
 	} else {
-        $save['latitude'] = form_input_validate('', 'latitude', '', true, 3);
+		$save['latitude'] = form_input_validate('', 'latitude', '', true, 3);
 	}
 
-    if (isset_request_var('longitude')) {
-        $save['longitude'] = form_input_validate(get_nfilter_request_var('longitude'), 'longitude', '', true, 3);
+	if (isset_request_var('longitude')) {
+		$save['longitude'] = form_input_validate(get_nfilter_request_var('longitude'), 'longitude', '', true, 3);
 	} else {
-        $save['longitude'] = form_input_validate('', 'longitude', '', true, 3);
+		$save['longitude'] = form_input_validate('', 'longitude', '', true, 3);
 	}
 
-    if (isset_request_var('start')) {
-        $save['start'] = form_input_validate(get_nfilter_request_var('start'), 'start', '', true, 3);
+	if (isset_request_var('start')) {
+		$save['start'] = form_input_validate(get_nfilter_request_var('start'), 'start', '', true, 3);
 	} else {
-        $save['start'] = form_input_validate('', 'start', '', true, 3);
+		$save['start'] = form_input_validate('', 'start', '', true, 3);
 	}
 
-    if (isset_request_var('stop')) {
-        $save['stop'] = form_input_validate(get_nfilter_request_var('stop'), 'stop', '', true, 3);
+	if (isset_request_var('stop')) {
+		$save['stop'] = form_input_validate(get_nfilter_request_var('stop'), 'stop', '', true, 3);
 	} else {
-        $save['stop'] = form_input_validate('', 'stop', '', true, 3);
+		$save['stop'] = form_input_validate('', 'stop', '', true, 3);
 	}
 
-    if (isset_request_var('rdistance')) {
-        $save['rdistance'] = form_input_validate(get_nfilter_request_var('rdistance'), 'distance', '', true, 3);
+	if (isset_request_var('rdistance')) {
+		$save['rdistance'] = form_input_validate(get_nfilter_request_var('rdistance'), 'distance', '', true, 3);
 	} else {
-        $save['rdistance'] = form_input_validate('', 'rdistance', '', true, 3);
+		$save['rdistance'] = form_input_validate('', 'rdistance', '', true, 3);
 	}
 
-    if (isset_request_var('groupnum')) {
-        $save['groupnum'] = form_input_validate(get_nfilter_request_var('groupnum'), 'groupnum', '', true, 3);
+	if (isset_request_var('groupnum')) {
+		$save['groupnum'] = form_input_validate(get_nfilter_request_var('groupnum'), 'groupnum', '', true, 3);
 	} else {
-        $save['groupnum'] = form_input_validate('', 'groupnum', '', true, 3);
+		$save['groupnum'] = form_input_validate('', 'groupnum', '', true, 3);
 	}
 
-    return $save;
+	return $save;
 }
 
 /**
@@ -179,130 +179,129 @@ function gpsmap_config_settings() {
 
 	$tabs['gpsmap'] = __('Maps', 'gpsmap');
 
-	$settings['gpsmap'] = array(
-		'gpsmap_header' => array(
+	$settings['gpsmap'] = [
+		'gpsmap_header' => [
 			'friendly_name' => __('Maps', 'gpsmap'),
 			'method'        => 'spacer',
-		),
-		'gpsmap_apikey' => array(
+		],
+		'gpsmap_apikey' => [
 			'friendly_name' => __('Google API Key', 'gpsmap'),
 			'description'   => __('The Google Maps API Key is not required but highly recommended, get more info at <a href=\'https://developers.google.com/maps/documentation/javascript/tutorial#api_key\'>Google Documentation</a>.', 'gpsmap'),
 			'method'        => 'textbox',
 			'max_length'    => 100,
 			'size'          => 50
-		),
-		'gpsmap_geoloc' => array(
+		],
+		'gpsmap_geoloc' => [
 			'friendly_name' => __('Geolocation URL', 'gpsmap'),
-			'description' => __('Enter the URL of the IP to Geolocation lookup service.  Every devices IP address will be tested against this location service if not set to determine the devices Geolocation.  The devices IP address will be appended to the end of this URL.', 'gpsmap'),
+			'description'   => __('Enter the URL of the IP to Geolocation lookup service.  Every devices IP address will be tested against this location service if not set to determine the devices Geolocation.  The devices IP address will be appended to the end of this URL.', 'gpsmap'),
 			'method'        => 'textbox',
 			'default'       => 'http://ipinfo.io/',
 			'max_length'    => 80,
-			'size'          => 40 
-		),
-		'gpsmap_latitude' => array(
+			'size'          => 40
+		],
+		'gpsmap_latitude' => [
 			'friendly_name' => __('Initial Latitude', 'gpsmap'),
 			'description'   => __('Defines the centering of the map', 'gpsmap'),
 			'method'        => 'textbox',
 			'max_length'    => 12,
 			'default'       => 33.8734,
-			'size'          => 10 
-        ),
-        'gpsmap_longitude' => array(
+			'size'          => 10
+		],
+		'gpsmap_longitude' => [
 			'friendly_name' => __('Initial Longitude', 'gpsmap'),
 			'description'   => __('Defines the centering of the map', 'gpsmap'),
 			'method'        => 'textbox',
 			'max_length'    => 12,
 			'default'       => -115.901,
-			'size'          => 10 
-		),
-		'gpsmap_zoom' => array(
+			'size'          => 10
+		],
+		'gpsmap_zoom' => [
 			'friendly_name' => __('Initial Elevation', 'gpsmap'),
 			'description'   => __('Defines the elevation of the map from 0 - 12', 'gpsmap'),
 			'method'        => 'textbox',
 			'default'       => 9,
 			'max_length'    => 2,
-			'size'          => 4 
-		),
-		'gpsmap_hostspacer' => array(
+			'size'          => 4
+		],
+		'gpsmap_hostspacer' => [
 			'friendly_name' => __('Display Settings', 'gpsmap'),
 			'method'        => 'spacer',
-		),
-		'gpsmap_enableall' => array(
+		],
+		'gpsmap_enableall' => [
 			'friendly_name' => __('Display Disabled Devices', 'gpsmap'),
 			'description'   => __('Allow the display of disabled Devices on the Map', 'gpsmap'),
 			'method'        => 'checkbox',
 			'default'       => '',
-		),
-		'gpsmap_coveragemap' => array(
+		],
+		'gpsmap_coveragemap' => [
 			'friendly_name' => __('Coverage Overlay', 'gpsmap'),
 			'description'   => __('Draws a transparent circle around an AP with a radius equal to the furthest node in the same subnet', 'gpsmap'),
 			'method'        => 'checkbox',
 			'default'       => ''
-		),
-		'gpsmap_refreshMap' => array(
+		],
+		'gpsmap_refreshMap' => [
 			'friendly_name' => __('Map Refresh', 'gpsmap'),
 			'description'   => __('Refreshes map after set minutes. Recommend set to poller interval, 0 to disable.', 'gpsmap'),
 			'method'        => 'textbox',
 			'default'       => '5',
 			'max_length'    => 2,
-			'size'          => 4 
-        ),
-		'gpsmap_overlayspacer' => array(
+			'size'          => 4
+		],
+		'gpsmap_overlayspacer' => [
 			'friendly_name' => __('Overlay Settings', 'gpsmap'),
 			'method'        => 'spacer',
-		),
-		'gpsmap_terror' => array(
+		],
+		'gpsmap_terror' => [
 			'friendly_name' => __('Tab Radius (Required)', 'gpsmap'),
 			'description'   => __('Defines radius to combine points into one. (default: 0.0003)', 'gpsmap'),
 			'method'        => 'textbox',
 			'default'       => '.0003',
 			'max_length'    => 7,
-			'size'          => 4 
-		),
-		'gpsmap_fillcolor' => array(
+			'size'          => 4
+		],
+		'gpsmap_fillcolor' => [
 			'friendly_name' => __('Fill Color', 'gpsmap'),
 			'description'   => __('The overlay circle fill color as FFFFFF', 'gpsmap'),
 			'method'        => 'drop_color',
 			'default'       => '005D57',
-		),
-		'gpsmap_licolor' => array(
+		],
+		'gpsmap_licolor' => [
 			'friendly_name' => __('Ring Color', 'gpsmap'),
 			'description'   => __('Defines the outer rim color as FFFFFF', 'gpsmap'),
 			'method'        => 'drop_color',
 			'default'       => '005D57',
-		),
-		'gpsmap_liwidth' => array(
+		],
+		'gpsmap_liwidth' => [
 			'friendly_name' => __('Ring Width', 'gpsmap'),
 			'description'   => __('Outer Ring width', 'gpsmap'),
 			'method'        => 'textbox',
 			'default'       => '2',
 			'max_length'    => 7,
-			'size'          => 4 
-		),
-		'gpsmap_fillopa' => array(
+			'size'          => 4
+		],
+		'gpsmap_fillopa' => [
 			'friendly_name' => __('Fill Opacity', 'gpsmap'),
 			'description'   => __('Defines the fill opacity between 0 and 1', 'gpsmap'),
 			'method'        => 'textbox',
 			'default'       => '.2',
 			'max_length'    => 2,
-			'size'          => 4 
-		),
-		'gpsmap_liopa' => array(
+			'size'          => 4
+		],
+		'gpsmap_liopa' => [
 			'friendly_name' => __('Ring Opacity', 'gpsmap'),
 			'description'   => __('Defines the ring opacity between 0 and 1', 'gpsmap'),
 			'method'        => 'textbox',
 			'default'       => '.8',
 			'max_length'    => 2,
-			'size'          => 4 
-		),
-		'gpsmap_circlequality' => array(
+			'size'          => 4
+		],
+		'gpsmap_circlequality' => [
 			'friendly_name' => __('Quality', 'gpsmap'),
 			'description'   => __('Number of divisions in circle (preferably > 15) greater numbers can slow down browser performance.', 'gpsmap'),
 			'method'        => 'textbox',
 			'default'       => '15',
 			'max_length'    => 3,
-			'size'          => 4 
-		)
-    );
+			'size'          => 4
+		]
+	];
 }
-

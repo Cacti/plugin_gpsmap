@@ -36,7 +36,7 @@ require_once(__DIR__ . '/../../gpsmap_security.php');
 function iconskml(): string {
 	global $config;
 
-	//register one KML style per icon in the icon folder
+	// register one KML style per icon in the icon folder
 	$kmlDomain = read_config_option('base_url');
 	$icon_dir  = $config['base_path'] . '/plugins/gpsmap/images/icons';
 	$iconlist  = '';

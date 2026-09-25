@@ -343,7 +343,7 @@ function gpsmap_subnet_prefixes(array $hostArrays): array {
  * preservation.
  *
  * @param GpsmapPollState $state The current poll state, including the
- *                              list of unresolved device ids.
+ *                               list of unresolved device ids.
  *
  * @return array The list of subnet prefix stems whose files must be
  *               regenerated to preserve an unresolved device's marker.
@@ -406,17 +406,17 @@ function gpsmap_preserved_subnet_prefixes(GpsmapPollState $state): array {
  * returned by gpsmap_subnet_prefixes()/gpsmap_preserved_subnet_prefixes(),
  * and from region() for a single ad-hoc subnet.
  *
- * @param array                 $hostArrays The [$towerArray, $hostArray]
- *                                          pair from gpsmap_load_devices()
- *                                          to render.
- * @param string                $subnet     The subnet prefix (or
- *                                          'all'/'v6-...' stem) to
- *                                          render.
- * @param GpsmapPollState|null  $state      The current poll state, used
- *                                          for last-known-good
- *                                          preservation decisions;
- *                                          created automatically when
- *                                          null.
+ * @param array                $hostArrays The [$towerArray, $hostArray]
+ *                                         pair from gpsmap_load_devices()
+ *                                         to render.
+ * @param string               $subnet     The subnet prefix (or
+ *                                         'all'/'v6-...' stem) to
+ *                                         render.
+ * @param GpsmapPollState|null $state      The current poll state, used
+ *                                         for last-known-good
+ *                                         preservation decisions;
+ *                                         created automatically when
+ *                                         null.
  *
  * @return bool True once all of the subnet's artifacts (KML/XML/
  *              coverage/menu documents) have been successfully

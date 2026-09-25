@@ -52,7 +52,15 @@ function plugin_gpsmap_install() {
 	include_once($config['base_path'] . '/plugins/gpsmap/includes/setup/database.php');
 
 	if (gpsmap_setup_database()) {
-		$version = plugin_gpsmap_version()['version'];
+		$info = plugin_gpsmap_version();
+
+		if (empty($info['version'])) {
+			cacti_log('ERROR: gpsmap plugin INFO file is missing required fields, skipping version registration', false, 'GPSMAP');
+
+			return;
+		}
+
+		$version = $info['version'];
 
 		if (db_execute_prepared('UPDATE plugin_config SET version = ? WHERE directory = ?', [$version, 'gpsmap'])) {
 			set_config_option('plugin_gpsmap_version', $version);
@@ -131,7 +139,7 @@ function plugin_gpsmap_version() {
  * when the old key actually exists with a non-empty value.
  *
  * @param bool $force Whether to run the upgrade check regardless of the
- *                     current page; defaults to false.
+ *                    current page; defaults to false.
  *
  * @return void
  *
@@ -147,7 +155,14 @@ function gpsmap_check_upgrade(bool $force = false) {
 		return;
 	}
 
-	$info    = plugin_gpsmap_version();
+	$info = plugin_gpsmap_version();
+
+	if (empty($info['version'])) {
+		cacti_log('ERROR: gpsmap plugin INFO file is missing required fields, skipping upgrade check', false, 'GPSMAP');
+
+		return;
+	}
+
 	$current = $info['version'];
 	$old     = read_config_option('plugin_gpsmap_version', true);
 
@@ -211,7 +226,7 @@ function gpsmap_version() {
 	global $config;
 	$info = parse_ini_file($config['base_path'] . '/plugins/gpsmap/INFO', true);
 
-	return $info['info'];
+	return isset($info['info']) && is_array($info['info']) ? $info['info'] : [];
 }
 
 /**
@@ -287,7 +302,7 @@ function gpsmap_config_form() {
 					WHERE id = ?',
 					[$did]);
 
-				if (cacti_sizeof($row) && $row['AP'] == 1) {
+				if (is_array($row) && cacti_sizeof($row) && $row['AP'] == 1) {
 					$fields_host_edit3['start'] = [
 						'friendly_name' => __('Starting Degree', 'gpsmap'),
 						'description'   => __('Starting degree for directional area between 0-360', 'gpsmap'),
