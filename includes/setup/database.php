@@ -66,7 +66,7 @@ function gpsmap_upgrade_database(string $old = '', bool $force = false): void {
 
 	$v = plugin_gpsmap_version();
 
-	if (!isset($v['version'])) {
+	if (empty($v['version'])) {
 		cacti_log('ERROR: gpsmap plugin INFO file is missing required fields, skipping schema upgrade', false, 'GPSMAP');
 
 		return;

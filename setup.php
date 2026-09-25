@@ -54,7 +54,7 @@ function plugin_gpsmap_install() {
 	if (gpsmap_setup_database()) {
 		$info = plugin_gpsmap_version();
 
-		if (!isset($info['version'])) {
+		if (empty($info['version'])) {
 			cacti_log('ERROR: gpsmap plugin INFO file is missing required fields, skipping version registration', false, 'GPSMAP');
 
 			return;
@@ -157,7 +157,7 @@ function gpsmap_check_upgrade(bool $force = false) {
 
 	$info = plugin_gpsmap_version();
 
-	if (!isset($info['version'])) {
+	if (empty($info['version'])) {
 		cacti_log('ERROR: gpsmap plugin INFO file is missing required fields, skipping upgrade check', false, 'GPSMAP');
 
 		return;
