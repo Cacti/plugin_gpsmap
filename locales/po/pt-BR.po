@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cacti\n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2026-09-21 13:13-0400\n"
+"POT-Creation-Date: 2026-09-25 10:38-0400\n"
 "PO-Revision-Date: 2020-12-14 21:32-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -27,169 +27,169 @@ msgstr "Certifique-se de configurar o Maps corretamente primeiro em Configuraç�
 msgid "Delete"
 msgstr "Excluir"
 
-#: gpstemplates.php:65
+#: gpstemplates.php:78
 #, fuzzy
 msgid "Map Templates"
 msgstr "Modelos de mapa"
 
-#: gpstemplates.php:68
+#: gpstemplates.php:81
 #, fuzzy
 msgid "Host Template"
 msgstr "Modelo de host"
 
-#: gpstemplates.php:69 gpstemplates.php:143
+#: gpstemplates.php:82 gpstemplates.php:175
 #, fuzzy
 msgid "Up Image"
 msgstr "Up Image"
 
-#: gpstemplates.php:70 gpstemplates.php:151
+#: gpstemplates.php:83 gpstemplates.php:183
 #, fuzzy
 msgid "Recovering Image"
 msgstr "Recuperando Imagem"
 
-#: gpstemplates.php:71 gpstemplates.php:159
+#: gpstemplates.php:84 gpstemplates.php:191
 #, fuzzy
 msgid "Down Image"
 msgstr "Down Image"
 
-#: gpstemplates.php:72
+#: gpstemplates.php:85
 #, fuzzy
 msgid "Is AP"
 msgstr "É AP"
 
-#: gpstemplates.php:84
+#: gpstemplates.php:97
 msgid "True"
 msgstr "Verdadeiro"
 
-#: gpstemplates.php:86
+#: gpstemplates.php:99
 msgid "False"
 msgstr "Falso"
 
-#: gpstemplates.php:136
+#: gpstemplates.php:168
 #, fuzzy
 msgid "Device Template"
 msgstr "Modelo de dispositivo"
 
-#: gpstemplates.php:137
+#: gpstemplates.php:169
 #, fuzzy
 msgid "Choose the Device Template to base this Map Template type."
 msgstr "Escolha o modelo de dispositivo para basear este tipo de modelo de mapa."
 
-#: gpstemplates.php:144
+#: gpstemplates.php:176
 #, fuzzy
 msgid "Select the Image to Show for an Up Device"
 msgstr "Selecione a imagem a ser exibida para um dispositivo superior"
 
-#: gpstemplates.php:152
+#: gpstemplates.php:184
 #, fuzzy
 msgid "Select the Image to Show for a Recovering Device"
 msgstr "Selecione a imagem para mostrar para um dispositivo de recuperação"
 
-#: gpstemplates.php:160
+#: gpstemplates.php:192
 #, fuzzy
 msgid "Select the Image to Show for a Down Device"
 msgstr "Selecione a imagem para mostrar para um dispositivo inativo"
 
-#: gpstemplates.php:167
+#: gpstemplates.php:199
 #, fuzzy
 msgid "Access Point"
 msgstr "Ponto de acesso"
 
-#: gpstemplates.php:168
+#: gpstemplates.php:200
 #, fuzzy
 msgid "Does this Device Template Represent an Access Point."
 msgstr "Este modelo de dispositivo representa um ponto de acesso?"
 
-#: gpstemplates.php:171
+#: gpstemplates.php:203
 msgid "No"
 msgstr "Não"
 
-#: gpstemplates.php:172
+#: gpstemplates.php:204
 msgid "Yes"
 msgstr "Sim"
 
-#: gpstemplates.php:181
+#: gpstemplates.php:213
 #, fuzzy
 msgid "Map Template Edit"
 msgstr "Editar modelo de mapa"
 
-#: setup.php:35
+#: setup.php:49
 #, fuzzy
 msgid "Configure Maps"
 msgstr "Configurar mapas"
 
-#: setup.php:36
+#: setup.php:50
 #, fuzzy
 msgid "View Maps"
 msgstr "Ver mapas"
 
-#: setup.php:139
+#: setup.php:265
 msgid "Map Settings"
 msgstr "Configurações do Mapa"
 
-#: setup.php:144
+#: setup.php:270
 #, fuzzy
 msgid "Overlay Inclusion"
 msgstr "Inclusão de sobreposição"
 
-#: setup.php:145
+#: setup.php:271
 #, fuzzy
 msgid "Disable to plot host only, not included in coverage overlay."
 msgstr "Desative para plotar apenas o host, não incluído na sobreposição de cobertura."
 
-#: setup.php:152
+#: setup.php:278
 msgid "Latitude"
 msgstr "Latitude"
 
-#: setup.php:153
+#: setup.php:279
 #, fuzzy
 msgid "The devices latitude coordinates"
 msgstr "As coordenadas de latitude dos dispositivos"
 
-#: setup.php:161
+#: setup.php:287
 msgid "Longitude"
 msgstr "Longitude"
 
-#: setup.php:162
+#: setup.php:288
 #, fuzzy
 msgid "The devices longitude coordinates"
 msgstr "As coordenadas de longitude dos dispositivos"
 
-#: setup.php:181
+#: setup.php:307
 #, fuzzy
 msgid "Starting Degree"
 msgstr "Grau inicial"
 
-#: setup.php:182
+#: setup.php:308
 #, fuzzy
 msgid "Starting degree for directional area between 0-360"
 msgstr "Grau inicial para área direcional entre 0-360"
 
-#: setup.php:190
+#: setup.php:316
 #, fuzzy
 msgid "Stopping Degree"
 msgstr "Grau de Parada"
 
-#: setup.php:191
+#: setup.php:317
 #, fuzzy
 msgid "Stopping degree for directional area, must be greater than the Starting Degree"
 msgstr "O grau de parada para área direcional deve ser maior que o grau inicial"
 
-#: setup.php:199
+#: setup.php:325
 #, fuzzy
 msgid "Specify Radius"
 msgstr "Especifique o raio"
 
-#: setup.php:200
+#: setup.php:326
 #, fuzzy
 msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
 msgstr "Especifique manualmente o raio do ponto de acesso. Defina como 0 para determinar o raio com base em dispositivos agrupados"
 
-#: setup.php:210
+#: setup.php:336
 msgid "Group ID"
 msgstr "ID do Grupo"
 
-#: setup.php:211
+#: setup.php:337
 #, fuzzy
 msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
 msgstr "Os grupos definem quais dispositivos são incluídos na sobreposição de cobertura. Será verificado em relação ao número do grupo de dispositivos AP. 0 para desativar"
