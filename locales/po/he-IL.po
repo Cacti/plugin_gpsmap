@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cacti\n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2026-09-21 13:13-0400\n"
+"POT-Creation-Date: 2026-09-25 10:38-0400\n"
 "PO-Revision-Date: 2020-12-14 21:28-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -27,170 +27,170 @@ msgstr "אנא הקפד להגדיר כראוי את מפות Google תחילה 
 msgid "Delete"
 msgstr "מחק"
 
-#: gpstemplates.php:65
+#: gpstemplates.php:78
 #, fuzzy
 msgid "Map Templates"
 msgstr "תבניות מפה"
 
-#: gpstemplates.php:68
+#: gpstemplates.php:81
 #, fuzzy
 msgid "Host Template"
 msgstr "תבנית מארח"
 
-#: gpstemplates.php:69 gpstemplates.php:143
+#: gpstemplates.php:82 gpstemplates.php:175
 #, fuzzy
 msgid "Up Image"
 msgstr "תמונה למעלה"
 
-#: gpstemplates.php:70 gpstemplates.php:151
+#: gpstemplates.php:83 gpstemplates.php:183
 #, fuzzy
 msgid "Recovering Image"
 msgstr "תמונה משחזרת"
 
-#: gpstemplates.php:71 gpstemplates.php:159
+#: gpstemplates.php:84 gpstemplates.php:191
 #, fuzzy
 msgid "Down Image"
 msgstr "תמונה למטה"
 
-#: gpstemplates.php:72
+#: gpstemplates.php:85
 #, fuzzy
 msgid "Is AP"
 msgstr "האם AP"
 
-#: gpstemplates.php:84
+#: gpstemplates.php:97
 msgid "True"
 msgstr "אמת"
 
-#: gpstemplates.php:86
+#: gpstemplates.php:99
 msgid "False"
 msgstr "שקר"
 
-#: gpstemplates.php:136
+#: gpstemplates.php:168
 #, fuzzy
 msgid "Device Template"
 msgstr "תבנית מכשיר"
 
-#: gpstemplates.php:137
+#: gpstemplates.php:169
 #, fuzzy
 msgid "Choose the Device Template to base this Map Template type."
 msgstr "בחר בתבנית המכשיר כדי לבסס סוג תבנית מפה זה."
 
-#: gpstemplates.php:144
+#: gpstemplates.php:176
 #, fuzzy
 msgid "Select the Image to Show for an Up Device"
 msgstr "בחר את התמונה להצגה עבור התקן למעלה"
 
-#: gpstemplates.php:152
+#: gpstemplates.php:184
 #, fuzzy
 msgid "Select the Image to Show for a Recovering Device"
 msgstr "בחר בתמונה להצגה עבור מכשיר משחזר"
 
-#: gpstemplates.php:160
+#: gpstemplates.php:192
 #, fuzzy
 msgid "Select the Image to Show for a Down Device"
 msgstr "בחר את התמונה להציג למכשיר למטה"
 
-#: gpstemplates.php:167
+#: gpstemplates.php:199
 #, fuzzy
 msgid "Access Point"
 msgstr "נקודת גישה"
 
-#: gpstemplates.php:168
+#: gpstemplates.php:200
 #, fuzzy
 msgid "Does this Device Template Represent an Access Point."
 msgstr "האם תבנית התקן זו מייצגת נקודת גישה."
 
-#: gpstemplates.php:171
+#: gpstemplates.php:203
 msgid "No"
 msgstr "לא"
 
-#: gpstemplates.php:172
+#: gpstemplates.php:204
 msgid "Yes"
 msgstr "כן"
 
-#: gpstemplates.php:181
+#: gpstemplates.php:213
 #, fuzzy
 msgid "Map Template Edit"
 msgstr "תבנית מפות עריכה"
 
-#: setup.php:35
+#: setup.php:49
 #, fuzzy
 msgid "Configure Maps"
 msgstr "הגדר תצורה של מפות"
 
-#: setup.php:36
+#: setup.php:50
 #, fuzzy
 msgid "View Maps"
 msgstr "צפו במפות"
 
-#: setup.php:139
+#: setup.php:265
 #, fuzzy
 msgid "Map Settings"
 msgstr "הגדרות מפה"
 
-#: setup.php:144
+#: setup.php:270
 #, fuzzy
 msgid "Overlay Inclusion"
 msgstr "הכללת שכבת-על"
 
-#: setup.php:145
+#: setup.php:271
 #, fuzzy
 msgid "Disable to plot host only, not included in coverage overlay."
 msgstr "השבת את מארח העלילה בלבד, לא נכלל בכיסוי כיסוי."
 
-#: setup.php:152
+#: setup.php:278
 msgid "Latitude"
 msgstr "קו רוחב"
 
-#: setup.php:153
+#: setup.php:279
 #, fuzzy
 msgid "The devices latitude coordinates"
 msgstr "קואורדינטות קו רוחב של המכשירים"
 
-#: setup.php:161
+#: setup.php:287
 msgid "Longitude"
 msgstr "קו אורך"
 
-#: setup.php:162
+#: setup.php:288
 #, fuzzy
 msgid "The devices longitude coordinates"
 msgstr "קואורדינטות אורך המכשירים"
 
-#: setup.php:181
+#: setup.php:307
 #, fuzzy
 msgid "Starting Degree"
 msgstr "החל תואר"
 
-#: setup.php:182
+#: setup.php:308
 #, fuzzy
 msgid "Starting degree for directional area between 0-360"
 msgstr "דרגת התחלה לאזור כיוון בין 0-360"
 
-#: setup.php:190
+#: setup.php:316
 #, fuzzy
 msgid "Stopping Degree"
 msgstr "עצירת תואר"
 
-#: setup.php:191
+#: setup.php:317
 #, fuzzy
 msgid "Stopping degree for directional area, must be greater than the Starting Degree"
 msgstr "דרגת עצירה לאזור כיוון, חייבת להיות גדולה יותר מתואר ההתחלה"
 
-#: setup.php:199
+#: setup.php:325
 #, fuzzy
 msgid "Specify Radius"
 msgstr "ציין את הרדיוס"
 
-#: setup.php:200
+#: setup.php:326
 #, fuzzy
 msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
 msgstr "ציין ידנית רדיוס עבור נקודת גישה. הגדר ל 0 כדי לקבוע את הרדיוס בהתבסס על התקנים מקובצים"
 
-#: setup.php:210
+#: setup.php:336
 msgid "Group ID"
 msgstr "מזהה הקבוצה"
 
-#: setup.php:211
+#: setup.php:337
 #, fuzzy
 msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
 msgstr "קבוצות מגדירות אילו מכשירים כלולים בכיסוי הכיסוי. ייבדק מול מספר קבוצת המכשירים של AP. 0 כדי להשבית"
