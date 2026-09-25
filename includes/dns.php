@@ -113,8 +113,8 @@ function gpsmap_reap_dns_cache(): bool {
  *                                hrtime(true)/1e9.
  *
  * @return int|false The number of hostnames successfully resolved and
- *                    cached this run, or false when a database error
- *                    prevented the refresh from completing.
+ *                   cached this run, or false when a database error
+ *                   prevented the refresh from completing.
  */
 function gpsmap_refresh_dns_cache(?callable $resolver = null, ?callable $clock = null): int|false {
 	$resolver ??= static fn (string $name): string => gpsmap_resolve_hostname($name);

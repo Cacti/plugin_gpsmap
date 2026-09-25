@@ -244,8 +244,8 @@ function gpsmap_xml_path(string $preemptive, string $extension): string {
  *                        48.
  *
  * @return string|null The encoded prefix token, or null when $address
- *                      isn't a valid IPv6 address or $length isn't
- *                      supported.
+ *                     isn't a valid IPv6 address or $length isn't
+ *                     supported.
  */
 function gpsmap_ipv6_prefix_token(string $address, int $length): ?string {
 	$packed = @inet_pton($address);
@@ -266,7 +266,7 @@ function gpsmap_ipv6_prefix_token(string $address, int $length): ?string {
  *                      ('v6-<length>-<hex>').
  *
  * @return string|null The 'address/length' CIDR string, or null when
- *                      $token is not a validly-formed prefix token.
+ *                     $token is not a validly-formed prefix token.
  */
 function gpsmap_ipv6_prefix_label(string $token): ?string {
 	if (!preg_match('/^v6-(16|32|48)-([0-9a-f]+)$/', $token, $matches)) {
@@ -280,6 +280,10 @@ function gpsmap_ipv6_prefix_label(string $token): ?string {
 	}
 
 	$packed = hex2bin(str_pad($matches[2], 32, '0'));
+
+	if ($packed === false) {
+		return null;
+	}
 
 	return inet_ntop($packed) . '/' . $length;
 }
@@ -321,7 +325,7 @@ function gpsmap_ipv6_prefix_contains(string $token, string $address): bool {
  * @param string $subnet The requested subnet value.
  *
  * @return string|null The normalized stem, or null when $subnet doesn't
- *                      match the allowed pattern.
+ *                     match the allowed pattern.
  */
 function gpsmap_artifact_stem(string $subnet): ?string {
 	$subnet = $subnet === '' ? 'all' : trim($subnet, '.');
@@ -343,7 +347,7 @@ function gpsmap_artifact_stem(string $subnet): ?string {
  * @return string The normalized artifact stem.
  *
  * @throws InvalidArgumentException When $subnet does not match the
- *                                   allowed stem pattern.
+ *                                  allowed stem pattern.
  */
 function gpsmap_require_artifact_stem(string $subnet): string {
 	$stem = gpsmap_artifact_stem($subnet);
@@ -511,7 +515,7 @@ function gpsmap_artifact_prune_threshold(int $cycleStartedAt, int $pollerInterva
  * cycle after regenerating this cycle's artifacts.
  *
  * @param int $olderThan The cutoff Unix timestamp; files modified before
- *                        this are eligible for removal.
+ *                       this are eligible for removal.
  *
  * @return int The number of files removed.
  *
@@ -582,16 +586,16 @@ function createDoc(array $hostArrays, string $preemptive, ?GpsmapPollState $stat
  * as measured truth. Called from xmlCreate() before writing a subnet's
  * XML document.
  *
- * @param string                $doc        The newly generated XML
- *                                          document string.
- * @param string                $preemptive The subnet prefix (or
- *                                          'all'/'v6-...' stem) being
- *                                          rendered.
- * @param GpsmapPollState|null  $state      The current poll state,
- *                                          including the list of
- *                                          unresolved device ids;
- *                                          created automatically when
- *                                          null.
+ * @param string               $doc        The newly generated XML
+ *                                         document string.
+ * @param string               $preemptive The subnet prefix (or
+ *                                         'all'/'v6-...' stem) being
+ *                                         rendered.
+ * @param GpsmapPollState|null $state      The current poll state,
+ *                                         including the list of
+ *                                         unresolved device ids;
+ *                                         created automatically when
+ *                                         null.
  *
  * @return string The XML document, with any preserved markers merged in
  *                (or unchanged when there was nothing to preserve, or

@@ -75,7 +75,7 @@ function templates() {
 
 	form_start('gpstemplates.php', 'chk');
 
-	html_start_box(__('Map Templates', 'gpsmap'), '100%', false, '3', 'center', 'gpstemplates.php?action=edit');
+	html_start_box(__('Map Templates', 'gpsmap'), '100%', false, 3, 'center', 'gpstemplates.php?action=edit');
 
 	$display_text = [
 		__('Host Template', 'gpsmap'),
@@ -210,7 +210,7 @@ function template_edit() {
 
 	form_start('gpstemplates.php', 'gpsform');
 
-	html_start_box(__('Map Template Edit', 'gpsmap'), '100%', '', '3', 'center', '');
+	html_start_box(__('Map Template Edit', 'gpsmap'), '100%', false, 3, 'center', '');
 
 	draw_edit_form(
 		[

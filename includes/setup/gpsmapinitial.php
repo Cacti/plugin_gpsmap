@@ -19,7 +19,7 @@
  +-------------------------------------------------------------------------+
 */
 
-//Setup of base parameters and get info.
+// Setup of base parameters and get info.
 $parameter = '';
 $iplevel   = '';
 $coverage  = '';
@@ -31,10 +31,10 @@ if (!isset_request_var('subnet')) {
 	$parameter = get_request_var('subnet');
 }
 
-//SETTINGS *Other settings in show.php*
+// SETTINGS *Other settings in show.php*
 $initialzoom = read_config_option('gpsmap_zoom');
 
-//DISPLAY SETTINGS
+// DISPLAY SETTINGS
 $enableAll   = read_config_option('gpsmap_enableall');
 $coverageMap = read_config_option('gpsmap_coveragemap');
 
@@ -50,7 +50,7 @@ if ($coverageMap == 'on') {
 	$coverageMap = false;
 }
 
-//File Output
+// File Output
 $kmlCreation = read_config_option('gpsmap_kmlexport');
 
 if ($kmlCreation === 'on') {
@@ -59,7 +59,7 @@ if ($kmlCreation === 'on') {
 	$kmlCreation = 0;
 }
 
-//OVERLAY SETTINGS
+// OVERLAY SETTINGS
 $fillColor     = read_config_option('gpsmap_fillcolor');
 $liColor       = read_config_option('gpsmap_licolor');
 $liWidth       = read_config_option('gpsmap_liwidth');
@@ -68,9 +68,8 @@ $liOpa         = read_config_option('gpsmap_liopa');
 $circleQuality = read_config_option('gpsmap_circlequality');
 $terror        = read_config_option('gpsmap_terror');
 
-//WEATHER SETTINGS
+// WEATHER SETTINGS
 $enableWeather = read_config_option('gpsmap_enableWeather');
 
-//Map Refresh
+// Map Refresh
 $refreshMap    = read_config_option('gpsmap_refreshMap');
-

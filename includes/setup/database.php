@@ -49,10 +49,10 @@ if (!defined('GPSMAP_UPGRADE_MAX_FAILURES')) {
  * ALTER on Cacti's host table from every page view.
  *
  * @param string $old   The previously installed plugin version to
- *                       upgrade from; defaults to ''.
+ *                      upgrade from; defaults to ''.
  * @param bool   $force Whether to bypass the retry/failure-count backoff
- *                       and attempt the migration regardless; defaults
- *                       to false.
+ *                      and attempt the migration regardless; defaults
+ *                      to false.
  *
  * @return void
  *
@@ -65,6 +65,12 @@ function gpsmap_upgrade_database(string $old = '', bool $force = false): void {
 	include_once($config['library_path'] . '/database.php');
 
 	$v = plugin_gpsmap_version();
+
+	if (!isset($v['version'])) {
+		cacti_log('ERROR: gpsmap plugin INFO file is missing required fields, skipping schema upgrade', false, 'GPSMAP');
+
+		return;
+	}
 
 	$retry_after = (int) read_config_option('plugin_gpsmap_upgrade_retry_after', true);
 	$failures    = (int) read_config_option('plugin_gpsmap_upgrade_failures', true);

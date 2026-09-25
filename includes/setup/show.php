@@ -22,12 +22,11 @@
 $show = get_request_var('show', '');
 
 // Map SETTINGS
-$apiKey = read_config_option('gpsmap_apikey');
+$apiKey      = read_config_option('gpsmap_apikey');
 $initialLong = read_config_option('gpsmap_longitude');
-$initialLat = read_config_option('gpsmap_latitude');
+$initialLat  = read_config_option('gpsmap_latitude');
 
 // Ensure that the basic options are set.
 if ($initialLong === '' || $initialLat === '') {
-    $show = 'setup';
+	$show = 'setup';
 }
-

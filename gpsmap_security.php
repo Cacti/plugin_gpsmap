@@ -95,7 +95,7 @@ function gpsmap_artifact_temporary_filename_is_valid(string $filename): bool {
  * templates.
  *
  * @param array $request The submitted request array (e.g. $_POST) to
- *                        scan for 'chk_<id>' keys.
+ *                       scan for 'chk_<id>' keys.
  *
  * @return list<int> The validated list of selected template ids.
  */
@@ -133,8 +133,8 @@ function gpsmap_template_ids_from_request(array $request): array {
  * @param string $filename The icon's filename.
  *
  * @return string|null The safe bare identifier (filename without
- *                      extension), or null when the base name isn't a
- *                      valid identifier.
+ *                     extension), or null when the base name isn't a
+ *                     valid identifier.
  */
 function gpsmap_icon_identifier(string $filename): ?string {
 	$base = pathinfo($filename, PATHINFO_FILENAME);
