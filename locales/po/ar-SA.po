@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cacti\n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2026-09-21 13:13-0400\n"
+"POT-Creation-Date: 2026-09-25 10:38-0400\n"
 "PO-Revision-Date: 2020-12-14 21:07-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -27,171 +27,171 @@ msgstr "يرجى التأكد من تكوين الخرائط بشكل صحيح �
 msgid "Delete"
 msgstr "حذف"
 
-#: gpstemplates.php:65
+#: gpstemplates.php:78
 #, fuzzy
 msgid "Map Templates"
 msgstr "قوالب الخرائط"
 
-#: gpstemplates.php:68
+#: gpstemplates.php:81
 #, fuzzy
 msgid "Host Template"
 msgstr "قالب المضيف"
 
-#: gpstemplates.php:69 gpstemplates.php:143
+#: gpstemplates.php:82 gpstemplates.php:175
 #, fuzzy
 msgid "Up Image"
 msgstr "حتى الصورة"
 
-#: gpstemplates.php:70 gpstemplates.php:151
+#: gpstemplates.php:83 gpstemplates.php:183
 #, fuzzy
 msgid "Recovering Image"
 msgstr "استعادة الصورة"
 
-#: gpstemplates.php:71 gpstemplates.php:159
+#: gpstemplates.php:84 gpstemplates.php:191
 #, fuzzy
 msgid "Down Image"
 msgstr "الصورة السفلية"
 
-#: gpstemplates.php:72
+#: gpstemplates.php:85
 #, fuzzy
 msgid "Is AP"
 msgstr "هل AP"
 
-#: gpstemplates.php:84
+#: gpstemplates.php:97
 #, fuzzy
 msgid "True"
 msgstr "صحيح"
 
-#: gpstemplates.php:86
+#: gpstemplates.php:99
 #, fuzzy
 msgid "False"
 msgstr "خاطئة"
 
-#: gpstemplates.php:136
+#: gpstemplates.php:168
 #, fuzzy
 msgid "Device Template"
 msgstr "نموذج الجهاز"
 
-#: gpstemplates.php:137
+#: gpstemplates.php:169
 #, fuzzy
 msgid "Choose the Device Template to base this Map Template type."
 msgstr "اختر \"قالب الجهاز\" لتأسيس نوع \"قالب الخريطة\" هذا."
 
-#: gpstemplates.php:144
+#: gpstemplates.php:176
 #, fuzzy
 msgid "Select the Image to Show for an Up Device"
 msgstr "حدد الصورة التي تريد عرضها لجهاز Up"
 
-#: gpstemplates.php:152
+#: gpstemplates.php:184
 #, fuzzy
 msgid "Select the Image to Show for a Recovering Device"
 msgstr "حدد الصورة المراد عرضها لجهاز الاسترداد"
 
-#: gpstemplates.php:160
+#: gpstemplates.php:192
 #, fuzzy
 msgid "Select the Image to Show for a Down Device"
 msgstr "حدد الصورة التي تريد عرضها لجهاز لأسفل"
 
-#: gpstemplates.php:167
+#: gpstemplates.php:199
 #, fuzzy
 msgid "Access Point"
 msgstr "نقطة دخول"
 
-#: gpstemplates.php:168
+#: gpstemplates.php:200
 #, fuzzy
 msgid "Does this Device Template Represent an Access Point."
 msgstr "هل يمثل قالب الجهاز هذا نقطة وصول."
 
-#: gpstemplates.php:171
+#: gpstemplates.php:203
 msgid "No"
 msgstr "لا"
 
-#: gpstemplates.php:172
+#: gpstemplates.php:204
 msgid "Yes"
 msgstr "نعم"
 
-#: gpstemplates.php:181
+#: gpstemplates.php:213
 #, fuzzy
 msgid "Map Template Edit"
 msgstr "تحرير قالب الخريطة"
 
-#: setup.php:35
+#: setup.php:49
 #, fuzzy
 msgid "Configure Maps"
 msgstr "تكوين الخرائط"
 
-#: setup.php:36
+#: setup.php:50
 #, fuzzy
 msgid "View Maps"
 msgstr "عرض الخرائط"
 
-#: setup.php:139
+#: setup.php:265
 msgid "Map Settings"
 msgstr "إعدادات الخريطة"
 
-#: setup.php:144
+#: setup.php:270
 #, fuzzy
 msgid "Overlay Inclusion"
 msgstr "إدراج التراكب"
 
-#: setup.php:145
+#: setup.php:271
 #, fuzzy
 msgid "Disable to plot host only, not included in coverage overlay."
 msgstr "قم بتعطيل رسم المضيف فقط ، غير مدرج في تراكب التغطية."
 
-#: setup.php:152
+#: setup.php:278
 msgid "Latitude"
 msgstr "خط الغرض"
 
-#: setup.php:153
+#: setup.php:279
 #, fuzzy
 msgid "The devices latitude coordinates"
 msgstr "إحداثيات خطوط عرض الأجهزة"
 
-#: setup.php:161
+#: setup.php:287
 msgid "Longitude"
 msgstr "خط الطول"
 
-#: setup.php:162
+#: setup.php:288
 #, fuzzy
 msgid "The devices longitude coordinates"
 msgstr "إحداثيات خطوط الطول للأجهزة"
 
-#: setup.php:181
+#: setup.php:307
 #, fuzzy
 msgid "Starting Degree"
 msgstr "درجة البداية"
 
-#: setup.php:182
+#: setup.php:308
 #, fuzzy
 msgid "Starting degree for directional area between 0-360"
 msgstr "درجة البداية لمنطقة الاتجاه بين 0-360"
 
-#: setup.php:190
+#: setup.php:316
 #, fuzzy
 msgid "Stopping Degree"
 msgstr "درجة التوقف"
 
-#: setup.php:191
+#: setup.php:317
 #, fuzzy
 msgid "Stopping degree for directional area, must be greater than the Starting Degree"
 msgstr "يجب أن تكون درجة التوقف لمنطقة الاتجاه أكبر من درجة البداية"
 
-#: setup.php:199
+#: setup.php:325
 #, fuzzy
 msgid "Specify Radius"
 msgstr "حدد نصف القطر"
 
-#: setup.php:200
+#: setup.php:326
 #, fuzzy
 msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
 msgstr "حدد نصف قطر نقطة الوصول يدويًا. اضبط على 0 لتحديد نصف القطر بناءً على الأجهزة المجمعة"
 
-#: setup.php:210
+#: setup.php:336
 msgid "Group ID"
 msgstr "آی دی گروه "
 
-#: setup.php:211
+#: setup.php:337
 #, fuzzy
 msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
 msgstr "تحدد المجموعات الأجهزة المضمنة في تراكب التغطية. سيتم التحقق من رقم مجموعة أجهزة AP. 0 للتعطيل"
