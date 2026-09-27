@@ -24,7 +24,7 @@ chdir('../../');
  * markup below is only reached after successful authentication. */
 require_once('./include/auth.php');
 ?>
-<script language='javascript'>
+<script language='javascript' <?php print plugin_gpsmap_csp_nonce(); ?>>
 var mapEl = window.opener.document.getElementById('map');
 if (mapEl) {
 	var clone = mapEl.cloneNode(true);

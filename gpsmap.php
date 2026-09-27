@@ -64,12 +64,12 @@ switch ($show) {
 // ---------------------------------------------------------------
 
 if ($show != 'setup') { ?>
-	<script type='text/javascript'>
+	<script type='text/javascript' <?php print plugin_gpsmap_csp_nonce(); ?>>
 		var initialLat      = <?php print is_finite((float) $initialLat) ? json_encode((float) $initialLat) : '0'; ?>;
 		var initialLng      = <?php print is_finite((float) $initialLong) ? json_encode((float) $initialLong) : '0'; ?>;
 		var initialZoom     = <?php print json_encode((int) $initialzoom); ?>;
 	</script>
-	<script type='text/javascript'>
+	<script type='text/javascript' <?php print plugin_gpsmap_csp_nonce(); ?>>
 		gpsmap.refreshMap      = <?php print json_encode((string) $refreshMap, JSON_THROW_ON_ERROR | JSON_HEX_TAG | JSON_UNESCAPED_SLASHES); ?>;
 		gpsmap.initialLat      = <?php print is_finite((float) $initialLat) ? json_encode((float) $initialLat) : '0'; ?>;
 		gpsmap.initialLng      = <?php print is_finite((float) $initialLong) ? json_encode((float) $initialLong) : '0'; ?>;
