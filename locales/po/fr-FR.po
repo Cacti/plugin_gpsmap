@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cacti\n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2026-09-25 10:38-0400\n"
+"POT-Creation-Date: 2026-09-27 10:46-0400\n"
 "PO-Revision-Date: 2020-12-14 21:06-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -112,82 +112,82 @@ msgstr "Oui"
 msgid "Map Template Edit"
 msgstr "Modifier le modèle de carte"
 
-#: setup.php:49
+#: setup.php:65
 #, fuzzy
 msgid "Configure Maps"
 msgstr "Configurer les cartes"
 
-#: setup.php:50
+#: setup.php:66
 msgid "View Maps"
 msgstr "Afficher les cartes"
 
-#: setup.php:265
+#: setup.php:281
 msgid "Map Settings"
 msgstr "Paramètres de la carte"
 
-#: setup.php:270
+#: setup.php:286
 #, fuzzy
 msgid "Overlay Inclusion"
 msgstr "Inclusion de superposition"
 
-#: setup.php:271
+#: setup.php:287
 #, fuzzy
 msgid "Disable to plot host only, not included in coverage overlay."
 msgstr "Désactivez le traçage de l'hôte uniquement, non inclus dans la superposition de couverture."
 
-#: setup.php:278
+#: setup.php:294
 msgid "Latitude"
 msgstr "Latitude"
 
-#: setup.php:279
+#: setup.php:295
 #, fuzzy
 msgid "The devices latitude coordinates"
 msgstr "Les coordonnées de latitude des appareils"
 
-#: setup.php:287
+#: setup.php:303
 msgid "Longitude"
 msgstr "Longitude"
 
-#: setup.php:288
+#: setup.php:304
 #, fuzzy
 msgid "The devices longitude coordinates"
 msgstr "Les coordonnées de longitude des appareils"
 
-#: setup.php:307
+#: setup.php:323
 #, fuzzy
 msgid "Starting Degree"
 msgstr "Degré de départ"
 
-#: setup.php:308
+#: setup.php:324
 #, fuzzy
 msgid "Starting degree for directional area between 0-360"
 msgstr "Degré de départ pour la zone directionnelle entre 0-360"
 
-#: setup.php:316
+#: setup.php:332
 #, fuzzy
 msgid "Stopping Degree"
 msgstr "Degré d'arrêt"
 
-#: setup.php:317
+#: setup.php:333
 #, fuzzy
 msgid "Stopping degree for directional area, must be greater than the Starting Degree"
 msgstr "Le degré d'arrêt pour la zone directionnelle doit être supérieur au degré de départ"
 
-#: setup.php:325
+#: setup.php:341
 #, fuzzy
 msgid "Specify Radius"
 msgstr "Spécifiez le rayon"
 
-#: setup.php:326
+#: setup.php:342
 #, fuzzy
 msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
 msgstr "Spécifiez manuellement le rayon du point d'accès. Défini sur 0 pour déterminer le rayon en fonction des appareils groupés"
 
-#: setup.php:336
+#: setup.php:352
 msgid "Group ID"
 msgstr "Identifiant (ID) du groupe"
 
-#: setup.php:337
+#: setup.php:353
 #, fuzzy
 msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
 msgstr "Les groupes définissent les appareils inclus dans la superposition de couverture. Sera comparé au numéro de groupe de périphériques AP. 0 pour désactiver"
