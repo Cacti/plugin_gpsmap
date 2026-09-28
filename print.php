@@ -23,8 +23,14 @@ chdir('../../');
 /* auth.php halts execution (exit/redirect) for unauthenticated users, so the
  * markup below is only reached after successful authentication. */
 require_once('./include/auth.php');
+
+/* print.php is a direct endpoint and does not fire the hooks that lazily load
+ * this plugin's setup.php, so ensure the CSP nonce helper is defined here. */
+if (!function_exists('plugin_gpsmap_csp_nonce')) {
+	require_once(__DIR__ . '/setup.php');
+}
 ?>
-<script language='javascript'>
+<script language='javascript' <?php print plugin_gpsmap_csp_nonce(); ?>>
 var mapEl = window.opener.document.getElementById('map');
 if (mapEl) {
 	var clone = mapEl.cloneNode(true);

@@ -1,5 +1,6 @@
 ## Changelog
 --- develop ---
+* security: Add a version-safe CSP nonce (`plugin_gpsmap_csp_nonce()`) to every inline `<script>` tag, route the plugin's own external JavaScript through Cacti's `get_md5_include_js()` helper, and nonce the Google Maps API tag, so pages stay compatible with Cacti's Content-Security-Policy nonce enforcement while falling back cleanly on older Cacti releases that lack the `CactiSecureHeaders` class
 * issue: PHPStan level 8 typing pass - hardened parse_ini_file()/db_fetch_row_prepared() result narrowing across 3 unguarded plugin_gpsmap_version() callers, fixed html_start_box()/hex2bin() type mismatches
 * issue: Display Disabled Devices is inert, and a short write can publish a truncated artefact (PR #101)
 * issue: Correct database include path in gpsmap_check_upgrade (PR #93)

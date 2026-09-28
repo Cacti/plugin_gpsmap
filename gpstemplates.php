@@ -220,7 +220,7 @@ function template_edit() {
 	);
 
 	?>
-	<script type='text/javascript'>
+	<script type='text/javascript' <?php print plugin_gpsmap_csp_nonce(); ?>>
 
 	$.widget('custom.mapiconselectmenu', $.ui.selectmenu, {
 		_renderItem: function(ul, item) {

@@ -160,9 +160,12 @@ api_plugin_register_hook('gpsmap', 'config_arrays',         'gpsmap_config_array
 api_plugin_register_hook('gpsmap', 'config_settings',       'gpsmap_config_settings',      'includes/setup/settings.php');
 api_plugin_register_hook('gpsmap', 'draw_navigation_text',  'gpsmap_draw_navigation_text', 'includes/setup/settings.php');
 api_plugin_register_hook('gpsmap', 'api_device_save',       'gpsmap_api_device_save',      'includes/setup/settings.php');
-api_plugin_register_hook('gpsmap', 'config_form',            'gpsmap_config_form',          'setup.php');
-api_plugin_register_hook('gpsmap', 'poller_bottom',          'gpsmap_poller_bottom',        'includes/polling.php');
-api_plugin_register_hook('gpsmap', 'page_head',              'gpsmap_page_head',            'setup.php');
+api_plugin_register_hook('gpsmap', 'config_form',            'gpsmap_config_form',          'setup.php');
+
+api_plugin_register_hook('gpsmap', 'poller_bottom',          'gpsmap_poller_bottom',        'includes/polling.php');
+
+api_plugin_register_hook('gpsmap', 'page_head',              'gpsmap_page_head',            'setup.php');
+
 
 api_plugin_register_realm('gpsmap', 'gpstemplates.php,gpstemplates_add.php', __('Configure Maps', 'gpsmap'), 1);
 api_plugin_register_realm('gpsmap', 'gpsmap.php', __('View Maps', 'gpsmap'), 1);
@@ -215,7 +218,8 @@ Use descriptive commit messages; reference issue/PR numbers when applicable.
 ## Internationalization (i18n)
 
 - Translatable strings are managed with GNU gettext via `locales/build_gettext.sh`. `locales/po/cacti.pot` is the source template; Weblate owns syncing the per-language `.po`/`.mo` files from it.
-- When a pull request adds or changes a string wrapped in `__()`/`__n()`/`__esc()`/`__x()`/`__xn()`/`__gettext()`, run `locales/build_gettext.sh` before pushing and add the resulting change to `locales/po/cacti.pot` only. Do not commit the regenerated per-language `.po`/`.mo` files in the same PR — Weblate takes care of the rest.
+- **Never commit the per-language `.po` or compiled `.mo` files** (`locales/po/*.po`, `locales/LC_MESSAGES/*.mo`) in a plugin PR. Weblate is the sole owner of those catalogs, and regenerating them here produces spurious diffs and merge conflicts. `locales/po/cacti.pot` is the ONLY translation artifact a PR may add or modify.
+- When a pull request adds or changes a string wrapped in `__()`/`__n()`/`__esc()`/`__x()`/`__xn()`/`__gettext()`, run `locales/build_gettext.sh` before pushing and stage `locales/po/cacti.pot` only. `build_gettext.sh` also rewrites the `.po`/`.mo` files as a side effect — revert those before committing (`git checkout -- locales/po/*.po locales/LC_MESSAGES`), or run only the `xgettext` step that targets `cacti.pot`.
 
 ## References
 

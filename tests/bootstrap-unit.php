@@ -292,6 +292,18 @@ if (!function_exists('read_config_option')) {
 	}
 }
 
+if (!function_exists('get_md5_include_js')) {
+	function get_md5_include_js($path, $async = false) {
+		return "<script type='text/javascript' src='" . $path . "'></script>";
+	}
+}
+
+if (!function_exists('get_md5_include_css')) {
+	function get_md5_include_css($path) {
+		return "<link href='" . $path . "' type='text/css' rel='stylesheet'>";
+	}
+}
+
 if (!function_exists('set_config_option')) {
 	function set_config_option($name, $value) {
 		$GLOBALS['gpsmap_stub_settings'][$name] = (string) $value;

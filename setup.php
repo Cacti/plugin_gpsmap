@@ -20,6 +20,22 @@
 */
 
 /**
+ * Return the CSP nonce attribute for inline <script> tags, safely across
+ * Cacti versions. Newer Cacti releases enforce a Content-Security-Policy that
+ * requires a per-request nonce on parser-inserted scripts; older releases lack
+ * the CactiSecureHeaders class, so this returns an empty string there.
+ *
+ * @return string The `nonce="..."` attribute when supported, otherwise ''.
+ */
+function plugin_gpsmap_csp_nonce(): string {
+	if (class_exists('CactiSecureHeaders')) {
+		return CactiSecureHeaders::getNonceAttribute();
+	}
+
+	return '';
+}
+
+/**
  * Installs the GPS Map plugin: registers its Cacti hooks (top_header_tabs,
  * top_graph_header_tabs, config_arrays, config_settings,
  * draw_navigation_text, api_device_save, config_form, poller_bottom,
@@ -206,9 +222,9 @@ function gpsmap_page_head() {
 
 	$apiKey = read_config_option('gpsmap_apikey');
 
-	print "<script type='text/javascript' src='https://maps.googleapis.com/maps/api/js?" . (empty($apiKey) === false ? 'key=' . rawurlencode($apiKey) . '&amp;' : '') . "libraries=geometry'></script>" . PHP_EOL;
-	print "<script type='text/javascript' src='" . $config['url_path'] . "plugins/gpsmap/js/GPSMaps.js'></script>" . PHP_EOL;
-	print "<script type='text/javascript' src='" . $config['url_path'] . "plugins/gpsmap/js/infobubble.js'></script>" . PHP_EOL;
+	print "<script type='text/javascript' " . plugin_gpsmap_csp_nonce() . " src='https://maps.googleapis.com/maps/api/js?" . (empty($apiKey) === false ? 'key=' . rawurlencode($apiKey) . '&amp;' : '') . "libraries=geometry'></script>" . PHP_EOL;
+	print get_md5_include_js('plugins/gpsmap/js/GPSMaps.js');
+	print get_md5_include_js('plugins/gpsmap/js/infobubble.js');
 }
 
 /**
