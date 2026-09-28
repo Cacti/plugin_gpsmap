@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cacti\n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2026-09-25 10:38-0400\n"
+"POT-Creation-Date: 2026-09-27 10:46-0400\n"
 "PO-Revision-Date: 2020-12-14 21:27-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -115,85 +115,85 @@ msgstr "हाँ"
 msgid "Map Template Edit"
 msgstr "नक्शा खाका संपादित करें"
 
-#: setup.php:49
+#: setup.php:65
 #, fuzzy
 msgid "Configure Maps"
 msgstr "मैप्स कॉन्फ़िगर करें"
 
-#: setup.php:50
+#: setup.php:66
 #, fuzzy
 msgid "View Maps"
 msgstr "नक्शे देखें"
 
-#: setup.php:265
+#: setup.php:281
 #, fuzzy
 msgid "Map Settings"
 msgstr "नक्शा सेटिंग्स"
 
-#: setup.php:270
+#: setup.php:286
 #, fuzzy
 msgid "Overlay Inclusion"
 msgstr "ओवरले इंक्लूजन"
 
-#: setup.php:271
+#: setup.php:287
 #, fuzzy
 msgid "Disable to plot host only, not included in coverage overlay."
 msgstr "केवल होस्ट प्लॉट करने में अक्षम, कवरेज ओवरले में शामिल नहीं।"
 
-#: setup.php:278
+#: setup.php:294
 msgid "Latitude"
 msgstr "अक्षांश रेखाएँ"
 
-#: setup.php:279
+#: setup.php:295
 #, fuzzy
 msgid "The devices latitude coordinates"
 msgstr "डिवाइस अक्षांश निर्देशांक"
 
-#: setup.php:287
+#: setup.php:303
 msgid "Longitude"
 msgstr "रेखांश"
 
-#: setup.php:288
+#: setup.php:304
 #, fuzzy
 msgid "The devices longitude coordinates"
 msgstr "डिवाइस देशांतर निर्देशांक"
 
-#: setup.php:307
+#: setup.php:323
 #, fuzzy
 msgid "Starting Degree"
 msgstr "डिग्री शुरू"
 
-#: setup.php:308
+#: setup.php:324
 #, fuzzy
 msgid "Starting degree for directional area between 0-360"
 msgstr "0-360 के बीच दिशात्मक क्षेत्र के लिए डिग्री शुरू करना"
 
-#: setup.php:316
+#: setup.php:332
 #, fuzzy
 msgid "Stopping Degree"
 msgstr "स्टॉपिंग डिग्री"
 
-#: setup.php:317
+#: setup.php:333
 #, fuzzy
 msgid "Stopping degree for directional area, must be greater than the Starting Degree"
 msgstr "दिशात्मक क्षेत्र के लिए स्टॉपिंग डिग्री, प्रारंभिक डिग्री से अधिक होनी चाहिए"
 
-#: setup.php:325
+#: setup.php:341
 #, fuzzy
 msgid "Specify Radius"
 msgstr "त्रिज्या निर्दिष्ट करें"
 
-#: setup.php:326
+#: setup.php:342
 #, fuzzy
 msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
 msgstr "एक्सेस प्वाइंट के लिए मैन्युअल रूप से त्रिज्या निर्दिष्ट करें। समूहित उपकरणों के आधार पर त्रिज्या निर्धारित करने के लिए 0 पर सेट करें"
 
-#: setup.php:336
+#: setup.php:352
 #, fuzzy
 msgid "Group ID"
 msgstr "समूह आईडी"
 
-#: setup.php:337
+#: setup.php:353
 #, fuzzy
 msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
 msgstr "समूह परिभाषित करते हैं कि कवरेज ओवरले में कौन से उपकरण शामिल हैं। एपी डिवाइस ग्रुप नंबर के खिलाफ जांच की जाएगी। 0 अक्षम करने के लिए"
