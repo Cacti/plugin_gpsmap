@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cacti\n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2026-09-25 10:38-0400\n"
+"POT-Creation-Date: 2026-09-27 10:46-0400\n"
 "PO-Revision-Date: 2026-01-16 03:18+0000\n"
 "Last-Translator: sucharlie <su.charlie@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://translate.cacti.net/projects/cacti/gpsmaps/zh_Hant/>\n"
@@ -114,85 +114,85 @@ msgstr "是"
 msgid "Map Template Edit"
 msgstr "地圖模板編輯"
 
-#: setup.php:49
+#: setup.php:65
 #, fuzzy
 msgid "Configure Maps"
 msgstr "配置地圖"
 
-#: setup.php:50
+#: setup.php:66
 #, fuzzy
 msgid "View Maps"
 msgstr "查看地圖"
 
-#: setup.php:265
+#: setup.php:281
 msgid "Map Settings"
 msgstr "地圖設定"
 
-#: setup.php:270
+#: setup.php:286
 #, fuzzy
 msgid "Overlay Inclusion"
 msgstr "疊加包含"
 
-#: setup.php:271
+#: setup.php:287
 #, fuzzy
 msgid "Disable to plot host only, not included in coverage overlay."
 msgstr "僅禁用繪製主機，不包括在覆蓋圖疊加中。"
 
-#: setup.php:278
+#: setup.php:294
 #, fuzzy
 msgid "Latitude"
 msgstr "緯度"
 
-#: setup.php:279
+#: setup.php:295
 #, fuzzy
 msgid "The devices latitude coordinates"
 msgstr "設備緯度坐標"
 
-#: setup.php:287
+#: setup.php:303
 #, fuzzy
 msgid "Longitude"
 msgstr "經度"
 
-#: setup.php:288
+#: setup.php:304
 #, fuzzy
 msgid "The devices longitude coordinates"
 msgstr "設備經度坐標"
 
-#: setup.php:307
+#: setup.php:323
 #, fuzzy
 msgid "Starting Degree"
 msgstr "起始學位"
 
-#: setup.php:308
+#: setup.php:324
 #, fuzzy
 msgid "Starting degree for directional area between 0-360"
 msgstr "0-360之間的定向區域的起始度"
 
-#: setup.php:316
+#: setup.php:332
 #, fuzzy
 msgid "Stopping Degree"
 msgstr "停止度"
 
-#: setup.php:317
+#: setup.php:333
 #, fuzzy
 msgid "Stopping degree for directional area, must be greater than the Starting Degree"
 msgstr "定向區域的停止度，必須大於開始度"
 
-#: setup.php:325
+#: setup.php:341
 #, fuzzy
 msgid "Specify Radius"
 msgstr "指定半徑"
 
-#: setup.php:326
+#: setup.php:342
 #, fuzzy
 msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
 msgstr "手動為接入點指定半徑。設置為0以確定基於分組設備的半徑"
 
-#: setup.php:336
+#: setup.php:352
 msgid "Group ID"
 msgstr "群組 ID"
 
-#: setup.php:337
+#: setup.php:353
 #, fuzzy
 msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
 msgstr "組定義了覆蓋圖中包括哪些設備。將對照AP設備組號進行檢查。 0禁用"
