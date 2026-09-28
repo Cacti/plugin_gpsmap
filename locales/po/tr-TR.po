@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cacti\n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2026-09-25 10:38-0400\n"
+"POT-Creation-Date: 2026-09-27 10:46-0400\n"
 "PO-Revision-Date: 2020-12-14 21:34-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -113,83 +113,83 @@ msgstr "Evet"
 msgid "Map Template Edit"
 msgstr "Harita Şablonu Düzenlemesi"
 
-#: setup.php:49
+#: setup.php:65
 #, fuzzy
 msgid "Configure Maps"
 msgstr "Haritaları Yapılandırın"
 
-#: setup.php:50
+#: setup.php:66
 #, fuzzy
 msgid "View Maps"
 msgstr "Haritaları Görüntüle"
 
-#: setup.php:265
+#: setup.php:281
 msgid "Map Settings"
 msgstr "Harita Ayarları"
 
-#: setup.php:270
+#: setup.php:286
 #, fuzzy
 msgid "Overlay Inclusion"
 msgstr "Yer Paylaşımı Dahil Etme"
 
-#: setup.php:271
+#: setup.php:287
 #, fuzzy
 msgid "Disable to plot host only, not included in coverage overlay."
 msgstr "Kapsama yer paylaşımına dahil değil, yalnızca ana bilgisayarı işaretlemeyi devre dışı bırakın."
 
-#: setup.php:278
+#: setup.php:294
 msgid "Latitude"
 msgstr "Enlem"
 
-#: setup.php:279
+#: setup.php:295
 #, fuzzy
 msgid "The devices latitude coordinates"
 msgstr "Cihazın enlem koordinatları"
 
-#: setup.php:287
+#: setup.php:303
 msgid "Longitude"
 msgstr "Boylam"
 
-#: setup.php:288
+#: setup.php:304
 #, fuzzy
 msgid "The devices longitude coordinates"
 msgstr "Cihaz boylam koordinatları"
 
-#: setup.php:307
+#: setup.php:323
 #, fuzzy
 msgid "Starting Degree"
 msgstr "Başlangıç Derecesi"
 
-#: setup.php:308
+#: setup.php:324
 #, fuzzy
 msgid "Starting degree for directional area between 0-360"
 msgstr "0-360 arası yön alanı başlangıç derecesi"
 
-#: setup.php:316
+#: setup.php:332
 #, fuzzy
 msgid "Stopping Degree"
 msgstr "Durma Derecesi"
 
-#: setup.php:317
+#: setup.php:333
 #, fuzzy
 msgid "Stopping degree for directional area, must be greater than the Starting Degree"
 msgstr "Yön alanı için durma derecesi, Başlangıç Derecesinden büyük olmalıdır"
 
-#: setup.php:325
+#: setup.php:341
 #, fuzzy
 msgid "Specify Radius"
 msgstr "Yarıçapı Belirtin"
 
-#: setup.php:326
+#: setup.php:342
 #, fuzzy
 msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
 msgstr "Erişim Noktası için yarıçapı manuel olarak belirtin. Gruplanmış cihazlara göre yarıçapı belirlemek için 0'a ayarlayın"
 
-#: setup.php:336
+#: setup.php:352
 msgid "Group ID"
 msgstr "Grup ID"
 
-#: setup.php:337
+#: setup.php:353
 #, fuzzy
 msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
 msgstr "Gruplar, kapsama katmanına hangi cihazların dahil edileceğini tanımlar. AP cihaz grup numarasına göre kontrol edilecektir. 0 devre dışı bırakmak için"
