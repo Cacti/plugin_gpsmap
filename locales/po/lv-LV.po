@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cacti\n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2026-09-25 10:38-0400\n"
+"POT-Creation-Date: 2026-09-27 10:46-0400\n"
 "PO-Revision-Date: 2022-06-19 13:05+0000\n"
 "Last-Translator: Coool (github.com/Coool) <coool@mail.lv>\n"
 "Language-Team: Latvian <http://translate.cacti.net/projects/cacti/gpsmaps/lv/>\n"
@@ -98,70 +98,70 @@ msgstr "Jā"
 msgid "Map Template Edit"
 msgstr "Kartes veidnes rediģēšana"
 
-#: setup.php:49
+#: setup.php:65
 msgid "Configure Maps"
 msgstr "Konfigurēt kartes"
 
-#: setup.php:50
+#: setup.php:66
 msgid "View Maps"
 msgstr "Skatīt kartes"
 
-#: setup.php:265
+#: setup.php:281
 msgid "Map Settings"
 msgstr "Kartes iestatījumi"
 
-#: setup.php:270
+#: setup.php:286
 msgid "Overlay Inclusion"
 msgstr "Pārklājuma iekļaušana"
 
-#: setup.php:271
+#: setup.php:287
 msgid "Disable to plot host only, not included in coverage overlay."
 msgstr "Atspējot attēlot tikai resursdatoru, nav iekļauts pārklājuma pārklājumā."
 
-#: setup.php:278
+#: setup.php:294
 msgid "Latitude"
 msgstr "Platuma grādi"
 
-#: setup.php:279
+#: setup.php:295
 msgid "The devices latitude coordinates"
 msgstr "Ierīces platuma grāda koordinātas"
 
-#: setup.php:287
+#: setup.php:303
 msgid "Longitude"
 msgstr "Garuma grādi"
 
-#: setup.php:288
+#: setup.php:304
 msgid "The devices longitude coordinates"
 msgstr "Ierīces garuma grāda koordinātas"
 
-#: setup.php:307
+#: setup.php:323
 msgid "Starting Degree"
 msgstr "Sākuma grāds"
 
-#: setup.php:308
+#: setup.php:324
 msgid "Starting degree for directional area between 0-360"
 msgstr "Sākuma grāds virziena apgabalam no 0 līdz 360"
 
-#: setup.php:316
+#: setup.php:332
 msgid "Stopping Degree"
 msgstr "Apstāšanās grāds"
 
-#: setup.php:317
+#: setup.php:333
 msgid "Stopping degree for directional area, must be greater than the Starting Degree"
 msgstr "Virziena apgabala apstāšanās grādam jābūt lielākam par sākuma grādu"
 
-#: setup.php:325
+#: setup.php:341
 msgid "Specify Radius"
 msgstr "Norādiet rādiusu"
 
-#: setup.php:326
+#: setup.php:342
 msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
 msgstr "Norādiet Piekļuves punkta rādiusu. Iestatiet uz 0, lai noteiktu rādiusu, pamatojoties uz grupētajām ierīcēm"
 
-#: setup.php:336
+#: setup.php:352
 msgid "Group ID"
 msgstr "Grupas ID"
 
-#: setup.php:337
+#: setup.php:353
 msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
 msgstr "Grupas nosaka, kuras ierīces ir iekļautas pārklājuma pārklājumā. Tiks pārbaudīts balstoties uz Piekļuves punkta ierīču grupas numuru. 0, lai atspējotu"
