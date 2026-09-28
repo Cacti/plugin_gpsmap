@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cacti\n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2026-09-25 10:38-0400\n"
+"POT-Creation-Date: 2026-09-27 10:46-0400\n"
 "PO-Revision-Date: 2020-12-14 21:28-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -113,83 +113,83 @@ msgstr "Ναι"
 msgid "Map Template Edit"
 msgstr "Επεξεργασία προτύπου χάρτη"
 
-#: setup.php:49
+#: setup.php:65
 #, fuzzy
 msgid "Configure Maps"
 msgstr "Διαμόρφωση χαρτών"
 
-#: setup.php:50
+#: setup.php:66
 #, fuzzy
 msgid "View Maps"
 msgstr "Προβολή χαρτών"
 
-#: setup.php:265
+#: setup.php:281
 msgid "Map Settings"
 msgstr "Ρυθμίσεις Χάρτη"
 
-#: setup.php:270
+#: setup.php:286
 #, fuzzy
 msgid "Overlay Inclusion"
 msgstr "Συμπερίληψη επικάλυψης"
 
-#: setup.php:271
+#: setup.php:287
 #, fuzzy
 msgid "Disable to plot host only, not included in coverage overlay."
 msgstr "Απενεργοποίηση για να σχεδιάσετε μόνο τον κεντρικό υπολογιστή, δεν περιλαμβάνεται στην επικάλυψη κάλυψης"
 
-#: setup.php:278
+#: setup.php:294
 msgid "Latitude"
 msgstr "Γεωγραφικό πλάτος"
 
-#: setup.php:279
+#: setup.php:295
 #, fuzzy
 msgid "The devices latitude coordinates"
 msgstr "Οι συντεταγμένες γεωγραφικού πλάτους συσκευών"
 
-#: setup.php:287
+#: setup.php:303
 msgid "Longitude"
 msgstr "Γεωγραφικό μήκος"
 
-#: setup.php:288
+#: setup.php:304
 #, fuzzy
 msgid "The devices longitude coordinates"
 msgstr "Οι συντεταγμένες γεωγραφικού μήκους συσκευών"
 
-#: setup.php:307
+#: setup.php:323
 #, fuzzy
 msgid "Starting Degree"
 msgstr "Έναρξη πτυχίου"
 
-#: setup.php:308
+#: setup.php:324
 #, fuzzy
 msgid "Starting degree for directional area between 0-360"
 msgstr "Έναρξη βαθμού για κατευθυντική περιοχή μεταξύ 0-360"
 
-#: setup.php:316
+#: setup.php:332
 #, fuzzy
 msgid "Stopping Degree"
 msgstr "Διακοπή πτυχίου"
 
-#: setup.php:317
+#: setup.php:333
 #, fuzzy
 msgid "Stopping degree for directional area, must be greater than the Starting Degree"
 msgstr "Ο βαθμός διακοπής για κατευθυντική περιοχή, πρέπει να είναι μεγαλύτερος από τον βαθμό εκκίνησης"
 
-#: setup.php:325
+#: setup.php:341
 #, fuzzy
 msgid "Specify Radius"
 msgstr "Καθορίστε την ακτίνα"
 
-#: setup.php:326
+#: setup.php:342
 #, fuzzy
 msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
 msgstr "Μη αυτόματη ρύθμιση ακτίνας για το Σημείο πρόσβασης. Ρυθμίστε στο 0 για να προσδιορίσετε την ακτίνα βάσει ομαδοποιημένων συσκευών"
 
-#: setup.php:336
+#: setup.php:352
 msgid "Group ID"
 msgstr "ID ομάδας"
 
-#: setup.php:337
+#: setup.php:353
 #, fuzzy
 msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
 msgstr "Οι ομάδες καθορίζουν ποιες συσκευές περιλαμβάνονται στην επικάλυψη κάλυψης. Θα ελεγχθεί έναντι του αριθμού ομάδας συσκευών AP. 0 για απενεργοποίηση"
