@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cacti\n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2026-09-25 10:38-0400\n"
+"POT-Creation-Date: 2026-09-27 10:46-0400\n"
 "PO-Revision-Date: 2020-12-14 21:35-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -113,83 +113,83 @@ msgstr "Có"
 msgid "Map Template Edit"
 msgstr "Bản đồ Mẫu Chỉnh sửa"
 
-#: setup.php:49
+#: setup.php:65
 #, fuzzy
 msgid "Configure Maps"
 msgstr "Định cấu hình bản đồ"
 
-#: setup.php:50
+#: setup.php:66
 #, fuzzy
 msgid "View Maps"
 msgstr "Xem bản đồ"
 
-#: setup.php:265
+#: setup.php:281
 msgid "Map Settings"
 msgstr "Cài đặt bản đồ"
 
-#: setup.php:270
+#: setup.php:286
 #, fuzzy
 msgid "Overlay Inclusion"
 msgstr "Bao gồm lớp phủ"
 
-#: setup.php:271
+#: setup.php:287
 #, fuzzy
 msgid "Disable to plot host only, not included in coverage overlay."
 msgstr "Vô hiệu hóa để chỉ máy chủ lưu trữ âm mưu, không được bao gồm trong lớp phủ bảo hiểm."
 
-#: setup.php:278
+#: setup.php:294
 msgid "Latitude"
 msgstr "Vĩ độ"
 
-#: setup.php:279
+#: setup.php:295
 #, fuzzy
 msgid "The devices latitude coordinates"
 msgstr "Tọa độ vĩ độ của thiết bị"
 
-#: setup.php:287
+#: setup.php:303
 msgid "Longitude"
 msgstr "Kinh độ"
 
-#: setup.php:288
+#: setup.php:304
 #, fuzzy
 msgid "The devices longitude coordinates"
 msgstr "Tọa độ kinh độ của thiết bị"
 
-#: setup.php:307
+#: setup.php:323
 #, fuzzy
 msgid "Starting Degree"
 msgstr "Bằng cấp khởi đầu"
 
-#: setup.php:308
+#: setup.php:324
 #, fuzzy
 msgid "Starting degree for directional area between 0-360"
 msgstr "Độ bắt đầu cho khu vực định hướng trong khoảng từ 0-360"
 
-#: setup.php:316
+#: setup.php:332
 #, fuzzy
 msgid "Stopping Degree"
 msgstr "Mức độ dừng"
 
-#: setup.php:317
+#: setup.php:333
 #, fuzzy
 msgid "Stopping degree for directional area, must be greater than the Starting Degree"
 msgstr "Mức độ dừng cho khu vực định hướng, phải lớn hơn Mức độ bắt đầu"
 
-#: setup.php:325
+#: setup.php:341
 #, fuzzy
 msgid "Specify Radius"
 msgstr "Chỉ định bán kính"
 
-#: setup.php:326
+#: setup.php:342
 #, fuzzy
 msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
 msgstr "Chỉ định bán kính cho Access Point theo cách thủ công. Đặt thành 0 để xác định bán kính dựa trên các thiết bị được nhóm"
 
-#: setup.php:336
+#: setup.php:352
 msgid "Group ID"
 msgstr "ID Nhóm"
 
-#: setup.php:337
+#: setup.php:353
 #, fuzzy
 msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
 msgstr "Các nhóm xác định những thiết bị nào được bao gồm trong lớp phủ. Sẽ được kiểm tra với số nhóm thiết bị AP. 0 để tắt"
