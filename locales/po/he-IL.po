@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cacti\n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2026-09-25 10:38-0400\n"
+"POT-Creation-Date: 2026-09-27 10:46-0400\n"
 "PO-Revision-Date: 2020-12-14 21:28-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -113,84 +113,84 @@ msgstr "כן"
 msgid "Map Template Edit"
 msgstr "תבנית מפות עריכה"
 
-#: setup.php:49
+#: setup.php:65
 #, fuzzy
 msgid "Configure Maps"
 msgstr "הגדר תצורה של מפות"
 
-#: setup.php:50
+#: setup.php:66
 #, fuzzy
 msgid "View Maps"
 msgstr "צפו במפות"
 
-#: setup.php:265
+#: setup.php:281
 #, fuzzy
 msgid "Map Settings"
 msgstr "הגדרות מפה"
 
-#: setup.php:270
+#: setup.php:286
 #, fuzzy
 msgid "Overlay Inclusion"
 msgstr "הכללת שכבת-על"
 
-#: setup.php:271
+#: setup.php:287
 #, fuzzy
 msgid "Disable to plot host only, not included in coverage overlay."
 msgstr "השבת את מארח העלילה בלבד, לא נכלל בכיסוי כיסוי."
 
-#: setup.php:278
+#: setup.php:294
 msgid "Latitude"
 msgstr "קו רוחב"
 
-#: setup.php:279
+#: setup.php:295
 #, fuzzy
 msgid "The devices latitude coordinates"
 msgstr "קואורדינטות קו רוחב של המכשירים"
 
-#: setup.php:287
+#: setup.php:303
 msgid "Longitude"
 msgstr "קו אורך"
 
-#: setup.php:288
+#: setup.php:304
 #, fuzzy
 msgid "The devices longitude coordinates"
 msgstr "קואורדינטות אורך המכשירים"
 
-#: setup.php:307
+#: setup.php:323
 #, fuzzy
 msgid "Starting Degree"
 msgstr "החל תואר"
 
-#: setup.php:308
+#: setup.php:324
 #, fuzzy
 msgid "Starting degree for directional area between 0-360"
 msgstr "דרגת התחלה לאזור כיוון בין 0-360"
 
-#: setup.php:316
+#: setup.php:332
 #, fuzzy
 msgid "Stopping Degree"
 msgstr "עצירת תואר"
 
-#: setup.php:317
+#: setup.php:333
 #, fuzzy
 msgid "Stopping degree for directional area, must be greater than the Starting Degree"
 msgstr "דרגת עצירה לאזור כיוון, חייבת להיות גדולה יותר מתואר ההתחלה"
 
-#: setup.php:325
+#: setup.php:341
 #, fuzzy
 msgid "Specify Radius"
 msgstr "ציין את הרדיוס"
 
-#: setup.php:326
+#: setup.php:342
 #, fuzzy
 msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
 msgstr "ציין ידנית רדיוס עבור נקודת גישה. הגדר ל 0 כדי לקבוע את הרדיוס בהתבסס על התקנים מקובצים"
 
-#: setup.php:336
+#: setup.php:352
 msgid "Group ID"
 msgstr "מזהה הקבוצה"
 
-#: setup.php:337
+#: setup.php:353
 #, fuzzy
 msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
 msgstr "קבוצות מגדירות אילו מכשירים כלולים בכיסוי הכיסוי. ייבדק מול מספר קבוצת המכשירים של AP. 0 כדי להשבית"
