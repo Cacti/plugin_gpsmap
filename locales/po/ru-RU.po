@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cacti\n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2026-09-25 10:38-0400\n"
+"POT-Creation-Date: 2026-09-27 10:46-0400\n"
 "PO-Revision-Date: 2024-12-09 15:49+0000\n"
 "Last-Translator: Anton Zhuravlev <baka109g@gmail.com>\n"
 "Language-Team: Russian <http://translate.cacti.net/projects/cacti/gpsmaps/ru/>\n"
@@ -98,70 +98,70 @@ msgstr "Да"
 msgid "Map Template Edit"
 msgstr "Редактировать шаблон карты"
 
-#: setup.php:49
+#: setup.php:65
 msgid "Configure Maps"
 msgstr "Настроить карты"
 
-#: setup.php:50
+#: setup.php:66
 msgid "View Maps"
 msgstr "Просмотр карт"
 
-#: setup.php:265
+#: setup.php:281
 msgid "Map Settings"
 msgstr "Настройки карты"
 
-#: setup.php:270
+#: setup.php:286
 msgid "Overlay Inclusion"
 msgstr "Включение оверлея"
 
-#: setup.php:271
+#: setup.php:287
 msgid "Disable to plot host only, not included in coverage overlay."
 msgstr "Отключить только для графика, не включаемого в наложение покрытия."
 
-#: setup.php:278
+#: setup.php:294
 msgid "Latitude"
 msgstr "Широта"
 
-#: setup.php:279
+#: setup.php:295
 msgid "The devices latitude coordinates"
 msgstr "Координаты широты устройства"
 
-#: setup.php:287
+#: setup.php:303
 msgid "Longitude"
 msgstr "Долгота"
 
-#: setup.php:288
+#: setup.php:304
 msgid "The devices longitude coordinates"
 msgstr "Координаты долготы устройства"
 
-#: setup.php:307
+#: setup.php:323
 msgid "Starting Degree"
 msgstr "Начальный градус"
 
-#: setup.php:308
+#: setup.php:324
 msgid "Starting degree for directional area between 0-360"
 msgstr "Начальный градус для направленной области от 0 до 360"
 
-#: setup.php:316
+#: setup.php:332
 msgid "Stopping Degree"
 msgstr "Конечный градус"
 
-#: setup.php:317
+#: setup.php:333
 msgid "Stopping degree for directional area, must be greater than the Starting Degree"
 msgstr "Конечный градус для направленной зоны должна быть больше начальной степени"
 
-#: setup.php:325
+#: setup.php:341
 msgid "Specify Radius"
 msgstr "Укажите радиус"
 
-#: setup.php:326
+#: setup.php:342
 msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
 msgstr "Вручную укажите радиус точки доступа. Установите 0, чтобы определить радиус на основе сгруппированных устройств"
 
-#: setup.php:336
+#: setup.php:352
 msgid "Group ID"
 msgstr "ID группы"
 
-#: setup.php:337
+#: setup.php:353
 msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
 msgstr "Группы определяют, какие устройства включаются в наложение покрытия. Будет проверяться по номеру группы устройств AP. 0 для отключения"
