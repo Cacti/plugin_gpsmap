@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cacti\n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2026-09-27 10:46-0400\n"
+"POT-Creation-Date: 2026-09-28 16:05-0400\n"
 "PO-Revision-Date: 2020-12-14 21:30-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -18,176 +18,176 @@ msgstr ""
 "X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: gpsmap.php:40
+#: gpsmap.php
 #, fuzzy
 msgid "Please make sure to properly configure Maps first under Settings > Maps"
 msgstr "まず、[設定]> [マップ]でマップを正しく構成してください。"
 
-#: gpstemplates.php:27
+#: gpstemplates.php
 msgid "Delete"
 msgstr "削除"
 
-#: gpstemplates.php:78
+#: gpstemplates.php
 #, fuzzy
 msgid "Map Templates"
 msgstr "マップテンプレート"
 
-#: gpstemplates.php:81
+#: gpstemplates.php
 #, fuzzy
 msgid "Host Template"
 msgstr "ホストテンプレート"
 
-#: gpstemplates.php:82 gpstemplates.php:175
+#: gpstemplates.php
 #, fuzzy
 msgid "Up Image"
 msgstr "アップ画像"
 
-#: gpstemplates.php:83 gpstemplates.php:183
+#: gpstemplates.php
 #, fuzzy
 msgid "Recovering Image"
 msgstr "画像の復元"
 
-#: gpstemplates.php:84 gpstemplates.php:191
+#: gpstemplates.php
 #, fuzzy
 msgid "Down Image"
 msgstr "下の画像"
 
-#: gpstemplates.php:85
+#: gpstemplates.php
 #, fuzzy
 msgid "Is AP"
 msgstr "APですか"
 
-#: gpstemplates.php:97
+#: gpstemplates.php
 msgid "True"
 msgstr "有効"
 
-#: gpstemplates.php:99
+#: gpstemplates.php
 msgid "False"
 msgstr "無効"
 
-#: gpstemplates.php:168
+#: gpstemplates.php
 msgid "Device Template"
 msgstr "デバイステンプレート"
 
-#: gpstemplates.php:169
+#: gpstemplates.php
 #, fuzzy
 msgid "Choose the Device Template to base this Map Template type."
 msgstr "このマップテンプレートタイプのベースとなるデバイステンプレートを選択します。"
 
-#: gpstemplates.php:176
+#: gpstemplates.php
 #, fuzzy
 msgid "Select the Image to Show for an Up Device"
 msgstr "アップデバイスに表示する画像を選択します"
 
-#: gpstemplates.php:184
+#: gpstemplates.php
 #, fuzzy
 msgid "Select the Image to Show for a Recovering Device"
 msgstr "回復中のデバイスに表示する画像を選択します"
 
-#: gpstemplates.php:192
+#: gpstemplates.php
 #, fuzzy
 msgid "Select the Image to Show for a Down Device"
 msgstr "ダウンしたデバイスに表示する画像を選択します"
 
-#: gpstemplates.php:199
+#: gpstemplates.php
 msgid "Access Point"
 msgstr "アクセス ポイント"
 
-#: gpstemplates.php:200
+#: gpstemplates.php
 #, fuzzy
 msgid "Does this Device Template Represent an Access Point."
 msgstr "このデバイステンプレートはアクセスポイントを表していますか。"
 
-#: gpstemplates.php:203
+#: gpstemplates.php
 msgid "No"
 msgstr "いいえ"
 
-#: gpstemplates.php:204
+#: gpstemplates.php
 msgid "Yes"
 msgstr "はい"
 
-#: gpstemplates.php:213
+#: gpstemplates.php
 #, fuzzy
 msgid "Map Template Edit"
 msgstr "マップテンプレート編集"
 
-#: setup.php:65
+#: setup.php
 #, fuzzy
 msgid "Configure Maps"
 msgstr "マップを構成する"
 
-#: setup.php:66
+#: setup.php
 #, fuzzy
 msgid "View Maps"
 msgstr "地図を見る"
 
-#: setup.php:281
+#: setup.php
 msgid "Map Settings"
 msgstr "マップ設定"
 
-#: setup.php:286
+#: setup.php
 #, fuzzy
 msgid "Overlay Inclusion"
 msgstr "オーバーレイインクルージョン"
 
-#: setup.php:287
+#: setup.php
 #, fuzzy
 msgid "Disable to plot host only, not included in coverage overlay."
 msgstr "カバレッジオーバーレイに含まれない、ホストのみをプロットすることを無効にします。"
 
-#: setup.php:294
+#: setup.php
 msgid "Latitude"
 msgstr "緯度"
 
-#: setup.php:295
+#: setup.php
 #, fuzzy
 msgid "The devices latitude coordinates"
 msgstr "デバイスの緯度座標"
 
-#: setup.php:303
+#: setup.php
 msgid "Longitude"
 msgstr "経度"
 
-#: setup.php:304
+#: setup.php
 #, fuzzy
 msgid "The devices longitude coordinates"
 msgstr "デバイスの経度座標"
 
-#: setup.php:323
+#: setup.php
 #, fuzzy
 msgid "Starting Degree"
 msgstr "開始度"
 
-#: setup.php:324
+#: setup.php
 #, fuzzy
 msgid "Starting degree for directional area between 0-360"
 msgstr "0〜360の指向性領域の開始度"
 
-#: setup.php:332
+#: setup.php
 #, fuzzy
 msgid "Stopping Degree"
 msgstr "停止度"
 
-#: setup.php:333
+#: setup.php
 #, fuzzy
 msgid "Stopping degree for directional area, must be greater than the Starting Degree"
 msgstr "指向性領域の停止度は、開始度よりも大きくする必要があります"
 
-#: setup.php:341
+#: setup.php
 #, fuzzy
 msgid "Specify Radius"
 msgstr "半径を指定する"
 
-#: setup.php:342
+#: setup.php
 #, fuzzy
 msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
 msgstr "アクセスポイントの半径を手動で指定します。グループ化されたデバイスに基づいて半径を決定するには、0に設定します"
 
-#: setup.php:352
+#: setup.php
 msgid "Group ID"
 msgstr "グループID"
 
-#: setup.php:353
+#: setup.php
 #, fuzzy
 msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
 msgstr "グループは、カバレッジオーバーレイに含まれるデバイスを定義します。 APデバイスグループ番号と照合されます。無効にするには0"
