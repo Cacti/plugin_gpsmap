@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cacti \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2026-09-27 10:46-0400\n"
+"POT-Creation-Date: 2026-09-28 16:05-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Cacti Developers <developers@cacti.net>>\n"
 "Language-Team: Cacti Developers <developers@cacti.net>\n"
@@ -17,150 +17,150 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: gpsmap.php:40
+#: gpsmap.php
 msgid "Please make sure to properly configure Maps first under Settings > Maps"
 msgstr ""
 
-#: gpstemplates.php:27
+#: gpstemplates.php
 msgid "Delete"
 msgstr ""
 
-#: gpstemplates.php:78
+#: gpstemplates.php
 msgid "Map Templates"
 msgstr ""
 
-#: gpstemplates.php:81
+#: gpstemplates.php
 msgid "Host Template"
 msgstr ""
 
-#: gpstemplates.php:82 gpstemplates.php:175
+#: gpstemplates.php
 msgid "Up Image"
 msgstr ""
 
-#: gpstemplates.php:83 gpstemplates.php:183
+#: gpstemplates.php
 msgid "Recovering Image"
 msgstr ""
 
-#: gpstemplates.php:84 gpstemplates.php:191
+#: gpstemplates.php
 msgid "Down Image"
 msgstr ""
 
-#: gpstemplates.php:85
+#: gpstemplates.php
 msgid "Is AP"
 msgstr ""
 
-#: gpstemplates.php:97
+#: gpstemplates.php
 msgid "True"
 msgstr ""
 
-#: gpstemplates.php:99
+#: gpstemplates.php
 msgid "False"
 msgstr ""
 
-#: gpstemplates.php:168
+#: gpstemplates.php
 msgid "Device Template"
 msgstr ""
 
-#: gpstemplates.php:169
+#: gpstemplates.php
 msgid "Choose the Device Template to base this Map Template type."
 msgstr ""
 
-#: gpstemplates.php:176
+#: gpstemplates.php
 msgid "Select the Image to Show for an Up Device"
 msgstr ""
 
-#: gpstemplates.php:184
+#: gpstemplates.php
 msgid "Select the Image to Show for a Recovering Device"
 msgstr ""
 
-#: gpstemplates.php:192
+#: gpstemplates.php
 msgid "Select the Image to Show for a Down Device"
 msgstr ""
 
-#: gpstemplates.php:199
+#: gpstemplates.php
 msgid "Access Point"
 msgstr ""
 
-#: gpstemplates.php:200
+#: gpstemplates.php
 msgid "Does this Device Template Represent an Access Point."
 msgstr ""
 
-#: gpstemplates.php:203
+#: gpstemplates.php
 msgid "No"
 msgstr ""
 
-#: gpstemplates.php:204
+#: gpstemplates.php
 msgid "Yes"
 msgstr ""
 
-#: gpstemplates.php:213
+#: gpstemplates.php
 msgid "Map Template Edit"
 msgstr ""
 
-#: setup.php:65
+#: setup.php
 msgid "Configure Maps"
 msgstr ""
 
-#: setup.php:66
+#: setup.php
 msgid "View Maps"
 msgstr ""
 
-#: setup.php:281
+#: setup.php
 msgid "Map Settings"
 msgstr ""
 
-#: setup.php:286
+#: setup.php
 msgid "Overlay Inclusion"
 msgstr ""
 
-#: setup.php:287
+#: setup.php
 msgid "Disable to plot host only, not included in coverage overlay."
 msgstr ""
 
-#: setup.php:294
+#: setup.php
 msgid "Latitude"
 msgstr ""
 
-#: setup.php:295
+#: setup.php
 msgid "The devices latitude coordinates"
 msgstr ""
 
-#: setup.php:303
+#: setup.php
 msgid "Longitude"
 msgstr ""
 
-#: setup.php:304
+#: setup.php
 msgid "The devices longitude coordinates"
 msgstr ""
 
-#: setup.php:323
+#: setup.php
 msgid "Starting Degree"
 msgstr ""
 
-#: setup.php:324
+#: setup.php
 msgid "Starting degree for directional area between 0-360"
 msgstr ""
 
-#: setup.php:332
+#: setup.php
 msgid "Stopping Degree"
 msgstr ""
 
-#: setup.php:333
+#: setup.php
 msgid "Stopping degree for directional area, must be greater than the Starting Degree"
 msgstr ""
 
-#: setup.php:341
+#: setup.php
 msgid "Specify Radius"
 msgstr ""
 
-#: setup.php:342
+#: setup.php
 msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
 msgstr ""
 
-#: setup.php:352
+#: setup.php
 msgid "Group ID"
 msgstr ""
 
-#: setup.php:353
+#: setup.php
 msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
 msgstr ""
