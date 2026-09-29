@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cacti\n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2026-09-27 10:46-0400\n"
+"POT-Creation-Date: 2026-09-28 16:05-0400\n"
 "PO-Revision-Date: 2022-06-19 13:05+0000\n"
 "Last-Translator: Coool (github.com/Coool) <coool@mail.lv>\n"
 "Language-Team: Latvian <http://translate.cacti.net/projects/cacti/gpsmaps/lv/>\n"
@@ -18,150 +18,150 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n % 10 == 0 || n % 100 >= 11 && n % 100 <= 19) ? 0 : ((n % 10 == 1 && n % 100 != 11) ? 1 : 2);\n"
 "X-Generator: Weblate 4.8.1\n"
 
-#: gpsmap.php:40
+#: gpsmap.php
 msgid "Please make sure to properly configure Maps first under Settings > Maps"
 msgstr "Lūdzu, vispirms pārliecinieties, ka pareizi nokonfigurēta Kartes sadaļa zem Iestatījumi > Kartes"
 
-#: gpstemplates.php:27
+#: gpstemplates.php
 msgid "Delete"
 msgstr "Dzēst"
 
-#: gpstemplates.php:78
+#: gpstemplates.php
 msgid "Map Templates"
 msgstr "Karšu veidnes"
 
-#: gpstemplates.php:81
+#: gpstemplates.php
 msgid "Host Template"
 msgstr "Resursdatora veidne"
 
-#: gpstemplates.php:82 gpstemplates.php:175
+#: gpstemplates.php
 msgid "Up Image"
 msgstr "Aktīvas ierīces attēls"
 
-#: gpstemplates.php:83 gpstemplates.php:183
+#: gpstemplates.php
 msgid "Recovering Image"
 msgstr "Atgūstas ierīces attēls"
 
-#: gpstemplates.php:84 gpstemplates.php:191
+#: gpstemplates.php
 msgid "Down Image"
 msgstr "Neaktīvas ierīces attēls"
 
-#: gpstemplates.php:85
+#: gpstemplates.php
 msgid "Is AP"
 msgstr "Ir Piekļuves punkts"
 
-#: gpstemplates.php:97
+#: gpstemplates.php
 msgid "True"
 msgstr "Patiess"
 
-#: gpstemplates.php:99
+#: gpstemplates.php
 msgid "False"
 msgstr "Nepatiess"
 
-#: gpstemplates.php:168
+#: gpstemplates.php
 msgid "Device Template"
 msgstr "Ierīces veidne"
 
-#: gpstemplates.php:169
+#: gpstemplates.php
 msgid "Choose the Device Template to base this Map Template type."
 msgstr "Izvēlieties Ierīces veidni uz kā balstīt šo Kartes veidnes tipu."
 
-#: gpstemplates.php:176
+#: gpstemplates.php
 msgid "Select the Image to Show for an Up Device"
 msgstr "Atlasiet attēlu, ko rādīt Aktīvai (darbojošai) ierīcei"
 
-#: gpstemplates.php:184
+#: gpstemplates.php
 msgid "Select the Image to Show for a Recovering Device"
 msgstr "Atlasiet attēlu, ko rādīt Atgūstas (startējošai) ierīcei"
 
-#: gpstemplates.php:192
+#: gpstemplates.php
 msgid "Select the Image to Show for a Down Device"
 msgstr "Atlasiet attēlu, ko rādīt Neaktīvai (nedarbojošai) ierīcei"
 
-#: gpstemplates.php:199
+#: gpstemplates.php
 msgid "Access Point"
 msgstr "Piekļuves punkts"
 
-#: gpstemplates.php:200
+#: gpstemplates.php
 msgid "Does this Device Template Represent an Access Point."
 msgstr "Vai šī Ierīces veidne pārstāv Piekļuves punktu."
 
-#: gpstemplates.php:203
+#: gpstemplates.php
 msgid "No"
 msgstr "Nē"
 
-#: gpstemplates.php:204
+#: gpstemplates.php
 msgid "Yes"
 msgstr "Jā"
 
-#: gpstemplates.php:213
+#: gpstemplates.php
 msgid "Map Template Edit"
 msgstr "Kartes veidnes rediģēšana"
 
-#: setup.php:65
+#: setup.php
 msgid "Configure Maps"
 msgstr "Konfigurēt kartes"
 
-#: setup.php:66
+#: setup.php
 msgid "View Maps"
 msgstr "Skatīt kartes"
 
-#: setup.php:281
+#: setup.php
 msgid "Map Settings"
 msgstr "Kartes iestatījumi"
 
-#: setup.php:286
+#: setup.php
 msgid "Overlay Inclusion"
 msgstr "Pārklājuma iekļaušana"
 
-#: setup.php:287
+#: setup.php
 msgid "Disable to plot host only, not included in coverage overlay."
 msgstr "Atspējot attēlot tikai resursdatoru, nav iekļauts pārklājuma pārklājumā."
 
-#: setup.php:294
+#: setup.php
 msgid "Latitude"
 msgstr "Platuma grādi"
 
-#: setup.php:295
+#: setup.php
 msgid "The devices latitude coordinates"
 msgstr "Ierīces platuma grāda koordinātas"
 
-#: setup.php:303
+#: setup.php
 msgid "Longitude"
 msgstr "Garuma grādi"
 
-#: setup.php:304
+#: setup.php
 msgid "The devices longitude coordinates"
 msgstr "Ierīces garuma grāda koordinātas"
 
-#: setup.php:323
+#: setup.php
 msgid "Starting Degree"
 msgstr "Sākuma grāds"
 
-#: setup.php:324
+#: setup.php
 msgid "Starting degree for directional area between 0-360"
 msgstr "Sākuma grāds virziena apgabalam no 0 līdz 360"
 
-#: setup.php:332
+#: setup.php
 msgid "Stopping Degree"
 msgstr "Apstāšanās grāds"
 
-#: setup.php:333
+#: setup.php
 msgid "Stopping degree for directional area, must be greater than the Starting Degree"
 msgstr "Virziena apgabala apstāšanās grādam jābūt lielākam par sākuma grādu"
 
-#: setup.php:341
+#: setup.php
 msgid "Specify Radius"
 msgstr "Norādiet rādiusu"
 
-#: setup.php:342
+#: setup.php
 msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
 msgstr "Norādiet Piekļuves punkta rādiusu. Iestatiet uz 0, lai noteiktu rādiusu, pamatojoties uz grupētajām ierīcēm"
 
-#: setup.php:352
+#: setup.php
 msgid "Group ID"
 msgstr "Grupas ID"
 
-#: setup.php:353
+#: setup.php
 msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
 msgstr "Grupas nosaka, kuras ierīces ir iekļautas pārklājuma pārklājumā. Tiks pārbaudīts balstoties uz Piekļuves punkta ierīču grupas numuru. 0, lai atspējotu"
