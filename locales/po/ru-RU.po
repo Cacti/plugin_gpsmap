@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cacti\n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2026-09-27 10:46-0400\n"
+"POT-Creation-Date: 2026-09-28 16:05-0400\n"
 "PO-Revision-Date: 2024-12-09 15:49+0000\n"
 "Last-Translator: Anton Zhuravlev <baka109g@gmail.com>\n"
 "Language-Team: Russian <http://translate.cacti.net/projects/cacti/gpsmaps/ru/>\n"
@@ -18,150 +18,150 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 4.8.1\n"
 
-#: gpsmap.php:40
+#: gpsmap.php
 msgid "Please make sure to properly configure Maps first under Settings > Maps"
 msgstr "Пожалуйста, сначала убедитесь, что правильно настроили Карты в Настройки > Карты"
 
-#: gpstemplates.php:27
+#: gpstemplates.php
 msgid "Delete"
 msgstr "Удалить"
 
-#: gpstemplates.php:78
+#: gpstemplates.php
 msgid "Map Templates"
 msgstr "Шаблоны карт"
 
-#: gpstemplates.php:81
+#: gpstemplates.php
 msgid "Host Template"
 msgstr "Шаблон хоста"
 
-#: gpstemplates.php:82 gpstemplates.php:175
+#: gpstemplates.php
 msgid "Up Image"
 msgstr "Поднять изображение вверх"
 
-#: gpstemplates.php:83 gpstemplates.php:183
+#: gpstemplates.php
 msgid "Recovering Image"
 msgstr "Восстановление изображения"
 
-#: gpstemplates.php:84 gpstemplates.php:191
+#: gpstemplates.php
 msgid "Down Image"
 msgstr "Опустить изображение вниз"
 
-#: gpstemplates.php:85
+#: gpstemplates.php
 msgid "Is AP"
 msgstr "Это точка доступа"
 
-#: gpstemplates.php:97
+#: gpstemplates.php
 msgid "True"
 msgstr "Истина"
 
-#: gpstemplates.php:99
+#: gpstemplates.php
 msgid "False"
 msgstr "Ложь"
 
-#: gpstemplates.php:168
+#: gpstemplates.php
 msgid "Device Template"
 msgstr "Шаблон Устройства"
 
-#: gpstemplates.php:169
+#: gpstemplates.php
 msgid "Choose the Device Template to base this Map Template type."
 msgstr "Выберите шаблон устройства для создания этого типа шаблона карты."
 
-#: gpstemplates.php:176
+#: gpstemplates.php
 msgid "Select the Image to Show for an Up Device"
 msgstr "Выберите изображение для отображения работающего устройства"
 
-#: gpstemplates.php:184
+#: gpstemplates.php
 msgid "Select the Image to Show for a Recovering Device"
 msgstr "Выберите изображение для отображения восстанавливающегося устройства"
 
-#: gpstemplates.php:192
+#: gpstemplates.php
 msgid "Select the Image to Show for a Down Device"
 msgstr "Выберите изображение для отображения упавшего устройства"
 
-#: gpstemplates.php:199
+#: gpstemplates.php
 msgid "Access Point"
 msgstr "Точка доступа"
 
-#: gpstemplates.php:200
+#: gpstemplates.php
 msgid "Does this Device Template Represent an Access Point."
 msgstr "Представляет ли этот шаблон устройства точку доступа."
 
-#: gpstemplates.php:203
+#: gpstemplates.php
 msgid "No"
 msgstr "Нет"
 
-#: gpstemplates.php:204
+#: gpstemplates.php
 msgid "Yes"
 msgstr "Да"
 
-#: gpstemplates.php:213
+#: gpstemplates.php
 msgid "Map Template Edit"
 msgstr "Редактировать шаблон карты"
 
-#: setup.php:65
+#: setup.php
 msgid "Configure Maps"
 msgstr "Настроить карты"
 
-#: setup.php:66
+#: setup.php
 msgid "View Maps"
 msgstr "Просмотр карт"
 
-#: setup.php:281
+#: setup.php
 msgid "Map Settings"
 msgstr "Настройки карты"
 
-#: setup.php:286
+#: setup.php
 msgid "Overlay Inclusion"
 msgstr "Включение оверлея"
 
-#: setup.php:287
+#: setup.php
 msgid "Disable to plot host only, not included in coverage overlay."
 msgstr "Отключить только для графика, не включаемого в наложение покрытия."
 
-#: setup.php:294
+#: setup.php
 msgid "Latitude"
 msgstr "Широта"
 
-#: setup.php:295
+#: setup.php
 msgid "The devices latitude coordinates"
 msgstr "Координаты широты устройства"
 
-#: setup.php:303
+#: setup.php
 msgid "Longitude"
 msgstr "Долгота"
 
-#: setup.php:304
+#: setup.php
 msgid "The devices longitude coordinates"
 msgstr "Координаты долготы устройства"
 
-#: setup.php:323
+#: setup.php
 msgid "Starting Degree"
 msgstr "Начальный градус"
 
-#: setup.php:324
+#: setup.php
 msgid "Starting degree for directional area between 0-360"
 msgstr "Начальный градус для направленной области от 0 до 360"
 
-#: setup.php:332
+#: setup.php
 msgid "Stopping Degree"
 msgstr "Конечный градус"
 
-#: setup.php:333
+#: setup.php
 msgid "Stopping degree for directional area, must be greater than the Starting Degree"
 msgstr "Конечный градус для направленной зоны должна быть больше начальной степени"
 
-#: setup.php:341
+#: setup.php
 msgid "Specify Radius"
 msgstr "Укажите радиус"
 
-#: setup.php:342
+#: setup.php
 msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
 msgstr "Вручную укажите радиус точки доступа. Установите 0, чтобы определить радиус на основе сгруппированных устройств"
 
-#: setup.php:352
+#: setup.php
 msgid "Group ID"
 msgstr "ID группы"
 
-#: setup.php:353
+#: setup.php
 msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
 msgstr "Группы определяют, какие устройства включаются в наложение покрытия. Будет проверяться по номеру группы устройств AP. 0 для отключения"
