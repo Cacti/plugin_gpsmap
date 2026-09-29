@@ -8,3 +8,4 @@ tests/_dbg.php
 # Weblate after merge; only locales/po/cacti.pot should be committed in PRs.
 locales/po/*.mo
 locales/LC_MESSAGES/*.mo
+locales/po/*.po
