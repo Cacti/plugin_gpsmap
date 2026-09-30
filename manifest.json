@@ -1,8 +1,6 @@
 {
     "tombstones": [],
     "expected": [
-        ".mdl_style.rb",
-        ".mdlrc",
         "CHANGELOG.md",
         "INFO",
         "LICENSE",
@@ -19,7 +17,6 @@
         "js/",
         "locales/",
         "manifest.json",
-        "phpunit.xml",
         "print.php",
         "setup.php"
     ],
