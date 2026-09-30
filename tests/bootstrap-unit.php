@@ -348,6 +348,7 @@ if (!function_exists('__esc')) {
 if (!function_exists('cacti_log')) {
 	function cacti_log($message, $also_print = false, $log_type = '', $level = 0) {
 		$GLOBALS['gpsmap_stub_log'][] = $message;
+		$GLOBALS['__test_cacti_log'][] = (string) $message;
 	}
 }
 
