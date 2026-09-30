@@ -102,7 +102,7 @@ function gpsmap_load_devices(bool $enableAll, ?GpsmapPollState $state = null): a
 	$state ??= gpsmap_poll_state();
 	$state->reset();
 
-	require_once($config['base_path'] . '/plugins/gpsmap/class/hosts_class.php');
+	include_once($config['base_path'] . '/plugins/gpsmap/class/hosts_class.php');
 
 	$towerIds = getTowerIds();
 
