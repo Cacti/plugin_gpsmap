@@ -40,7 +40,7 @@ describe('includes/icons.php - JavaScript emitted into an inline <script>', func
 		$cwd = getcwd();
 		chdir(gpsmap_test_tmpdir());
 		ob_start();
-		include __DIR__ . '/../../includes/icons.php';
+		require __DIR__ . '/../../includes/icons.php';
 		$this->js = ob_get_clean();
 		chdir($cwd);
 	});
@@ -86,7 +86,7 @@ describe('includes/icons.php - JavaScript emitted into an inline <script>', func
 		chdir(sys_get_temp_dir());
 		$empty = gpsmap_test_silence(function () {
 			ob_start();
-			include __DIR__ . '/../../includes/icons.php';
+			require __DIR__ . '/../../includes/icons.php';
 
 			return ob_get_clean();
 		});
@@ -153,7 +153,7 @@ describe('customicons.php - property-access position, degrades to undefined', fu
 	);
 
 	ob_start();
-	include __DIR__ . '/../../includes/customicons.php';
+	require __DIR__ . '/../../includes/customicons.php';
 	$custom = ob_get_clean();
 
 	it('maps a good icon', function () use ($custom) {
