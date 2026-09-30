@@ -38,8 +38,8 @@ require_once(__DIR__ . '/../../gpsmap_security.php');
 function callRegion(string $subnet): void {
 	global $config;
 
-	require_once($config['base_path'] . '/plugins/gpsmap/includes/polling/pollinginitial.php');
-	require_once($config['base_path'] . '/plugins/gpsmap/includes/polling/processregion.php');
+	include_once($config['base_path'] . '/plugins/gpsmap/includes/polling/pollinginitial.php');
+	include_once($config['base_path'] . '/plugins/gpsmap/includes/polling/processregion.php');
 
 	region($subnet);
 }

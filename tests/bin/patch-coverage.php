@@ -160,6 +160,11 @@ foreach ($clover->xpath('//file') as $file) {
  * Empty by default; add entries per repository as the need arises.
  */
 $unmeasured_allowlist = [
+	'gpsmap.php',                         // web UI entry point (chdir + auth.php); not loadable in isolation
+	'gpstemplates.php',                   // web UI entry point (chdir + auth.php); not loadable in isolation
+	'includes/polling.php',               // poller-only include, exercised only in a live poller run
+	'includes/polling/kmlcreation.php',   // poller-only include, exercised only in a live poller run
+	'includes/polling/processregion.php', // poller-only include, exercised only in a live poller run
 ];
 $unmeasured            = array_values(array_diff(array_keys($changed), array_keys($measured)));
 $unexpected_unmeasured = array_values(array_diff($unmeasured, $unmeasured_allowlist));
