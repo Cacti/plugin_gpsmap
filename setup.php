@@ -65,7 +65,7 @@ function plugin_gpsmap_install() {
 	api_plugin_register_realm('gpsmap', 'gpstemplates.php,gpstemplates_add.php',__('Configure Maps', 'gpsmap'), 1);
 	api_plugin_register_realm('gpsmap', 'gpsmap.php', __('View Maps', 'gpsmap'), 1);
 
-	include_once($config['base_path'] . '/plugins/gpsmap/includes/setup/database.php');
+	require_once($config['base_path'] . '/plugins/gpsmap/includes/setup/database.php');
 
 	if (gpsmap_setup_database()) {
 		$info = plugin_gpsmap_version();
@@ -183,7 +183,7 @@ function gpsmap_check_upgrade(bool $force = false) {
 	$old     = read_config_option('plugin_gpsmap_version', true);
 
 	if ($current != $old) {
-		include_once($config['base_path'] . '/plugins/gpsmap/includes/setup/database.php');
+		require_once($config['base_path'] . '/plugins/gpsmap/includes/setup/database.php');
 		gpsmap_upgrade_database((string) $old, $force);
 	}
 

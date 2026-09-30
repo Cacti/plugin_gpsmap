@@ -62,7 +62,8 @@ if (!defined('GPSMAP_UPGRADE_MAX_FAILURES')) {
 function gpsmap_upgrade_database(string $old = '', bool $force = false): void {
 	global $config;
 
-	include_once($config['library_path'] . '/database.php');
+	require_once($config['library_path'] . '/database.php');
+
 
 	$v = plugin_gpsmap_version();
 
@@ -102,7 +103,7 @@ function gpsmap_upgrade_database(string $old = '', bool $force = false): void {
 		}
 	}
 
-	include_once($config['base_path'] . '/plugins/gpsmap/setup.php');
+	require_once($config['base_path'] . '/plugins/gpsmap/setup.php');
 
 	/* Recorded last, and only when every migration reported success.
 	 * gpsmap_check_upgrade() gates on this option, so writing it earlier would

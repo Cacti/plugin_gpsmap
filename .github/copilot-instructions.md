@@ -134,7 +134,7 @@ function gpsmap_check_upgrade() {
 	$old     = read_config_option('plugin_gpsmap_version', TRUE);
 
 	if ($current != $old) {
-		include_once($config['base_path'] . '/plugins/gpsmap/includes/setup/database.php');
+		require_once($config['base_path'] . '/plugins/gpsmap/includes/setup/database.php');
 		gpsmap_upgrade_database();
 	}
 }
@@ -244,6 +244,10 @@ existing code or adding new code, not just in dedicated cleanup passes:
 - **i18n text domain.** Every `__()`/`__esc()` call must include this plugin's text domain as the
   final argument, except when deliberately comparing against a literal, untranslated Cacti-core
   label.
+- **File inclusion uses `require`/`require_once`.** Always use `require`/`require_once` (never
+  `include`/`include_once`) so a missing dependency fails fast and loudly. This plugin already keeps
+  its library/helper code under `includes/` (schema in `includes/setup/database.php`); reference
+  plugin files from there.
 - **Plugin table-creation API.** Use `api_plugin_db_table_create()`/`api_plugin_db_add_column()`
   (from Cacti core's `lib/plugins.php`) instead of raw `CREATE TABLE`/`ALTER TABLE ... ADD COLUMN`.
   Both are idempotent (safe no-ops when already applied), so the same call can run unconditionally

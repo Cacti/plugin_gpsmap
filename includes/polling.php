@@ -72,8 +72,8 @@ function gpsmap_schedule_dns_refresh(): void {
 function gpsmap_poller_bottom() {
 	global $config;
 
-	include_once($config['base_path'] . '/plugins/gpsmap/includes/polling/functions.php');
-	include_once($config['base_path'] . '/plugins/gpsmap/includes/polling/processregion.php');
+	require_once($config['base_path'] . '/plugins/gpsmap/includes/polling/functions.php');
+	require_once($config['base_path'] . '/plugins/gpsmap/includes/polling/processregion.php');
 
 	$cycle_started_at = time();
 	$start            = microtime(true);
