@@ -26,26 +26,26 @@ When generating code for this repository:
 ## Project Structure
 
 ```
-gpsmap/                # Repository root (install to plugins/gpsmap/ in Cacti)
-├── class/             # Supporting PHP classes
+gpsmap/                  # Repository root (install to plugins/gpsmap/ in Cacti)
+├── class/               # Supporting PHP classes
 ├── includes/
 │   ├── setup/
-│   │   ├── tabs.php        # top_header_tabs / top_graph_header_tabs callback
-│   │   ├── settings.php    # config_arrays/config_settings/draw_navigation_text/api_device_save
-│   │   └── database.php    # gpsmap_setup_database() / gpsmap_upgrade_database()
-│   └── polling.php    # poller_bottom callback, writes map XML/KML/HTML
-├── images/             # Marker icons (Green/Orange/Red)
-├── js/                 # GPSMaps.js, infobubble.js
-├── locales/            # Internationalization files
-├── tests/              # Test suite
-├── XML/                # Poller-generated map artifacts (all.xml, all.kml, all-top.html)
-├── gpsmap.php          # Main map view page
+│   │   ├── tabs.php     # top_header_tabs / top_graph_header_tabs callback
+│   │   ├── settings.php # config_arrays/config_settings/draw_navigation_text/api_device_save
+│   │   └── database.php # gpsmap_setup_database() / gpsmap_upgrade_database()
+│   └── polling.php      # poller_bottom callback, writes map XML/KML/HTML
+├── images/              # Marker icons (Green/Orange/Red)
+├── js/                  # GPSMaps.js, infobubble.js
+├── locales/             # Internationalization files
+├── tests/               # Test suite
+├── XML/                 # Poller-generated map artifacts (all.xml, all.kml, all-top.html)
+├── gpsmap.php           # Main map view page
 ├── gpsmap_security.php # Access/permission helpers
-├── gpstemplates.php    # Map template administration
-├── print.php           # Print-friendly map view
-├── INFO                # Plugin metadata (name, version, compat)
+├── gpstemplates.php     # Map template administration
+├── print.php            # Print-friendly map view
+├── INFO                 # Plugin metadata (name, version, compat)
 ├── README.md
-└── setup.php           # Plugin install/uninstall/upgrade hooks
+└── setup.php            # Plugin install/uninstall/upgrade hooks
 ```
 
 ## Naming Conventions
