@@ -1,0 +1,24 @@
+{
+    "tombstones": [],
+    "expected": [
+        "CHANGELOG.md",
+        "INFO",
+        "LICENSE",
+        "README.md",
+        "XML/",
+        "class/",
+        "gpsmap.php",
+        "gpsmap_dns.php",
+        "gpsmap_security.php",
+        "gpstemplates.php",
+        "images/",
+        "includes/",
+        "index.php",
+        "js/",
+        "locales/",
+        "manifest.json",
+        "print.php",
+        "setup.php"
+    ],
+    "whitelist": []
+}

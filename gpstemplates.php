@@ -20,8 +20,8 @@
 */
 
 chdir('../../');
-include_once('./include/auth.php');
-include_once('./plugins/gpsmap/gpsmap_security.php');
+require_once('./include/auth.php');
+require_once('./plugins/gpsmap/gpsmap_security.php');
 
 $ds_actions = [
 	1 => __('Delete')

@@ -20,10 +20,10 @@
 */
 
 chdir('../../');
-include('./include/auth.php');
+require('./include/auth.php');
 require_once('./plugins/gpsmap/gpsmap_security.php');
-include_once('./plugins/gpsmap/includes/setup/show.php');
-include_once('./plugins/gpsmap/includes/setup/gpsmapinitial.php');
+require_once('./plugins/gpsmap/includes/setup/show.php');
+require_once('./plugins/gpsmap/includes/setup/gpsmapinitial.php');
 $body = '';
 
 general_header();
@@ -87,8 +87,8 @@ if ($show != 'setup') { ?>
 		gpsmap.downloadURL     = <?php print json_encode($config['url_path'] . 'plugins/gpsmap/XML/' . $parameter . '.xml', JSON_THROW_ON_ERROR | JSON_HEX_TAG | JSON_UNESCAPED_SLASHES); ?>;
 		gpsmap.t_error         = <?php print is_finite((float) $terror) ? json_encode((float) $terror) : '0'; ?>;
 
-		<?php include_once('plugins/gpsmap/includes/icons.php'); ?>
-		<?php include_once('plugins/gpsmap/includes/customicons.php'); ?>
+		<?php require_once('plugins/gpsmap/includes/icons.php'); ?>
+		<?php require_once('plugins/gpsmap/includes/customicons.php'); ?>
 
 		window.onresize = gpsmap.resize;
 

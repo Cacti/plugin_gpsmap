@@ -1,5 +1,6 @@
 ## Changelog
 --- develop ---
+* refactor: Switch every file inclusion from include/include_once to require/require_once for fail-fast consistency (schema already lives in includes/setup/database.php via the plugin table API, so no schema changes were needed)
 * dev: Measure CI coverage with xdebug instead of pcov so the plugin's own sources are instrumented (pcov auto-scopes to the Composer root and skipped cacti/plugins/, leaving the patch-coverage gate with nothing to measure)
 * dev: Enforce patch coverage of changed lines in CI and remove the inert COMPOSER_ROOT_VERSION env from the Pest step
 * security: Add a version-safe CSP nonce (`plugin_gpsmap_csp_nonce()`) to every inline `<script>` tag, route the plugin's own external JavaScript through Cacti's `get_md5_include_js()` helper, and nonce the Google Maps API tag, so pages stay compatible with Cacti's Content-Security-Policy nonce enforcement while falling back cleanly on older Cacti releases that lack the `CactiSecureHeaders` class

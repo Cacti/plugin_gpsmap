@@ -160,6 +160,10 @@ foreach ($clover->xpath('//file') as $file) {
  * Empty by default; add entries per repository as the need arises.
  */
 $unmeasured_allowlist = [
+    'gpsmap.php',                  // web UI entry point (chdir + auth.php); not loadable in isolation
+    'gpstemplates.php',            // web UI entry point (chdir + auth.php); not loadable in isolation
+    'setup.php',                   // plugin hook registration bootstrap; loaded by Cacti core, not isolable in a unit test
+    'includes/setup/database.php', // install/upgrade schema bootstrap; require_once's the live Cacti library, only runs during a real install/upgrade
 ];
 $unmeasured            = array_values(array_diff(array_keys($changed), array_keys($measured)));
 $unexpected_unmeasured = array_values(array_diff($unmeasured, $unmeasured_allowlist));
