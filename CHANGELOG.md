@@ -1,5 +1,6 @@
 ## Changelog
 --- develop ---
+* dev: Replace the translation-template CI check that regenerated locales/po/cacti.pot and compared it with a diff-based gate (tests/bin/check-i18n-pot.php) requiring cacti.pot to be updated only when a pull request adds, removes, or modifies an i18n function call
 * refactor: Switch every file inclusion from include/include_once to require/require_once for fail-fast consistency (schema already lives in includes/setup/database.php via the plugin table API, so no schema changes were needed)
 * dev: Measure CI coverage with xdebug instead of pcov so the plugin's own sources are instrumented (pcov auto-scopes to the Composer root and skipped cacti/plugins/, leaving the patch-coverage gate with nothing to measure)
 * dev: Enforce patch coverage of changed lines in CI and remove the inert COMPOSER_ROOT_VERSION env from the Pest step
