@@ -359,3 +359,17 @@ var gpsmap = {
 		}
 	}
 };
+
+jQuery(function() {
+jQuery(document).off('click.gpsmapNav', '.gpsmapStartOver')
+.on('click.gpsmapNav', '.gpsmapStartOver', function(event) {
+event.preventDefault();
+window.location.reload(true);
+});
+
+jQuery(document).off('click.gpsmapNav', '.gpsmapPrint')
+.on('click.gpsmapNav', '.gpsmapPrint', function(event) {
+event.preventDefault();
+window.open('print.php');
+});
+});
