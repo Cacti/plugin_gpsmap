@@ -1,11 +1,11 @@
 ## Changelog
 --- develop ---
-* security: Pin CI fixtures and shared test dependencies, disable persisted checkout credentials, and limit workflow permissions and runtime
 * security: Move the map region navigation's 'Start Over' and 'Print' buttons from inline `onclick` handlers to delegated jQuery bindings in `js/GPSMaps.js` (via `gpsmapStartOver`/`gpsmapPrint` classes) so the map no longer trips Cacti's Content-Security-Policy script-src-attr directive
 * dev: Replace the translation-template CI check that regenerated locales/po/cacti.pot and compared it with a diff-based gate (tests/bin/check-i18n-pot.php) requiring cacti.pot to be updated only when a pull request adds, removes, or modifies an i18n function call
 * refactor: Switch every file inclusion from include/include_once to require/require_once for fail-fast consistency (schema already lives in includes/setup/database.php via the plugin table API, so no schema changes were needed)
 * dev: Measure CI coverage with xdebug instead of pcov so the plugin's own sources are instrumented (pcov auto-scopes to the Composer root and skipped cacti/plugins/, leaving the patch-coverage gate with nothing to measure)
 * dev: Enforce patch coverage of changed lines in CI and remove the inert COMPOSER_ROOT_VERSION env from the Pest step
+* dev: Pin CI fixtures and shared test dependencies, disable persisted checkout credentials, and limit workflow permissions and runtime
 * security: Add a version-safe CSP nonce (`plugin_gpsmap_csp_nonce()`) to every inline `<script>` tag, route the plugin's own external JavaScript through Cacti's `get_md5_include_js()` helper, and nonce the Google Maps API tag, so pages stay compatible with Cacti's Content-Security-Policy nonce enforcement while falling back cleanly on older Cacti releases that lack the `CactiSecureHeaders` class
 * issue: PHPStan level 8 typing pass - hardened parse_ini_file()/db_fetch_row_prepared() result narrowing across 3 unguarded plugin_gpsmap_version() callers, fixed html_start_box()/hex2bin() type mismatches
 * issue: Display Disabled Devices is inert, and a short write can publish a truncated artefact (PR #101)
