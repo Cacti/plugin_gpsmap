@@ -1,5 +1,6 @@
 ## Changelog
 --- develop ---
+* dev: Run the CI poller with the shared runner group so RRD files and structured directories pass permission verification
 * security: Move the map region navigation's 'Start Over' and 'Print' buttons from inline `onclick` handlers to delegated jQuery bindings in `js/GPSMaps.js` (via `gpsmapStartOver`/`gpsmapPrint` classes) so the map no longer trips Cacti's Content-Security-Policy script-src-attr directive
 * dev: Replace the translation-template CI check that regenerated locales/po/cacti.pot and compared it with a diff-based gate (tests/bin/check-i18n-pot.php) requiring cacti.pot to be updated only when a pull request adds, removes, or modifies an i18n function call
 * refactor: Switch every file inclusion from include/include_once to require/require_once for fail-fast consistency (schema already lives in includes/setup/database.php via the plugin table API, so no schema changes were needed)
