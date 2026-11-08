@@ -78,6 +78,12 @@ describe('calcKm - distance calculation and backward-compat alias', function () 
 		expect($dist)->toBeGreaterThanOrEqual(330)->toBeLessThanOrEqual(360);
 	});
 
+	it('uses the short path across the antimeridian', function () {
+		$dist = calcKm(0.0, 179.9, 0.0, -179.9);
+
+		expect($dist)->toBeGreaterThanOrEqual(22.0)->toBeLessThanOrEqual(22.5);
+	});
+
 	it('delegates calcMeters() to calcKm()', function () {
 		// The old name was wrong - it always returned km, not metres.
 		expect(calcMeters(51.5, -0.1, 48.8, 2.3))->toBe(calcKm(51.5, -0.1, 48.8, 2.3));

@@ -309,6 +309,19 @@ it('coverage radius: group geometry, configured radius and coverage toggle', fun
 	region('all');
 	assert_true('coverageXML: radius keeps the furthest member, not the last', gpsmap_test_tower_radius(file_get_contents(gpsmap_xml_path('all', 'xml'))) > 1000.0);
 
+	// Devices on opposite sides of the antimeridian are nearby and must not
+	// produce a near-global coverage radius.
+	$GLOBALS['gpsmap_stub_rows']['hosts'] = [
+		gpsmap_test_row(['id' => '1', 'hostname' => '10.5.0.1', 'host_template_id' => '10', 'groupnum' => '1',
+			'latitude'           => '0.1', 'longitude' => '179.9']),
+		gpsmap_test_row(['id' => '2', 'hostname' => '10.5.0.2', 'host_template_id' => '20', 'groupnum' => '1',
+			'latitude'           => '0.1', 'longitude' => '-179.9']),
+	];
+	region('all');
+	$antimeridian_radius = gpsmap_test_tower_radius(file_get_contents(gpsmap_xml_path('all', 'xml')));
+
+	expect($antimeridian_radius)->toBeGreaterThanOrEqual(22.0)->toBeLessThanOrEqual(22.5);
+
 	// A non-zero Specify Radius value is authoritative even with distant members.
 	$GLOBALS['gpsmap_stub_rows']['hosts'] = [
 		gpsmap_test_row(['id' => '1', 'hostname' => '10.5.0.1', 'host_template_id' => '10',

@@ -73,8 +73,8 @@ function getTowerIds(): array {
  * while sizing a tower's coverage radius/rendering distance-based map
  * elements.
  *
- * Returns the great-circle distance in kilometres (not metres, the
- * constant 6378.7 is Earth's mean radius in km). Renamed from calcMeters
+ * Returns the great-circle distance in kilometres (not metres, using
+ * Earth's mean radius of 6371.0088 km). Renamed from calcMeters
  * to reflect the actual unit; callers treating the result as metres will
  * be off by 1000x. The gpsmap_templates.radius column is also stored in
  * km.
@@ -87,10 +87,15 @@ function getTowerIds(): array {
  * @return float The great-circle distance in kilometres.
  */
 function calcKm(float $Lat1, float $Lon1, float $Lat2, float $Lon2): float {
-	return 6378.7 * 3.1415926 * sqrt(
-		($Lat2 - $Lat1) * ($Lat2 - $Lat1)
-		+ cos($Lat2 / 57.29578) * cos($Lat1 / 57.29578) * ($Lon2 - $Lon1) * ($Lon2 - $Lon1)
-	) / 180;
+	$latitude1       = deg2rad($Lat1);
+	$latitude2       = deg2rad($Lat2);
+	$latitude_delta  = $latitude2 - $latitude1;
+	$longitude_delta = deg2rad($Lon2 - $Lon1);
+	$a               = sin($latitude_delta / 2) ** 2
+		+ cos($latitude1) * cos($latitude2) * sin($longitude_delta / 2) ** 2;
+	$a = min(1.0, max(0.0, $a));
+
+	return 6371.0088 * 2 * atan2(sqrt($a), sqrt(1 - $a));
 }
 
 /**
