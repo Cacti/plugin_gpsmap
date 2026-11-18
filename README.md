@@ -159,6 +159,11 @@ contains only letters, digits and underscores.  See Troubleshooting.
 | Coverage Overlay | Whether Access Point coverage areas are drawn |
 | Quality | Number of segments used to draw a coverage circle; above 15 is smoother, high values slow the browser |
 | Geolocation URL | Service used to resolve a Device's approximate location |
+| Fill Color | Fill colour of the coverage overlay |
+| Ring Color | Colour of the coverage overlay's outer rim |
+| Ring Width | Width of the outer ring |
+| Fill Opacity | Fill opacity of the coverage overlay, between 0 and 1 |
+| Ring Opacity | Ring opacity of the coverage overlay, between 0 and 1 |
 
 ## How it works
 
