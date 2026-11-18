@@ -97,20 +97,29 @@ The map loads its JavaScript from Google, so until the policy is widened the
 Maps tab is blank and the only evidence is a `Refused to load the script`
 message in the browser console.
 
-Under **Console -> Configuration -> Settings -> General**:
+Under **Console -> Configuration -> Settings -> General**, configure
+**Content-Security Alternate Sources** for the Google Maps resources required
+by your deployment. The initial script hosts include `https://maps.googleapis.com`
+and `https://maps.gstatic.com`; map images, fonts, and API connections can require
+additional directives. Google's
+[Maps CSP guide](https://developers.google.com/maps/documentation/javascript/content-security-policy)
+lists the current requirements and recommends nonce-based CSP.
 
-| Setting | Value |
-| --- | --- |
-| Content-Security Alternate Sources | `https://maps.googleapis.com https://maps.gstatic.com` |
-| Content-Security Script Policy | Allow both unsafe-eval and Non-Nonced Inline JavaScript |
+Current development adds Cacti's nonce to the plugin's inline scripts and
+the Google Maps API loader when the core nonce helper is available. It does
+not require non-nonced inline JavaScript solely for those scripts. CSP settings
+and supported enforcement modes differ between Cacti releases. Older releases
+offer **Allow both unsafe-eval and Non-Nonced Inline JavaScript**, which is a
+broader compatibility setting; do not treat it as a requirement for every
+current deployment. Check the browser's reported directive and the Maps guide
+when a resource or an evaluation operation is blocked.
 
-Both are required.  The Google loader calls `eval()`, so permitting the
-alternate sources alone is not enough.
-
-If Cacti sits behind a reverse proxy that sets its own
-`Content-Security-Policy` header, that header replaces Cacti's rather than
-merging with it.  Reproduce the whole policy at the proxy, not just the two
-hosts, or the map stays blank with Cacti's own settings correct.
+If a reverse proxy adds another `Content-Security-Policy` header, the browser
+enforces every policy. An added policy cannot relax a restriction in Cacti's
+policy. Inspect the response headers and allow the required map resources in
+each enforced policy; a proxy configured to replace the upstream header must
+preserve the rest of Cacti's policy. See the
+[CSP specification](https://www.w3.org/TR/CSP3/#multiple-policies).
 
 ### 3. A Map Template and Device coordinates
 
