@@ -13,6 +13,9 @@
 * issue#148: Calculate coverage distances correctly across the antimeridian
 * issue: Correct database include path in gpsmap_check_upgrade (PR #93)
 
+Documentation update (unreleased): Refresh README release/source compatibility,
+installation guidance and source-checked behavior.
+
 --- 2.2 ---
 
 * issue#6, issue#104, issue#107, issue#109, issue#110: Refactor the poller for single-load dual-stack maps, asynchronous last-known-good DNS, thold-aware markers, and safe artifact pruning
