@@ -15,7 +15,7 @@ This README describes the `develop` source branch.
 
 | Code | Plugin version | Minimum Cacti declared in `INFO` |
 | --- | --- | --- |
-| [Source branch](INFO) | 2.2 | 1.2.29 |
+| [Source branch](https://github.com/Cacti/plugin_gpsmap/blob/develop/INFO) | 2.2 | 1.2.29 |
 | [Published v2.1](https://github.com/Cacti/plugin_gpsmap/releases/tag/v2.1) | 2.1 | 1.1.17 |
 
 Use the published release’s assets and tagged documentation when installing that
@@ -25,7 +25,7 @@ matches the release. Cacti’s own PHP and database requirements also apply.
 Install this plugin in **`<cacti-root>/plugins/gpsmap`**, using the directory
 name `gpsmap` rather than `plugin_gpsmap`.
 
-See [CHANGELOG.md](CHANGELOG.md) for the version history.
+See [CHANGELOG.md](https://github.com/Cacti/plugin_gpsmap/blob/develop/CHANGELOG.md) for the version history.
 
 ## Features
 
