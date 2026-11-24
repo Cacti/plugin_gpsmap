@@ -1,5 +1,6 @@
 ## Changelog
 --- develop ---
+* issue#154: Scan nested plugin PHP directories recursively in `locales/build_gettext.sh` and `tests/bin/check-i18n-pot.php` instead of stopping at `-maxdepth 2`, and regenerate `locales/po/cacti.pot` to include the 38 previously omitted strings from `includes/setup/settings.php` and `includes/polling/processregion.php`
 * dev: Run the CI poller with the shared runner group so RRD files and structured directories pass permission verification
 * security: Move the map region navigation's 'Start Over' and 'Print' buttons from inline `onclick` handlers to delegated jQuery bindings in `js/GPSMaps.js` (via `gpsmapStartOver`/`gpsmapPrint` classes) so the map no longer trips Cacti's Content-Security-Policy script-src-attr directive
 * dev: Replace the translation-template CI check that regenerated locales/po/cacti.pot and compared it with a diff-based gate (tests/bin/check-i18n-pot.php) requiring cacti.pot to be updated only when a pull request adds, removes, or modifies an i18n function call

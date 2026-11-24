@@ -19,7 +19,8 @@
  * gettext template.
  *
  * locales/po/cacti.pot is produced by locales/build_gettext.sh, which runs
- * xgettext over `find . -maxdepth 2 -name '*.php'` extracting the Cacti i18n
+ * xgettext recursively over the plugin's PHP files (excluding tests/, vendor/,
+ * locales/, XML/, and hidden directories), extracting the Cacti i18n
  * helpers (__(), __n(), __esc(), ...). Rather than regenerating the template
  * and comparing timestamps (which couples CI to one exact gettext toolchain),
  * this reconstructs the set of translatable strings xgettext would extract at
@@ -188,8 +189,9 @@ function collect_strings($ref, $keywords) {
 }
 
 /**
- * List the PHP files that feed build_gettext.sh at a revision, i.e. those no
- * more than one directory below the plugin root (`find . -maxdepth 2`).
+ * List the PHP files that feed build_gettext.sh at a revision, i.e. plugin
+ * PHP files at any depth outside tests/, vendor/, locales/, XML/, and hidden
+ * directories.
  *
  * @param string $ref Git revision to read the tree from.
  *
@@ -221,8 +223,8 @@ function template_files($ref) {
 }
 
 /**
- * Whether a path is scanned by build_gettext.sh, i.e. a PHP file no more than
- * one directory below the plugin root.
+ * Whether a path is scanned by build_gettext.sh, i.e. a plugin PHP file
+ * outside tests/, vendor/, locales/, XML/, and hidden directories.
  *
  * @param string $file Repository-relative path.
  *
@@ -233,7 +235,19 @@ function feeds_template($file) {
 		return false;
 	}
 
-	return substr_count($file, '/') <= 1;
+	foreach (['tests/', 'vendor/', 'locales/', 'XML/'] as $excluded) {
+		if (strncmp($file, $excluded, strlen($excluded)) === 0) {
+			return false;
+		}
+	}
+
+	foreach (explode('/', $file) as $segment) {
+		if ($segment !== '' && $segment[0] === '.') {
+			return false;
+		}
+	}
+
+	return true;
 }
 
 /**
