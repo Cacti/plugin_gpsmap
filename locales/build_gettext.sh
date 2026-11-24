@@ -50,30 +50,18 @@ fi
 
 # Update main gettext POT file with application strings
 echo "Updating Cacti language gettext language file..."
-cd "${BASE_PATH}" || exit 1
+cd ${BASE_PATH}
 
-PACKAGE_VERSION=""
-if [ -f include/cacti_version ]; then
-	PACKAGE_VERSION=$(cat include/cacti_version)
-elif [ -f INFO ]; then
-	PACKAGE_VERSION=$(awk -F'=' '/^version[[:space:]]*=/{gsub(/[[:space:]]/, "", $2); print $2; exit}' INFO)
-fi
-
-find . \( -path './.git' -o -path './tests' -o -path './vendor' -o -path './locales' -o -path './XML' \) -prune -o -type f -name '*.php' -print \
+# Scan every plugin PHP file at any depth, skipping hidden files and directories
+# plus tests, vendor, locales and XML (kept in sync with tests/bin/check-i18n-pot.php).
+find . \( -name '.?*' -o -path './tests' -o -path './vendor' -o -path './locales' -o -path './XML' \) -prune -o -type f -name '*.php' -print \
 	| sed 's|^\./||' \
 	| LC_ALL=C sort \
-	| "${XGETTEXT_BIN}" --no-wrap --add-location=file --from-code=UTF-8 --copyright-holder="The Cacti Group" --package-name="Cacti" --package-version="${PACKAGE_VERSION}" --msgid-bugs-address="developers@cacti.net" -F -k__gettext -k__ -k__n:1,2 -k__x:1c,2 -k__xn:1c,2,3 -k__esc -k__esc_n:1,2 -k__esc_x:1c,2 -k__esc_xn:1c,2,3 -k__date -o locales/po/cacti.pot --files-from=- || exit 1
+	| ${XGETTEXT_BIN} --no-wrap --add-location=file --from-code=UTF-8 --copyright-holder="The Cacti Group" --package-name="Cacti" --package-version=`cat include/cacti_version` --msgid-bugs-address="developers@cacti.net" -F -k__gettext -k__ -k__n:1,2 -k__x:1c,2 -k__xn:1c,2,3 -k__esc -k__esc_n:1,2 -k__esc_x:1c,2 -k__esc_xn:1c,2,3 -k__date -o locales/po/cacti.pot --files-from=-
 
-POT_TMP=$(mktemp "${BASE_PATH}/locales/po/cacti.pot.XXXXXX") || exit 1
-trap 'rm -f "$POT_TMP"' 0
-trap 'exit 1' INT TERM
-if ! sed -e 's/FULL NAME <EMAIL@ADDRESS>/Cacti Developers <developers@cacti.net>/g' \
-	-e 's/LANGUAGE <LL@li.org>/Cacti Developers <developers@cacti.net>/g' \
-	-e 's/CHARSET/UTF-8/g' locales/po/cacti.pot > "$POT_TMP"; then
-	exit 1
-fi
-chmod 644 "$POT_TMP" || exit 1
-mv "$POT_TMP" locales/po/cacti.pot || exit 1
+sed -i 's/FULL NAME <EMAIL@ADDRESS>/Cacti Developers <developers@cacti.net>/g' locales/po/cacti.pot
+sed -i 's/LANGUAGE <LL@li.org>/Cacti Developers <developers@cacti.net>/g' locales/po/cacti.pot
+sed -i 's/CHARSET/UTF-8/g' locales/po/cacti.pot
 
 # Merge any changes to POT file into language files
 echo "Merging updates to language files..."
