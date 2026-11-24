@@ -153,3 +153,156 @@ msgstr "Grupp-ID"
 #: setup.php
 msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
 msgstr "Grupperna anger vilka enheter som ingår i täckningsöverlägget. Gruppnumret jämförs med åtkomstpunktens gruppnummer. Ange 0 för att inaktivera"
+
+#: includes/polling/processregion.php
+#, php-format
+msgid "IP %s"
+msgstr "IP %s"
+
+#: includes/polling/processregion.php
+msgid "Start Over"
+msgstr "Börja om"
+
+#: includes/polling/processregion.php
+msgid "Print"
+msgstr "Skriv ut"
+
+#: includes/setup/settings.php includes/setup/tabs.php
+msgid "Maps"
+msgstr "Kartor"
+
+#: includes/setup/settings.php
+msgid "Create New Template"
+msgstr "Skapa ny mall"
+
+#: includes/setup/settings.php
+msgid "Map"
+msgstr "Karta"
+
+#: includes/setup/settings.php
+msgid "Templates"
+msgstr "Mallar"
+
+#: includes/setup/settings.php
+msgid "Google API Key"
+msgstr "Google API-nyckel"
+
+#: includes/setup/settings.php
+msgid "The Google Maps API Key is not required but highly recommended, get more info at <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Google Documentation</a>."
+msgstr "Google Maps API-nyckeln är inte obligatorisk men rekommenderas starkt. Läs mer i <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Googles dokumentation</a>."
+
+#: includes/setup/settings.php
+msgid "Geolocation URL"
+msgstr "URL för geolokalisering"
+
+#: includes/setup/settings.php
+msgid "Enter the URL of the IP to Geolocation lookup service.  Every devices IP address will be tested against this location service if not set to determine the devices Geolocation.  The devices IP address will be appended to the end of this URL."
+msgstr "Ange URL för tjänsten som slår upp geolokalisering från IP. Varje enhets IP-adress testas mot denna platstjänst om platsen inte är angiven för att fastställa enhetens geolokalisering. Enhetens IP-adress läggs till i slutet av denna URL."
+
+#: includes/setup/settings.php
+msgid "Initial Latitude"
+msgstr "Initial latitud"
+
+#: includes/setup/settings.php
+msgid "Defines the centering of the map"
+msgstr "Anger kartans centrering"
+
+#: includes/setup/settings.php
+msgid "Initial Longitude"
+msgstr "Initial longitud"
+
+#: includes/setup/settings.php
+msgid "Initial Elevation"
+msgstr "Initial höjd"
+
+#: includes/setup/settings.php
+msgid "Defines the elevation of the map from 0 - 12"
+msgstr "Anger kartans höjdnivå från 0 - 12"
+
+#: includes/setup/settings.php
+msgid "Display Settings"
+msgstr "Visningsinställningar"
+
+#: includes/setup/settings.php
+msgid "Display Disabled Devices"
+msgstr "Visa inaktiverade enheter"
+
+#: includes/setup/settings.php
+msgid "Allow the display of disabled Devices on the Map"
+msgstr "Tillåt visning av inaktiverade enheter på kartan"
+
+#: includes/setup/settings.php
+msgid "Coverage Overlay"
+msgstr "Täckningsöverlagring"
+
+#: includes/setup/settings.php
+msgid "Draws a transparent circle around an AP with a radius equal to the furthest node in the same subnet"
+msgstr "Ritar en halvgenomskinlig cirkel runt en AP med en radie som motsvarar den mest avlägsna noden i samma subnät"
+
+#: includes/setup/settings.php
+msgid "Map Refresh"
+msgstr "Kartuppdatering"
+
+#: includes/setup/settings.php
+msgid "Refreshes map after set minutes. Recommend set to poller interval, 0 to disable."
+msgstr "Uppdaterar kartan efter angivet antal minuter. Rekommenderas att ställas in på poller-intervallet, 0 för att inaktivera."
+
+#: includes/setup/settings.php
+msgid "Overlay Settings"
+msgstr "Överläggsinställningar"
+
+#: includes/setup/settings.php
+msgid "Tab Radius (Required)"
+msgstr "Flikradie (obligatoriskt)"
+
+#: includes/setup/settings.php
+msgid "Defines radius to combine points into one. (default: 0.0003)"
+msgstr "Anger radien för att slå samman punkter till en. (standard: 0.0003)"
+
+#: includes/setup/settings.php
+msgid "Fill Color"
+msgstr "Fyllnadsfärg"
+
+#: includes/setup/settings.php
+msgid "The overlay circle fill color as FFFFFF"
+msgstr "Fyllnadsfärg för överlagringscirkeln som FFFFFF"
+
+#: includes/setup/settings.php
+msgid "Ring Color"
+msgstr "Ringfärg"
+
+#: includes/setup/settings.php
+msgid "Defines the outer rim color as FFFFFF"
+msgstr "Anger den yttre kantfärgen som FFFFFF"
+
+#: includes/setup/settings.php
+msgid "Ring Width"
+msgstr "Ringbredd"
+
+#: includes/setup/settings.php
+msgid "Outer Ring width"
+msgstr "Bredd på yttre ring"
+
+#: includes/setup/settings.php
+msgid "Fill Opacity"
+msgstr "Fyllnadsopacitet"
+
+#: includes/setup/settings.php
+msgid "Defines the fill opacity between 0 and 1"
+msgstr "Anger fyllnadsopaciteten mellan 0 och 1"
+
+#: includes/setup/settings.php
+msgid "Ring Opacity"
+msgstr "Ringens opacitet"
+
+#: includes/setup/settings.php
+msgid "Defines the ring opacity between 0 and 1"
+msgstr "Anger ringens opacitet mellan 0 och 1"
+
+#: includes/setup/settings.php
+msgid "Quality"
+msgstr "Kvalitet"
+
+#: includes/setup/settings.php
+msgid "Number of divisions in circle (preferably > 15) greater numbers can slow down browser performance."
+msgstr "Antal indelningar i cirkel (helst > 15); högre antal kan försämra webbläsarens prestanda."

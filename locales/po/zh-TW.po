@@ -19,12 +19,10 @@ msgstr ""
 "X-Generator: Weblate 5.11.4\n"
 
 #: gpsmap.php
-#, fuzzy
 msgid "Please make sure to properly configure Maps first under Settings > Maps"
-msgstr "請確保首先在“設置”>“地圖”下正確配置“地圖”"
+msgstr "請確保先在「設定 > 地圖」下正確設定地圖"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Delete"
 msgstr "刪除"
 
@@ -33,29 +31,24 @@ msgid "Map Templates"
 msgstr "地圖模板"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Host Template"
-msgstr "主機模板"
+msgstr "主機範本"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Up Image"
-msgstr "上圖"
+msgstr "運作中圖片"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Recovering Image"
-msgstr "恢復影像"
+msgstr "正在復原影像"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Down Image"
-msgstr "下圖"
+msgstr "離線圖片"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Is AP"
-msgstr "是AP"
+msgstr "是否為 AP"
 
 #: gpstemplates.php
 msgid "True"
@@ -66,133 +59,262 @@ msgid "False"
 msgstr "假"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Device Template"
-msgstr "設備模板"
+msgstr "裝置範本"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Choose the Device Template to base this Map Template type."
-msgstr "選擇設備模板作為此地圖模板類型的基礎。"
+msgstr "選擇作為此地圖範本類型基礎的裝置範本。"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Select the Image to Show for an Up Device"
-msgstr "選擇要顯示向上設備的圖像"
+msgstr "選擇運作中裝置顯示的圖片"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Select the Image to Show for a Recovering Device"
-msgstr "選擇要為恢復設備顯示的圖像"
+msgstr "選擇復原中裝置顯示的圖片"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Select the Image to Show for a Down Device"
-msgstr "選擇要顯示關閉設備的圖像"
+msgstr "選擇離線裝置顯示的圖片"
 
 #: gpstemplates.php
 msgid "Access Point"
 msgstr "無線基地台"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Does this Device Template Represent an Access Point."
-msgstr "此設備模板代表一個接入點嗎？"
+msgstr "此裝置範本是否代表存取點。"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "No"
 msgstr "否"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Yes"
 msgstr "是"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Map Template Edit"
-msgstr "地圖模板編輯"
+msgstr "編輯地圖範本"
 
 #: setup.php
-#, fuzzy
 msgid "Configure Maps"
-msgstr "配置地圖"
+msgstr "設定地圖"
 
 #: setup.php
-#, fuzzy
 msgid "View Maps"
-msgstr "查看地圖"
+msgstr "檢視地圖"
 
 #: setup.php
 msgid "Map Settings"
 msgstr "地圖設定"
 
 #: setup.php
-#, fuzzy
 msgid "Overlay Inclusion"
-msgstr "疊加包含"
+msgstr "重疊圖層包含"
 
 #: setup.php
-#, fuzzy
 msgid "Disable to plot host only, not included in coverage overlay."
-msgstr "僅禁用繪製主機，不包括在覆蓋圖疊加中。"
+msgstr "停用時僅繪製主機，不包含在涵蓋範圍圖層中。"
 
 #: setup.php
-#, fuzzy
 msgid "Latitude"
 msgstr "緯度"
 
 #: setup.php
-#, fuzzy
 msgid "The devices latitude coordinates"
-msgstr "設備緯度坐標"
+msgstr "裝置的緯度座標"
 
 #: setup.php
-#, fuzzy
 msgid "Longitude"
 msgstr "經度"
 
 #: setup.php
-#, fuzzy
 msgid "The devices longitude coordinates"
-msgstr "設備經度坐標"
+msgstr "裝置的經度座標"
 
 #: setup.php
-#, fuzzy
 msgid "Starting Degree"
-msgstr "起始學位"
+msgstr "起始角度"
 
 #: setup.php
-#, fuzzy
 msgid "Starting degree for directional area between 0-360"
-msgstr "0-360之間的定向區域的起始度"
+msgstr "0-360 之間定向區域的起始角度"
 
 #: setup.php
-#, fuzzy
 msgid "Stopping Degree"
-msgstr "停止度"
+msgstr "結束角度"
 
 #: setup.php
-#, fuzzy
 msgid "Stopping degree for directional area, must be greater than the Starting Degree"
-msgstr "定向區域的停止度，必須大於開始度"
+msgstr "定向區域的結束角度，必須大於起始角度"
 
 #: setup.php
-#, fuzzy
 msgid "Specify Radius"
 msgstr "指定半徑"
 
 #: setup.php
-#, fuzzy
 msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
-msgstr "手動為接入點指定半徑。設置為0以確定基於分組設備的半徑"
+msgstr "手動指定存取點的半徑。設為 0 則依據分組裝置決定半徑"
 
 #: setup.php
 msgid "Group ID"
 msgstr "群組 ID"
 
 #: setup.php
-#, fuzzy
 msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
-msgstr "組定義了覆蓋圖中包括哪些設備。將對照AP設備組號進行檢查。 0禁用"
+msgstr "群組定義涵蓋範圍覆疊中包含哪些裝置。將會與 AP 裝置群組編號進行比對。設為 0 以停用"
+
+#: includes/polling/processregion.php
+#, php-format
+msgid "IP %s"
+msgstr "IP %s"
+
+#: includes/polling/processregion.php
+msgid "Start Over"
+msgstr "重新開始"
+
+#: includes/polling/processregion.php
+msgid "Print"
+msgstr "列印"
+
+#: includes/setup/settings.php includes/setup/tabs.php
+msgid "Maps"
+msgstr "地圖"
+
+#: includes/setup/settings.php
+msgid "Create New Template"
+msgstr "建立新範本"
+
+#: includes/setup/settings.php
+msgid "Map"
+msgstr "地圖"
+
+#: includes/setup/settings.php
+msgid "Templates"
+msgstr "範本"
+
+#: includes/setup/settings.php
+msgid "Google API Key"
+msgstr "Google API 金鑰"
+
+#: includes/setup/settings.php
+msgid "The Google Maps API Key is not required but highly recommended, get more info at <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Google Documentation</a>."
+msgstr "Google Maps API 金鑰並非必填，但強烈建議填寫，請參閱 <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Google 文件</a> 取得更多資訊。"
+
+#: includes/setup/settings.php
+msgid "Geolocation URL"
+msgstr "地理位置 URL"
+
+#: includes/setup/settings.php
+msgid "Enter the URL of the IP to Geolocation lookup service.  Every devices IP address will be tested against this location service if not set to determine the devices Geolocation.  The devices IP address will be appended to the end of this URL."
+msgstr "輸入 IP 地理位置查詢服務的 URL。若未設定裝置地理位置，系統將透過此位置服務測試每個裝置的 IP 位址以判斷其地理位置。裝置的 IP 位址將會附加到此 URL 的結尾。"
+
+#: includes/setup/settings.php
+msgid "Initial Latitude"
+msgstr "初始緯度"
+
+#: includes/setup/settings.php
+msgid "Defines the centering of the map"
+msgstr "定義地圖的中心位置"
+
+#: includes/setup/settings.php
+msgid "Initial Longitude"
+msgstr "初始經度"
+
+#: includes/setup/settings.php
+msgid "Initial Elevation"
+msgstr "初始海拔高度"
+
+#: includes/setup/settings.php
+msgid "Defines the elevation of the map from 0 - 12"
+msgstr "定義地圖的高度（0 - 12）"
+
+#: includes/setup/settings.php
+msgid "Display Settings"
+msgstr "顯示設定"
+
+#: includes/setup/settings.php
+msgid "Display Disabled Devices"
+msgstr "顯示已停用的裝置"
+
+#: includes/setup/settings.php
+msgid "Allow the display of disabled Devices on the Map"
+msgstr "允許在地圖上顯示已停用的裝置"
+
+#: includes/setup/settings.php
+msgid "Coverage Overlay"
+msgstr "涵蓋範圍疊加層"
+
+#: includes/setup/settings.php
+msgid "Draws a transparent circle around an AP with a radius equal to the furthest node in the same subnet"
+msgstr "在 AP 周圍繪製一個半透明圓圈，其半徑等於同一子網路中最遠節點的距離"
+
+#: includes/setup/settings.php
+msgid "Map Refresh"
+msgstr "重新整理地圖"
+
+#: includes/setup/settings.php
+msgid "Refreshes map after set minutes. Recommend set to poller interval, 0 to disable."
+msgstr "在設定的分鐘數後重新整理地圖。建議設為輪詢器間隔，設為 0 則停用。"
+
+#: includes/setup/settings.php
+msgid "Overlay Settings"
+msgstr "疊加層設定"
+
+#: includes/setup/settings.php
+msgid "Tab Radius (Required)"
+msgstr "分頁半徑 (必填)"
+
+#: includes/setup/settings.php
+msgid "Defines radius to combine points into one. (default: 0.0003)"
+msgstr "定義將點合併為一個的半徑。（預設：0.0003）"
+
+#: includes/setup/settings.php
+msgid "Fill Color"
+msgstr "填滿色彩"
+
+#: includes/setup/settings.php
+msgid "The overlay circle fill color as FFFFFF"
+msgstr "重疊圓形的填滿色彩 (格式為 FFFFFF)"
+
+#: includes/setup/settings.php
+msgid "Ring Color"
+msgstr "圓環顏色"
+
+#: includes/setup/settings.php
+msgid "Defines the outer rim color as FFFFFF"
+msgstr "以 FFFFFF 格式定義外框顏色"
+
+#: includes/setup/settings.php
+msgid "Ring Width"
+msgstr "圓環寬度"
+
+#: includes/setup/settings.php
+msgid "Outer Ring width"
+msgstr "外環寬度"
+
+#: includes/setup/settings.php
+msgid "Fill Opacity"
+msgstr "填滿不透明度"
+
+#: includes/setup/settings.php
+msgid "Defines the fill opacity between 0 and 1"
+msgstr "定義介於 0 與 1 之間的填滿不透明度"
+
+#: includes/setup/settings.php
+msgid "Ring Opacity"
+msgstr "圓環不透明度"
+
+#: includes/setup/settings.php
+msgid "Defines the ring opacity between 0 and 1"
+msgstr "定義介於 0 與 1 之間的圓環不透明度"
+
+#: includes/setup/settings.php
+msgid "Quality"
+msgstr "品質"
+
+#: includes/setup/settings.php
+msgid "Number of divisions in circle (preferably > 15) greater numbers can slow down browser performance."
+msgstr "圓形分段數（建議 > 15），數值過大可能會降低瀏覽器效能。"

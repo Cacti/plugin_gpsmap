@@ -19,43 +19,36 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: gpsmap.php
-#, fuzzy
 msgid "Please make sure to properly configure Maps first under Settings > Maps"
-msgstr "먼저 설정>지도에서지도를 올바르게 구성했는지 확인하세요."
+msgstr "먼저 설정 > 지도에서 지도를 올바르게 구성했는지 확인하십시오."
 
 #: gpstemplates.php
 msgid "Delete"
 msgstr "삭제"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Map Templates"
 msgstr "지도 템플릿"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Host Template"
 msgstr "호스트 템플릿"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Up Image"
-msgstr "업 이미지"
+msgstr "정상 상태 이미지"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Recovering Image"
-msgstr "이미지 복구"
+msgstr "이미지 복구 중"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Down Image"
 msgstr "다운 이미지"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Is AP"
-msgstr "AP인가"
+msgstr "AP 여부"
 
 #: gpstemplates.php
 msgid "True"
@@ -66,39 +59,32 @@ msgid "False"
 msgstr "X"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Device Template"
-msgstr "장치 템플릿"
+msgstr "기기 템플릿"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Choose the Device Template to base this Map Template type."
-msgstr "이 맵 템플릿 유형을 기반으로하는 장치 템플릿을 선택합니다."
+msgstr "이 맵 템플릿 유형의 기반으로 사용할 장치 템플릿을 선택하십시오."
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Select the Image to Show for an Up Device"
-msgstr "Up 장치에 표시 할 이미지 선택"
+msgstr "정상 장치에 표시할 이미지 선택"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Select the Image to Show for a Recovering Device"
-msgstr "복구 장치에 대해 표시 할 이미지 선택"
+msgstr "복구 중인 장치에 표시할 이미지 선택"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Select the Image to Show for a Down Device"
-msgstr "다운 장치에 표시 할 이미지 선택"
+msgstr "다운 장치에 표시할 이미지 선택"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Access Point"
 msgstr "액세스 포인트"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Does this Device Template Represent an Access Point."
-msgstr "이 장치 템플릿이 액세스 포인트를 나타 냅니까?"
+msgstr "이 장치 템플릿이 액세스 포인트를 나타냅니까?"
 
 #: gpstemplates.php
 msgid "No"
@@ -109,88 +95,226 @@ msgid "Yes"
 msgstr "예"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Map Template Edit"
 msgstr "지도 템플릿 편집"
 
 #: setup.php
-#, fuzzy
 msgid "Configure Maps"
 msgstr "지도 구성"
 
 #: setup.php
-#, fuzzy
 msgid "View Maps"
-msgstr "지도보기"
+msgstr "지도 보기"
 
 #: setup.php
-#, fuzzy
 msgid "Map Settings"
 msgstr "지도 설정"
 
 #: setup.php
-#, fuzzy
 msgid "Overlay Inclusion"
 msgstr "오버레이 포함"
 
 #: setup.php
-#, fuzzy
 msgid "Disable to plot host only, not included in coverage overlay."
-msgstr "커버리지 오버레이에 포함되지 않고 호스트 만 플롯하려면 비활성화합니다."
+msgstr "커버리지 오버레이에 포함하지 않고 호스트만 표시하려면 비활성화하십시오."
 
 #: setup.php
 msgid "Latitude"
 msgstr "위도"
 
 #: setup.php
-#, fuzzy
 msgid "The devices latitude coordinates"
-msgstr "장치 위도 좌표"
+msgstr "장치의 위도 좌표"
 
 #: setup.php
 msgid "Longitude"
 msgstr "경도"
 
 #: setup.php
-#, fuzzy
 msgid "The devices longitude coordinates"
-msgstr "장치 경도 좌표"
+msgstr "장치의 경도 좌표"
 
 #: setup.php
-#, fuzzy
 msgid "Starting Degree"
-msgstr "시작 학위"
+msgstr "시작 각도"
 
 #: setup.php
-#, fuzzy
 msgid "Starting degree for directional area between 0-360"
-msgstr "0-360 사이의 방향 영역에 대한 시작 정도"
+msgstr "0-360 사이의 방향 영역 시작 각도"
 
 #: setup.php
-#, fuzzy
 msgid "Stopping Degree"
-msgstr "정지 정도"
+msgstr "종료 각도"
 
 #: setup.php
-#, fuzzy
 msgid "Stopping degree for directional area, must be greater than the Starting Degree"
-msgstr "방향 영역의 정지 정도는 시작 정도보다 커야합니다."
+msgstr "방향 영역의 종료 각도 (시작 각도보다 커야 함)"
 
 #: setup.php
-#, fuzzy
 msgid "Specify Radius"
-msgstr "반지름 지정"
+msgstr "반경 지정"
 
 #: setup.php
-#, fuzzy
 msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
-msgstr "액세스 포인트의 반경을 수동으로 지정합니다. 그룹화 된 장치를 기반으로 반경을 결정하려면 0으로 설정합니다."
+msgstr "액세스 포인트의 반경을 수동으로 지정합니다. 그룹화된 장치를 기준으로 반경을 결정하려면 0으로 설정하세요."
 
 #: setup.php
 msgid "Group ID"
 msgstr "그룹 ID"
 
 #: setup.php
-#, fuzzy
 msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
-msgstr "그룹은 커버리지 오버레이에 포함되는 장치를 정의합니다. AP 장치 그룹 번호에 대해 확인됩니다. 비활성화하려면 0"
+msgstr "그룹은 커버리지 오버레이에 포함될 장치를 정의합니다. AP 장치 그룹 번호와 대조하여 확인됩니다. 비활성화하려면 0을 입력하십시오."
+
+#: includes/polling/processregion.php
+#, php-format
+msgid "IP %s"
+msgstr "IP %s"
+
+#: includes/polling/processregion.php
+msgid "Start Over"
+msgstr "처음부터 다시 시작"
+
+#: includes/polling/processregion.php
+msgid "Print"
+msgstr "인쇄"
+
+#: includes/setup/settings.php includes/setup/tabs.php
+msgid "Maps"
+msgstr "지도"
+
+#: includes/setup/settings.php
+msgid "Create New Template"
+msgstr "새 템플릿 만들기"
+
+#: includes/setup/settings.php
+msgid "Map"
+msgstr "지도"
+
+#: includes/setup/settings.php
+msgid "Templates"
+msgstr "템플릿"
+
+#: includes/setup/settings.php
+msgid "Google API Key"
+msgstr "Google API 키"
+
+#: includes/setup/settings.php
+msgid "The Google Maps API Key is not required but highly recommended, get more info at <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Google Documentation</a>."
+msgstr "Google Maps API 키는 필수는 아니지만 적극 권장됩니다. 자세한 내용은 <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Google 문서</a>를 참조하세요."
+
+#: includes/setup/settings.php
+msgid "Geolocation URL"
+msgstr "위치 정보(Geolocation) URL"
+
+#: includes/setup/settings.php
+msgid "Enter the URL of the IP to Geolocation lookup service.  Every devices IP address will be tested against this location service if not set to determine the devices Geolocation.  The devices IP address will be appended to the end of this URL."
+msgstr "IP 지리적 위치 조회 서비스의 URL을 입력하세요. 위치가 설정되지 않은 경우 모든 장치의 IP 주소가 이 위치 서비스에서 테스트되어 장치의 지리적 위치를 확인합니다. 장치의 IP 주소는 이 URL 끝에 추가됩니다."
+
+#: includes/setup/settings.php
+msgid "Initial Latitude"
+msgstr "초기 위도"
+
+#: includes/setup/settings.php
+msgid "Defines the centering of the map"
+msgstr "지도의 중심 위치를 정의합니다"
+
+#: includes/setup/settings.php
+msgid "Initial Longitude"
+msgstr "초기 경도"
+
+#: includes/setup/settings.php
+msgid "Initial Elevation"
+msgstr "초기 고도"
+
+#: includes/setup/settings.php
+msgid "Defines the elevation of the map from 0 - 12"
+msgstr "지도의 확대 수준(0~12)을 정의합니다"
+
+#: includes/setup/settings.php
+msgid "Display Settings"
+msgstr "표시 설정"
+
+#: includes/setup/settings.php
+msgid "Display Disabled Devices"
+msgstr "비활성화된 장치 표시"
+
+#: includes/setup/settings.php
+msgid "Allow the display of disabled Devices on the Map"
+msgstr "지도에 비활성화된 장치 표시 허용"
+
+#: includes/setup/settings.php
+msgid "Coverage Overlay"
+msgstr "커버리지 오버레이"
+
+#: includes/setup/settings.php
+msgid "Draws a transparent circle around an AP with a radius equal to the furthest node in the same subnet"
+msgstr "동일 서브넷에서 가장 멀리 있는 노드까지의 거리를 반지름으로 하여 AP 주위에 투명한 원을 그립니다"
+
+#: includes/setup/settings.php
+msgid "Map Refresh"
+msgstr "지도 새로 고침"
+
+#: includes/setup/settings.php
+msgid "Refreshes map after set minutes. Recommend set to poller interval, 0 to disable."
+msgstr "설정된 분이 지난 후 지도를 새로 고칩니다. 폴러 간격으로 설정하는 것을 권장하며, 0을 입력하면 비활성화됩니다."
+
+#: includes/setup/settings.php
+msgid "Overlay Settings"
+msgstr "오버레이 설정"
+
+#: includes/setup/settings.php
+msgid "Tab Radius (Required)"
+msgstr "탭 반경 (필수)"
+
+#: includes/setup/settings.php
+msgid "Defines radius to combine points into one. (default: 0.0003)"
+msgstr "지점을 하나로 합칠 반경을 정의합니다. (기본값: 0.0003)"
+
+#: includes/setup/settings.php
+msgid "Fill Color"
+msgstr "채우기 색상"
+
+#: includes/setup/settings.php
+msgid "The overlay circle fill color as FFFFFF"
+msgstr "오버레이 원 채우기 색상(FFFFFF 형식)"
+
+#: includes/setup/settings.php
+msgid "Ring Color"
+msgstr "링 색상"
+
+#: includes/setup/settings.php
+msgid "Defines the outer rim color as FFFFFF"
+msgstr "바깥쪽 테두리 색상을 FFFFFF 형식으로 정의합니다"
+
+#: includes/setup/settings.php
+msgid "Ring Width"
+msgstr "링 너비"
+
+#: includes/setup/settings.php
+msgid "Outer Ring width"
+msgstr "외부 링 너비"
+
+#: includes/setup/settings.php
+msgid "Fill Opacity"
+msgstr "채우기 불투명도"
+
+#: includes/setup/settings.php
+msgid "Defines the fill opacity between 0 and 1"
+msgstr "채우기 불투명도(0~1)를 정의합니다"
+
+#: includes/setup/settings.php
+msgid "Ring Opacity"
+msgstr "링 불투명도"
+
+#: includes/setup/settings.php
+msgid "Defines the ring opacity between 0 and 1"
+msgstr "링 불투명도(0~1)를 정의합니다"
+
+#: includes/setup/settings.php
+msgid "Quality"
+msgstr "품질"
+
+#: includes/setup/settings.php
+msgid "Number of divisions in circle (preferably > 15) greater numbers can slow down browser performance."
+msgstr "원의 분할 수(15보다 큰 값 권장). 값이 너무 크면 브라우저 성능이 저하될 수 있습니다."

@@ -19,41 +19,34 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: gpsmap.php
-#, fuzzy
 msgid "Please make sure to properly configure Maps first under Settings > Maps"
-msgstr "Lütfen önce Ayarlar> Haritalar altında Haritalar'ı doğru şekilde yapılandırdığınızdan emin olun."
+msgstr "Lütfen önce Ayarlar > Haritalar altından Haritalar'ı doğru şekilde yapılandırdığınızdan emin olun"
 
 #: gpstemplates.php
 msgid "Delete"
 msgstr "Sil"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Map Templates"
 msgstr "Harita Şablonları"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Host Template"
-msgstr "Barındırma Şablonu"
+msgstr "Sunucu Şablonu"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Up Image"
-msgstr "Yukarı Resim"
+msgstr "Aktif Durum Görseli"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Recovering Image"
 msgstr "Görüntü Kurtarılıyor"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Down Image"
-msgstr "Aşağı Resmi"
+msgstr "Pasif Durum Görseli"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Is AP"
 msgstr "AP mi"
 
@@ -66,39 +59,32 @@ msgid "False"
 msgstr "Yanlış"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Device Template"
 msgstr "Cihaz Şablonu"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Choose the Device Template to base this Map Template type."
-msgstr "Bu Harita Şablonu tipini temel almak için Cihaz Şablonunu seçin."
+msgstr "Bu Harita Şablonu türünün temel alacağı Cihaz Şablonunu seçin."
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Select the Image to Show for an Up Device"
-msgstr "Bir Yukarı Aygıt için Gösterilecek Görüntüyü Seçin"
+msgstr "Aktif Cihaz İçin Gösterilecek Görseli Seçin"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Select the Image to Show for a Recovering Device"
-msgstr "Bir Kurtarma Cihazı için Gösterilecek Resmi Seçin"
+msgstr "Kurtarma Durumundaki Cihaz İçin Gösterilecek Görseli Seçin"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Select the Image to Show for a Down Device"
-msgstr "Aşağı Cihazı için Gösterilecek Resmi Seçin"
+msgstr "Pasif Cihaz İçin Gösterilecek Görseli Seçin"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Access Point"
-msgstr "Erişim noktası"
+msgstr "Erişim Noktası"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Does this Device Template Represent an Access Point."
-msgstr "Bu Cihaz Şablonu bir Erişim Noktasını Temsil Eder mi?"
+msgstr "Bu Cihaz Şablonu bir Erişim Noktasını mı temsil ediyor?"
 
 #: gpstemplates.php
 msgid "No"
@@ -109,17 +95,14 @@ msgid "Yes"
 msgstr "Evet"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Map Template Edit"
-msgstr "Harita Şablonu Düzenlemesi"
+msgstr "Harita Şablonu Düzenleme"
 
 #: setup.php
-#, fuzzy
 msgid "Configure Maps"
-msgstr "Haritaları Yapılandırın"
+msgstr "Haritaları Yapılandır"
 
 #: setup.php
-#, fuzzy
 msgid "View Maps"
 msgstr "Haritaları Görüntüle"
 
@@ -128,21 +111,18 @@ msgid "Map Settings"
 msgstr "Harita Ayarları"
 
 #: setup.php
-#, fuzzy
 msgid "Overlay Inclusion"
-msgstr "Yer Paylaşımı Dahil Etme"
+msgstr "Katman Dahil Etme"
 
 #: setup.php
-#, fuzzy
 msgid "Disable to plot host only, not included in coverage overlay."
-msgstr "Kapsama yer paylaşımına dahil değil, yalnızca ana bilgisayarı işaretlemeyi devre dışı bırakın."
+msgstr "Yalnızca ana bilgisayarı işaretlemek için devre dışı bırakın; kapsama katmanına dahil edilmez."
 
 #: setup.php
 msgid "Latitude"
 msgstr "Enlem"
 
 #: setup.php
-#, fuzzy
 msgid "The devices latitude coordinates"
 msgstr "Cihazın enlem koordinatları"
 
@@ -151,45 +131,190 @@ msgid "Longitude"
 msgstr "Boylam"
 
 #: setup.php
-#, fuzzy
 msgid "The devices longitude coordinates"
-msgstr "Cihaz boylam koordinatları"
+msgstr "Cihazın boylam koordinatları"
 
 #: setup.php
-#, fuzzy
 msgid "Starting Degree"
 msgstr "Başlangıç Derecesi"
 
 #: setup.php
-#, fuzzy
 msgid "Starting degree for directional area between 0-360"
-msgstr "0-360 arası yön alanı başlangıç derecesi"
+msgstr "0-360 arası yönlü alan için başlangıç derecesi"
 
 #: setup.php
-#, fuzzy
 msgid "Stopping Degree"
-msgstr "Durma Derecesi"
+msgstr "Bitiş Derecesi"
 
 #: setup.php
-#, fuzzy
 msgid "Stopping degree for directional area, must be greater than the Starting Degree"
-msgstr "Yön alanı için durma derecesi, Başlangıç Derecesinden büyük olmalıdır"
+msgstr "Yönlü alan için bitiş derecesi; Başlangıç Derecesinden büyük olmalıdır"
 
 #: setup.php
-#, fuzzy
 msgid "Specify Radius"
-msgstr "Yarıçapı Belirtin"
+msgstr "Yarıçap Belirtin"
 
 #: setup.php
-#, fuzzy
 msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
-msgstr "Erişim Noktası için yarıçapı manuel olarak belirtin. Gruplanmış cihazlara göre yarıçapı belirlemek için 0'a ayarlayın"
+msgstr "Erişim Noktası için yarıçapı el ile belirtin. Yarıçapı gruplandırılmış cihazlara göre belirlemek için 0 olarak ayarlayın"
 
 #: setup.php
 msgid "Group ID"
 msgstr "Grup ID"
 
 #: setup.php
-#, fuzzy
 msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
-msgstr "Gruplar, kapsama katmanına hangi cihazların dahil edileceğini tanımlar. AP cihaz grup numarasına göre kontrol edilecektir. 0 devre dışı bırakmak için"
+msgstr "Gruplar, kapsama katmanına hangi cihazların dahil edileceğini tanımlar. AP cihaz grup numarasına göre kontrol edilecektir. Devre dışı bırakmak için 0 girin"
+
+#: includes/polling/processregion.php
+#, php-format
+msgid "IP %s"
+msgstr "IP %s"
+
+#: includes/polling/processregion.php
+msgid "Start Over"
+msgstr "Baştan Başla"
+
+#: includes/polling/processregion.php
+msgid "Print"
+msgstr "Yazdır"
+
+#: includes/setup/settings.php includes/setup/tabs.php
+msgid "Maps"
+msgstr "Haritalar"
+
+#: includes/setup/settings.php
+msgid "Create New Template"
+msgstr "Yeni Şablon Oluştur"
+
+#: includes/setup/settings.php
+msgid "Map"
+msgstr "Harita"
+
+#: includes/setup/settings.php
+msgid "Templates"
+msgstr "Şablonlar"
+
+#: includes/setup/settings.php
+msgid "Google API Key"
+msgstr "Google API Anahtarı"
+
+#: includes/setup/settings.php
+msgid "The Google Maps API Key is not required but highly recommended, get more info at <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Google Documentation</a>."
+msgstr "Google Maps API Anahtarı zorunlu değildir ancak kesinlikle önerilir; daha fazla bilgi için <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Google Belgeleri</a> sayfasına bakın."
+
+#: includes/setup/settings.php
+msgid "Geolocation URL"
+msgstr "Coğrafi Konum URL'si"
+
+#: includes/setup/settings.php
+msgid "Enter the URL of the IP to Geolocation lookup service.  Every devices IP address will be tested against this location service if not set to determine the devices Geolocation.  The devices IP address will be appended to the end of this URL."
+msgstr "IP'den Coğrafi Konum arama hizmetinin URL'sini girin. Cihazın coğrafi konumu ayarlanmamışsa, her cihazın IP adresi cihazların Coğrafi Konumunu belirlemek için bu konum hizmetine göre test edilecektir. Cihazın IP adresi bu URL'nin sonuna eklenecektir."
+
+#: includes/setup/settings.php
+msgid "Initial Latitude"
+msgstr "Başlangıç Enlemi"
+
+#: includes/setup/settings.php
+msgid "Defines the centering of the map"
+msgstr "Haritanın merkezlemesini tanımlar"
+
+#: includes/setup/settings.php
+msgid "Initial Longitude"
+msgstr "Başlangıç Boylamı"
+
+#: includes/setup/settings.php
+msgid "Initial Elevation"
+msgstr "Başlangıç Yüksekliği"
+
+#: includes/setup/settings.php
+msgid "Defines the elevation of the map from 0 - 12"
+msgstr "Haritanın 0 - 12 arasındaki yükseltisini tanımlar"
+
+#: includes/setup/settings.php
+msgid "Display Settings"
+msgstr "Görüntü Ayarları"
+
+#: includes/setup/settings.php
+msgid "Display Disabled Devices"
+msgstr "Devre Dışı Cihazları Görüntüle"
+
+#: includes/setup/settings.php
+msgid "Allow the display of disabled Devices on the Map"
+msgstr "Devre dışı bırakılmış Cihazların Haritada görüntülenmesine izin ver"
+
+#: includes/setup/settings.php
+msgid "Coverage Overlay"
+msgstr "Kapsama Katmanı"
+
+#: includes/setup/settings.php
+msgid "Draws a transparent circle around an AP with a radius equal to the furthest node in the same subnet"
+msgstr "Aynı alt ağdaki en uzak düğüme eşit yarıçapa sahip bir AP etrafında saydam bir daire çizer"
+
+#: includes/setup/settings.php
+msgid "Map Refresh"
+msgstr "Harita Yenileme"
+
+#: includes/setup/settings.php
+msgid "Refreshes map after set minutes. Recommend set to poller interval, 0 to disable."
+msgstr "Haritayı belirtilen dakika sonra yeniler. Poller aralığına ayarlanması önerilir, devre dışı bırakmak için 0 girin."
+
+#: includes/setup/settings.php
+msgid "Overlay Settings"
+msgstr "Katman Ayarları"
+
+#: includes/setup/settings.php
+msgid "Tab Radius (Required)"
+msgstr "Sekme Yarıçapı (Gerekli)"
+
+#: includes/setup/settings.php
+msgid "Defines radius to combine points into one. (default: 0.0003)"
+msgstr "Noktaları tek bir noktada birleştirmek için yarıçapı tanımlar. (varsayılan: 0.0003)"
+
+#: includes/setup/settings.php
+msgid "Fill Color"
+msgstr "Dolgu Rengi"
+
+#: includes/setup/settings.php
+msgid "The overlay circle fill color as FFFFFF"
+msgstr "FFFFFF biçiminde yer paylaşımlı daire dolgu rengi"
+
+#: includes/setup/settings.php
+msgid "Ring Color"
+msgstr "Halka Rengi"
+
+#: includes/setup/settings.php
+msgid "Defines the outer rim color as FFFFFF"
+msgstr "Dış kenar rengini FFFFFF biçiminde tanımlar"
+
+#: includes/setup/settings.php
+msgid "Ring Width"
+msgstr "Halka Genişliği"
+
+#: includes/setup/settings.php
+msgid "Outer Ring width"
+msgstr "Dış Halka genişliği"
+
+#: includes/setup/settings.php
+msgid "Fill Opacity"
+msgstr "Dolgu Opaklığı"
+
+#: includes/setup/settings.php
+msgid "Defines the fill opacity between 0 and 1"
+msgstr "0 ile 1 arasındaki dolgu opaklığını tanımlar"
+
+#: includes/setup/settings.php
+msgid "Ring Opacity"
+msgstr "Halka Opaklığı"
+
+#: includes/setup/settings.php
+msgid "Defines the ring opacity between 0 and 1"
+msgstr "0 ile 1 arasındaki halka opaklığını tanımlar"
+
+#: includes/setup/settings.php
+msgid "Quality"
+msgstr "Kalite"
+
+#: includes/setup/settings.php
+msgid "Number of divisions in circle (preferably > 15) greater numbers can slow down browser performance."
+msgstr "Dairedeki bölüm sayısı (tercihen > 15); daha büyük sayılar tarayıcı performansını yavaşlatabilir."

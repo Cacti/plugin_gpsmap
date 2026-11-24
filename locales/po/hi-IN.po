@@ -19,88 +19,72 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
 
 #: gpsmap.php
-#, fuzzy
 msgid "Please make sure to properly configure Maps first under Settings > Maps"
-msgstr "कृपया सेटिंग> मैप्स के तहत पहले मैप्स को ठीक से कॉन्फ़िगर करना सुनिश्चित करें"
+msgstr "कृपया पहले सेटिंग्स > मैप्स के अंतर्गत मैप्स को ठीक से कॉन्फ़िगर करना सुनिश्चित करें"
 
 #: gpstemplates.php
 msgid "Delete"
 msgstr "हटाएं"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Map Templates"
-msgstr "मैप टेम्प्लेट"
+msgstr "मैप टेम्पलेट"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Host Template"
 msgstr "होस्ट टेम्पलेट"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Up Image"
-msgstr "ऊपर की छवि"
+msgstr "सक्रिय (अप) छवि"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Recovering Image"
-msgstr "पुनर्प्राप्त करने वाली छवि"
+msgstr "पुनर्प्राप्ति छवि"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Down Image"
 msgstr "डाउन इमेज"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Is AP"
-msgstr "एपी है"
+msgstr "AP है"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "True"
-msgstr "सच"
+msgstr "सही"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "False"
 msgstr "असत्य"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Device Template"
 msgstr "डिवाइस टेम्पलेट"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Choose the Device Template to base this Map Template type."
-msgstr "इस मैप टेम्पलेट प्रकार को आधार बनाने के लिए डिवाइस टेम्पलेट चुनें।"
+msgstr "इस मैप टेम्पलेट प्रकार का आधार बनाने के लिए डिवाइस टेम्पलेट चुनें।"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Select the Image to Show for an Up Device"
-msgstr "एक डिवाइस के लिए दिखाने के लिए छवि का चयन करें"
+msgstr "सक्रिय डिवाइस के लिए दिखाने हेतु छवि चुनें"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Select the Image to Show for a Recovering Device"
-msgstr "एक पुनर्प्राप्त उपकरण के लिए दिखाने के लिए छवि का चयन करें"
+msgstr "पुनर्प्राप्त हो रहे डिवाइस के लिए दिखाने हेतु छवि चुनें"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Select the Image to Show for a Down Device"
-msgstr "एक डाउन डिवाइस के लिए दिखाने के लिए छवि का चयन करें"
+msgstr "निष्क्रिय डिवाइस के लिए दिखाने हेतु छवि चुनें"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Access Point"
-msgstr "अभिगम केंद्र"
+msgstr "एक्सेस पॉइंट"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Does this Device Template Represent an Access Point."
-msgstr "क्या यह डिवाइस टेम्पलेट एक्सेस प्वाइंट का प्रतिनिधित्व करता है।"
+msgstr "क्या यह डिवाइस टेम्पलेट एक एक्सेस पॉइंट को दर्शाता है।"
 
 #: gpstemplates.php
 msgid "No"
@@ -111,89 +95,226 @@ msgid "Yes"
 msgstr "हाँ"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Map Template Edit"
-msgstr "नक्शा खाका संपादित करें"
+msgstr "मैप टेम्पलेट संपादन"
 
 #: setup.php
-#, fuzzy
 msgid "Configure Maps"
 msgstr "मैप्स कॉन्फ़िगर करें"
 
 #: setup.php
-#, fuzzy
 msgid "View Maps"
-msgstr "नक्शे देखें"
+msgstr "मानचित्र देखें"
 
 #: setup.php
-#, fuzzy
 msgid "Map Settings"
-msgstr "नक्शा सेटिंग्स"
+msgstr "मैप सेटिंग्स"
 
 #: setup.php
-#, fuzzy
 msgid "Overlay Inclusion"
-msgstr "ओवरले इंक्लूजन"
+msgstr "ओवरले समावेशन"
 
 #: setup.php
-#, fuzzy
 msgid "Disable to plot host only, not included in coverage overlay."
-msgstr "केवल होस्ट प्लॉट करने में अक्षम, कवरेज ओवरले में शामिल नहीं।"
+msgstr "केवल होस्ट को प्लॉट करने के लिए अक्षम करें, कवरेज ओवरले में शामिल नहीं।"
 
 #: setup.php
 msgid "Latitude"
 msgstr "अक्षांश रेखाएँ"
 
 #: setup.php
-#, fuzzy
 msgid "The devices latitude coordinates"
-msgstr "डिवाइस अक्षांश निर्देशांक"
+msgstr "डिवाइस के अक्षांश निर्देशांक"
 
 #: setup.php
 msgid "Longitude"
 msgstr "रेखांश"
 
 #: setup.php
-#, fuzzy
 msgid "The devices longitude coordinates"
-msgstr "डिवाइस देशांतर निर्देशांक"
+msgstr "डिवाइस के देशांतर निर्देशांक"
 
 #: setup.php
-#, fuzzy
 msgid "Starting Degree"
-msgstr "डिग्री शुरू"
+msgstr "प्रारंभिक डिग्री"
 
 #: setup.php
-#, fuzzy
 msgid "Starting degree for directional area between 0-360"
-msgstr "0-360 के बीच दिशात्मक क्षेत्र के लिए डिग्री शुरू करना"
+msgstr "0-360 के बीच दिशात्मक क्षेत्र के लिए प्रारंभिक डिग्री"
 
 #: setup.php
-#, fuzzy
 msgid "Stopping Degree"
-msgstr "स्टॉपिंग डिग्री"
+msgstr "समाप्ति डिग्री"
 
 #: setup.php
-#, fuzzy
 msgid "Stopping degree for directional area, must be greater than the Starting Degree"
-msgstr "दिशात्मक क्षेत्र के लिए स्टॉपिंग डिग्री, प्रारंभिक डिग्री से अधिक होनी चाहिए"
+msgstr "दिशात्मक क्षेत्र के लिए समाप्ति डिग्री, प्रारंभिक डिग्री से अधिक होनी चाहिए"
 
 #: setup.php
-#, fuzzy
 msgid "Specify Radius"
 msgstr "त्रिज्या निर्दिष्ट करें"
 
 #: setup.php
-#, fuzzy
 msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
-msgstr "एक्सेस प्वाइंट के लिए मैन्युअल रूप से त्रिज्या निर्दिष्ट करें। समूहित उपकरणों के आधार पर त्रिज्या निर्धारित करने के लिए 0 पर सेट करें"
+msgstr "एक्सेस पॉइंट के लिए मैन्युअल रूप से त्रिज्या निर्दिष्ट करें। समूहीकृत डिवाइस के आधार पर त्रिज्या निर्धारित करने के लिए 0 पर सेट करें"
 
 #: setup.php
-#, fuzzy
 msgid "Group ID"
-msgstr "समूह आईडी"
+msgstr "समूह ID"
 
 #: setup.php
-#, fuzzy
 msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
-msgstr "समूह परिभाषित करते हैं कि कवरेज ओवरले में कौन से उपकरण शामिल हैं। एपी डिवाइस ग्रुप नंबर के खिलाफ जांच की जाएगी। 0 अक्षम करने के लिए"
+msgstr "समूह यह परिभाषित करते हैं कि कवरेज ओवरले में कौन-से उपकरण शामिल हैं। इसकी जांच AP डिवाइस समूह संख्या से की जाएगी। अक्षम करने के लिए 0"
+
+#: includes/polling/processregion.php
+#, php-format
+msgid "IP %s"
+msgstr "IP %s"
+
+#: includes/polling/processregion.php
+msgid "Start Over"
+msgstr "फिर से शुरू करें"
+
+#: includes/polling/processregion.php
+msgid "Print"
+msgstr "प्रिंट करें"
+
+#: includes/setup/settings.php includes/setup/tabs.php
+msgid "Maps"
+msgstr "मानचित्र"
+
+#: includes/setup/settings.php
+msgid "Create New Template"
+msgstr "नया टेम्पलेट बनाएं"
+
+#: includes/setup/settings.php
+msgid "Map"
+msgstr "मानचित्र"
+
+#: includes/setup/settings.php
+msgid "Templates"
+msgstr "टेम्पलेट्स"
+
+#: includes/setup/settings.php
+msgid "Google API Key"
+msgstr "Google API कुंजी"
+
+#: includes/setup/settings.php
+msgid "The Google Maps API Key is not required but highly recommended, get more info at <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Google Documentation</a>."
+msgstr "Google Maps API कुंजी आवश्यक नहीं है लेकिन अत्यधिक अनुशंसित है, अधिक जानकारी <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Google दस्तावेज़</a> पर प्राप्त करें।"
+
+#: includes/setup/settings.php
+msgid "Geolocation URL"
+msgstr "जियोलोकेशन URL"
+
+#: includes/setup/settings.php
+msgid "Enter the URL of the IP to Geolocation lookup service.  Every devices IP address will be tested against this location service if not set to determine the devices Geolocation.  The devices IP address will be appended to the end of this URL."
+msgstr "IP से भौगोलिक स्थान लुकअप सेवा का URL दर्ज करें। यदि डिवाइस का भौगोलिक स्थान निर्धारित नहीं है, तो प्रत्येक डिवाइस के IP पते का परीक्षण इस स्थान सेवा के विरुद्ध किया जाएगा। डिवाइस का IP पता इस URL के अंत में जोड़ा जाएगा।"
+
+#: includes/setup/settings.php
+msgid "Initial Latitude"
+msgstr "प्रारंभिक अक्षांश"
+
+#: includes/setup/settings.php
+msgid "Defines the centering of the map"
+msgstr "मानचित्र का केंद्रीकरण निर्धारित करता है"
+
+#: includes/setup/settings.php
+msgid "Initial Longitude"
+msgstr "प्रारंभिक देशांतर"
+
+#: includes/setup/settings.php
+msgid "Initial Elevation"
+msgstr "प्रारंभिक ऊंचाई"
+
+#: includes/setup/settings.php
+msgid "Defines the elevation of the map from 0 - 12"
+msgstr "0 - 12 तक मानचित्र की ऊँचाई निर्धारित करता है"
+
+#: includes/setup/settings.php
+msgid "Display Settings"
+msgstr "प्रदर्शन सेटिंग्स"
+
+#: includes/setup/settings.php
+msgid "Display Disabled Devices"
+msgstr "अक्षम डिवाइस प्रदर्शित करें"
+
+#: includes/setup/settings.php
+msgid "Allow the display of disabled Devices on the Map"
+msgstr "मानचित्र पर अक्षम डिवाइस दिखाने की अनुमति दें"
+
+#: includes/setup/settings.php
+msgid "Coverage Overlay"
+msgstr "कवरेज ओवरले"
+
+#: includes/setup/settings.php
+msgid "Draws a transparent circle around an AP with a radius equal to the furthest node in the same subnet"
+msgstr "एक ही सबनेट में सबसे दूर के नोड के बराबर त्रिज्या के साथ AP के चारों ओर एक पारदर्शी वृत्त बनाता है"
+
+#: includes/setup/settings.php
+msgid "Map Refresh"
+msgstr "मानचित्र रीफ़्रेश"
+
+#: includes/setup/settings.php
+msgid "Refreshes map after set minutes. Recommend set to poller interval, 0 to disable."
+msgstr "निर्धारित मिनटों के बाद मानचित्र को रीफ़्रेश करता है। पोलर (Poller) अंतराल पर सेट करने की अनुशंसा की जाती है, अक्षम करने के लिए 0।"
+
+#: includes/setup/settings.php
+msgid "Overlay Settings"
+msgstr "ओवरले सेटिंग्स"
+
+#: includes/setup/settings.php
+msgid "Tab Radius (Required)"
+msgstr "टैब रेडियस (आवश्यक)"
+
+#: includes/setup/settings.php
+msgid "Defines radius to combine points into one. (default: 0.0003)"
+msgstr "बिंदुओं को एक में संयोजित करने के लिए त्रिज्या निर्धारित करता है। (डिफ़ॉल्ट: 0.0003)"
+
+#: includes/setup/settings.php
+msgid "Fill Color"
+msgstr "भराव रंग"
+
+#: includes/setup/settings.php
+msgid "The overlay circle fill color as FFFFFF"
+msgstr "ओवरले सर्कल भरण रंग FFFFFF के रूप में"
+
+#: includes/setup/settings.php
+msgid "Ring Color"
+msgstr "रिंग का रंग"
+
+#: includes/setup/settings.php
+msgid "Defines the outer rim color as FFFFFF"
+msgstr "बाहरी किनारे का रंग FFFFFF के रूप में निर्धारित करता है"
+
+#: includes/setup/settings.php
+msgid "Ring Width"
+msgstr "रिंग की चौड़ाई"
+
+#: includes/setup/settings.php
+msgid "Outer Ring width"
+msgstr "बाहरी रिंग की चौड़ाई"
+
+#: includes/setup/settings.php
+msgid "Fill Opacity"
+msgstr "भराव अपारदर्शिता"
+
+#: includes/setup/settings.php
+msgid "Defines the fill opacity between 0 and 1"
+msgstr "0 और 1 के बीच भरण अपारदर्शिता (fill opacity) निर्धारित करता है"
+
+#: includes/setup/settings.php
+msgid "Ring Opacity"
+msgstr "रिंग की अपारदर्शिता"
+
+#: includes/setup/settings.php
+msgid "Defines the ring opacity between 0 and 1"
+msgstr "0 और 1 के बीच रिंग अपारदर्शिता निर्धारित करता है"
+
+#: includes/setup/settings.php
+msgid "Quality"
+msgstr "गुणवत्ता"
+
+#: includes/setup/settings.php
+msgid "Number of divisions in circle (preferably > 15) greater numbers can slow down browser performance."
+msgstr "वृत्त में विभाजनों की संख्या (अधिमानतः > 15); बड़ी संख्या ब्राउज़र के प्रदर्शन को धीमा कर सकती है।"

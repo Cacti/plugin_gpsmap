@@ -1,0 +1,320 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The Cacti Group
+# This file is distributed under the same license as the Cacti package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Cacti\n"
+"Report-Msgid-Bugs-To: developers@cacti.net\n"
+"POT-Creation-Date: 2026-09-28 16:05-0400\n"
+"PO-Revision-Date: 2026-11-24 23:00+0000\n"
+"Last-Translator: Thomas Vincent <thomasvincent@gmail.com>\n"
+"Language-Team: Ukrainian\n"
+"Language: uk-UA\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: gpsmap.php
+msgid "Please make sure to properly configure Maps first under Settings > Maps"
+msgstr "Будь ласка, спочатку переконайтеся, що карти правильно налаштовані в розділі Налаштування > Карти"
+
+#: gpstemplates.php
+msgid "Delete"
+msgstr "Видалити"
+
+#: gpstemplates.php includes/setup/settings.php
+msgid "Map Templates"
+msgstr "Шаблони мап"
+
+#: gpstemplates.php
+msgid "Host Template"
+msgstr "Шаблон хоста"
+
+#: gpstemplates.php
+msgid "Up Image"
+msgstr "Зображення для стану «Доступний»"
+
+#: gpstemplates.php
+msgid "Recovering Image"
+msgstr "Зображення відновлення"
+
+#: gpstemplates.php
+msgid "Down Image"
+msgstr "Зображення стану «Недоступний»"
+
+#: gpstemplates.php
+msgid "Is AP"
+msgstr "Є точкою доступу (AP)"
+
+#: gpstemplates.php
+msgid "True"
+msgstr "Істина"
+
+#: gpstemplates.php
+msgid "False"
+msgstr "Хибно"
+
+#: gpstemplates.php
+msgid "Device Template"
+msgstr "Шаблон пристрою"
+
+#: gpstemplates.php
+msgid "Choose the Device Template to base this Map Template type."
+msgstr "Виберіть шаблон пристрою, на якому базуватиметься цей тип шаблону карти."
+
+#: gpstemplates.php
+msgid "Select the Image to Show for an Up Device"
+msgstr "Виберіть зображення для доступного пристрою"
+
+#: gpstemplates.php
+msgid "Select the Image to Show for a Recovering Device"
+msgstr "Виберіть зображення для пристрою, що відновлюється"
+
+#: gpstemplates.php
+msgid "Select the Image to Show for a Down Device"
+msgstr "Виберіть зображення для недоступного пристрою"
+
+#: gpstemplates.php
+msgid "Access Point"
+msgstr "Точка доступу"
+
+#: gpstemplates.php
+msgid "Does this Device Template Represent an Access Point."
+msgstr "Чи представляє цей шаблон пристрою точку доступу."
+
+#: gpstemplates.php
+msgid "No"
+msgstr "Ні"
+
+#: gpstemplates.php
+msgid "Yes"
+msgstr "Так"
+
+#: gpstemplates.php
+msgid "Map Template Edit"
+msgstr "Редагування шаблону мапи"
+
+#: includes/polling/processregion.php
+#, php-format
+msgid "IP %s"
+msgstr "IP %s"
+
+#: includes/polling/processregion.php
+msgid "Start Over"
+msgstr "Почати спочатку"
+
+#: includes/polling/processregion.php
+msgid "Print"
+msgstr "Друк"
+
+#: includes/setup/settings.php includes/setup/tabs.php
+msgid "Maps"
+msgstr "Мапи"
+
+#: includes/setup/settings.php
+msgid "Create New Template"
+msgstr "Створити новий шаблон"
+
+#: includes/setup/settings.php
+msgid "Map"
+msgstr "Мапа"
+
+#: includes/setup/settings.php
+msgid "Templates"
+msgstr "Шаблон"
+
+#: includes/setup/settings.php
+msgid "Google API Key"
+msgstr "Ключ Google API"
+
+#: includes/setup/settings.php
+msgid "The Google Maps API Key is not required but highly recommended, get more info at <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Google Documentation</a>."
+msgstr "Ключ Google Maps API не є обов'язковим, але наполегливо рекомендується. Докладніше див. у <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>документації Google</a>."
+
+#: includes/setup/settings.php
+msgid "Geolocation URL"
+msgstr "URL геолокації"
+
+#: includes/setup/settings.php
+msgid "Enter the URL of the IP to Geolocation lookup service.  Every devices IP address will be tested against this location service if not set to determine the devices Geolocation.  The devices IP address will be appended to the end of this URL."
+msgstr "Введіть URL-адресу сервісу геолокації за IP-адресою. Якщо не задано інакше, IP-адреса кожного пристрою перевірятиметься через цей сервіс визначення розташування для встановлення його геолокації. IP-адреса пристрою додаватиметься в кінець цієї URL-адреси."
+
+#: includes/setup/settings.php
+msgid "Initial Latitude"
+msgstr "Початкова широта"
+
+#: includes/setup/settings.php
+msgid "Defines the centering of the map"
+msgstr "Визначає центрування карти"
+
+#: includes/setup/settings.php
+msgid "Initial Longitude"
+msgstr "Початкова довгота"
+
+#: includes/setup/settings.php
+msgid "Initial Elevation"
+msgstr "Початкова висота"
+
+#: includes/setup/settings.php
+msgid "Defines the elevation of the map from 0 - 12"
+msgstr "Визначає висоту (масштаб) карти від 0 до 12"
+
+#: includes/setup/settings.php
+msgid "Display Settings"
+msgstr "Налаштування відображення"
+
+#: includes/setup/settings.php
+msgid "Display Disabled Devices"
+msgstr "Відображати вимкнені пристрої"
+
+#: includes/setup/settings.php
+msgid "Allow the display of disabled Devices on the Map"
+msgstr "Дозволити показ вимкнених пристроїв на мапі"
+
+#: includes/setup/settings.php
+msgid "Coverage Overlay"
+msgstr "Шар покриття"
+
+#: includes/setup/settings.php
+msgid "Draws a transparent circle around an AP with a radius equal to the furthest node in the same subnet"
+msgstr "Малює прозоре коло навколо точки доступу з радіусом, що дорівнює відстані до найдальшого вузла в тій самій підмережі"
+
+#: includes/setup/settings.php
+msgid "Map Refresh"
+msgstr "Оновлення мапи"
+
+#: includes/setup/settings.php
+msgid "Refreshes map after set minutes. Recommend set to poller interval, 0 to disable."
+msgstr "Оновлює карту через задану кількість хвилин. Рекомендується встановити інтервал опитувача, 0 — щоб вимкнути."
+
+#: includes/setup/settings.php
+msgid "Overlay Settings"
+msgstr "Налаштування накладання"
+
+#: includes/setup/settings.php
+msgid "Tab Radius (Required)"
+msgstr "Радіус вкладки (обов'язково)"
+
+#: includes/setup/settings.php
+msgid "Defines radius to combine points into one. (default: 0.0003)"
+msgstr "Визначає радіус для об'єднання точок в одну (типово: 0.0003)."
+
+#: includes/setup/settings.php
+msgid "Fill Color"
+msgstr "Колір заповнення"
+
+#: includes/setup/settings.php
+msgid "The overlay circle fill color as FFFFFF"
+msgstr "Колір заповнення кола накладання у форматі FFFFFF"
+
+#: includes/setup/settings.php
+msgid "Ring Color"
+msgstr "Колір кільця"
+
+#: includes/setup/settings.php
+msgid "Defines the outer rim color as FFFFFF"
+msgstr "Визначає колір зовнішнього контуру у форматі FFFFFF"
+
+#: includes/setup/settings.php
+msgid "Ring Width"
+msgstr "Ширина кільця"
+
+#: includes/setup/settings.php
+msgid "Outer Ring width"
+msgstr "Ширина зовнішнього кільця"
+
+#: includes/setup/settings.php
+msgid "Fill Opacity"
+msgstr "Непрозорість заповнення"
+
+#: includes/setup/settings.php
+msgid "Defines the fill opacity between 0 and 1"
+msgstr "Визначає непрозорість заливки від 0 до 1"
+
+#: includes/setup/settings.php
+msgid "Ring Opacity"
+msgstr "Непрозорість кільця"
+
+#: includes/setup/settings.php
+msgid "Defines the ring opacity between 0 and 1"
+msgstr "Визначає непрозорість кільця від 0 до 1"
+
+#: includes/setup/settings.php
+msgid "Quality"
+msgstr "Якість"
+
+#: includes/setup/settings.php
+msgid "Number of divisions in circle (preferably > 15) greater numbers can slow down browser performance."
+msgstr "Кількість поділок у колі (бажано > 15); більші значення можуть уповільнити роботу браузера."
+
+#: setup.php
+msgid "Configure Maps"
+msgstr "Налаштувати карти"
+
+#: setup.php
+msgid "View Maps"
+msgstr "Перегляд карт"
+
+#: setup.php
+msgid "Map Settings"
+msgstr "Налаштування мапи"
+
+#: setup.php
+msgid "Overlay Inclusion"
+msgstr "Включення накладання"
+
+#: setup.php
+msgid "Disable to plot host only, not included in coverage overlay."
+msgstr "Вимкніть, щоб позначати лише вузол без включення до шару покриття."
+
+#: setup.php
+msgid "Latitude"
+msgstr "Широта"
+
+#: setup.php
+msgid "The devices latitude coordinates"
+msgstr "Координати широти пристрою"
+
+#: setup.php
+msgid "Longitude"
+msgstr "Довгота"
+
+#: setup.php
+msgid "The devices longitude coordinates"
+msgstr "Координати довготи пристрою"
+
+#: setup.php
+msgid "Starting Degree"
+msgstr "Початковий градус"
+
+#: setup.php
+msgid "Starting degree for directional area between 0-360"
+msgstr "Початковий градус для спрямованої області в межах 0–360"
+
+#: setup.php
+msgid "Stopping Degree"
+msgstr "Кінцевий градус"
+
+#: setup.php
+msgid "Stopping degree for directional area, must be greater than the Starting Degree"
+msgstr "Кінцевий градус для спрямованої області; має бути більшим за початковий градус"
+
+#: setup.php
+msgid "Specify Radius"
+msgstr "Укажіть радіус"
+
+#: setup.php
+msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
+msgstr "Укажіть радіус для точки доступу вручну. Встановіть 0, щоб визначати радіус за згрупованими пристроями"
+
+#: setup.php
+msgid "Group ID"
+msgstr "ID групи"
+
+#: setup.php
+msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
+msgstr "Групи визначають, які пристрої включаються до накладання покриття. Перевірятиметься за номером групи пристроїв AP. 0 для вимкнення"
+

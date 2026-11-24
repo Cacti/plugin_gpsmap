@@ -19,41 +19,34 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? 2 : 3);\n"
 
 #: gpsmap.php
-#, fuzzy
 msgid "Please make sure to properly configure Maps first under Settings > Maps"
-msgstr "אנא הקפד להגדיר כראוי את מפות Google תחילה תחת הגדרות> מפות"
+msgstr "אנא הקפד להגדיר תחילה את המפות כראוי תחת הגדרות > מפות"
 
 #: gpstemplates.php
 msgid "Delete"
 msgstr "מחק"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Map Templates"
 msgstr "תבניות מפה"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Host Template"
 msgstr "תבנית מארח"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Up Image"
-msgstr "תמונה למעלה"
+msgstr "תמונת מצב פעיל"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Recovering Image"
-msgstr "תמונה משחזרת"
+msgstr "תמונת התאוששות"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Down Image"
-msgstr "תמונה למטה"
+msgstr "תמונה למצב לא פעיל"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Is AP"
 msgstr "האם AP"
 
@@ -66,37 +59,30 @@ msgid "False"
 msgstr "שקר"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Device Template"
 msgstr "תבנית מכשיר"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Choose the Device Template to base this Map Template type."
-msgstr "בחר בתבנית המכשיר כדי לבסס סוג תבנית מפה זה."
+msgstr "בחר את תבנית ההתקן שעליה יתבסס סוג תבנית מפה זה."
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Select the Image to Show for an Up Device"
-msgstr "בחר את התמונה להצגה עבור התקן למעלה"
+msgstr "בחר את התמונה להצגה עבור התקן פעיל"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Select the Image to Show for a Recovering Device"
-msgstr "בחר בתמונה להצגה עבור מכשיר משחזר"
+msgstr "בחר את התמונה להצגה עבור התקן בהתאוששות"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Select the Image to Show for a Down Device"
-msgstr "בחר את התמונה להציג למכשיר למטה"
+msgstr "בחר את התמונה להצגה עבור התקן לא פעיל"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Access Point"
 msgstr "נקודת גישה"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Does this Device Template Represent an Access Point."
 msgstr "האם תבנית התקן זו מייצגת נקודת גישה."
 
@@ -109,88 +95,226 @@ msgid "Yes"
 msgstr "כן"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Map Template Edit"
-msgstr "תבנית מפות עריכה"
+msgstr "עריכת תבנית מפה"
 
 #: setup.php
-#, fuzzy
 msgid "Configure Maps"
-msgstr "הגדר תצורה של מפות"
+msgstr "הגדרת מפות"
 
 #: setup.php
-#, fuzzy
 msgid "View Maps"
-msgstr "צפו במפות"
+msgstr "הצג מפות"
 
 #: setup.php
-#, fuzzy
 msgid "Map Settings"
 msgstr "הגדרות מפה"
 
 #: setup.php
-#, fuzzy
 msgid "Overlay Inclusion"
 msgstr "הכללת שכבת-על"
 
 #: setup.php
-#, fuzzy
 msgid "Disable to plot host only, not included in coverage overlay."
-msgstr "השבת את מארח העלילה בלבד, לא נכלל בכיסוי כיסוי."
+msgstr "השבת כדי להציג את המארח בלבד, ללא הכללה בשכבת הכיסוי."
 
 #: setup.php
 msgid "Latitude"
 msgstr "קו רוחב"
 
 #: setup.php
-#, fuzzy
 msgid "The devices latitude coordinates"
-msgstr "קואורדינטות קו רוחב של המכשירים"
+msgstr "קואורדינטות קו הרוחב של ההתקנים"
 
 #: setup.php
 msgid "Longitude"
 msgstr "קו אורך"
 
 #: setup.php
-#, fuzzy
 msgid "The devices longitude coordinates"
-msgstr "קואורדינטות אורך המכשירים"
+msgstr "קואורדינטות קו האורך של ההתקנים"
 
 #: setup.php
-#, fuzzy
 msgid "Starting Degree"
-msgstr "החל תואר"
+msgstr "מעלת התחלה"
 
 #: setup.php
-#, fuzzy
 msgid "Starting degree for directional area between 0-360"
-msgstr "דרגת התחלה לאזור כיוון בין 0-360"
+msgstr "מעלת התחלה לאזור כיווני בין 0-360"
 
 #: setup.php
-#, fuzzy
 msgid "Stopping Degree"
-msgstr "עצירת תואר"
+msgstr "מעלת סיום"
 
 #: setup.php
-#, fuzzy
 msgid "Stopping degree for directional area, must be greater than the Starting Degree"
-msgstr "דרגת עצירה לאזור כיוון, חייבת להיות גדולה יותר מתואר ההתחלה"
+msgstr "מעלת סיום לאזור כיווני, חייבת להיות גדולה ממעלת ההתחלה"
 
 #: setup.php
-#, fuzzy
 msgid "Specify Radius"
-msgstr "ציין את הרדיוס"
+msgstr "ציין רדיוס"
 
 #: setup.php
-#, fuzzy
 msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
-msgstr "ציין ידנית רדיוס עבור נקודת גישה. הגדר ל 0 כדי לקבוע את הרדיוס בהתבסס על התקנים מקובצים"
+msgstr "ציין ידנית רדיוס עבור נקודת הגישה. הגדר ל-0 כדי לקבוע את הרדיוס בהתבסס על התקנים מקובצים"
 
 #: setup.php
 msgid "Group ID"
 msgstr "מזהה הקבוצה"
 
 #: setup.php
-#, fuzzy
 msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
-msgstr "קבוצות מגדירות אילו מכשירים כלולים בכיסוי הכיסוי. ייבדק מול מספר קבוצת המכשירים של AP. 0 כדי להשבית"
+msgstr "קבוצות מגדירות אילו התקנים נכללים בשכבת הכיסוי. ייבדק מול מספר קבוצת ההתקנים של נקודת הגישה (AP). 0 להשבתה"
+
+#: includes/polling/processregion.php
+#, php-format
+msgid "IP %s"
+msgstr "IP %s"
+
+#: includes/polling/processregion.php
+msgid "Start Over"
+msgstr "התחל מחדש"
+
+#: includes/polling/processregion.php
+msgid "Print"
+msgstr "הדפס"
+
+#: includes/setup/settings.php includes/setup/tabs.php
+msgid "Maps"
+msgstr "מפות"
+
+#: includes/setup/settings.php
+msgid "Create New Template"
+msgstr "צור תבנית חדשה"
+
+#: includes/setup/settings.php
+msgid "Map"
+msgstr "מפה"
+
+#: includes/setup/settings.php
+msgid "Templates"
+msgstr "תבניות"
+
+#: includes/setup/settings.php
+msgid "Google API Key"
+msgstr "מפתח Google API"
+
+#: includes/setup/settings.php
+msgid "The Google Maps API Key is not required but highly recommended, get more info at <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Google Documentation</a>."
+msgstr "מפתח API של Google Maps אינו חובה אך מומלץ מאוד; למידע נוסף עיין ב-<a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>תיעוד Google</a>."
+
+#: includes/setup/settings.php
+msgid "Geolocation URL"
+msgstr "כתובת URL לאיתור מיקום גאוגרפי"
+
+#: includes/setup/settings.php
+msgid "Enter the URL of the IP to Geolocation lookup service.  Every devices IP address will be tested against this location service if not set to determine the devices Geolocation.  The devices IP address will be appended to the end of this URL."
+msgstr "הזן את כתובת ה-URL של שירות איתור המיקום הגאוגרפי לפי IP. כתובת ה-IP של כל התקן תיבדק מול שירות מיקום זה אם לא הוגדרה כדי לקבוע את המיקום הגאוגרפי של ההתקן. כתובת ה-IP של ההתקן תצורף לסוף כתובת URL זו."
+
+#: includes/setup/settings.php
+msgid "Initial Latitude"
+msgstr "קו רוחב התחלתי"
+
+#: includes/setup/settings.php
+msgid "Defines the centering of the map"
+msgstr "מגדיר את מרכוז המפה"
+
+#: includes/setup/settings.php
+msgid "Initial Longitude"
+msgstr "קו אורך התחלתי"
+
+#: includes/setup/settings.php
+msgid "Initial Elevation"
+msgstr "גובה התחלתי"
+
+#: includes/setup/settings.php
+msgid "Defines the elevation of the map from 0 - 12"
+msgstr "מגדיר את גובה המפה בין 0 ל-12"
+
+#: includes/setup/settings.php
+msgid "Display Settings"
+msgstr "הגדרות תצוגה"
+
+#: includes/setup/settings.php
+msgid "Display Disabled Devices"
+msgstr "הצג התקנים מושבתים"
+
+#: includes/setup/settings.php
+msgid "Allow the display of disabled Devices on the Map"
+msgstr "אפשר הצגה של התקנים מושבתים במפה"
+
+#: includes/setup/settings.php
+msgid "Coverage Overlay"
+msgstr "שכבת כיסוי"
+
+#: includes/setup/settings.php
+msgid "Draws a transparent circle around an AP with a radius equal to the furthest node in the same subnet"
+msgstr "מצייר עיגול שקוף סביב נקודת גישה (AP) ברדיוס השווה לצומת הרחוק ביותר באותה תת-רשת"
+
+#: includes/setup/settings.php
+msgid "Map Refresh"
+msgstr "רענון מפה"
+
+#: includes/setup/settings.php
+msgid "Refreshes map after set minutes. Recommend set to poller interval, 0 to disable."
+msgstr "מרענן את המפה לאחר מספר הדקות שנקבע. מומלץ להגדיר למרווח ה-Poller, או 0 להשבתה."
+
+#: includes/setup/settings.php
+msgid "Overlay Settings"
+msgstr "הגדרות שכבת-על"
+
+#: includes/setup/settings.php
+msgid "Tab Radius (Required)"
+msgstr "רדיוס לשונית (חובה)"
+
+#: includes/setup/settings.php
+msgid "Defines radius to combine points into one. (default: 0.0003)"
+msgstr "מגדיר רדיוס לאיחוד נקודות לאחת. (ברירת מחדל: 0.0003)"
+
+#: includes/setup/settings.php
+msgid "Fill Color"
+msgstr "צבע מילוי"
+
+#: includes/setup/settings.php
+msgid "The overlay circle fill color as FFFFFF"
+msgstr "צבע המילוי של עיגול השכבה בפורמט FFFFFF"
+
+#: includes/setup/settings.php
+msgid "Ring Color"
+msgstr "צבע טבעת"
+
+#: includes/setup/settings.php
+msgid "Defines the outer rim color as FFFFFF"
+msgstr "מגדיר את צבע השפה החיצונית כ-FFFFFF"
+
+#: includes/setup/settings.php
+msgid "Ring Width"
+msgstr "רוחב טבעת"
+
+#: includes/setup/settings.php
+msgid "Outer Ring width"
+msgstr "רוחב טבעת חיצונית"
+
+#: includes/setup/settings.php
+msgid "Fill Opacity"
+msgstr "אטימות מילוי"
+
+#: includes/setup/settings.php
+msgid "Defines the fill opacity between 0 and 1"
+msgstr "מגדיר את אטימות המילוי בין 0 ל-1"
+
+#: includes/setup/settings.php
+msgid "Ring Opacity"
+msgstr "שקיפות טבעת"
+
+#: includes/setup/settings.php
+msgid "Defines the ring opacity between 0 and 1"
+msgstr "מגדיר את אטימות הטבעת בין 0 ל-1"
+
+#: includes/setup/settings.php
+msgid "Quality"
+msgstr "איכות"
+
+#: includes/setup/settings.php
+msgid "Number of divisions in circle (preferably > 15) greater numbers can slow down browser performance."
+msgstr "מספר החלוקות במעגל (רצוי > 15); מספרים גדולים יותר עלולים להאט את ביצועי הדפדפן."

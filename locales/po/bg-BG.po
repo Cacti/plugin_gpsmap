@@ -19,43 +19,36 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: gpsmap.php
-#, fuzzy
 msgid "Please make sure to properly configure Maps first under Settings > Maps"
-msgstr "Моля, уверете се, че сте конфигурирали правилно Карти първо в Настройки> Карти"
+msgstr "Моля, уверете се, че първо сте конфигурирали правилно Карти в Настройки > Карти"
 
 #: gpstemplates.php
 msgid "Delete"
 msgstr "Изтрий"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Map Templates"
-msgstr "Шаблони на карти"
+msgstr "Шаблони за карти"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Host Template"
-msgstr "Шаблон за домакин"
+msgstr "Шаблон за хост"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Up Image"
-msgstr "Горе изображение"
+msgstr "Изображение за активен"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Recovering Image"
 msgstr "Възстановяване на изображение"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Down Image"
-msgstr "Надолу изображение"
+msgstr "Изображение за неактивно състояние"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Is AP"
-msgstr "Е AP"
+msgstr "Е точка за достъп (AP)"
 
 #: gpstemplates.php
 msgid "True"
@@ -66,37 +59,30 @@ msgid "False"
 msgstr "Грешно"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Device Template"
-msgstr "Шаблон за устройство"
+msgstr "Шаблон на устройството"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Choose the Device Template to base this Map Template type."
-msgstr "Изберете Шаблон на устройство, за да базирате този тип Шаблон на карта."
+msgstr "Изберете шаблон на устройство, на който да се базира този тип шаблон на карта."
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Select the Image to Show for an Up Device"
-msgstr "Изберете изображението, което да се покаже за устройство нагоре"
+msgstr "Изберете изображение, което да се показва за активно устройство"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Select the Image to Show for a Recovering Device"
-msgstr "Изберете изображението за показване за възстановяващо устройство"
+msgstr "Изберете изображение, което да се показва за възстановяващо се устройство"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Select the Image to Show for a Down Device"
-msgstr "Изберете изображението за показване за устройство надолу"
+msgstr "Изберете изображение, което да се показва за неактивно устройство"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Access Point"
 msgstr "Точка за достъп"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Does this Device Template Represent an Access Point."
 msgstr "Представлява ли този шаблон на устройство точка за достъп."
 
@@ -109,88 +95,226 @@ msgid "Yes"
 msgstr "Да"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Map Template Edit"
-msgstr "Редактиране на шаблон на карта"
+msgstr "Редактиране на шаблон за карта"
 
 #: setup.php
-#, fuzzy
 msgid "Configure Maps"
-msgstr "Конфигурирайте Maps"
+msgstr "Конфигуриране на карти"
 
 #: setup.php
-#, fuzzy
 msgid "View Maps"
-msgstr "Преглед на Карти"
+msgstr "Преглед на картите"
 
 #: setup.php
 msgid "Map Settings"
 msgstr "Настройки на картата"
 
 #: setup.php
-#, fuzzy
 msgid "Overlay Inclusion"
-msgstr "Включване на наслагването"
+msgstr "Включване на наслагване"
 
 #: setup.php
-#, fuzzy
 msgid "Disable to plot host only, not included in coverage overlay."
-msgstr "Деактивирайте, за да начертаете само хост, не е включен в наслагването на покритие"
+msgstr "Деактивирайте, за да се изобразява само хостът, без да се включва в наслагването за покритие."
 
 #: setup.php
 msgid "Latitude"
 msgstr "Географска ширина"
 
 #: setup.php
-#, fuzzy
 msgid "The devices latitude coordinates"
-msgstr "Координати на географска ширина на устройствата"
+msgstr "Координати за географска ширина на устройството"
 
 #: setup.php
 msgid "Longitude"
 msgstr "Географска дължина"
 
 #: setup.php
-#, fuzzy
 msgid "The devices longitude coordinates"
-msgstr "Координати за дължина на устройствата"
+msgstr "Координати за географска дължина на устройството"
 
 #: setup.php
-#, fuzzy
 msgid "Starting Degree"
-msgstr "Начална степен"
+msgstr "Начален градус"
 
 #: setup.php
-#, fuzzy
 msgid "Starting degree for directional area between 0-360"
-msgstr "Начална степен за посока между 0-360"
+msgstr "Начален градус за насочена зона между 0 и 360"
 
 #: setup.php
-#, fuzzy
 msgid "Stopping Degree"
-msgstr "Степен на спиране"
+msgstr "Краен градус"
 
 #: setup.php
-#, fuzzy
 msgid "Stopping degree for directional area, must be greater than the Starting Degree"
-msgstr "Степента на спиране за посоката трябва да бъде по-голяма от началната степен"
+msgstr "Краен градус за насочена зона; трябва да бъде по-голям от началния градус"
 
 #: setup.php
-#, fuzzy
 msgid "Specify Radius"
-msgstr "Посочете радиус"
+msgstr "Задаване на радиус"
 
 #: setup.php
-#, fuzzy
 msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
-msgstr "Ръчно задайте радиус за точка за достъп. Задайте на 0, за да определите радиус въз основа на групирани устройства"
+msgstr "Ръчно задайте радиус за точката за достъп. Задайте 0, за да се определя радиусът въз основа на групираните устройства"
 
 #: setup.php
-#, fuzzy
 msgid "Group ID"
 msgstr "Идентификатор на група"
 
 #: setup.php
-#, fuzzy
 msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
-msgstr "Групите определят какви устройства се включват в наслагването на покритието. Ще бъде проверено спрямо номера на групата устройства на AP. 0 за деактивиране"
+msgstr "Групите определят кои устройства са включени в наслагването на покритието. Ще се проверява спрямо номера на групата устройства на AP. 0 за изключване"
+
+#: includes/polling/processregion.php
+#, php-format
+msgid "IP %s"
+msgstr "IP %s"
+
+#: includes/polling/processregion.php
+msgid "Start Over"
+msgstr "Започване отначало"
+
+#: includes/polling/processregion.php
+msgid "Print"
+msgstr "Печат"
+
+#: includes/setup/settings.php includes/setup/tabs.php
+msgid "Maps"
+msgstr "Карти"
+
+#: includes/setup/settings.php
+msgid "Create New Template"
+msgstr "Създаване на нов шаблон"
+
+#: includes/setup/settings.php
+msgid "Map"
+msgstr "Карта"
+
+#: includes/setup/settings.php
+msgid "Templates"
+msgstr "Шаблони"
+
+#: includes/setup/settings.php
+msgid "Google API Key"
+msgstr "Google API ключ"
+
+#: includes/setup/settings.php
+msgid "The Google Maps API Key is not required but highly recommended, get more info at <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Google Documentation</a>."
+msgstr "API ключът за Google Maps не е задължителен, но е силно препоръчителен; получете повече информация в <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>документацията на Google</a>."
+
+#: includes/setup/settings.php
+msgid "Geolocation URL"
+msgstr "URL адрес за геолокация"
+
+#: includes/setup/settings.php
+msgid "Enter the URL of the IP to Geolocation lookup service.  Every devices IP address will be tested against this location service if not set to determine the devices Geolocation.  The devices IP address will be appended to the end of this URL."
+msgstr "Въведете URL адреса на услугата за преобразуване на IP към геолокация. IP адресът на всяко устройство ще бъде проверяван чрез тази услуга за местоположение, ако не е зададено, за да се определи геолокацията на устройството. IP адресът на устройството ще бъде добавен в края на този URL адрес."
+
+#: includes/setup/settings.php
+msgid "Initial Latitude"
+msgstr "Начална географска ширина"
+
+#: includes/setup/settings.php
+msgid "Defines the centering of the map"
+msgstr "Определя центрирането на картата"
+
+#: includes/setup/settings.php
+msgid "Initial Longitude"
+msgstr "Начална географска дължина"
+
+#: includes/setup/settings.php
+msgid "Initial Elevation"
+msgstr "Начална надморска височина"
+
+#: includes/setup/settings.php
+msgid "Defines the elevation of the map from 0 - 12"
+msgstr "Определя височината на картата от 0 до 12"
+
+#: includes/setup/settings.php
+msgid "Display Settings"
+msgstr "Настройки на показването"
+
+#: includes/setup/settings.php
+msgid "Display Disabled Devices"
+msgstr "Показване на деактивираните устройства"
+
+#: includes/setup/settings.php
+msgid "Allow the display of disabled Devices on the Map"
+msgstr "Разрешаване на показването на деактивирани устройства на картата"
+
+#: includes/setup/settings.php
+msgid "Coverage Overlay"
+msgstr "Слой на покритие"
+
+#: includes/setup/settings.php
+msgid "Draws a transparent circle around an AP with a radius equal to the furthest node in the same subnet"
+msgstr "Чертае прозрачен кръг около AP с радиус, равен на разстоянието до най-отдалечения възел в същата подмрежа"
+
+#: includes/setup/settings.php
+msgid "Map Refresh"
+msgstr "Опресняване на картата"
+
+#: includes/setup/settings.php
+msgid "Refreshes map after set minutes. Recommend set to poller interval, 0 to disable."
+msgstr "Опреснява картата след зададените минути. Препоръчва се да се зададе интервалът на Poller, 0 за деактивиране."
+
+#: includes/setup/settings.php
+msgid "Overlay Settings"
+msgstr "Настройки на наслагването"
+
+#: includes/setup/settings.php
+msgid "Tab Radius (Required)"
+msgstr "Радиус на раздела (задължително)"
+
+#: includes/setup/settings.php
+msgid "Defines radius to combine points into one. (default: 0.0003)"
+msgstr "Задава радиуса за обединяване на точки в една. (по подразбиране: 0.0003)"
+
+#: includes/setup/settings.php
+msgid "Fill Color"
+msgstr "Цвят на запълване"
+
+#: includes/setup/settings.php
+msgid "The overlay circle fill color as FFFFFF"
+msgstr "Цветът за запълване на наслагвания кръг във формат FFFFFF"
+
+#: includes/setup/settings.php
+msgid "Ring Color"
+msgstr "Цвят на пръстена"
+
+#: includes/setup/settings.php
+msgid "Defines the outer rim color as FFFFFF"
+msgstr "Определя цвета на външния контур като FFFFFF"
+
+#: includes/setup/settings.php
+msgid "Ring Width"
+msgstr "Ширина на пръстена"
+
+#: includes/setup/settings.php
+msgid "Outer Ring width"
+msgstr "Ширина на външния пръстен"
+
+#: includes/setup/settings.php
+msgid "Fill Opacity"
+msgstr "Непрозрачност на запълването"
+
+#: includes/setup/settings.php
+msgid "Defines the fill opacity between 0 and 1"
+msgstr "Определя непрозрачността на запълването между 0 и 1"
+
+#: includes/setup/settings.php
+msgid "Ring Opacity"
+msgstr "Непрозрачност на пръстена"
+
+#: includes/setup/settings.php
+msgid "Defines the ring opacity between 0 and 1"
+msgstr "Определя непрозрачността на пръстена между 0 и 1"
+
+#: includes/setup/settings.php
+msgid "Quality"
+msgstr "Качество"
+
+#: includes/setup/settings.php
+msgid "Number of divisions in circle (preferably > 15) greater numbers can slow down browser performance."
+msgstr "Брой деления в окръжността (за предпочитане > 15); по-големите стойности могат да забавят производителността на браузъра."

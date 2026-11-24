@@ -19,41 +19,34 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: gpsmap.php
-#, fuzzy
 msgid "Please make sure to properly configure Maps first under Settings > Maps"
-msgstr "Trước tiên, hãy đảm bảo định cấu hình đúng Bản đồ trong Cài đặt> Bản đồ"
+msgstr "Trước tiên, vui lòng đảm bảo đã cấu hình đúng Bản đồ trong Cài đặt > Bản đồ"
 
 #: gpstemplates.php
 msgid "Delete"
 msgstr "Xóa"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Map Templates"
 msgstr "Mẫu bản đồ"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Host Template"
-msgstr "Mẫu máy chủ lưu trữ"
+msgstr "Mẫu máy chủ"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Up Image"
-msgstr "Lên hình ảnh"
+msgstr "Hình ảnh Hoạt động"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Recovering Image"
-msgstr "Khôi phục hình ảnh"
+msgstr "Đang khôi phục hình ảnh"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Down Image"
-msgstr "Hình ảnh xuống"
+msgstr "Hình ảnh ngừng hoạt động"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Is AP"
 msgstr "Là AP"
 
@@ -66,39 +59,32 @@ msgid "False"
 msgstr "Sai"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Device Template"
 msgstr "Mẫu thiết bị"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Choose the Device Template to base this Map Template type."
-msgstr "Chọn Mẫu thiết bị để làm cơ sở cho loại Mẫu bản đồ này."
+msgstr "Chọn Mẫu thiết bị làm cơ sở cho loại Mẫu bản đồ này."
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Select the Image to Show for an Up Device"
-msgstr "Chọn Hình ảnh để Hiển thị cho Thiết bị Lên"
+msgstr "Chọn hình ảnh hiển thị cho thiết bị đang hoạt động"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Select the Image to Show for a Recovering Device"
-msgstr "Chọn hình ảnh để hiển thị cho thiết bị đang khôi phục"
+msgstr "Chọn hình ảnh hiển thị cho thiết bị đang khôi phục"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Select the Image to Show for a Down Device"
-msgstr "Chọn hình ảnh để hiển thị cho thiết bị bị hỏng"
+msgstr "Chọn hình ảnh hiển thị cho thiết bị ngừng hoạt động"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Access Point"
 msgstr "Điểm truy cập"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Does this Device Template Represent an Access Point."
-msgstr "Mẫu thiết bị này có đại diện cho một điểm truy cập không."
+msgstr "Mẫu thiết bị này có đại diện cho một điểm truy cập (Access Point) không."
 
 #: gpstemplates.php
 msgid "No"
@@ -109,17 +95,14 @@ msgid "Yes"
 msgstr "Có"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Map Template Edit"
-msgstr "Bản đồ Mẫu Chỉnh sửa"
+msgstr "Chỉnh sửa mẫu bản đồ"
 
 #: setup.php
-#, fuzzy
 msgid "Configure Maps"
-msgstr "Định cấu hình bản đồ"
+msgstr "Cấu hình bản đồ"
 
 #: setup.php
-#, fuzzy
 msgid "View Maps"
 msgstr "Xem bản đồ"
 
@@ -128,21 +111,18 @@ msgid "Map Settings"
 msgstr "Cài đặt bản đồ"
 
 #: setup.php
-#, fuzzy
 msgid "Overlay Inclusion"
 msgstr "Bao gồm lớp phủ"
 
 #: setup.php
-#, fuzzy
 msgid "Disable to plot host only, not included in coverage overlay."
-msgstr "Vô hiệu hóa để chỉ máy chủ lưu trữ âm mưu, không được bao gồm trong lớp phủ bảo hiểm."
+msgstr "Tắt để chỉ vẽ vị trí máy chủ, không đưa vào lớp phủ vùng phủ sóng."
 
 #: setup.php
 msgid "Latitude"
 msgstr "Vĩ độ"
 
 #: setup.php
-#, fuzzy
 msgid "The devices latitude coordinates"
 msgstr "Tọa độ vĩ độ của thiết bị"
 
@@ -151,45 +131,190 @@ msgid "Longitude"
 msgstr "Kinh độ"
 
 #: setup.php
-#, fuzzy
 msgid "The devices longitude coordinates"
 msgstr "Tọa độ kinh độ của thiết bị"
 
 #: setup.php
-#, fuzzy
 msgid "Starting Degree"
-msgstr "Bằng cấp khởi đầu"
+msgstr "Độ bắt đầu"
 
 #: setup.php
-#, fuzzy
 msgid "Starting degree for directional area between 0-360"
-msgstr "Độ bắt đầu cho khu vực định hướng trong khoảng từ 0-360"
+msgstr "Độ bắt đầu cho vùng định hướng trong khoảng từ 0-360"
 
 #: setup.php
-#, fuzzy
 msgid "Stopping Degree"
-msgstr "Mức độ dừng"
+msgstr "Độ dừng"
 
 #: setup.php
-#, fuzzy
 msgid "Stopping degree for directional area, must be greater than the Starting Degree"
-msgstr "Mức độ dừng cho khu vực định hướng, phải lớn hơn Mức độ bắt đầu"
+msgstr "Độ dừng cho vùng định hướng, phải lớn hơn Độ bắt đầu"
 
 #: setup.php
-#, fuzzy
 msgid "Specify Radius"
 msgstr "Chỉ định bán kính"
 
 #: setup.php
-#, fuzzy
 msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
-msgstr "Chỉ định bán kính cho Access Point theo cách thủ công. Đặt thành 0 để xác định bán kính dựa trên các thiết bị được nhóm"
+msgstr "Chỉ định bán kính thủ công cho Access Point. Đặt thành 0 để xác định bán kính dựa trên các thiết bị được nhóm"
 
 #: setup.php
 msgid "Group ID"
 msgstr "ID Nhóm"
 
 #: setup.php
-#, fuzzy
 msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
-msgstr "Các nhóm xác định những thiết bị nào được bao gồm trong lớp phủ. Sẽ được kiểm tra với số nhóm thiết bị AP. 0 để tắt"
+msgstr "Các nhóm xác định những thiết bị nào được đưa vào lớp phủ vùng phủ sóng. Sẽ được kiểm tra theo số nhóm thiết bị AP. Đặt 0 để tắt"
+
+#: includes/polling/processregion.php
+#, php-format
+msgid "IP %s"
+msgstr "IP %s"
+
+#: includes/polling/processregion.php
+msgid "Start Over"
+msgstr "Bắt đầu lại"
+
+#: includes/polling/processregion.php
+msgid "Print"
+msgstr "In"
+
+#: includes/setup/settings.php includes/setup/tabs.php
+msgid "Maps"
+msgstr "Bản đồ"
+
+#: includes/setup/settings.php
+msgid "Create New Template"
+msgstr "Tạo mẫu mới"
+
+#: includes/setup/settings.php
+msgid "Map"
+msgstr "Bản đồ"
+
+#: includes/setup/settings.php
+msgid "Templates"
+msgstr "Giao diện"
+
+#: includes/setup/settings.php
+msgid "Google API Key"
+msgstr "Khóa Google API"
+
+#: includes/setup/settings.php
+msgid "The Google Maps API Key is not required but highly recommended, get more info at <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Google Documentation</a>."
+msgstr "Khóa API Google Maps không bắt buộc nhưng được khuyến nghị mạnh mẽ, xem thêm thông tin tại <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Tài liệu Google</a>."
+
+#: includes/setup/settings.php
+msgid "Geolocation URL"
+msgstr "URL định vị địa lý"
+
+#: includes/setup/settings.php
+msgid "Enter the URL of the IP to Geolocation lookup service.  Every devices IP address will be tested against this location service if not set to determine the devices Geolocation.  The devices IP address will be appended to the end of this URL."
+msgstr "Nhập URL của dịch vụ tra cứu IP sang Vị trí địa lý. Địa chỉ IP của mọi thiết bị sẽ được kiểm tra với dịch vụ vị trí này nếu chưa được đặt để xác định Vị trí địa lý của thiết bị. Địa chỉ IP của thiết bị sẽ được nối vào cuối URL này."
+
+#: includes/setup/settings.php
+msgid "Initial Latitude"
+msgstr "Vĩ độ ban đầu"
+
+#: includes/setup/settings.php
+msgid "Defines the centering of the map"
+msgstr "Xác định vị trí căn giữa của bản đồ"
+
+#: includes/setup/settings.php
+msgid "Initial Longitude"
+msgstr "Kinh độ ban đầu"
+
+#: includes/setup/settings.php
+msgid "Initial Elevation"
+msgstr "Độ cao ban đầu"
+
+#: includes/setup/settings.php
+msgid "Defines the elevation of the map from 0 - 12"
+msgstr "Xác định độ cao của bản đồ từ 0 - 12"
+
+#: includes/setup/settings.php
+msgid "Display Settings"
+msgstr "Cài đặt hiển thị"
+
+#: includes/setup/settings.php
+msgid "Display Disabled Devices"
+msgstr "Hiển thị thiết bị bị vô hiệu hóa"
+
+#: includes/setup/settings.php
+msgid "Allow the display of disabled Devices on the Map"
+msgstr "Cho phép hiển thị các thiết bị đã bị vô hiệu hóa trên bản đồ"
+
+#: includes/setup/settings.php
+msgid "Coverage Overlay"
+msgstr "Lớp phủ vùng phủ sóng"
+
+#: includes/setup/settings.php
+msgid "Draws a transparent circle around an AP with a radius equal to the furthest node in the same subnet"
+msgstr "Vẽ một vòng tròn trong suốt xung quanh AP với bán kính bằng nút xa nhất trong cùng mạng con"
+
+#: includes/setup/settings.php
+msgid "Map Refresh"
+msgstr "Làm mới bản đồ"
+
+#: includes/setup/settings.php
+msgid "Refreshes map after set minutes. Recommend set to poller interval, 0 to disable."
+msgstr "Làm mới bản đồ sau số phút đã đặt. Khuyến nghị đặt bằng khoảng thời gian của Poller, đặt 0 để tắt."
+
+#: includes/setup/settings.php
+msgid "Overlay Settings"
+msgstr "Cài đặt lớp phủ"
+
+#: includes/setup/settings.php
+msgid "Tab Radius (Required)"
+msgstr "Bán kính Tab (Bắt buộc)"
+
+#: includes/setup/settings.php
+msgid "Defines radius to combine points into one. (default: 0.0003)"
+msgstr "Xác định bán kính để gộp các điểm thành một. (mặc định: 0.0003)"
+
+#: includes/setup/settings.php
+msgid "Fill Color"
+msgstr "Màu tô"
+
+#: includes/setup/settings.php
+msgid "The overlay circle fill color as FFFFFF"
+msgstr "Màu tô vòng tròn lớp phủ dưới dạng FFFFFF"
+
+#: includes/setup/settings.php
+msgid "Ring Color"
+msgstr "Màu vòng tròn"
+
+#: includes/setup/settings.php
+msgid "Defines the outer rim color as FFFFFF"
+msgstr "Xác định màu viền ngoài dạng FFFFFF"
+
+#: includes/setup/settings.php
+msgid "Ring Width"
+msgstr "Độ rộng vòng tròn"
+
+#: includes/setup/settings.php
+msgid "Outer Ring width"
+msgstr "Độ rộng vòng ngoài"
+
+#: includes/setup/settings.php
+msgid "Fill Opacity"
+msgstr "Độ mờ màu tô"
+
+#: includes/setup/settings.php
+msgid "Defines the fill opacity between 0 and 1"
+msgstr "Xác định độ mờ phần tô từ 0 đến 1"
+
+#: includes/setup/settings.php
+msgid "Ring Opacity"
+msgstr "Độ mờ vòng tròn"
+
+#: includes/setup/settings.php
+msgid "Defines the ring opacity between 0 and 1"
+msgstr "Xác định độ mờ đường viền vòng từ 0 đến 1"
+
+#: includes/setup/settings.php
+msgid "Quality"
+msgstr "Chất lượng"
+
+#: includes/setup/settings.php
+msgid "Number of divisions in circle (preferably > 15) greater numbers can slow down browser performance."
+msgstr "Số phần chia trong hình tròn (nên > 15); số lượng lớn hơn có thể làm chậm hiệu năng trình duyệt."

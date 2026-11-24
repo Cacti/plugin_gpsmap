@@ -19,41 +19,34 @@ msgstr ""
 "X-Generator: Weblate 4.3.2\n"
 
 #: gpsmap.php
-#, fuzzy
 msgid "Please make sure to properly configure Maps first under Settings > Maps"
-msgstr "Asegúrese de configurar correctamente Maps primero en Configuración> Mapas"
+msgstr "Asegúrese de configurar correctamente Mapas primero en Configuración > Mapas"
 
 #: gpstemplates.php
 msgid "Delete"
 msgstr "Eliminar"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Map Templates"
 msgstr "Plantillas de mapas"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Host Template"
 msgstr "Plantilla de host"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Up Image"
-msgstr "Imagen arriba"
+msgstr "Imagen de activo"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Recovering Image"
 msgstr "Recuperando imagen"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Down Image"
-msgstr "Imagen hacia abajo"
+msgstr "Imagen de inactivo"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Is AP"
 msgstr "Es AP"
 
@@ -70,27 +63,22 @@ msgid "Device Template"
 msgstr "Plantilla de Dispositivo"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Choose the Device Template to base this Map Template type."
-msgstr "Elija la plantilla de dispositivo para basar este tipo de plantilla de mapa."
+msgstr "Elija la plantilla de dispositivo en la que basar este tipo de plantilla de mapa."
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Select the Image to Show for an Up Device"
-msgstr "Seleccione la imagen para mostrar para un dispositivo Up"
+msgstr "Seleccione la imagen a mostrar para un dispositivo activo"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Select the Image to Show for a Recovering Device"
-msgstr "Seleccione la imagen para mostrar para un dispositivo de recuperación"
+msgstr "Seleccione la imagen a mostrar para un dispositivo en recuperación"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Select the Image to Show for a Down Device"
-msgstr "Seleccione la imagen para mostrar para un dispositivo Down"
+msgstr "Seleccione la imagen a mostrar para un dispositivo inactivo"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Access Point"
 msgstr "Punto de acceso"
 
@@ -107,17 +95,14 @@ msgid "Yes"
 msgstr "Sí"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Map Template Edit"
 msgstr "Editar plantilla de mapa"
 
 #: setup.php
-#, fuzzy
 msgid "Configure Maps"
 msgstr "Configurar mapas"
 
 #: setup.php
-#, fuzzy
 msgid "View Maps"
 msgstr "Ver mapas"
 
@@ -126,21 +111,18 @@ msgid "Map Settings"
 msgstr "Configuración de Mapas"
 
 #: setup.php
-#, fuzzy
 msgid "Overlay Inclusion"
 msgstr "Inclusión de superposición"
 
 #: setup.php
-#, fuzzy
 msgid "Disable to plot host only, not included in coverage overlay."
-msgstr "Desactivar para trazar solo el host, no incluido en la superposición de cobertura."
+msgstr "Desactivar para representar solo el host, sin incluirlo en la capa de cobertura."
 
 #: setup.php
 msgid "Latitude"
 msgstr "Latitud"
 
 #: setup.php
-#, fuzzy
 msgid "The devices latitude coordinates"
 msgstr "Las coordenadas de latitud de los dispositivos"
 
@@ -149,45 +131,190 @@ msgid "Longitude"
 msgstr "Longitud"
 
 #: setup.php
-#, fuzzy
 msgid "The devices longitude coordinates"
 msgstr "Las coordenadas de longitud de los dispositivos"
 
 #: setup.php
-#, fuzzy
 msgid "Starting Degree"
 msgstr "Grado inicial"
 
 #: setup.php
-#, fuzzy
 msgid "Starting degree for directional area between 0-360"
 msgstr "Grado inicial para el área direccional entre 0-360"
 
 #: setup.php
-#, fuzzy
 msgid "Stopping Degree"
-msgstr "Grado de parada"
+msgstr "Grado final"
 
 #: setup.php
-#, fuzzy
 msgid "Stopping degree for directional area, must be greater than the Starting Degree"
-msgstr "El grado de parada para el área direccional debe ser mayor que el grado inicial"
+msgstr "Grado final para el área direccional; debe ser mayor que el Grado inicial"
 
 #: setup.php
-#, fuzzy
 msgid "Specify Radius"
 msgstr "Especificar radio"
 
 #: setup.php
-#, fuzzy
 msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
-msgstr "Especifique manualmente el radio para el punto de acceso. Establecer en 0 para determinar el radio basado en dispositivos agrupados"
+msgstr "Especifique manualmente el radio para el punto de acceso. Establézcalo en 0 para determinar el radio según los dispositivos agrupados"
 
 #: setup.php
 msgid "Group ID"
 msgstr "ID Grupo"
 
 #: setup.php
-#, fuzzy
 msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
-msgstr "Los grupos definen qué dispositivos se incluyen en la superposición de cobertura. Se comparará con el número de grupo de dispositivos AP. 0 para deshabilitar"
+msgstr "Los grupos definen qué dispositivos se incluyen en la superposición de cobertura. Se comprobará con el número de grupo del dispositivo AP. 0 para deshabilitar"
+
+#: includes/polling/processregion.php
+#, php-format
+msgid "IP %s"
+msgstr "IP %s"
+
+#: includes/polling/processregion.php
+msgid "Start Over"
+msgstr "Volver a empezar"
+
+#: includes/polling/processregion.php
+msgid "Print"
+msgstr "Imprimir"
+
+#: includes/setup/settings.php includes/setup/tabs.php
+msgid "Maps"
+msgstr "Mapas"
+
+#: includes/setup/settings.php
+msgid "Create New Template"
+msgstr "Crear nueva plantilla"
+
+#: includes/setup/settings.php
+msgid "Map"
+msgstr "Mapa"
+
+#: includes/setup/settings.php
+msgid "Templates"
+msgstr "Plantillas"
+
+#: includes/setup/settings.php
+msgid "Google API Key"
+msgstr "Clave de API de Google"
+
+#: includes/setup/settings.php
+msgid "The Google Maps API Key is not required but highly recommended, get more info at <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Google Documentation</a>."
+msgstr "La clave de API de Google Maps no es obligatoria pero sí muy recomendable; obtenga más información en la <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>documentación de Google</a>."
+
+#: includes/setup/settings.php
+msgid "Geolocation URL"
+msgstr "URL de geolocalización"
+
+#: includes/setup/settings.php
+msgid "Enter the URL of the IP to Geolocation lookup service.  Every devices IP address will be tested against this location service if not set to determine the devices Geolocation.  The devices IP address will be appended to the end of this URL."
+msgstr "Introduzca la URL del servicio de consulta de IP a geolocalización. Si no está establecida, la dirección IP de cada dispositivo se consultará en este servicio de ubicación para determinar la geolocalización del dispositivo. La dirección IP del dispositivo se añadirá al final de esta URL."
+
+#: includes/setup/settings.php
+msgid "Initial Latitude"
+msgstr "Latitud inicial"
+
+#: includes/setup/settings.php
+msgid "Defines the centering of the map"
+msgstr "Define el centrado del mapa"
+
+#: includes/setup/settings.php
+msgid "Initial Longitude"
+msgstr "Longitud inicial"
+
+#: includes/setup/settings.php
+msgid "Initial Elevation"
+msgstr "Elevación inicial"
+
+#: includes/setup/settings.php
+msgid "Defines the elevation of the map from 0 - 12"
+msgstr "Define la elevación del mapa de 0 a 12"
+
+#: includes/setup/settings.php
+msgid "Display Settings"
+msgstr "Configuración de visualización"
+
+#: includes/setup/settings.php
+msgid "Display Disabled Devices"
+msgstr "Mostrar dispositivos desactivados"
+
+#: includes/setup/settings.php
+msgid "Allow the display of disabled Devices on the Map"
+msgstr "Permitir mostrar dispositivos deshabilitados en el mapa"
+
+#: includes/setup/settings.php
+msgid "Coverage Overlay"
+msgstr "Superposición de cobertura"
+
+#: includes/setup/settings.php
+msgid "Draws a transparent circle around an AP with a radius equal to the furthest node in the same subnet"
+msgstr "Dibuja un círculo transparente alrededor de un AP con un radio igual al nodo más lejano de la misma subred"
+
+#: includes/setup/settings.php
+msgid "Map Refresh"
+msgstr "Actualización del mapa"
+
+#: includes/setup/settings.php
+msgid "Refreshes map after set minutes. Recommend set to poller interval, 0 to disable."
+msgstr "Actualiza el mapa tras los minutos establecidos. Se recomienda ajustarlo al intervalo del sondeador; 0 para deshabilitar."
+
+#: includes/setup/settings.php
+msgid "Overlay Settings"
+msgstr "Ajustes de superposición"
+
+#: includes/setup/settings.php
+msgid "Tab Radius (Required)"
+msgstr "Radio de pestaña (obligatorio)"
+
+#: includes/setup/settings.php
+msgid "Defines radius to combine points into one. (default: 0.0003)"
+msgstr "Define el radio para combinar puntos en uno solo. (predeterminado: 0.0003)"
+
+#: includes/setup/settings.php
+msgid "Fill Color"
+msgstr "Color de relleno"
+
+#: includes/setup/settings.php
+msgid "The overlay circle fill color as FFFFFF"
+msgstr "El color de relleno del círculo de superposición como FFFFFF"
+
+#: includes/setup/settings.php
+msgid "Ring Color"
+msgstr "Color del anillo"
+
+#: includes/setup/settings.php
+msgid "Defines the outer rim color as FFFFFF"
+msgstr "Define el color del borde exterior como FFFFFF"
+
+#: includes/setup/settings.php
+msgid "Ring Width"
+msgstr "Grosor del anillo"
+
+#: includes/setup/settings.php
+msgid "Outer Ring width"
+msgstr "Ancho del anillo exterior"
+
+#: includes/setup/settings.php
+msgid "Fill Opacity"
+msgstr "Opacidad del relleno"
+
+#: includes/setup/settings.php
+msgid "Defines the fill opacity between 0 and 1"
+msgstr "Define la opacidad de relleno entre 0 y 1"
+
+#: includes/setup/settings.php
+msgid "Ring Opacity"
+msgstr "Opacidad del anillo"
+
+#: includes/setup/settings.php
+msgid "Defines the ring opacity between 0 and 1"
+msgstr "Define la opacidad del anillo entre 0 y 1"
+
+#: includes/setup/settings.php
+msgid "Quality"
+msgstr "Calidad"
+
+#: includes/setup/settings.php
+msgid "Number of divisions in circle (preferably > 15) greater numbers can slow down browser performance."
+msgstr "Número de divisiones en el círculo (preferiblemente > 15); valores mayores pueden ralentizar el rendimiento del navegador."

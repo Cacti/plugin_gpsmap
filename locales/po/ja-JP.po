@@ -19,43 +19,36 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: gpsmap.php
-#, fuzzy
 msgid "Please make sure to properly configure Maps first under Settings > Maps"
-msgstr "まず、[設定]> [マップ]でマップを正しく構成してください。"
+msgstr "まず、[設定] > [マップ] でマップを正しく設定してください"
 
 #: gpstemplates.php
 msgid "Delete"
 msgstr "削除"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Map Templates"
 msgstr "マップテンプレート"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Host Template"
 msgstr "ホストテンプレート"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Up Image"
-msgstr "アップ画像"
+msgstr "稼働時画像"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Recovering Image"
-msgstr "画像の復元"
+msgstr "画像の復元中"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Down Image"
-msgstr "下の画像"
+msgstr "ダウン時の画像"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Is AP"
-msgstr "APですか"
+msgstr "AP かどうか"
 
 #: gpstemplates.php
 msgid "True"
@@ -70,31 +63,26 @@ msgid "Device Template"
 msgstr "デバイステンプレート"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Choose the Device Template to base this Map Template type."
 msgstr "このマップテンプレートタイプのベースとなるデバイステンプレートを選択します。"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Select the Image to Show for an Up Device"
-msgstr "アップデバイスに表示する画像を選択します"
+msgstr "稼働中のデバイスに表示する画像を選択"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Select the Image to Show for a Recovering Device"
-msgstr "回復中のデバイスに表示する画像を選択します"
+msgstr "回復中のデバイスに表示する画像を選択"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Select the Image to Show for a Down Device"
-msgstr "ダウンしたデバイスに表示する画像を選択します"
+msgstr "停止中のデバイスに表示する画像を選択"
 
 #: gpstemplates.php
 msgid "Access Point"
 msgstr "アクセス ポイント"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Does this Device Template Represent an Access Point."
 msgstr "このデバイステンプレートはアクセスポイントを表していますか。"
 
@@ -107,40 +95,34 @@ msgid "Yes"
 msgstr "はい"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Map Template Edit"
 msgstr "マップテンプレート編集"
 
 #: setup.php
-#, fuzzy
 msgid "Configure Maps"
-msgstr "マップを構成する"
+msgstr "マップを設定"
 
 #: setup.php
-#, fuzzy
 msgid "View Maps"
-msgstr "地図を見る"
+msgstr "マップを表示"
 
 #: setup.php
 msgid "Map Settings"
 msgstr "マップ設定"
 
 #: setup.php
-#, fuzzy
 msgid "Overlay Inclusion"
-msgstr "オーバーレイインクルージョン"
+msgstr "オーバーレイの包含"
 
 #: setup.php
-#, fuzzy
 msgid "Disable to plot host only, not included in coverage overlay."
-msgstr "カバレッジオーバーレイに含まれない、ホストのみをプロットすることを無効にします。"
+msgstr "無効にすると、カバレッジオーバーレイに含めずにホストのみをプロットします。"
 
 #: setup.php
 msgid "Latitude"
 msgstr "緯度"
 
 #: setup.php
-#, fuzzy
 msgid "The devices latitude coordinates"
 msgstr "デバイスの緯度座標"
 
@@ -149,45 +131,190 @@ msgid "Longitude"
 msgstr "経度"
 
 #: setup.php
-#, fuzzy
 msgid "The devices longitude coordinates"
 msgstr "デバイスの経度座標"
 
 #: setup.php
-#, fuzzy
 msgid "Starting Degree"
-msgstr "開始度"
+msgstr "開始角度"
 
 #: setup.php
-#, fuzzy
 msgid "Starting degree for directional area between 0-360"
-msgstr "0〜360の指向性領域の開始度"
+msgstr "指向性エリアの開始角度（0〜360）"
 
 #: setup.php
-#, fuzzy
 msgid "Stopping Degree"
-msgstr "停止度"
+msgstr "終了角度"
 
 #: setup.php
-#, fuzzy
 msgid "Stopping degree for directional area, must be greater than the Starting Degree"
-msgstr "指向性領域の停止度は、開始度よりも大きくする必要があります"
+msgstr "指向性エリアの終了角度。開始角度より大きい値を指定してください"
 
 #: setup.php
-#, fuzzy
 msgid "Specify Radius"
-msgstr "半径を指定する"
+msgstr "半径を指定"
 
 #: setup.php
-#, fuzzy
 msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
-msgstr "アクセスポイントの半径を手動で指定します。グループ化されたデバイスに基づいて半径を決定するには、0に設定します"
+msgstr "アクセスポイントの半径を手動で指定します。グループ化されたデバイスに基づいて半径を決定するには0に設定します"
 
 #: setup.php
 msgid "Group ID"
 msgstr "グループID"
 
 #: setup.php
-#, fuzzy
 msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
-msgstr "グループは、カバレッジオーバーレイに含まれるデバイスを定義します。 APデバイスグループ番号と照合されます。無効にするには0"
+msgstr "グループはカバレッジオーバーレイに含まれるデバイスを定義します。AP デバイスグループ番号と照合されます。0 で無効になります。"
+
+#: includes/polling/processregion.php
+#, php-format
+msgid "IP %s"
+msgstr "IP %s"
+
+#: includes/polling/processregion.php
+msgid "Start Over"
+msgstr "最初からやり直す"
+
+#: includes/polling/processregion.php
+msgid "Print"
+msgstr "印刷"
+
+#: includes/setup/settings.php includes/setup/tabs.php
+msgid "Maps"
+msgstr "マップ"
+
+#: includes/setup/settings.php
+msgid "Create New Template"
+msgstr "新しいテンプレートを作成"
+
+#: includes/setup/settings.php
+msgid "Map"
+msgstr "マップ"
+
+#: includes/setup/settings.php
+msgid "Templates"
+msgstr "テンプレート"
+
+#: includes/setup/settings.php
+msgid "Google API Key"
+msgstr "Google API キー"
+
+#: includes/setup/settings.php
+msgid "The Google Maps API Key is not required but highly recommended, get more info at <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Google Documentation</a>."
+msgstr "Google Maps API キーは必須ではありませんが強く推奨されます。詳細については <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Google ドキュメント</a> を参照してください。"
+
+#: includes/setup/settings.php
+msgid "Geolocation URL"
+msgstr "位置情報 URL"
+
+#: includes/setup/settings.php
+msgid "Enter the URL of the IP to Geolocation lookup service.  Every devices IP address will be tested against this location service if not set to determine the devices Geolocation.  The devices IP address will be appended to the end of this URL."
+msgstr "IP アドレスから位置情報を検索するサービスの URL を入力してください。設定されていない場合、すべてのデバイスの IP アドレスがこの位置情報サービスに対して照会され、デバイスの地理的位置が判定されます。デバイスの IP アドレスはこの URL の末尾に付加されます。"
+
+#: includes/setup/settings.php
+msgid "Initial Latitude"
+msgstr "初期緯度"
+
+#: includes/setup/settings.php
+msgid "Defines the centering of the map"
+msgstr "マップの中心位置を定義します"
+
+#: includes/setup/settings.php
+msgid "Initial Longitude"
+msgstr "初期経度"
+
+#: includes/setup/settings.php
+msgid "Initial Elevation"
+msgstr "初期高度"
+
+#: includes/setup/settings.php
+msgid "Defines the elevation of the map from 0 - 12"
+msgstr "マップの高度を 0 - 12 の範囲で定義します"
+
+#: includes/setup/settings.php
+msgid "Display Settings"
+msgstr "表示設定"
+
+#: includes/setup/settings.php
+msgid "Display Disabled Devices"
+msgstr "無効化されたデバイスを表示"
+
+#: includes/setup/settings.php
+msgid "Allow the display of disabled Devices on the Map"
+msgstr "マップ上に無効化されたデバイスの表示を許可する"
+
+#: includes/setup/settings.php
+msgid "Coverage Overlay"
+msgstr "カバレッジオーバーレイ"
+
+#: includes/setup/settings.php
+msgid "Draws a transparent circle around an AP with a radius equal to the furthest node in the same subnet"
+msgstr "同じサブネット内の最も遠いノードを半径とする半透明の円を AP の周囲に描画します"
+
+#: includes/setup/settings.php
+msgid "Map Refresh"
+msgstr "マップ更新"
+
+#: includes/setup/settings.php
+msgid "Refreshes map after set minutes. Recommend set to poller interval, 0 to disable."
+msgstr "設定した分数後にマップを更新します。ポーラー間隔に設定することを推奨します。0 で無効になります。"
+
+#: includes/setup/settings.php
+msgid "Overlay Settings"
+msgstr "オーバーレイ設定"
+
+#: includes/setup/settings.php
+msgid "Tab Radius (Required)"
+msgstr "タブ半径 (必須)"
+
+#: includes/setup/settings.php
+msgid "Defines radius to combine points into one. (default: 0.0003)"
+msgstr "ポイントを1つに統合する半径を定義します。（デフォルト: 0.0003）"
+
+#: includes/setup/settings.php
+msgid "Fill Color"
+msgstr "塗りつぶしの色"
+
+#: includes/setup/settings.php
+msgid "The overlay circle fill color as FFFFFF"
+msgstr "オーバーレイ円の塗りつぶし色（FFFFFF 形式）"
+
+#: includes/setup/settings.php
+msgid "Ring Color"
+msgstr "リングの色"
+
+#: includes/setup/settings.php
+msgid "Defines the outer rim color as FFFFFF"
+msgstr "外枠の色を FFFFFF 形式で定義します"
+
+#: includes/setup/settings.php
+msgid "Ring Width"
+msgstr "リングの幅"
+
+#: includes/setup/settings.php
+msgid "Outer Ring width"
+msgstr "外周リングの幅"
+
+#: includes/setup/settings.php
+msgid "Fill Opacity"
+msgstr "塗りつぶしの不透明度"
+
+#: includes/setup/settings.php
+msgid "Defines the fill opacity between 0 and 1"
+msgstr "塗りつぶしの不透明度を 0 ～ 1 の間で定義します"
+
+#: includes/setup/settings.php
+msgid "Ring Opacity"
+msgstr "リングの不透明度"
+
+#: includes/setup/settings.php
+msgid "Defines the ring opacity between 0 and 1"
+msgstr "リングの不透明度を 0 ～ 1 の間で定義します"
+
+#: includes/setup/settings.php
+msgid "Quality"
+msgstr "品質"
+
+#: includes/setup/settings.php
+msgid "Number of divisions in circle (preferably > 15) greater numbers can slow down browser performance."
+msgstr "円の分割数 (15 より大きい値を推奨)。値が大きすぎるとブラウザーのパフォーマンスが低下する場合があります。"
