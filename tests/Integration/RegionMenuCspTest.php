@@ -37,3 +37,17 @@ it('renders the region navigation controls without inline onclick handlers', fun
 	expect($menu)->toContain('class="print gpsmapPrint"');
 	expect($menu)->not->toContain('onclick');
 });
+
+it('links each device at the deepest region level', function () {
+	gpsmap_test_use_tmp_root();
+	gpsmap_test_icons(['Green.png', 'Red.png', 'Yellow.png']);
+	$root = gpsmap_test_tmpdir();
+
+	$host = new host('5', '10', '1.0', '2.0', '10.1.2.3', 'Device', 'h.example', 0, '99', '3', '1', 'on', 'Green.png', 'Red.png', 'Yellow.png', '0', '360', '1');
+
+	expect(gpsmap_render_region([[], [$host]], '10.1.2'))->toBeTrue();
+
+	$menu = file_get_contents($root . '/plugins/gpsmap/XML/10.1.2-top.html');
+
+	expect($menu)->toContain('graph_view.php?action=preview&reset=1&host_id=5">IP 10.1.2.3</a>');
+});
