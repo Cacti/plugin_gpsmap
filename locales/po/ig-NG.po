@@ -1,0 +1,320 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The Cacti Group
+# This file is distributed under the same license as the Cacti package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Cacti\n"
+"Report-Msgid-Bugs-To: developers@cacti.net\n"
+"POT-Creation-Date: 2026-09-28 16:05-0400\n"
+"PO-Revision-Date: 2026-11-24 19:00+0000\n"
+"Last-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\n"
+"Language-Team: Igbo\n"
+"Language: ig-NG\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: gpsmap.php
+msgid "Please make sure to properly configure Maps first under Settings > Maps"
+msgstr "Biko hụ na ị haziri Maapụ nke ọma mbụ n'okpuru Ntọala > Maapụ"
+
+#: gpstemplates.php
+msgid "Delete"
+msgstr "Hichapụ"
+
+#: gpstemplates.php includes/setup/settings.php
+msgid "Map Templates"
+msgstr "Nlereanya Gasị Maapụ"
+
+#: gpstemplates.php
+msgid "Host Template"
+msgstr "Nlereanya Onye nnabata"
+
+#: gpstemplates.php
+msgid "Up Image"
+msgstr "Onyonyo Dị Elu"
+
+#: gpstemplates.php
+msgid "Recovering Image"
+msgstr "Foto Ngbake"
+
+#: gpstemplates.php
+msgid "Down Image"
+msgstr "Onyonyo Adịghị Arụ Ọrụ"
+
+#: gpstemplates.php
+msgid "Is AP"
+msgstr "Ọ bụ AP"
+
+#: gpstemplates.php
+msgid "True"
+msgstr "Eziokwu"
+
+#: gpstemplates.php
+msgid "False"
+msgstr "Ụgha"
+
+#: gpstemplates.php
+msgid "Device Template"
+msgstr "Ụkpụrụ Ngwaọrụ"
+
+#: gpstemplates.php
+msgid "Choose the Device Template to base this Map Template type."
+msgstr "Họrọ Nlereanya Ngwaọrụ iji gbado ụdị Nlereanya Maapụ a."
+
+#: gpstemplates.php
+msgid "Select the Image to Show for an Up Device"
+msgstr "Họrọ Onyonyo a Ga-egosi maka Ngwaọrụ Na-arụ Ọrụ"
+
+#: gpstemplates.php
+msgid "Select the Image to Show for a Recovering Device"
+msgstr "Họrọ Onyonyo a Ga-egosi maka Ngwaọrụ Na-agbake"
+
+#: gpstemplates.php
+msgid "Select the Image to Show for a Down Device"
+msgstr "Họrọ Onyonyo a Ga-egosi maka Ngwaọrụ Dara Ada"
+
+#: gpstemplates.php
+msgid "Access Point"
+msgstr "Ebe Nnweta"
+
+#: gpstemplates.php
+msgid "Does this Device Template Represent an Access Point."
+msgstr "Nlereanya Ngwaọrụ a ọ na-anọchite anya Access Point."
+
+#: gpstemplates.php
+msgid "No"
+msgstr "Mba"
+
+#: gpstemplates.php
+msgid "Yes"
+msgstr "Ee"
+
+#: gpstemplates.php
+msgid "Map Template Edit"
+msgstr "Dezie Nlereanya Maapụ"
+
+#: includes/polling/processregion.php
+#, php-format
+msgid "IP %s"
+msgstr "IP %s"
+
+#: includes/polling/processregion.php
+msgid "Start Over"
+msgstr "Malite Ọhụrụ"
+
+#: includes/polling/processregion.php
+msgid "Print"
+msgstr "Bipụta"
+
+#: includes/setup/settings.php includes/setup/tabs.php
+msgid "Maps"
+msgstr "Maapụ Gasị"
+
+#: includes/setup/settings.php
+msgid "Create New Template"
+msgstr "Mepụta Nlereanya Ọhụrụ"
+
+#: includes/setup/settings.php
+msgid "Map"
+msgstr "Maapụ"
+
+#: includes/setup/settings.php
+msgid "Templates"
+msgstr "Nlereanya Gasị"
+
+#: includes/setup/settings.php
+msgid "Google API Key"
+msgstr "Igodo API Google"
+
+#: includes/setup/settings.php
+msgid "The Google Maps API Key is not required but highly recommended, get more info at <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Google Documentation</a>."
+msgstr "Achọghị Igodo API Google Maps mana a na-akwado ya nke ukwuu, nweta ozi ndị ọzọ na <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Akwụkwọ Google</a>."
+
+#: includes/setup/settings.php
+msgid "Geolocation URL"
+msgstr "URL Ebe Geo"
+
+#: includes/setup/settings.php
+msgid "Enter the URL of the IP to Geolocation lookup service.  Every devices IP address will be tested against this location service if not set to determine the devices Geolocation.  The devices IP address will be appended to the end of this URL."
+msgstr "Tinye URL nke ọrụ nchọpụta IP gaa na Geolocation.  A ga-anwale adreesị IP nke ngwaọrụ ọ bụla megide ọrụ ọnọdụ a ma ọ bụrụ na edozighị ya iji chọpụta Geolocation ngwaọrụ ahụ.  A ga-etinye adreesị IP ngwaọrụ ahụ na njedebe nke URL a."
+
+#: includes/setup/settings.php
+msgid "Initial Latitude"
+msgstr "Latitude Mbụ"
+
+#: includes/setup/settings.php
+msgid "Defines the centering of the map"
+msgstr "Na-akọwa idowe maapụ n'etiti"
+
+#: includes/setup/settings.php
+msgid "Initial Longitude"
+msgstr "Longitude Mbụ"
+
+#: includes/setup/settings.php
+msgid "Initial Elevation"
+msgstr "Elu Mbụ"
+
+#: includes/setup/settings.php
+msgid "Defines the elevation of the map from 0 - 12"
+msgstr "Na-akọwa ịdị elu nke maapụ site na 0 - 12"
+
+#: includes/setup/settings.php
+msgid "Display Settings"
+msgstr "Ntọala Ngosi"
+
+#: includes/setup/settings.php
+msgid "Display Disabled Devices"
+msgstr "Gosi Ngwaọrụ Gbanyụrụ"
+
+#: includes/setup/settings.php
+msgid "Allow the display of disabled Devices on the Map"
+msgstr "Kwe ka e gosipụta Ngwaọrụ gbanyụrụ na Maapụ"
+
+#: includes/setup/settings.php
+msgid "Coverage Overlay"
+msgstr "Mkpuchi Mgbasa"
+
+#: includes/setup/settings.php
+msgid "Draws a transparent circle around an AP with a radius equal to the furthest node in the same subnet"
+msgstr "Na-ese okirikiri doro anya gburugburu AP nke nwere radius hà nhata node kacha anya n'otu subnet ahụ"
+
+#: includes/setup/settings.php
+msgid "Map Refresh"
+msgstr "Mmelite Maapụ"
+
+#: includes/setup/settings.php
+msgid "Refreshes map after set minutes. Recommend set to poller interval, 0 to disable."
+msgstr "Na-eme ka maapụ dị ọhụrụ mgbe nkeji e setịpụrụ gachara. A na-atụ aro ka e setịpụ ya na oge etiti Poller, 0 iji gbanyụọ."
+
+#: includes/setup/settings.php
+msgid "Overlay Settings"
+msgstr "Ntọala Mkpuchi"
+
+#: includes/setup/settings.php
+msgid "Tab Radius (Required)"
+msgstr "Okirikiri Taabụ (Achọrọ)"
+
+#: includes/setup/settings.php
+msgid "Defines radius to combine points into one. (default: 0.0003)"
+msgstr "Na-akọwa okirikiri iji jikọta ntụpọ n'ime otu. (ndabara: 0.0003)"
+
+#: includes/setup/settings.php
+msgid "Fill Color"
+msgstr "Agba Njupụta"
+
+#: includes/setup/settings.php
+msgid "The overlay circle fill color as FFFFFF"
+msgstr "Agba ndọju okirikiri mkpuchi dịka FFFFFF"
+
+#: includes/setup/settings.php
+msgid "Ring Color"
+msgstr "Agba Mgbanaka"
+
+#: includes/setup/settings.php
+msgid "Defines the outer rim color as FFFFFF"
+msgstr "Na-akọwa agba akụkụ mpụga dị ka FFFFFF"
+
+#: includes/setup/settings.php
+msgid "Ring Width"
+msgstr "Obosara Mgbanaka"
+
+#: includes/setup/settings.php
+msgid "Outer Ring width"
+msgstr "Obosara Mgbanaka Mpụga"
+
+#: includes/setup/settings.php
+msgid "Fill Opacity"
+msgstr "Ọdịdị Njupụta"
+
+#: includes/setup/settings.php
+msgid "Defines the fill opacity between 0 and 1"
+msgstr "Na-akọwa nghọta ndọju n'etiti 0 na 1"
+
+#: includes/setup/settings.php
+msgid "Ring Opacity"
+msgstr "Nghọta Mgbanaka"
+
+#: includes/setup/settings.php
+msgid "Defines the ring opacity between 0 and 1"
+msgstr "Na-akọwa nghọta mgbanaka n'etiti 0 na 1"
+
+#: includes/setup/settings.php
+msgid "Quality"
+msgstr "Ogo"
+
+#: includes/setup/settings.php
+msgid "Number of divisions in circle (preferably > 15) greater numbers can slow down browser performance."
+msgstr "Ọnụọgụ nkewa dị na okirikiri (ọ ka mma > 15) ọnụọgụ buru ibu nwere ike belata ọsọ ihe nchọgharị."
+
+#: setup.php
+msgid "Configure Maps"
+msgstr "Hazie Maapụ Gasị"
+
+#: setup.php
+msgid "View Maps"
+msgstr "Lee Maapụ"
+
+#: setup.php
+msgid "Map Settings"
+msgstr "Ntọala Maapụ"
+
+#: setup.php
+msgid "Overlay Inclusion"
+msgstr "Ntinye Mkpuchi"
+
+#: setup.php
+msgid "Disable to plot host only, not included in coverage overlay."
+msgstr "Gbanyụọ iji see naanị onye nnabata, etinyeghị ya na mkpuchi mpaghara."
+
+#: setup.php
+msgid "Latitude"
+msgstr "Latitud"
+
+#: setup.php
+msgid "The devices latitude coordinates"
+msgstr "Nhazi latitụdụ nke ngwaọrụ"
+
+#: setup.php
+msgid "Longitude"
+msgstr "Lọngitud"
+
+#: setup.php
+msgid "The devices longitude coordinates"
+msgstr "Nhazi lọngitụdụ nke ngwaọrụ"
+
+#: setup.php
+msgid "Starting Degree"
+msgstr "Ogo Mmalite"
+
+#: setup.php
+msgid "Starting degree for directional area between 0-360"
+msgstr "Ogo mmalite maka mpaghara ntụzịaka n'etiti 0-360"
+
+#: setup.php
+msgid "Stopping Degree"
+msgstr "Ogo Nkwụsị"
+
+#: setup.php
+msgid "Stopping degree for directional area, must be greater than the Starting Degree"
+msgstr "Ogo nkwụsị maka mpaghara ntụzịaka, ga-adịrịrị elu karịa Ogo Mmalite"
+
+#: setup.php
+msgid "Specify Radius"
+msgstr "Kọwaa Radius"
+
+#: setup.php
+msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
+msgstr "Kọwapụta okirikiri aka maka Access Point. Tọọ na 0 iji chọpụta okirikiri dabere na ngwaọrụ achịkọtara"
+
+#: setup.php
+msgid "Group ID"
+msgstr "ID Otu"
+
+#: setup.php
+msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
+msgstr "Otu na-akọwa ngwaọrụ ndị etinyere na mkpuchi mpaghara. A ga-enyocha ya megide nọmba otu ngwaọrụ AP. 0 iji gbanyụọ"
+

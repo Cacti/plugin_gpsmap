@@ -1,0 +1,320 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The Cacti Group
+# This file is distributed under the same license as the Cacti package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Cacti\n"
+"Report-Msgid-Bugs-To: developers@cacti.net\n"
+"POT-Creation-Date: 2026-09-28 16:05-0400\n"
+"PO-Revision-Date: 2026-11-24 19:00+0000\n"
+"Last-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\n"
+"Language-Team: Arabic (Morocco)\n"
+"Language: ar-MA\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: gpsmap.php
+msgid "Please make sure to properly configure Maps first under Settings > Maps"
+msgstr "يرجى التأكد من تكوين الخرائط بشكل صحيح أولًا ضمن إعدادات > الخرائط"
+
+#: gpstemplates.php
+msgid "Delete"
+msgstr "حذف"
+
+#: gpstemplates.php includes/setup/settings.php
+msgid "Map Templates"
+msgstr "قوالب الخرائط"
+
+#: gpstemplates.php
+msgid "Host Template"
+msgstr "قالب المستضيف Host"
+
+#: gpstemplates.php
+msgid "Up Image"
+msgstr "صورة حالة التشغيل"
+
+#: gpstemplates.php
+msgid "Recovering Image"
+msgstr "صورة الاسترداد"
+
+#: gpstemplates.php
+msgid "Down Image"
+msgstr "صورة حالة التوقف"
+
+#: gpstemplates.php
+msgid "Is AP"
+msgstr "هل هو نقطة وصول (AP)"
+
+#: gpstemplates.php
+msgid "True"
+msgstr "صحيح"
+
+#: gpstemplates.php
+msgid "False"
+msgstr "خطأ"
+
+#: gpstemplates.php
+msgid "Device Template"
+msgstr "قالب الجهاز"
+
+#: gpstemplates.php
+msgid "Choose the Device Template to base this Map Template type."
+msgstr "اختر قالب الجهاز الذي يعتمد عليه نوع قالب الخريطة هذا."
+
+#: gpstemplates.php
+msgid "Select the Image to Show for an Up Device"
+msgstr "اختر الصورة المراد عرضها لجهاز يعمل"
+
+#: gpstemplates.php
+msgid "Select the Image to Show for a Recovering Device"
+msgstr "اختر الصورة المراد عرضها لجهاز قيد الاستعادة"
+
+#: gpstemplates.php
+msgid "Select the Image to Show for a Down Device"
+msgstr "اختر الصورة المراد عرضها لجهاز متوقف"
+
+#: gpstemplates.php
+msgid "Access Point"
+msgstr "نقطة الوصول"
+
+#: gpstemplates.php
+msgid "Does this Device Template Represent an Access Point."
+msgstr "هل يمثل قالب الجهاز هذا نقطة وصول (Access Point)."
+
+#: gpstemplates.php
+msgid "No"
+msgstr "لا"
+
+#: gpstemplates.php
+msgid "Yes"
+msgstr "نعم"
+
+#: gpstemplates.php
+msgid "Map Template Edit"
+msgstr "تحرير قالب الخريطة"
+
+#: includes/polling/processregion.php
+#, php-format
+msgid "IP %s"
+msgstr "عنوان IP %s"
+
+#: includes/polling/processregion.php
+msgid "Start Over"
+msgstr "البدء من جديد"
+
+#: includes/polling/processregion.php
+msgid "Print"
+msgstr "طباعة"
+
+#: includes/setup/settings.php includes/setup/tabs.php
+msgid "Maps"
+msgstr "الخرائط"
+
+#: includes/setup/settings.php
+msgid "Create New Template"
+msgstr "إنشاء قالب جديد"
+
+#: includes/setup/settings.php
+msgid "Map"
+msgstr "خريطة"
+
+#: includes/setup/settings.php
+msgid "Templates"
+msgstr "القوالب"
+
+#: includes/setup/settings.php
+msgid "Google API Key"
+msgstr "مفتاح Google API"
+
+#: includes/setup/settings.php
+msgid "The Google Maps API Key is not required but highly recommended, get more info at <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Google Documentation</a>."
+msgstr "مفتاح Google Maps API غير مطلوب ولكنه موصى به بشدة، احصل على مزيد من المعلومات في <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>وثائق Google</a>."
+
+#: includes/setup/settings.php
+msgid "Geolocation URL"
+msgstr "عنوان URL للموقع الجغرافي"
+
+#: includes/setup/settings.php
+msgid "Enter the URL of the IP to Geolocation lookup service.  Every devices IP address will be tested against this location service if not set to determine the devices Geolocation.  The devices IP address will be appended to the end of this URL."
+msgstr "أدخل عنوان URL لخدمة البحث عن الموقع الجغرافي لعنوان IP. سيتم اختبار عنوان IP لكل جهاز مقابل خدمة الموقع هذه إذا لم يكن محدداً لتحديد الموقع الجغرافي للجهاز. سيتم إلحاق عنوان IP الخاص بالجهاز بنهاية عنوان URL هذا."
+
+#: includes/setup/settings.php
+msgid "Initial Latitude"
+msgstr "خط العرض الأولي"
+
+#: includes/setup/settings.php
+msgid "Defines the centering of the map"
+msgstr "يحدد تمركز الخريطة"
+
+#: includes/setup/settings.php
+msgid "Initial Longitude"
+msgstr "خط الطول الأولي"
+
+#: includes/setup/settings.php
+msgid "Initial Elevation"
+msgstr "الارتفاع الأولي"
+
+#: includes/setup/settings.php
+msgid "Defines the elevation of the map from 0 - 12"
+msgstr "يحدد ارتفاع الخريطة من 0 إلى 12"
+
+#: includes/setup/settings.php
+msgid "Display Settings"
+msgstr "إعدادات العرض"
+
+#: includes/setup/settings.php
+msgid "Display Disabled Devices"
+msgstr "عرض الأجهزة المعطلة"
+
+#: includes/setup/settings.php
+msgid "Allow the display of disabled Devices on the Map"
+msgstr "السماح بعرض الأجهزة المعطلة على الخريطة"
+
+#: includes/setup/settings.php
+msgid "Coverage Overlay"
+msgstr "طبقة التغطية"
+
+#: includes/setup/settings.php
+msgid "Draws a transparent circle around an AP with a radius equal to the furthest node in the same subnet"
+msgstr "يرسم دائرة شفافة حول نقطة الوصول بنصف قطر يساوي المسافة إلى أبعد عقدة في نفس الشبكة الفرعية"
+
+#: includes/setup/settings.php
+msgid "Map Refresh"
+msgstr "تحديث الخريطة"
+
+#: includes/setup/settings.php
+msgid "Refreshes map after set minutes. Recommend set to poller interval, 0 to disable."
+msgstr "تحديث الخريطة بعد عدد الدقائق المحدد. يُنصح بضبطه على الفاصل الزمني للمستفتي، أو 0 للتعطيل."
+
+#: includes/setup/settings.php
+msgid "Overlay Settings"
+msgstr "إعدادات التراكب"
+
+#: includes/setup/settings.php
+msgid "Tab Radius (Required)"
+msgstr "نصف قطر التبويب (مطلوب)"
+
+#: includes/setup/settings.php
+msgid "Defines radius to combine points into one. (default: 0.0003)"
+msgstr "يحدد نصف القطر لدمج النقاط في نقطة واحدة. (الافتراضي: 0.0003)"
+
+#: includes/setup/settings.php
+msgid "Fill Color"
+msgstr "لون التعبئة"
+
+#: includes/setup/settings.php
+msgid "The overlay circle fill color as FFFFFF"
+msgstr "لون تعبئة دائرة التراكب بصيغة FFFFFF"
+
+#: includes/setup/settings.php
+msgid "Ring Color"
+msgstr "لون الحلقة"
+
+#: includes/setup/settings.php
+msgid "Defines the outer rim color as FFFFFF"
+msgstr "يحدد لون الحافة الخارجية بصيغة FFFFFF"
+
+#: includes/setup/settings.php
+msgid "Ring Width"
+msgstr "عرض الحلقة"
+
+#: includes/setup/settings.php
+msgid "Outer Ring width"
+msgstr "عرض الحلقة الخارجية"
+
+#: includes/setup/settings.php
+msgid "Fill Opacity"
+msgstr "شفافية التعبئة"
+
+#: includes/setup/settings.php
+msgid "Defines the fill opacity between 0 and 1"
+msgstr "يحدد عتامة التعبئة بين 0 و 1"
+
+#: includes/setup/settings.php
+msgid "Ring Opacity"
+msgstr "شفافية الحلقة"
+
+#: includes/setup/settings.php
+msgid "Defines the ring opacity between 0 and 1"
+msgstr "يحدد عتامة الحلقة بين 0 و 1"
+
+#: includes/setup/settings.php
+msgid "Quality"
+msgstr "الجودة"
+
+#: includes/setup/settings.php
+msgid "Number of divisions in circle (preferably > 15) greater numbers can slow down browser performance."
+msgstr "عدد الأقسام في الدائرة (يفضل > 15)، قد تؤدي الأرقام الأكبر إلى إبطاء أداء المتصفح."
+
+#: setup.php
+msgid "Configure Maps"
+msgstr "تكوين الخرائط"
+
+#: setup.php
+msgid "View Maps"
+msgstr "عرض الخرائط"
+
+#: setup.php
+msgid "Map Settings"
+msgstr "إعدادات الخريطة"
+
+#: setup.php
+msgid "Overlay Inclusion"
+msgstr "تضمين التراكب"
+
+#: setup.php
+msgid "Disable to plot host only, not included in coverage overlay."
+msgstr "عطّل هذا الخيار لرسم المستضيف Host فقط دون تضمينه في طبقة التغطية."
+
+#: setup.php
+msgid "Latitude"
+msgstr "خط الغرض"
+
+#: setup.php
+msgid "The devices latitude coordinates"
+msgstr "إحداثيات خط العرض للأجهزة"
+
+#: setup.php
+msgid "Longitude"
+msgstr "خط الطول"
+
+#: setup.php
+msgid "The devices longitude coordinates"
+msgstr "إحداثيات خط الطول للأجهزة"
+
+#: setup.php
+msgid "Starting Degree"
+msgstr "درجة البدء"
+
+#: setup.php
+msgid "Starting degree for directional area between 0-360"
+msgstr "درجة البدء للمنطقة الاتجاهية بين 0-360"
+
+#: setup.php
+msgid "Stopping Degree"
+msgstr "درجة الانتهاء"
+
+#: setup.php
+msgid "Stopping degree for directional area, must be greater than the Starting Degree"
+msgstr "درجة الانتهاء للمنطقة الاتجاهية، يجب أن تكون أكبر من درجة البدء"
+
+#: setup.php
+msgid "Specify Radius"
+msgstr "تحديد نصف القطر"
+
+#: setup.php
+msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
+msgstr "تحديد نصف القطر يدويًا لنقطة الوصول (Access Point). اضبطه على 0 لتحديد نصف القطر بناءً على الأجهزة المجمعة"
+
+#: setup.php
+msgid "Group ID"
+msgstr "معرّف المجموعة"
+
+#: setup.php
+msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
+msgstr "تحدد المجموعات الأجهزة المضمّنة في طبقة التغطية. سيتم التحقق منها مقابل رقم مجموعة جهاز نقطة الوصول (AP). أدخل 0 للتعطيل"
+

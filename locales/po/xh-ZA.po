@@ -1,0 +1,320 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The Cacti Group
+# This file is distributed under the same license as the Cacti package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Cacti\n"
+"Report-Msgid-Bugs-To: developers@cacti.net\n"
+"POT-Creation-Date: 2026-09-28 16:05-0400\n"
+"PO-Revision-Date: 2026-11-24 19:00+0000\n"
+"Last-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\n"
+"Language-Team: Xhosa\n"
+"Language: xh-ZA\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: gpsmap.php
+msgid "Please make sure to properly configure Maps first under Settings > Maps"
+msgstr "Nceda qinisekisa ukuba uqwalasela Iimephu kakuhle kuqala phantsi ko-Iisetingi > Iimephu"
+
+#: gpstemplates.php
+msgid "Delete"
+msgstr "Cima"
+
+#: gpstemplates.php includes/setup/settings.php
+msgid "Map Templates"
+msgstr "Iitempleyiti zeeMephu"
+
+#: gpstemplates.php
+msgid "Host Template"
+msgstr "Itempleyiti yeHosti"
+
+#: gpstemplates.php
+msgid "Up Image"
+msgstr "Umfanekiso oPhezulu"
+
+#: gpstemplates.php
+msgid "Recovering Image"
+msgstr "Umfanekiso wokuBuyisela"
+
+#: gpstemplates.php
+msgid "Down Image"
+msgstr "Umfanekiso wokuBa Phantsi"
+
+#: gpstemplates.php
+msgid "Is AP"
+msgstr "Ngaba yi-AP"
+
+#: gpstemplates.php
+msgid "True"
+msgstr "Yinyani"
+
+#: gpstemplates.php
+msgid "False"
+msgstr "Bubuxoki"
+
+#: gpstemplates.php
+msgid "Device Template"
+msgstr "Itempleyithi Yesixhobo"
+
+#: gpstemplates.php
+msgid "Choose the Device Template to base this Map Template type."
+msgstr "Khetha Itempleyiti yeSixhobo yokuseka olu hlobo lweTempleyiti yeMephu."
+
+#: gpstemplates.php
+msgid "Select the Image to Show for an Up Device"
+msgstr "Khetha uMfanekiso oza kuBoniswa kwiSixhobo esiPhezulu"
+
+#: gpstemplates.php
+msgid "Select the Image to Show for a Recovering Device"
+msgstr "Khetha uMfanekiso oza kuBoniswa kwiSixhobo esiBuyelayo"
+
+#: gpstemplates.php
+msgid "Select the Image to Show for a Down Device"
+msgstr "Khetha uMfanekiso oza kuBoniswa kwiSixhobo esiPhantsi"
+
+#: gpstemplates.php
+msgid "Access Point"
+msgstr "Indawo yoFikelelo"
+
+#: gpstemplates.php
+msgid "Does this Device Template Represent an Access Point."
+msgstr "Ngaba le Thempleyiti yeSixhobo Imele i-Access Point."
+
+#: gpstemplates.php
+msgid "No"
+msgstr "Hayi"
+
+#: gpstemplates.php
+msgid "Yes"
+msgstr "Ewe"
+
+#: gpstemplates.php
+msgid "Map Template Edit"
+msgstr "Hlela Itempleyiti yeMephu"
+
+#: includes/polling/processregion.php
+#, php-format
+msgid "IP %s"
+msgstr "I-IP %s"
+
+#: includes/polling/processregion.php
+msgid "Start Over"
+msgstr "Qala Kwakhona"
+
+#: includes/polling/processregion.php
+msgid "Print"
+msgstr "Shicilela"
+
+#: includes/setup/settings.php includes/setup/tabs.php
+msgid "Maps"
+msgstr "Iimephu"
+
+#: includes/setup/settings.php
+msgid "Create New Template"
+msgstr "Yenza Itempleyiti eNtsha"
+
+#: includes/setup/settings.php
+msgid "Map"
+msgstr "Imaphu"
+
+#: includes/setup/settings.php
+msgid "Templates"
+msgstr "Iitempleyiti"
+
+#: includes/setup/settings.php
+msgid "Google API Key"
+msgstr "Isitshixo se-API ye-Google"
+
+#: includes/setup/settings.php
+msgid "The Google Maps API Key is not required but highly recommended, get more info at <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Google Documentation</a>."
+msgstr "IQhosha le-API ye-Google Maps alifuneki kodwa liyacetyiswa kakhulu, fumana ulwazi olungakumbi apha <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Amaxwebhu e-Google</a>."
+
+#: includes/setup/settings.php
+msgid "Geolocation URL"
+msgstr "I-URL Yendawo ye-Geo"
+
+#: includes/setup/settings.php
+msgid "Enter the URL of the IP to Geolocation lookup service.  Every devices IP address will be tested against this location service if not set to determine the devices Geolocation.  The devices IP address will be appended to the end of this URL."
+msgstr "Faka i-URL yenkonzo yokukhangela i-IP ukuya kwi-Geolocation.  Yonke idilesi ye-IP yezixhobo iya kuvavanywa ngokuchasene nale nkonzo yendawo ukuba ayisetwanga ukumisela i-Geolocation yezixhobo.  Idilesi ye-IP yezixhobo iya kongezwa ekupheleni kwale URL."
+
+#: includes/setup/settings.php
+msgid "Initial Latitude"
+msgstr "ILatitude yokuQala"
+
+#: includes/setup/settings.php
+msgid "Defines the centering of the map"
+msgstr "Ichaza ukubekwa esizikithini kwemephu"
+
+#: includes/setup/settings.php
+msgid "Initial Longitude"
+msgstr "ILongitude yokuQala"
+
+#: includes/setup/settings.php
+msgid "Initial Elevation"
+msgstr "Ukuphakama kokuQala"
+
+#: includes/setup/settings.php
+msgid "Defines the elevation of the map from 0 - 12"
+msgstr "Ichaza ukuphakama kwemephu ukusuka ku-0 - 12"
+
+#: includes/setup/settings.php
+msgid "Display Settings"
+msgstr "Iisetingi zokuBonisa"
+
+#: includes/setup/settings.php
+msgid "Display Disabled Devices"
+msgstr "Bonisa Izixhobo Ezicinyiweyo"
+
+#: includes/setup/settings.php
+msgid "Allow the display of disabled Devices on the Map"
+msgstr "Vumela ukuboniswa kweZixhobo ezicinyiweyo kwiMephu"
+
+#: includes/setup/settings.php
+msgid "Coverage Overlay"
+msgstr "Umbeko-phezulu woGqubuthelo"
+
+#: includes/setup/settings.php
+msgid "Draws a transparent circle around an AP with a radius equal to the furthest node in the same subnet"
+msgstr "Izoba isangqa esibonakalayo ejikeleze i-AP esinerediyasi elingana nenodi ekude kakhulu kwi-subnet efanayo"
+
+#: includes/setup/settings.php
+msgid "Map Refresh"
+msgstr "Ukuhlaziya iMaphu"
+
+#: includes/setup/settings.php
+msgid "Refreshes map after set minutes. Recommend set to poller interval, 0 to disable."
+msgstr "Ihlaziya imephu emva kwemizuzu emiselweyo. Kucetyiswa ukuba isetelwe kwisithuba se-Poller, u-0 ukucima."
+
+#: includes/setup/settings.php
+msgid "Overlay Settings"
+msgstr "Iisetingi Ze-Overlay"
+
+#: includes/setup/settings.php
+msgid "Tab Radius (Required)"
+msgstr "Irediyasi yeThebhu (Iyafuneka)"
+
+#: includes/setup/settings.php
+msgid "Defines radius to combine points into one. (default: 0.0003)"
+msgstr "Ichaza iradiyasi yokudibanisa iindawo zibe nye. (okungagqibekanga: 0.0003)"
+
+#: includes/setup/settings.php
+msgid "Fill Color"
+msgstr "Umbala wokuGcwalisa"
+
+#: includes/setup/settings.php
+msgid "The overlay circle fill color as FFFFFF"
+msgstr "Umbala wokuzalisa wesangqa esigqumayo njenge-FFFFFF"
+
+#: includes/setup/settings.php
+msgid "Ring Color"
+msgstr "Umbala weRingi"
+
+#: includes/setup/settings.php
+msgid "Defines the outer rim color as FFFFFF"
+msgstr "Ichaza umbala womphetho wangaphandle njenge-FFFFFF"
+
+#: includes/setup/settings.php
+msgid "Ring Width"
+msgstr "Ububanzi beRingi"
+
+#: includes/setup/settings.php
+msgid "Outer Ring width"
+msgstr "Ububanzi BeRingi Yangaphandle"
+
+#: includes/setup/settings.php
+msgid "Fill Opacity"
+msgstr "Ubungqindilili bokuGcwalisa"
+
+#: includes/setup/settings.php
+msgid "Defines the fill opacity between 0 and 1"
+msgstr "Ichaza ukungabonakali kokuzalisa phakathi ko-0 no-1"
+
+#: includes/setup/settings.php
+msgid "Ring Opacity"
+msgstr "Ukungabonakali kweRingi"
+
+#: includes/setup/settings.php
+msgid "Defines the ring opacity between 0 and 1"
+msgstr "Ichaza ukungabonakali kwesangqa phakathi ko-0 no-1"
+
+#: includes/setup/settings.php
+msgid "Quality"
+msgstr "Umgangatho"
+
+#: includes/setup/settings.php
+msgid "Number of divisions in circle (preferably > 15) greater numbers can slow down browser performance."
+msgstr "Inani lezahlulo kwisangqa (ngokukhethekileyo > 15) amanani amakhulu anokucothisa ukusebenza kwebhrawuza."
+
+#: setup.php
+msgid "Configure Maps"
+msgstr "Qwalasela iiMephu"
+
+#: setup.php
+msgid "View Maps"
+msgstr "Jonga iiMaphu"
+
+#: setup.php
+msgid "Map Settings"
+msgstr "Iisetingi zeMaphu"
+
+#: setup.php
+msgid "Overlay Inclusion"
+msgstr "Ukufakwa Kwe-Overlay"
+
+#: setup.php
+msgid "Disable to plot host only, not included in coverage overlay."
+msgstr "Cima ukuze uzobe ihosti kuphela, ingabandakanywa kwi-overlay yogubungelo."
+
+#: setup.php
+msgid "Latitude"
+msgstr "ILathithyudi"
+
+#: setup.php
+msgid "The devices latitude coordinates"
+msgstr "Iikhodineyithi ze-latitude zezixhobo"
+
+#: setup.php
+msgid "Longitude"
+msgstr "ILongithyudi"
+
+#: setup.php
+msgid "The devices longitude coordinates"
+msgstr "Iikhodineyithi ze-longitude zezixhobo"
+
+#: setup.php
+msgid "Starting Degree"
+msgstr "Idigri yokuQala"
+
+#: setup.php
+msgid "Starting degree for directional area between 0-360"
+msgstr "Idigri yokuqala yommandla wecala phakathi ko-0-360"
+
+#: setup.php
+msgid "Stopping Degree"
+msgstr "Idigri yokuMisa"
+
+#: setup.php
+msgid "Stopping degree for directional area, must be greater than the Starting Degree"
+msgstr "Idigri yokumisa yommandla wecala, kufuneka ibe nkulu kuneDigri yokuQala"
+
+#: setup.php
+msgid "Specify Radius"
+msgstr "Chaza i-Radius"
+
+#: setup.php
+msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
+msgstr "Chaza iradiyasi ye-Access Point ngesandla. Seta ku-0 ukuze ufumane iradiyasi ngokusekelwe kwizixhobo ezihlanganiswe ndawonye"
+
+#: setup.php
+msgid "Group ID"
+msgstr "I-ID yeQela"
+
+#: setup.php
+msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
+msgstr "Amaqela achaza ukuba zeziphi izixhobo ezibandakanyiweyo kwisigqubutelo sogubungelo. Kuya kukhangelwa ngokuchasene nenombolo yeqela lesixhobo se-AP. 0 ukucima"
+

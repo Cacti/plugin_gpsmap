@@ -1,0 +1,320 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The Cacti Group
+# This file is distributed under the same license as the Cacti package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Cacti\n"
+"Report-Msgid-Bugs-To: developers@cacti.net\n"
+"POT-Creation-Date: 2026-09-28 16:05-0400\n"
+"PO-Revision-Date: 2026-11-24 19:00+0000\n"
+"Last-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\n"
+"Language-Team: French (Morocco)\n"
+"Language: fr-MA\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: gpsmap.php
+msgid "Please make sure to properly configure Maps first under Settings > Maps"
+msgstr "Veuillez vous assurer de configurer correctement les cartes au préalable sous Paramètres > Cartes"
+
+#: gpstemplates.php
+msgid "Delete"
+msgstr "Supprimer"
+
+#: gpstemplates.php includes/setup/settings.php
+msgid "Map Templates"
+msgstr "Modèles de cartes"
+
+#: gpstemplates.php
+msgid "Host Template"
+msgstr "Modèle d'hôte"
+
+#: gpstemplates.php
+msgid "Up Image"
+msgstr "Image En ligne"
+
+#: gpstemplates.php
+msgid "Recovering Image"
+msgstr "Image de récupération"
+
+#: gpstemplates.php
+msgid "Down Image"
+msgstr "Image hors service"
+
+#: gpstemplates.php
+msgid "Is AP"
+msgstr "Est un point d'accès"
+
+#: gpstemplates.php
+msgid "True"
+msgstr "Vrai"
+
+#: gpstemplates.php
+msgid "False"
+msgstr "Faux"
+
+#: gpstemplates.php
+msgid "Device Template"
+msgstr "Modèle d'équipement"
+
+#: gpstemplates.php
+msgid "Choose the Device Template to base this Map Template type."
+msgstr "Choisissez le modèle d'équipement sur lequel baser ce type de modèle de carte."
+
+#: gpstemplates.php
+msgid "Select the Image to Show for an Up Device"
+msgstr "Sélectionnez l'image à afficher pour un équipement actif"
+
+#: gpstemplates.php
+msgid "Select the Image to Show for a Recovering Device"
+msgstr "Sélectionnez l'image à afficher pour un équipement en cours de récupération"
+
+#: gpstemplates.php
+msgid "Select the Image to Show for a Down Device"
+msgstr "Sélectionnez l'image à afficher pour un équipement hors service"
+
+#: gpstemplates.php
+msgid "Access Point"
+msgstr "Point d'accès"
+
+#: gpstemplates.php
+msgid "Does this Device Template Represent an Access Point."
+msgstr "Ce Modèle d'équipement représente-t-il un point d'accès ?"
+
+#: gpstemplates.php
+msgid "No"
+msgstr "Non"
+
+#: gpstemplates.php
+msgid "Yes"
+msgstr "Oui"
+
+#: gpstemplates.php
+msgid "Map Template Edit"
+msgstr "Édition de modèle de carte"
+
+#: includes/polling/processregion.php
+#, php-format
+msgid "IP %s"
+msgstr "IP %s"
+
+#: includes/polling/processregion.php
+msgid "Start Over"
+msgstr "Recommencer"
+
+#: includes/polling/processregion.php
+msgid "Print"
+msgstr "Imprimer"
+
+#: includes/setup/settings.php includes/setup/tabs.php
+msgid "Maps"
+msgstr "Cartes"
+
+#: includes/setup/settings.php
+msgid "Create New Template"
+msgstr "Créer un nouveau modèle"
+
+#: includes/setup/settings.php
+msgid "Map"
+msgstr "Carte"
+
+#: includes/setup/settings.php
+msgid "Templates"
+msgstr "Modèles"
+
+#: includes/setup/settings.php
+msgid "Google API Key"
+msgstr "Clé API Google"
+
+#: includes/setup/settings.php
+msgid "The Google Maps API Key is not required but highly recommended, get more info at <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Google Documentation</a>."
+msgstr "La clé API Google Maps n'est pas obligatoire mais est fortement recommandée ; obtenez plus d'informations dans la <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>documentation Google</a>."
+
+#: includes/setup/settings.php
+msgid "Geolocation URL"
+msgstr "URL de géolocalisation"
+
+#: includes/setup/settings.php
+msgid "Enter the URL of the IP to Geolocation lookup service.  Every devices IP address will be tested against this location service if not set to determine the devices Geolocation.  The devices IP address will be appended to the end of this URL."
+msgstr "Saisissez l'URL du service de géolocalisation d'adresses IP. L'adresse IP de chaque équipement sera testée auprès de ce service si la géolocalisation n'est pas définie afin de la déterminer. L'adresse IP de l'équipement sera ajoutée à la fin de cette URL."
+
+#: includes/setup/settings.php
+msgid "Initial Latitude"
+msgstr "Latitude initiale"
+
+#: includes/setup/settings.php
+msgid "Defines the centering of the map"
+msgstr "Définit le centrage de la carte"
+
+#: includes/setup/settings.php
+msgid "Initial Longitude"
+msgstr "Longitude initiale"
+
+#: includes/setup/settings.php
+msgid "Initial Elevation"
+msgstr "Élévation initiale"
+
+#: includes/setup/settings.php
+msgid "Defines the elevation of the map from 0 - 12"
+msgstr "Définit l'élévation de la carte de 0 à 12"
+
+#: includes/setup/settings.php
+msgid "Display Settings"
+msgstr "Paramètres d'affichage"
+
+#: includes/setup/settings.php
+msgid "Display Disabled Devices"
+msgstr "Afficher les équipements désactivés"
+
+#: includes/setup/settings.php
+msgid "Allow the display of disabled Devices on the Map"
+msgstr "Autoriser l'affichage des Équipements désactivés sur la carte"
+
+#: includes/setup/settings.php
+msgid "Coverage Overlay"
+msgstr "Superposition de couverture"
+
+#: includes/setup/settings.php
+msgid "Draws a transparent circle around an AP with a radius equal to the furthest node in the same subnet"
+msgstr "Trace un cercle transparent autour d'un point d'accès (AP) avec un rayon égal à la distance du nœud le plus éloigné dans le même sous-réseau"
+
+#: includes/setup/settings.php
+msgid "Map Refresh"
+msgstr "Actualisation de la carte"
+
+#: includes/setup/settings.php
+msgid "Refreshes map after set minutes. Recommend set to poller interval, 0 to disable."
+msgstr "Actualise la carte après le nombre de minutes défini. Il est recommandé de le définir sur l'intervalle de l'agent de collecte, 0 pour désactiver."
+
+#: includes/setup/settings.php
+msgid "Overlay Settings"
+msgstr "Paramètres de superposition"
+
+#: includes/setup/settings.php
+msgid "Tab Radius (Required)"
+msgstr "Rayon de l'onglet (requis)"
+
+#: includes/setup/settings.php
+msgid "Defines radius to combine points into one. (default: 0.0003)"
+msgstr "Définit le rayon pour regrouper les points en un seul (par défaut : 0.0003)."
+
+#: includes/setup/settings.php
+msgid "Fill Color"
+msgstr "Couleur de remplissage"
+
+#: includes/setup/settings.php
+msgid "The overlay circle fill color as FFFFFF"
+msgstr "La couleur de remplissage du cercle de superposition au format FFFFFF"
+
+#: includes/setup/settings.php
+msgid "Ring Color"
+msgstr "Couleur de l'anneau"
+
+#: includes/setup/settings.php
+msgid "Defines the outer rim color as FFFFFF"
+msgstr "Définit la couleur du contour extérieur au format FFFFFF"
+
+#: includes/setup/settings.php
+msgid "Ring Width"
+msgstr "Largeur de l'anneau"
+
+#: includes/setup/settings.php
+msgid "Outer Ring width"
+msgstr "Largeur de l'anneau extérieur"
+
+#: includes/setup/settings.php
+msgid "Fill Opacity"
+msgstr "Opacité de remplissage"
+
+#: includes/setup/settings.php
+msgid "Defines the fill opacity between 0 and 1"
+msgstr "Définit l'opacité de remplissage entre 0 et 1"
+
+#: includes/setup/settings.php
+msgid "Ring Opacity"
+msgstr "Opacité de l'anneau"
+
+#: includes/setup/settings.php
+msgid "Defines the ring opacity between 0 and 1"
+msgstr "Définit l'opacité de l'anneau entre 0 et 1"
+
+#: includes/setup/settings.php
+msgid "Quality"
+msgstr "Qualité"
+
+#: includes/setup/settings.php
+msgid "Number of divisions in circle (preferably > 15) greater numbers can slow down browser performance."
+msgstr "Nombre de divisions dans le cercle (de préférence > 15) ; un nombre plus élevé peut ralentir les performances du navigateur."
+
+#: setup.php
+msgid "Configure Maps"
+msgstr "Configurer les cartes"
+
+#: setup.php
+msgid "View Maps"
+msgstr "Afficher les cartes"
+
+#: setup.php
+msgid "Map Settings"
+msgstr "Paramètres de la carte"
+
+#: setup.php
+msgid "Overlay Inclusion"
+msgstr "Inclusion de la superposition"
+
+#: setup.php
+msgid "Disable to plot host only, not included in coverage overlay."
+msgstr "Désactiver pour tracer uniquement l'hôte, sans l'inclure dans la superposition de couverture."
+
+#: setup.php
+msgid "Latitude"
+msgstr "Latitude"
+
+#: setup.php
+msgid "The devices latitude coordinates"
+msgstr "Les coordonnées de latitude de l'équipement"
+
+#: setup.php
+msgid "Longitude"
+msgstr "Longitude"
+
+#: setup.php
+msgid "The devices longitude coordinates"
+msgstr "Les coordonnées de longitude de l'équipement"
+
+#: setup.php
+msgid "Starting Degree"
+msgstr "Degré de départ"
+
+#: setup.php
+msgid "Starting degree for directional area between 0-360"
+msgstr "Degré de départ pour la zone directionnelle entre 0 et 360"
+
+#: setup.php
+msgid "Stopping Degree"
+msgstr "Degré de fin"
+
+#: setup.php
+msgid "Stopping degree for directional area, must be greater than the Starting Degree"
+msgstr "Degré de fin pour la zone directionnelle, doit être supérieur au degré de départ"
+
+#: setup.php
+msgid "Specify Radius"
+msgstr "Spécifier le rayon"
+
+#: setup.php
+msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
+msgstr "Spécifier manuellement le rayon pour le point d'accès. Définir à 0 pour déterminer le rayon en fonction des équipements groupés"
+
+#: setup.php
+msgid "Group ID"
+msgstr "Identifiant (ID) du groupe"
+
+#: setup.php
+msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
+msgstr "Les groupes définissent les équipements inclus dans la superposition de couverture. Sera vérifié par rapport au numéro de groupe d'équipements AP. 0 pour désactiver"
+

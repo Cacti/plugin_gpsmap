@@ -1,0 +1,320 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The Cacti Group
+# This file is distributed under the same license as the Cacti package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Cacti\n"
+"Report-Msgid-Bugs-To: developers@cacti.net\n"
+"POT-Creation-Date: 2026-09-28 16:05-0400\n"
+"PO-Revision-Date: 2026-11-24 19:00+0000\n"
+"Last-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\n"
+"Language-Team: Yoruba\n"
+"Language: yo-NG\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: gpsmap.php
+msgid "Please make sure to properly configure Maps first under Settings > Maps"
+msgstr "Jọ̀wọ́ rí i dájú pé o ṣètò Àwọn Máàpù dáadáa kọ́kọ́ lábẹ́ Àwọn Ètò > Àwọn Máàpù"
+
+#: gpstemplates.php
+msgid "Delete"
+msgstr "Pa rẹ́"
+
+#: gpstemplates.php includes/setup/settings.php
+msgid "Map Templates"
+msgstr "Àwọn Àdàkọ Máàpù"
+
+#: gpstemplates.php
+msgid "Host Template"
+msgstr "Àdàkọ Olùgbàlejò"
+
+#: gpstemplates.php
+msgid "Up Image"
+msgstr "Àwòrán Tí Ó Wà Lókè"
+
+#: gpstemplates.php
+msgid "Recovering Image"
+msgstr "Àwòrán Ìgba-padà"
+
+#: gpstemplates.php
+msgid "Down Image"
+msgstr "Àwòrán Kò Ṣiṣẹ́"
+
+#: gpstemplates.php
+msgid "Is AP"
+msgstr "Ṣé AP ni"
+
+#: gpstemplates.php
+msgid "True"
+msgstr "Òótọ́"
+
+#: gpstemplates.php
+msgid "False"
+msgstr "Èké"
+
+#: gpstemplates.php
+msgid "Device Template"
+msgstr "Àwòkọ Ẹ̀rọ"
+
+#: gpstemplates.php
+msgid "Choose the Device Template to base this Map Template type."
+msgstr "Yan Àdàkọ Ẹ̀rọ láti gbé irú Àdàkọ Máàpù yìí kalẹ̀ lórí rẹ̀."
+
+#: gpstemplates.php
+msgid "Select the Image to Show for an Up Device"
+msgstr "Yan Àwòrán láti Fihàn fún Ẹ̀rọ Tó Ń Ṣiṣẹ́"
+
+#: gpstemplates.php
+msgid "Select the Image to Show for a Recovering Device"
+msgstr "Yan Àwòrán láti Fihàn fún Ẹ̀rọ Tó Ń Bọ̀ Sípò"
+
+#: gpstemplates.php
+msgid "Select the Image to Show for a Down Device"
+msgstr "Yan Àwòrán láti Fihàn fún Ẹ̀rọ Tó Ti Dáwọ́ Dúró"
+
+#: gpstemplates.php
+msgid "Access Point"
+msgstr "Ojú Ìwọlé"
+
+#: gpstemplates.php
+msgid "Does this Device Template Represent an Access Point."
+msgstr "Ṣé Àdàkọ Ẹ̀rọ yìí dúró fún Access Point."
+
+#: gpstemplates.php
+msgid "No"
+msgstr "Rárá"
+
+#: gpstemplates.php
+msgid "Yes"
+msgstr "Bẹ́ẹ̀ Ni"
+
+#: gpstemplates.php
+msgid "Map Template Edit"
+msgstr "Ṣàtúnṣe Àdàkọ Máàpù"
+
+#: includes/polling/processregion.php
+#, php-format
+msgid "IP %s"
+msgstr "IP %s"
+
+#: includes/polling/processregion.php
+msgid "Start Over"
+msgstr "Bẹ̀rẹ̀ Látìbẹ̀rẹ̀"
+
+#: includes/polling/processregion.php
+msgid "Print"
+msgstr "Tẹ̀ jáde"
+
+#: includes/setup/settings.php includes/setup/tabs.php
+msgid "Maps"
+msgstr "Àwọn Máàpù"
+
+#: includes/setup/settings.php
+msgid "Create New Template"
+msgstr "Ṣẹ̀dá Àdàkọ Tuntun"
+
+#: includes/setup/settings.php
+msgid "Map"
+msgstr "Máàpù"
+
+#: includes/setup/settings.php
+msgid "Templates"
+msgstr "Àwọn Àdàkọ"
+
+#: includes/setup/settings.php
+msgid "Google API Key"
+msgstr "Kọ́kọ́rọ́ API Google"
+
+#: includes/setup/settings.php
+msgid "The Google Maps API Key is not required but highly recommended, get more info at <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Google Documentation</a>."
+msgstr "Kọ́kọ́rọ́ API Google Maps kì í ṣe dandan ṣùgbọ́n a gbani nímọ̀ràn rẹ̀ gan-an, gba àlàyé síwájú sí i ní <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Ìwé Àlàyé Google</a>."
+
+#: includes/setup/settings.php
+msgid "Geolocation URL"
+msgstr "URL Ipò Agbègbè"
+
+#: includes/setup/settings.php
+msgid "Enter the URL of the IP to Geolocation lookup service.  Every devices IP address will be tested against this location service if not set to determine the devices Geolocation.  The devices IP address will be appended to the end of this URL."
+msgstr "Tẹ URL ti iṣẹ́ ìwádìí IP sí Ipò-ilẹ̀.  Gbogbo àdírẹ́sì IP àwọn ẹ̀rọ ni a ó dán wò pẹ̀lú iṣẹ́ ipò yìí tí a kò bá ṣètò rẹ̀ láti mọ Ipò-ilẹ̀ àwọn ẹ̀rọ náà.  A ó fi àdírẹ́sì IP ẹ̀rọ náà kún òpin URL yìí."
+
+#: includes/setup/settings.php
+msgid "Initial Latitude"
+msgstr "Látítúùdù Àkọ́kọ́"
+
+#: includes/setup/settings.php
+msgid "Defines the centering of the map"
+msgstr "Ń ṣàlàyé fífi máàpù sí àárín"
+
+#: includes/setup/settings.php
+msgid "Initial Longitude"
+msgstr "Lọ́ngítúùdù Àkọ́kọ́"
+
+#: includes/setup/settings.php
+msgid "Initial Elevation"
+msgstr "Gíga Àkọ́kọ́"
+
+#: includes/setup/settings.php
+msgid "Defines the elevation of the map from 0 - 12"
+msgstr "Ń ṣàlàyé ìgbéga máàpù láti 0 - 12"
+
+#: includes/setup/settings.php
+msgid "Display Settings"
+msgstr "Àwọn Ètò Ìfihàn"
+
+#: includes/setup/settings.php
+msgid "Display Disabled Devices"
+msgstr "Ṣàfihàn Àwọn Ẹ̀rọ Àìṣiṣẹ́"
+
+#: includes/setup/settings.php
+msgid "Allow the display of disabled Devices on the Map"
+msgstr "Gba ìfihàn Àwọn Ẹ̀rọ àìṣiṣẹ́ láàyè lórí Máàpù"
+
+#: includes/setup/settings.php
+msgid "Coverage Overlay"
+msgstr "Ìbòjú Ààyè Ìbò"
+
+#: includes/setup/settings.php
+msgid "Draws a transparent circle around an AP with a radius equal to the furthest node in the same subnet"
+msgstr "Ó ya àyíká tí ó mọ́lẹ̀ yí AP kan ká pẹ̀lú ìwọ̀n rédíọ́sì tí ó dọ́gba pẹ̀lú nóòdù tó jìnà jùlọ nínú subnet kan náà"
+
+#: includes/setup/settings.php
+msgid "Map Refresh"
+msgstr "Ìsọdọ̀tun Máàpù"
+
+#: includes/setup/settings.php
+msgid "Refreshes map after set minutes. Recommend set to poller interval, 0 to disable."
+msgstr "Ó ń sọ àwòrán ilẹ̀ di ọ̀tun lẹ́yìn àwọn ìṣẹ́jú tí a ṣètò. A dábàá ṣíṣètò rẹ̀ sí àlàfo olùṣàyẹ̀wò, 0 láti pa á."
+
+#: includes/setup/settings.php
+msgid "Overlay Settings"
+msgstr "Àwọn Ètò Ìtẹ̀lélórí"
+
+#: includes/setup/settings.php
+msgid "Tab Radius (Required)"
+msgstr "Rédíọ̀sì Táàbù (A nílò rẹ̀)"
+
+#: includes/setup/settings.php
+msgid "Defines radius to combine points into one. (default: 0.0003)"
+msgstr "Ń ṣàlàyé rédíọ̀sì láti so àwọn ojú-ààmì pọ̀ di ọ̀kan. (àìyípadà: 0.0003)"
+
+#: includes/setup/settings.php
+msgid "Fill Color"
+msgstr "Àwọ̀ Ìkún"
+
+#: includes/setup/settings.php
+msgid "The overlay circle fill color as FFFFFF"
+msgstr "Àwọ̀ ìkún òbìrìkìtí tí ó bò ó bíi FFFFFF"
+
+#: includes/setup/settings.php
+msgid "Ring Color"
+msgstr "Àwọ̀ Òrùka"
+
+#: includes/setup/settings.php
+msgid "Defines the outer rim color as FFFFFF"
+msgstr "Ń ṣàlàyé àwọ̀ etí òde gẹ́gẹ́ bí FFFFFF"
+
+#: includes/setup/settings.php
+msgid "Ring Width"
+msgstr "Ìbú Òrùka"
+
+#: includes/setup/settings.php
+msgid "Outer Ring width"
+msgstr "Ìbú Òrùka Òde"
+
+#: includes/setup/settings.php
+msgid "Fill Opacity"
+msgstr "Àìrí-kọjá Ìkún"
+
+#: includes/setup/settings.php
+msgid "Defines the fill opacity between 0 and 1"
+msgstr "Ń ṣàlàyé ìṣókùnkùn kíkún láàárín 0 àti 1"
+
+#: includes/setup/settings.php
+msgid "Ring Opacity"
+msgstr "Ìdídì Òrùka"
+
+#: includes/setup/settings.php
+msgid "Defines the ring opacity between 0 and 1"
+msgstr "Ń ṣàlàyé ìṣókùnkùn òrùka láàárín 0 àti 1"
+
+#: includes/setup/settings.php
+msgid "Quality"
+msgstr "Dídára"
+
+#: includes/setup/settings.php
+msgid "Number of divisions in circle (preferably > 15) greater numbers can slow down browser performance."
+msgstr "Iye ìpín nínú òbìrìkìtì (ó dára jù kó > 15) àwọn nọ́ńbà tó pọ̀ jù lè fa iṣẹ́ aṣàwárí fà sẹ́yìn."
+
+#: setup.php
+msgid "Configure Maps"
+msgstr "Ṣètò Àwọn Máàpù"
+
+#: setup.php
+msgid "View Maps"
+msgstr "Wo Àwọn Máàpù"
+
+#: setup.php
+msgid "Map Settings"
+msgstr "Àwọn Ètò Máàpù"
+
+#: setup.php
+msgid "Overlay Inclusion"
+msgstr "Ìkósínú Ìtẹ̀lélórí"
+
+#: setup.php
+msgid "Disable to plot host only, not included in coverage overlay."
+msgstr "Ṣe àìṣiṣẹ́ láti ya olùgbàlejò nìkan, láìsí nínú àkópọ̀ ìbòjútó."
+
+#: setup.php
+msgid "Latitude"
+msgstr "Látítúdù"
+
+#: setup.php
+msgid "The devices latitude coordinates"
+msgstr "Àwọn kọ́ọ́dínéètì látítúùdì Àwọn Ẹ̀rọ"
+
+#: setup.php
+msgid "Longitude"
+msgstr "Lọ́ńgítúdù"
+
+#: setup.php
+msgid "The devices longitude coordinates"
+msgstr "Àwọn kọ́ọ́dínéètì lọ́ńgítúùdì Àwọn Ẹ̀rọ"
+
+#: setup.php
+msgid "Starting Degree"
+msgstr "Ìwọ̀n Dìgírì Ìbẹ̀rẹ̀"
+
+#: setup.php
+msgid "Starting degree for directional area between 0-360"
+msgstr "Ìwọ̀n dìgírì ìbẹ̀rẹ̀ fún agbègbè ìtọ́sọ́nà láàárín 0-360"
+
+#: setup.php
+msgid "Stopping Degree"
+msgstr "Ìwọ̀n Dìgírì Ìdádúró"
+
+#: setup.php
+msgid "Stopping degree for directional area, must be greater than the Starting Degree"
+msgstr "Ìwọ̀n dìgírì ìdádúró fún agbègbè ìtọ́sọ́nà, gbọ́dọ̀ tóbi ju Ìwọ̀n Dìgírì Ìbẹ̀rẹ̀ lọ"
+
+#: setup.php
+msgid "Specify Radius"
+msgstr "Ṣàlàyé Radius"
+
+#: setup.php
+msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
+msgstr "Sọ ìwọ̀n rédíọ́sì fún Access Point fúnra rẹ. Ṣètò sí 0 láti pinnu rédíọ́sì ní ìbámu pẹ̀lú àwọn ẹ̀rọ tí a kó jọ"
+
+#: setup.php
+msgid "Group ID"
+msgstr "ID Ẹgbẹ́"
+
+#: setup.php
+msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
+msgstr "Àwọn ẹgbẹ́ ń ṣàlàyé àwọn ẹ̀rọ tí a fi kún ìbòrí agbègbè. A ó yẹ̀ ẹ́ wò pẹ̀lú nọ́ńbà ẹgbẹ́ ẹ̀rọ AP. 0 láti pa á"
+
