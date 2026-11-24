@@ -25,7 +25,7 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: gpstemplates.php
+#: gpstemplates.php includes/setup/settings.php
 msgid "Map Templates"
 msgstr ""
 
@@ -95,6 +95,159 @@ msgstr ""
 
 #: gpstemplates.php
 msgid "Map Template Edit"
+msgstr ""
+
+#: includes/polling/processregion.php
+#, php-format
+msgid "IP %s"
+msgstr ""
+
+#: includes/polling/processregion.php
+msgid "Start Over"
+msgstr ""
+
+#: includes/polling/processregion.php
+msgid "Print"
+msgstr ""
+
+#: includes/setup/settings.php includes/setup/tabs.php
+msgid "Maps"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Create New Template"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Map"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Templates"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Google API Key"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "The Google Maps API Key is not required but highly recommended, get more info at <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Google Documentation</a>."
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Geolocation URL"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Enter the URL of the IP to Geolocation lookup service.  Every devices IP address will be tested against this location service if not set to determine the devices Geolocation.  The devices IP address will be appended to the end of this URL."
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Initial Latitude"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Defines the centering of the map"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Initial Longitude"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Initial Elevation"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Defines the elevation of the map from 0 - 12"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Display Settings"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Display Disabled Devices"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Allow the display of disabled Devices on the Map"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Coverage Overlay"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Draws a transparent circle around an AP with a radius equal to the furthest node in the same subnet"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Map Refresh"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Refreshes map after set minutes. Recommend set to poller interval, 0 to disable."
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Overlay Settings"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Tab Radius (Required)"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Defines radius to combine points into one. (default: 0.0003)"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Fill Color"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "The overlay circle fill color as FFFFFF"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Ring Color"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Defines the outer rim color as FFFFFF"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Ring Width"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Outer Ring width"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Fill Opacity"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Defines the fill opacity between 0 and 1"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Ring Opacity"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Defines the ring opacity between 0 and 1"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Quality"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Number of divisions in circle (preferably > 15) greater numbers can slow down browser performance."
 msgstr ""
 
 #: setup.php

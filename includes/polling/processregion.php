@@ -506,7 +506,7 @@ function gpsmap_render_region(array $hostArrays, string $subnet, ?GpsmapPollStat
 
 				if (!in_array($leaf, $iparray, true)) {
 					$iparray[]    = $leaf;
-					$ipwriteout[] = '<a href="' . $config['url_path'] . 'graph_view.php?action=preview&reset=1&host_id=' . $host->id . '">' . __('IP %s', $leaf) . '</a><br/>';
+					$ipwriteout[] = '<a href="' . $config['url_path'] . 'graph_view.php?action=preview&reset=1&host_id=' . $host->id . '">' . __('IP %s', $leaf, 'gpsmap') . '</a><br/>';
 				}
 			} elseif (!in_array($child, $iparray, true)) {
 				$iparray[] = $child;
