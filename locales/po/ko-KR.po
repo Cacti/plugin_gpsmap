@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: Cacti\nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2026-09-28 16:05-0400\nPO-Revision-Date: 2026-11-26 00:18+0000\nLast-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\nLanguage-Team: Korean <https://translate.cacti.net/projects/cacti/gpsmaps/ko/>\nLanguage: ko-KR\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 5.11.4\n"
+msgstr "Project-Id-Version: Cacti\nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2026-09-28 16:05-0400\nPO-Revision-Date: 2026-11-26 05:54+0000\nLast-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\nLanguage-Team: Korean <https://translate.cacti.net/projects/cacti/gpsmaps/ko/>\nLanguage: ko-KR\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 5.11.4\n"
 
 #: gpsmap.php
 msgid "Please make sure to properly configure Maps first under Settings > Maps"
@@ -72,7 +72,7 @@ msgstr "액세스 포인트"
 
 #: gpstemplates.php
 msgid "Does this Device Template Represent an Access Point."
-msgstr "이 장치 템플릿이 액세스 포인트를 나타냅니까?"
+msgstr "이 장치 템플릿이 액세스 포인트를 나타내는지 여부."
 
 #: gpstemplates.php
 msgid "No"
@@ -297,7 +297,7 @@ msgstr "반경 지정"
 
 #: setup.php
 msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
-msgstr "액세스 포인트의 반경을 수동으로 지정합니다. 그룹화된 장치를 기준으로 반경을 결정하려면 0으로 설정하세요."
+msgstr "액세스 포인트의 반경을 수동으로 지정합니다. 그룹화된 장치를 기준으로 반경을 결정하려면 0으로 설정하세요"
 
 #: setup.php
 msgid "Group ID"
@@ -305,4 +305,4 @@ msgstr "그룹 ID"
 
 #: setup.php
 msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
-msgstr "그룹은 커버리지 오버레이에 포함될 장치를 정의합니다. AP 장치 그룹 번호와 대조하여 확인됩니다. 비활성화하려면 0을 입력하십시오."
+msgstr "그룹은 커버리지 오버레이에 포함될 장치를 정의합니다. AP 장치 그룹 번호와 대조하여 확인됩니다. 비활성화하려면 0을 입력하십시오"
