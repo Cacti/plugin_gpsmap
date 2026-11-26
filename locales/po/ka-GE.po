@@ -4,19 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr ""
-"Project-Id-Version: Cacti\n"
-"Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2026-09-28 16:05-0400\n"
-"PO-Revision-Date: 2025-07-01 04:26+0000\n"
-"Last-Translator: Ekaterine papava <papava.e@gtu.ge>\n"
-"Language-Team: Georgian <https://translate.cacti.net/projects/cacti/gpsmaps/ka/>\n"
-"Language: ka-GE\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.11.4\n"
+msgstr "Project-Id-Version: Cacti\nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2026-09-28 16:05-0400\nPO-Revision-Date: 2026-11-26 00:18+0000\nLast-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\nLanguage-Team: Georgian <https://translate.cacti.net/projects/cacti/gpsmaps/ka/>\nLanguage: ka-GE\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.11.4\n"
 
 #: gpsmap.php
 msgid "Please make sure to properly configure Maps first under Settings > Maps"
@@ -26,7 +14,7 @@ msgstr "დარწმუნდით, რომ სწორად მოი�
 msgid "Delete"
 msgstr "წაშლა"
 
-#: gpstemplates.php
+#: gpstemplates.php includes/setup/settings.php
 msgid "Map Templates"
 msgstr "რუკის ნიმუშები"
 
@@ -92,11 +80,180 @@ msgstr "არა"
 
 #: gpstemplates.php
 msgid "Yes"
-msgstr "კი"
+msgstr "დიახ"
 
 #: gpstemplates.php
 msgid "Map Template Edit"
 msgstr "რუკის ნიმუშის ჩასწორება"
+
+#: includes/polling/processregion.php
+#, php-format
+msgid "IP %s"
+msgstr ""
+
+#: includes/polling/processregion.php
+#, fuzzy
+#| msgid "Starting Degree"
+msgid "Start Over"
+msgstr "დაწყება გრადუსებში"
+
+#: includes/polling/processregion.php
+msgid "Print"
+msgstr ""
+
+#: includes/setup/settings.php includes/setup/tabs.php
+#, fuzzy
+#| msgid "View Maps"
+msgid "Maps"
+msgstr "რუკების ნახვა"
+
+#: includes/setup/settings.php
+#, fuzzy
+#| msgid "Device Template"
+msgid "Create New Template"
+msgstr "მოწყობილობის შაბლონი"
+
+#: includes/setup/settings.php
+msgid "Map"
+msgstr ""
+
+#: includes/setup/settings.php
+#, fuzzy
+#| msgid "Map Templates"
+msgid "Templates"
+msgstr "რუკის ნიმუშები"
+
+#: includes/setup/settings.php
+msgid "Google API Key"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "The Google Maps API Key is not required but highly recommended, get more info at <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Google Documentation</a>."
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Geolocation URL"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Enter the URL of the IP to Geolocation lookup service.  Every devices IP address will be tested against this location service if not set to determine the devices Geolocation.  The devices IP address will be appended to the end of this URL."
+msgstr ""
+
+#: includes/setup/settings.php
+#, fuzzy
+#| msgid "Latitude"
+msgid "Initial Latitude"
+msgstr "განედი"
+
+#: includes/setup/settings.php
+msgid "Defines the centering of the map"
+msgstr ""
+
+#: includes/setup/settings.php
+#, fuzzy
+#| msgid "Longitude"
+msgid "Initial Longitude"
+msgstr "გრძედი"
+
+#: includes/setup/settings.php
+msgid "Initial Elevation"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Defines the elevation of the map from 0 - 12"
+msgstr ""
+
+#: includes/setup/settings.php
+#, fuzzy
+#| msgid "Map Settings"
+msgid "Display Settings"
+msgstr "რუკის პარამეტრები"
+
+#: includes/setup/settings.php
+msgid "Display Disabled Devices"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Allow the display of disabled Devices on the Map"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Coverage Overlay"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Draws a transparent circle around an AP with a radius equal to the furthest node in the same subnet"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Map Refresh"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Refreshes map after set minutes. Recommend set to poller interval, 0 to disable."
+msgstr ""
+
+#: includes/setup/settings.php
+#, fuzzy
+#| msgid "Map Settings"
+msgid "Overlay Settings"
+msgstr "რუკის პარამეტრები"
+
+#: includes/setup/settings.php
+msgid "Tab Radius (Required)"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Defines radius to combine points into one. (default: 0.0003)"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Fill Color"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "The overlay circle fill color as FFFFFF"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Ring Color"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Defines the outer rim color as FFFFFF"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Ring Width"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Outer Ring width"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Fill Opacity"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Defines the fill opacity between 0 and 1"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Ring Opacity"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Defines the ring opacity between 0 and 1"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Quality"
+msgstr ""
+
+#: includes/setup/settings.php
+msgid "Number of divisions in circle (preferably > 15) greater numbers can slow down browser performance."
+msgstr ""
 
 #: setup.php
 msgid "Configure Maps"
