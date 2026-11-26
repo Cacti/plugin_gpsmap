@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: Cacti\nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2026-09-28 16:05-0400\nPO-Revision-Date: 2026-11-26 00:18+0000\nLast-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\nLanguage-Team: German <https://translate.cacti.net/projects/cacti/gpsmaps/de/>\nLanguage: de-DE\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.11.4\n"
+msgstr "Project-Id-Version: Cacti\nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2026-09-28 16:05-0400\nPO-Revision-Date: 2026-11-26 05:54+0000\nLast-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\nLanguage-Team: German <https://translate.cacti.net/projects/cacti/gpsmaps/de/>\nLanguage: de-DE\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.11.4\n"
 
 #: gpsmap.php
 msgid "Please make sure to properly configure Maps first under Settings > Maps"
@@ -72,7 +72,7 @@ msgstr "Access Point"
 
 #: gpstemplates.php
 msgid "Does this Device Template Represent an Access Point."
-msgstr "Stellt diese Gerätevorlage einen Access Point dar?"
+msgstr "Gibt an, ob diese Gerätevorlage einen Access Point darstellt."
 
 #: gpstemplates.php
 msgid "No"
@@ -297,7 +297,7 @@ msgstr "Radius angeben"
 
 #: setup.php
 msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
-msgstr "Radius für den Access Point manuell angeben. Auf 0 setzen, um den Radius anhand gruppierter Geräte zu bestimmen."
+msgstr "Radius für den Access Point manuell angeben. Auf 0 setzen, um den Radius anhand gruppierter Geräte zu bestimmen"
 
 #: setup.php
 msgid "Group ID"
@@ -305,4 +305,4 @@ msgstr "Gruppen ID"
 
 #: setup.php
 msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
-msgstr "Gruppen legen fest, welche Geräte in der Abdeckungsüberlagerung enthalten sind. Wird mit der AP-Gerätegruppennummer abgeglichen. 0 zum Deaktivieren."
+msgstr "Gruppen legen fest, welche Geräte in der Abdeckungsüberlagerung enthalten sind. Wird mit der AP-Gerätegruppennummer abgeglichen. 0 zum Deaktivieren"
