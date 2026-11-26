@@ -1,0 +1,318 @@
+# Croatian translation for Cacti.
+# Copyright (C) 2004-2026 The Cacti Group
+# This file is distributed under the same license as the Cacti package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Cacti\n"
+"Report-Msgid-Bugs-To: developers@cacti.net\n"
+"POT-Creation-Date: 2026-09-28 16:05-0400\n"
+"PO-Revision-Date: 2026-11-26 18:57+0000\n"
+"Last-Translator: Thomas Vincent <thomasvincent@gmail.com>\n"
+"Language-Team: Croatian <developers@cacti.net>\n"
+"Language: hr-HR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+
+#: gpsmap.php
+msgid "Please make sure to properly configure Maps first under Settings > Maps"
+msgstr "Provjerite jeste li najprije ispravno konfigurirali Karte u Postavke > Karte"
+
+#: gpstemplates.php
+msgid "Delete"
+msgstr "Izbriši"
+
+#: gpstemplates.php includes/setup/settings.php
+msgid "Map Templates"
+msgstr "Predlošci karata"
+
+#: gpstemplates.php
+msgid "Host Template"
+msgstr "Predložak računala"
+
+#: gpstemplates.php
+msgid "Up Image"
+msgstr "Slika za dostupan uređaj"
+
+#: gpstemplates.php
+msgid "Recovering Image"
+msgstr "Slika za uređaj u oporavku"
+
+#: gpstemplates.php
+msgid "Down Image"
+msgstr "Slika za nedostupan uređaj"
+
+#: gpstemplates.php
+msgid "Is AP"
+msgstr "Je li AP"
+
+#: gpstemplates.php
+msgid "True"
+msgstr "Točno"
+
+#: gpstemplates.php
+msgid "False"
+msgstr "Netočno"
+
+#: gpstemplates.php
+msgid "Device Template"
+msgstr "Predložak uređaja"
+
+#: gpstemplates.php
+msgid "Choose the Device Template to base this Map Template type."
+msgstr "Odaberite predložak uređaja na kojem će se temeljiti ova vrsta predloška karte."
+
+#: gpstemplates.php
+msgid "Select the Image to Show for an Up Device"
+msgstr "Odaberite sliku za prikaz dostupnog uređaja"
+
+#: gpstemplates.php
+msgid "Select the Image to Show for a Recovering Device"
+msgstr "Odaberite sliku za prikaz uređaja u oporavku"
+
+#: gpstemplates.php
+msgid "Select the Image to Show for a Down Device"
+msgstr "Odaberite sliku za prikaz nedostupnog uređaja"
+
+#: gpstemplates.php
+msgid "Access Point"
+msgstr "Pristupna točka"
+
+#: gpstemplates.php
+msgid "Does this Device Template Represent an Access Point."
+msgstr "Predstavlja li ovaj predložak uređaja pristupnu točku."
+
+#: gpstemplates.php
+msgid "No"
+msgstr "Ne"
+
+#: gpstemplates.php
+msgid "Yes"
+msgstr "Da"
+
+#: gpstemplates.php
+msgid "Map Template Edit"
+msgstr "Uređivanje predloška karte"
+
+#: includes/polling/processregion.php
+#, php-format
+msgid "IP %s"
+msgstr "IP %s"
+
+#: includes/polling/processregion.php
+msgid "Start Over"
+msgstr "Počni ispočetka"
+
+#: includes/polling/processregion.php
+msgid "Print"
+msgstr "Ispiši"
+
+#: includes/setup/settings.php includes/setup/tabs.php
+msgid "Maps"
+msgstr "Karte"
+
+#: includes/setup/settings.php
+msgid "Create New Template"
+msgstr "Izradi novi predložak"
+
+#: includes/setup/settings.php
+msgid "Map"
+msgstr "Karta"
+
+#: includes/setup/settings.php
+msgid "Templates"
+msgstr "Predlošci"
+
+#: includes/setup/settings.php
+msgid "Google API Key"
+msgstr "Google API ključ"
+
+#: includes/setup/settings.php
+msgid "The Google Maps API Key is not required but highly recommended, get more info at <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Google Documentation</a>."
+msgstr "Google Maps API ključ nije obavezan, ali se toplo preporučuje; više informacija potražite na stranici <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Google dokumentacija</a>."
+
+#: includes/setup/settings.php
+msgid "Geolocation URL"
+msgstr "URL za geolokaciju"
+
+#: includes/setup/settings.php
+msgid "Enter the URL of the IP to Geolocation lookup service.  Every devices IP address will be tested against this location service if not set to determine the devices Geolocation.  The devices IP address will be appended to the end of this URL."
+msgstr "Unesite URL servisa za pretraživanje geolokacije prema IP adresi. IP adresa svakog uređaja provjerit će se pomoću ovog lokacijskog servisa ako nije postavljena, radi određivanja geolokacije uređaja. IP adresa uređaja dodat će se na kraj ovog URL-a."
+
+#: includes/setup/settings.php
+msgid "Initial Latitude"
+msgstr "Početna zemljopisna širina"
+
+#: includes/setup/settings.php
+msgid "Defines the centering of the map"
+msgstr "Definira centriranje karte"
+
+#: includes/setup/settings.php
+msgid "Initial Longitude"
+msgstr "Početna zemljopisna dužina"
+
+#: includes/setup/settings.php
+msgid "Initial Elevation"
+msgstr "Početna visina"
+
+#: includes/setup/settings.php
+msgid "Defines the elevation of the map from 0 - 12"
+msgstr "Definira visinu karte od 0 - 12"
+
+#: includes/setup/settings.php
+msgid "Display Settings"
+msgstr "Postavke prikaza"
+
+#: includes/setup/settings.php
+msgid "Display Disabled Devices"
+msgstr "Prikaži onemogućene uređaje"
+
+#: includes/setup/settings.php
+msgid "Allow the display of disabled Devices on the Map"
+msgstr "Dopusti prikaz onemogućenih uređaja na karti"
+
+#: includes/setup/settings.php
+msgid "Coverage Overlay"
+msgstr "Sloj pokrivenosti"
+
+#: includes/setup/settings.php
+msgid "Draws a transparent circle around an AP with a radius equal to the furthest node in the same subnet"
+msgstr "Iscrtava prozirni krug oko pristupne točke s polumjerom jednakim udaljenosti do najudaljenijeg čvora u istoj podmreži"
+
+#: includes/setup/settings.php
+msgid "Map Refresh"
+msgstr "Osvježavanje karte"
+
+#: includes/setup/settings.php
+msgid "Refreshes map after set minutes. Recommend set to poller interval, 0 to disable."
+msgstr "Osvježava kartu nakon zadanog broja minuta. Preporučuje se postaviti na interval ispitivača, 0 za onemogućavanje."
+
+#: includes/setup/settings.php
+msgid "Overlay Settings"
+msgstr "Postavke sloja"
+
+#: includes/setup/settings.php
+msgid "Tab Radius (Required)"
+msgstr "Polumjer kartice (obavezno)"
+
+#: includes/setup/settings.php
+msgid "Defines radius to combine points into one. (default: 0.0003)"
+msgstr "Definira polumjer za spajanje točaka u jednu. (zadano: 0.0003)"
+
+#: includes/setup/settings.php
+msgid "Fill Color"
+msgstr "Boja ispune"
+
+#: includes/setup/settings.php
+msgid "The overlay circle fill color as FFFFFF"
+msgstr "Boja ispune kruga sloja u obliku FFFFFF"
+
+#: includes/setup/settings.php
+msgid "Ring Color"
+msgstr "Boja prstena"
+
+#: includes/setup/settings.php
+msgid "Defines the outer rim color as FFFFFF"
+msgstr "Definira boju vanjskog ruba u obliku FFFFFF"
+
+#: includes/setup/settings.php
+msgid "Ring Width"
+msgstr "Širina prstena"
+
+#: includes/setup/settings.php
+msgid "Outer Ring width"
+msgstr "Širina vanjskog prstena"
+
+#: includes/setup/settings.php
+msgid "Fill Opacity"
+msgstr "Neprozirnost ispune"
+
+#: includes/setup/settings.php
+msgid "Defines the fill opacity between 0 and 1"
+msgstr "Definira neprozirnost ispune između 0 i 1"
+
+#: includes/setup/settings.php
+msgid "Ring Opacity"
+msgstr "Neprozirnost prstena"
+
+#: includes/setup/settings.php
+msgid "Defines the ring opacity between 0 and 1"
+msgstr "Definira neprozirnost prstena između 0 i 1"
+
+#: includes/setup/settings.php
+msgid "Quality"
+msgstr "Kvaliteta"
+
+#: includes/setup/settings.php
+msgid "Number of divisions in circle (preferably > 15) greater numbers can slow down browser performance."
+msgstr "Broj podjela kruga (poželjno > 15), veći brojevi mogu usporiti rad preglednika."
+
+#: setup.php
+msgid "Configure Maps"
+msgstr "Konfiguriraj karte"
+
+#: setup.php
+msgid "View Maps"
+msgstr "Prikaži karte"
+
+#: setup.php
+msgid "Map Settings"
+msgstr "Postavke karte"
+
+#: setup.php
+msgid "Overlay Inclusion"
+msgstr "Uključivanje u sloj pokrivenosti"
+
+#: setup.php
+msgid "Disable to plot host only, not included in coverage overlay."
+msgstr "Onemogućite za iscrtavanje samo glavnog računala, bez uključivanja u sloj pokrivenosti."
+
+#: setup.php
+msgid "Latitude"
+msgstr "Zemljopisna širina"
+
+#: setup.php
+msgid "The devices latitude coordinates"
+msgstr "Koordinate geografske širine uređaja"
+
+#: setup.php
+msgid "Longitude"
+msgstr "Zemljopisna dužina"
+
+#: setup.php
+msgid "The devices longitude coordinates"
+msgstr "Koordinate geografske dužine uređaja"
+
+#: setup.php
+msgid "Starting Degree"
+msgstr "Početni stupanj"
+
+#: setup.php
+msgid "Starting degree for directional area between 0-360"
+msgstr "Početni stupanj za usmjereno područje između 0-360"
+
+#: setup.php
+msgid "Stopping Degree"
+msgstr "Završni stupanj"
+
+#: setup.php
+msgid "Stopping degree for directional area, must be greater than the Starting Degree"
+msgstr "Završni stupanj za usmjereno područje, mora biti veći od početnog stupnja"
+
+#: setup.php
+msgid "Specify Radius"
+msgstr "Navedi polumjer"
+
+#: setup.php
+msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
+msgstr "Ručno navedite polumjer za pristupnu točku. Postavite na 0 za određivanje polumjera na temelju grupiranih uređaja"
+
+#: setup.php
+msgid "Group ID"
+msgstr "ID grupe"
+
+#: setup.php
+msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
+msgstr "Grupe definiraju koji su uređaji uključeni u sloj pokrivenosti. Provjeravat će se u odnosu na broj grupe AP uređaja. 0 za onemogućavanje"
