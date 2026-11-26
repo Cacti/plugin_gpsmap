@@ -4,19 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr ""
-"Project-Id-Version: Cacti\n"
-"Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2026-09-28 16:05-0400\n"
-"PO-Revision-Date: 2024-01-31 14:27+0000\n"
-"Last-Translator: Edwin Lankamp <edwin.lankamp@gmail.com>\n"
-"Language-Team: Dutch <http://translate.cacti.net/projects/cacti/gpsmaps/nl/>\n"
-"Language: nl-NL\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.8.1\n"
+msgstr "Project-Id-Version: Cacti\nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2026-09-28 16:05-0400\nPO-Revision-Date: 2026-11-26 00:18+0000\nLast-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\nLanguage-Team: Dutch <https://translate.cacti.net/projects/cacti/gpsmaps/nl/>\nLanguage: nl-NL\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.11.4\n"
 
 #: gpsmap.php
 msgid "Please make sure to properly configure Maps first under Settings > Maps"
@@ -26,33 +14,27 @@ msgstr "Zorg ervoor dat u Kaarten eerst correct configureert onder Instellingen>
 msgid "Delete"
 msgstr "Verwijderen"
 
-#: gpstemplates.php
-#, fuzzy
+#: gpstemplates.php includes/setup/settings.php
 msgid "Map Templates"
 msgstr "Kaartsjablonen"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Host Template"
-msgstr "Host-sjabloon"
+msgstr "Hostsjabloon"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Up Image"
-msgstr "Afbeelding omhoog"
+msgstr "Afbeelding voor Actief"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Recovering Image"
-msgstr "Afbeelding herstellen"
+msgstr "Herstelafbeelding"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Down Image"
-msgstr "Omlaag Afbeelding"
+msgstr "Afbeelding voor inactief"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Is AP"
 msgstr "Is AP"
 
@@ -66,37 +48,31 @@ msgstr "Niet waar"
 
 #: gpstemplates.php
 msgid "Device Template"
-msgstr "Apparaattemplate"
+msgstr "Apparaatsjabloon"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Choose the Device Template to base this Map Template type."
-msgstr "Kies de apparaatsjabloon om dit type kaartsjabloon te baseren."
+msgstr "Kies de apparaatsjabloon waarop dit type kaartsjabloon wordt gebaseerd."
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Select the Image to Show for an Up Device"
-msgstr "Selecteer de afbeelding die u wilt weergeven voor een up-apparaat"
+msgstr "Selecteer de afbeelding die moet worden weergegeven voor een actief apparaat"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Select the Image to Show for a Recovering Device"
-msgstr "Selecteer de afbeelding die u wilt weergeven voor een herstelapparaat"
+msgstr "Selecteer de afbeelding die moet worden weergegeven voor een herstellend apparaat"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Select the Image to Show for a Down Device"
-msgstr "Selecteer de afbeelding die u wilt weergeven voor een down-apparaat"
+msgstr "Selecteer de afbeelding die moet worden weergegeven voor een inactief apparaat"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Access Point"
 msgstr "Toegangspunt"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Does this Device Template Represent an Access Point."
-msgstr "Vertegenwoordigt deze apparaatsjabloon een toegangspunt."
+msgstr "Vertegenwoordigt dit apparaatsjabloon een accesspoint."
 
 #: gpstemplates.php
 msgid "No"
@@ -107,14 +83,165 @@ msgid "Yes"
 msgstr "Ja"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Map Template Edit"
 msgstr "Kaartsjabloon bewerken"
 
+#: includes/polling/processregion.php
+#, php-format
+msgid "IP %s"
+msgstr "IP %s"
+
+#: includes/polling/processregion.php
+msgid "Start Over"
+msgstr "Opnieuw beginnen"
+
+#: includes/polling/processregion.php
+msgid "Print"
+msgstr "Afdrukken"
+
+#: includes/setup/settings.php includes/setup/tabs.php
+msgid "Maps"
+msgstr "Kaarten"
+
+#: includes/setup/settings.php
+msgid "Create New Template"
+msgstr "Nieuwe sjabloon aanmaken"
+
+#: includes/setup/settings.php
+msgid "Map"
+msgstr "Kaart"
+
+#: includes/setup/settings.php
+msgid "Templates"
+msgstr "Sjablonen"
+
+#: includes/setup/settings.php
+msgid "Google API Key"
+msgstr "Google API-sleutel"
+
+#: includes/setup/settings.php
+msgid "The Google Maps API Key is not required but highly recommended, get more info at <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Google Documentation</a>."
+msgstr "De Google Maps API-sleutel is niet vereist maar wordt sterk aanbevolen; meer informatie vindt u in de <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Google-documentatie</a>."
+
+#: includes/setup/settings.php
+msgid "Geolocation URL"
+msgstr "Geolocatie-URL"
+
+#: includes/setup/settings.php
+msgid "Enter the URL of the IP to Geolocation lookup service.  Every devices IP address will be tested against this location service if not set to determine the devices Geolocation.  The devices IP address will be appended to the end of this URL."
+msgstr "Voer de URL in van de opzoekservice van IP naar geolocatie. Het IP-adres van elk apparaat wordt via deze locatieservice opgezocht als dit nog niet is ingesteld, om de geolocatie van het apparaat te bepalen. Het IP-adres van het apparaat wordt aan het einde van deze URL toegevoegd."
+
+#: includes/setup/settings.php
+msgid "Initial Latitude"
+msgstr "Initiële breedtegraad"
+
+#: includes/setup/settings.php
+msgid "Defines the centering of the map"
+msgstr "Bepaalt de centrering van de kaart"
+
+#: includes/setup/settings.php
+msgid "Initial Longitude"
+msgstr "Initiële lengtegraad"
+
+#: includes/setup/settings.php
+msgid "Initial Elevation"
+msgstr "Initiële hoogte"
+
+#: includes/setup/settings.php
+msgid "Defines the elevation of the map from 0 - 12"
+msgstr "Bepaalt de hoogte van de kaart van 0 - 12"
+
+#: includes/setup/settings.php
+msgid "Display Settings"
+msgstr "Weergave-instellingen"
+
+#: includes/setup/settings.php
+msgid "Display Disabled Devices"
+msgstr "Uitgeschakelde apparaten weergeven"
+
+#: includes/setup/settings.php
+msgid "Allow the display of disabled Devices on the Map"
+msgstr "Weergave van uitgeschakelde apparaten op de kaart toestaan"
+
+#: includes/setup/settings.php
+msgid "Coverage Overlay"
+msgstr "Dekkingslaag"
+
+#: includes/setup/settings.php
+msgid "Draws a transparent circle around an AP with a radius equal to the furthest node in the same subnet"
+msgstr "Tekent een transparante cirkel rond een AP met een straal gelijk aan het verste knooppunt in hetzelfde subnet"
+
+#: includes/setup/settings.php
+msgid "Map Refresh"
+msgstr "Kaart vernieuwen"
+
+#: includes/setup/settings.php
+msgid "Refreshes map after set minutes. Recommend set to poller interval, 0 to disable."
+msgstr "Vernieuwt de kaart na het ingestelde aantal minuten. Aanbevolen om in te stellen op het Poller-interval, 0 om uit te schakelen."
+
+#: includes/setup/settings.php
+msgid "Overlay Settings"
+msgstr "Overlay-instellingen"
+
+#: includes/setup/settings.php
+msgid "Tab Radius (Required)"
+msgstr "Tab-radius (vereist)"
+
+#: includes/setup/settings.php
+msgid "Defines radius to combine points into one. (default: 0.0003)"
+msgstr "Bepaalt de straal om punten samen te voegen tot één punt. (standaard: 0.0003)"
+
+#: includes/setup/settings.php
+msgid "Fill Color"
+msgstr "Opvulkleur"
+
+#: includes/setup/settings.php
+msgid "The overlay circle fill color as FFFFFF"
+msgstr "De vulkleur van de overlaycirkel als FFFFFF"
+
+#: includes/setup/settings.php
+msgid "Ring Color"
+msgstr "Ringkleur"
+
+#: includes/setup/settings.php
+msgid "Defines the outer rim color as FFFFFF"
+msgstr "Bepaalt de kleur van de buitenrand als FFFFFF"
+
+#: includes/setup/settings.php
+msgid "Ring Width"
+msgstr "Ringbreedte"
+
+#: includes/setup/settings.php
+msgid "Outer Ring width"
+msgstr "Breedte buitenste ring"
+
+#: includes/setup/settings.php
+msgid "Fill Opacity"
+msgstr "Opvuldekking"
+
+#: includes/setup/settings.php
+msgid "Defines the fill opacity between 0 and 1"
+msgstr "Bepaalt de dekking van de vulling tussen 0 en 1"
+
+#: includes/setup/settings.php
+msgid "Ring Opacity"
+msgstr "Ringdekking"
+
+#: includes/setup/settings.php
+msgid "Defines the ring opacity between 0 and 1"
+msgstr "Bepaalt de dekking van de ring tussen 0 en 1"
+
+#: includes/setup/settings.php
+msgid "Quality"
+msgstr "Kwaliteit"
+
+#: includes/setup/settings.php
+msgid "Number of divisions in circle (preferably > 15) greater numbers can slow down browser performance."
+msgstr "Aantal segmenten in cirkel (bij voorkeur > 15); grotere aantallen kunnen de browserprestaties vertragen."
+
 #: setup.php
-#, fuzzy
 msgid "Configure Maps"
-msgstr "Configureer kaarten"
+msgstr "Kaarten configureren"
 
 #: setup.php
 msgid "View Maps"
@@ -125,68 +252,57 @@ msgid "Map Settings"
 msgstr "Kaart instellingen"
 
 #: setup.php
-#, fuzzy
 msgid "Overlay Inclusion"
 msgstr "Overlay-opname"
 
 #: setup.php
-#, fuzzy
 msgid "Disable to plot host only, not included in coverage overlay."
-msgstr "Schakel uit om alleen host te plotten, niet opgenomen in dekkingsoverlay."
+msgstr "Schakel uit om alleen de host te plotten, niet opgenomen in de dekkingsoverlay."
 
 #: setup.php
 msgid "Latitude"
 msgstr "Breedtegraad"
 
 #: setup.php
-#, fuzzy
 msgid "The devices latitude coordinates"
-msgstr "De coördinaten van de breedtegraad van het apparaat"
+msgstr "De breedtegraadcoördinaten van het apparaat"
 
 #: setup.php
 msgid "Longitude"
 msgstr "Longitude"
 
 #: setup.php
-#, fuzzy
 msgid "The devices longitude coordinates"
-msgstr "De lengtecoördinaten van het apparaat"
+msgstr "De lengtegraadcoördinaten van het apparaat"
 
 #: setup.php
-#, fuzzy
 msgid "Starting Degree"
-msgstr "Beginnend diploma"
+msgstr "Begingraad"
 
 #: setup.php
-#, fuzzy
 msgid "Starting degree for directional area between 0-360"
-msgstr "Startgraad voor richtingsgebied tussen 0-360"
+msgstr "Begingraad voor richtingsgebied tussen 0-360"
 
 #: setup.php
-#, fuzzy
 msgid "Stopping Degree"
-msgstr "Degree stoppen"
+msgstr "Eindgraad"
 
 #: setup.php
-#, fuzzy
 msgid "Stopping degree for directional area, must be greater than the Starting Degree"
-msgstr "De stopgraad voor het richtingsgebied moet groter zijn dan de startgraad"
+msgstr "Eindgraad voor richtingsgebied, moet groter zijn dan de begingraad"
 
 #: setup.php
-#, fuzzy
 msgid "Specify Radius"
-msgstr "Specificeer Radius"
+msgstr "Straal opgeven"
 
 #: setup.php
-#, fuzzy
 msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
-msgstr "Geef handmatig de straal op voor het toegangspunt. Stel in op 0 om de straal te bepalen op basis van gegroepeerde apparaten"
+msgstr "Geef handmatig de straal op voor het Access Point. Stel in op 0 om de straal te bepalen op basis van gegroepeerde apparaten"
 
 #: setup.php
 msgid "Group ID"
 msgstr "Groeps-ID"
 
 #: setup.php
-#, fuzzy
 msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
 msgstr "Groepen bepalen welke apparaten zijn opgenomen in de dekkingsoverlay. Wordt gecontroleerd aan de hand van het AP-apparaatgroepnummer. 0 om uit te schakelen"
