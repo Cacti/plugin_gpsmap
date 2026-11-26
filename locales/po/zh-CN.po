@@ -4,57 +4,39 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr ""
-"Project-Id-Version: Cacti\n"
-"Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2026-09-28 16:05-0400\n"
-"PO-Revision-Date: 2024-06-23 02:19+0000\n"
-"Last-Translator: tql <fttx31@126.com>\n"
-"Language-Team: Chinese (Simplified) <http://translate.cacti.net/projects/cacti/gpsmaps/zh_Hans/>\n"
-"Language: zh-CN\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.8.1\n"
+msgstr "Project-Id-Version: Cacti\nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2026-09-28 16:05-0400\nPO-Revision-Date: 2026-11-26 00:18+0000\nLast-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\nLanguage-Team: Chinese (Simplified Han script) <https://translate.cacti.net/projects/cacti/gpsmaps/zh_Hans/>\nLanguage: zh-CN\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 5.11.4\n"
 
 #: gpsmap.php
-#, fuzzy
 msgid "Please make sure to properly configure Maps first under Settings > Maps"
-msgstr "请确保首先在“设置”>“地图”下正确配置“地图”"
+msgstr "请确保首先在“设置”>“地图”下正确配置地图"
 
 #: gpstemplates.php
 msgid "Delete"
 msgstr "删除"
 
-#: gpstemplates.php
-#, fuzzy
+#: gpstemplates.php includes/setup/settings.php
 msgid "Map Templates"
 msgstr "地图模板"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Host Template"
 msgstr "主机模板"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Up Image"
-msgstr "上图"
+msgstr "正常状态图像"
 
 #: gpstemplates.php
 msgid "Recovering Image"
 msgstr "恢复图像"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Down Image"
-msgstr "下图"
+msgstr "宕机图像"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Is AP"
-msgstr "是AP"
+msgstr "是否为 AP"
 
 #: gpstemplates.php
 msgid "True"
@@ -69,33 +51,28 @@ msgid "Device Template"
 msgstr "设备模板"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Choose the Device Template to base this Map Template type."
-msgstr "选择设备模板作为此地图模板类型的基础。"
+msgstr "选择作为此地图模板类型基础的设备模板。"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Select the Image to Show for an Up Device"
-msgstr "选择要显示向上设备的图像"
+msgstr "选择用于显示正常设备的图像"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Select the Image to Show for a Recovering Device"
-msgstr "选择要为恢复设备显示的图像"
+msgstr "选择用于显示恢复中设备的图像"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Select the Image to Show for a Down Device"
-msgstr "选择要显示关闭设备的图像"
+msgstr "选择用于显示宕机设备的图像"
 
 #: gpstemplates.php
 msgid "Access Point"
 msgstr "接入点"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Does this Device Template Represent an Access Point."
-msgstr "此设备模板代表一个接入点吗？"
+msgstr "此设备模板是否代表接入点。"
 
 #: gpstemplates.php
 msgid "No"
@@ -106,17 +83,167 @@ msgid "Yes"
 msgstr "是"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Map Template Edit"
 msgstr "地图模板编辑"
 
+#: includes/polling/processregion.php
+#, php-format
+msgid "IP %s"
+msgstr "IP %s"
+
+#: includes/polling/processregion.php
+msgid "Start Over"
+msgstr "重新开始"
+
+#: includes/polling/processregion.php
+msgid "Print"
+msgstr "打印"
+
+#: includes/setup/settings.php includes/setup/tabs.php
+msgid "Maps"
+msgstr "地图"
+
+#: includes/setup/settings.php
+msgid "Create New Template"
+msgstr "创建新模板"
+
+#: includes/setup/settings.php
+msgid "Map"
+msgstr "地图"
+
+#: includes/setup/settings.php
+msgid "Templates"
+msgstr "模板"
+
+#: includes/setup/settings.php
+msgid "Google API Key"
+msgstr "Google API 密钥"
+
+#: includes/setup/settings.php
+msgid "The Google Maps API Key is not required but highly recommended, get more info at <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Google Documentation</a>."
+msgstr "Google Maps API 密钥非必需，但强烈建议配置，详情请参见 <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Google 文档</a>。"
+
+#: includes/setup/settings.php
+msgid "Geolocation URL"
+msgstr "地理位置 URL"
+
+#: includes/setup/settings.php
+msgid "Enter the URL of the IP to Geolocation lookup service.  Every devices IP address will be tested against this location service if not set to determine the devices Geolocation.  The devices IP address will be appended to the end of this URL."
+msgstr "输入 IP 地理位置查询服务的 URL。如果未设置设备的地理位置，将通过此定位服务检测每台设备的 IP 地址以确定其地理位置。设备的 IP 地址将附加到此 URL 末尾。"
+
+#: includes/setup/settings.php
+msgid "Initial Latitude"
+msgstr "初始纬度"
+
+#: includes/setup/settings.php
+msgid "Defines the centering of the map"
+msgstr "定义地图的中心位置"
+
+#: includes/setup/settings.php
+msgid "Initial Longitude"
+msgstr "初始经度"
+
+#: includes/setup/settings.php
+msgid "Initial Elevation"
+msgstr "初始海拔"
+
+#: includes/setup/settings.php
+msgid "Defines the elevation of the map from 0 - 12"
+msgstr "定义地图的高度级别（0 - 12）"
+
+#: includes/setup/settings.php
+msgid "Display Settings"
+msgstr "显示设置"
+
+#: includes/setup/settings.php
+msgid "Display Disabled Devices"
+msgstr "显示已禁用的设备"
+
+#: includes/setup/settings.php
+msgid "Allow the display of disabled Devices on the Map"
+msgstr "允许在地图上显示已禁用的设备"
+
+#: includes/setup/settings.php
+msgid "Coverage Overlay"
+msgstr "覆盖范围叠加层"
+
+#: includes/setup/settings.php
+msgid "Draws a transparent circle around an AP with a radius equal to the furthest node in the same subnet"
+msgstr "在 AP 周围绘制一个透明圆圈，其半径等于同一子网中最远节点的距离"
+
+#: includes/setup/settings.php
+msgid "Map Refresh"
+msgstr "地图刷新"
+
+#: includes/setup/settings.php
+msgid "Refreshes map after set minutes. Recommend set to poller interval, 0 to disable."
+msgstr "在设定的分钟数后刷新地图。建议设为轮询器间隔，设为 0 则禁用。"
+
+#: includes/setup/settings.php
+msgid "Overlay Settings"
+msgstr "叠加层设置"
+
+#: includes/setup/settings.php
+msgid "Tab Radius (Required)"
+msgstr "选项卡半径（必填）"
+
+#: includes/setup/settings.php
+msgid "Defines radius to combine points into one. (default: 0.0003)"
+msgstr "定义将多个点合并为一个点的半径。（默认：0.0003）"
+
+#: includes/setup/settings.php
+msgid "Fill Color"
+msgstr "填充颜色"
+
+#: includes/setup/settings.php
+msgid "The overlay circle fill color as FFFFFF"
+msgstr "叠加圆形的填充颜色（格式如 FFFFFF）"
+
+#: includes/setup/settings.php
+msgid "Ring Color"
+msgstr "圆环颜色"
+
+#: includes/setup/settings.php
+msgid "Defines the outer rim color as FFFFFF"
+msgstr "将外圈颜色定义为 FFFFFF"
+
+#: includes/setup/settings.php
+msgid "Ring Width"
+msgstr "圆环宽度"
+
+#: includes/setup/settings.php
+msgid "Outer Ring width"
+msgstr "外环宽度"
+
+#: includes/setup/settings.php
+msgid "Fill Opacity"
+msgstr "填充不透明度"
+
+#: includes/setup/settings.php
+msgid "Defines the fill opacity between 0 and 1"
+msgstr "定义填充不透明度（0 到 1 之间）"
+
+#: includes/setup/settings.php
+msgid "Ring Opacity"
+msgstr "圆环不透明度"
+
+#: includes/setup/settings.php
+msgid "Defines the ring opacity between 0 and 1"
+msgstr "定义圆环不透明度（0 到 1 之间）"
+
+#: includes/setup/settings.php
+msgid "Quality"
+msgstr "质量"
+
+#: includes/setup/settings.php
+msgid "Number of divisions in circle (preferably > 15) greater numbers can slow down browser performance."
+msgstr "圆周分段数（建议 > 15），数值过大会降低浏览器性能。"
+
 #: setup.php
-#, fuzzy
 msgid "Configure Maps"
 msgstr "配置地图"
 
 #: setup.php
-#, fuzzy
 msgid "View Maps"
 msgstr "查看地图"
 
@@ -125,68 +252,57 @@ msgid "Map Settings"
 msgstr "地图设置"
 
 #: setup.php
-#, fuzzy
 msgid "Overlay Inclusion"
-msgstr "叠加包含"
+msgstr "包含叠加层"
 
 #: setup.php
-#, fuzzy
 msgid "Disable to plot host only, not included in coverage overlay."
-msgstr "仅禁用绘制主机，不包括在覆盖图叠加中。"
+msgstr "禁用后仅绘制主机，不包含在覆盖范围叠加层中。"
 
 #: setup.php
 msgid "Latitude"
 msgstr "纬度"
 
 #: setup.php
-#, fuzzy
 msgid "The devices latitude coordinates"
-msgstr "设备纬度坐标"
+msgstr "设备的纬度坐标"
 
 #: setup.php
 msgid "Longitude"
 msgstr "经度"
 
 #: setup.php
-#, fuzzy
 msgid "The devices longitude coordinates"
-msgstr "设备经度坐标"
+msgstr "设备的经度坐标"
 
 #: setup.php
-#, fuzzy
 msgid "Starting Degree"
-msgstr "起始学位"
+msgstr "起始角度"
 
 #: setup.php
-#, fuzzy
 msgid "Starting degree for directional area between 0-360"
-msgstr "0-360之间的定向区域的起始度"
+msgstr "0-360 之间的方向区域起始角度"
 
 #: setup.php
-#, fuzzy
 msgid "Stopping Degree"
-msgstr "停止度"
+msgstr "结束角度"
 
 #: setup.php
-#, fuzzy
 msgid "Stopping degree for directional area, must be greater than the Starting Degree"
-msgstr "定向区域的停止度，必须大于开始度"
+msgstr "方向区域的结束角度，必须大于起始角度"
 
 #: setup.php
-#, fuzzy
 msgid "Specify Radius"
 msgstr "指定半径"
 
 #: setup.php
-#, fuzzy
 msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
-msgstr "手动为接入点指定半径。设置为0以确定基于分组设备的半径"
+msgstr "手动指定接入点的半径。设置为 0 则根据分组设备确定半径"
 
 #: setup.php
 msgid "Group ID"
 msgstr "群组 ID"
 
 #: setup.php
-#, fuzzy
 msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
-msgstr "组定义了覆盖图中包括哪些设备。将对照AP设备组号进行检查。 0禁用"
+msgstr "组定义覆盖层中包含哪些设备。将根据 AP 设备组编号进行检查。0 表示禁用"
