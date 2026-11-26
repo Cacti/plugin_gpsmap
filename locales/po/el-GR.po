@@ -4,56 +4,37 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr ""
-"Project-Id-Version: Cacti\n"
-"Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2026-09-28 16:05-0400\n"
-"PO-Revision-Date: 2020-12-14 21:28-0500\n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"Language: el_GR\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.2\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+msgstr "Project-Id-Version: Cacti\nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2026-09-28 16:05-0400\nPO-Revision-Date: 2026-11-26 00:18+0000\nLast-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\nLanguage-Team: Greek <https://translate.cacti.net/projects/cacti/gpsmaps/el/>\nLanguage: el-GR\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.11.4\n"
 
 #: gpsmap.php
-#, fuzzy
 msgid "Please make sure to properly configure Maps first under Settings > Maps"
-msgstr "Βεβαιωθείτε ότι έχετε διαμορφώσει σωστά τους Χάρτες πρώτα στις Ρυθμίσεις> Χάρτες"
+msgstr "Παρακαλούμε βεβαιωθείτε ότι έχετε διαμορφώσει σωστά τους Χάρτες πρώτα στις Ρυθμίσεις > Χάρτες"
 
 #: gpstemplates.php
 msgid "Delete"
 msgstr "Διαγραφή"
 
-#: gpstemplates.php
-#, fuzzy
+#: gpstemplates.php includes/setup/settings.php
 msgid "Map Templates"
 msgstr "Πρότυπα χάρτη"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Host Template"
 msgstr "Πρότυπο κεντρικού υπολογιστή"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Up Image"
-msgstr "Πάνω εικόνα"
+msgstr "Εικόνα ενεργού"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Recovering Image"
-msgstr "Ανάκτηση εικόνας"
+msgstr "Εικόνα κατάστασης ανάκτησης"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Down Image"
-msgstr "Κάτω εικόνα"
+msgstr "Εικόνα ανενεργής κατάστασης"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Is AP"
 msgstr "Είναι AP"
 
@@ -66,39 +47,32 @@ msgid "False"
 msgstr "Ψευδής"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Device Template"
 msgstr "Πρότυπο συσκευής"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Choose the Device Template to base this Map Template type."
-msgstr "Επιλέξτε το Πρότυπο συσκευής για να βασίσετε αυτόν τον τύπο προτύπου χάρτη."
+msgstr "Επιλέξτε το πρότυπο συσκευής στο οποίο θα βασίζεται αυτός ο τύπος προτύπου χάρτη."
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Select the Image to Show for an Up Device"
-msgstr "Επιλέξτε την εικόνα που θα εμφανίζεται για μια επάνω συσκευή"
+msgstr "Επιλέξτε την εικόνα που θα εμφανίζεται για μια ενεργή συσκευή"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Select the Image to Show for a Recovering Device"
-msgstr "Επιλέξτε την εικόνα που θα εμφανίζεται για μια συσκευή ανάκτησης"
+msgstr "Επιλέξτε την εικόνα που θα εμφανίζεται για μια συσκευή σε ανάκτηση"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Select the Image to Show for a Down Device"
-msgstr "Επιλέξτε την εικόνα που θα εμφανίζεται για μια Down Device"
+msgstr "Επιλέξτε την εικόνα που θα εμφανίζεται για μια ανενεργή συσκευή"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Access Point"
 msgstr "Σημείο πρόσβασης"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Does this Device Template Represent an Access Point."
-msgstr "Αυτό το πρότυπο συσκευής αντιπροσωπεύει ένα σημείο πρόσβασης."
+msgstr "Αντιπροσωπεύει αυτό το πρότυπο συσκευής ένα σημείο πρόσβασης."
 
 #: gpstemplates.php
 msgid "No"
@@ -109,17 +83,167 @@ msgid "Yes"
 msgstr "Ναι"
 
 #: gpstemplates.php
-#, fuzzy
 msgid "Map Template Edit"
 msgstr "Επεξεργασία προτύπου χάρτη"
 
+#: includes/polling/processregion.php
+#, php-format
+msgid "IP %s"
+msgstr "IP %s"
+
+#: includes/polling/processregion.php
+msgid "Start Over"
+msgstr "Εκκίνηση από την αρχή"
+
+#: includes/polling/processregion.php
+msgid "Print"
+msgstr "Εκτύπωση"
+
+#: includes/setup/settings.php includes/setup/tabs.php
+msgid "Maps"
+msgstr "Χάρτες"
+
+#: includes/setup/settings.php
+msgid "Create New Template"
+msgstr "Δημιουργία νέου προτύπου"
+
+#: includes/setup/settings.php
+msgid "Map"
+msgstr "Χάρτης"
+
+#: includes/setup/settings.php
+msgid "Templates"
+msgstr "Πρότυπα"
+
+#: includes/setup/settings.php
+msgid "Google API Key"
+msgstr "Κλειδί Google API"
+
+#: includes/setup/settings.php
+msgid "The Google Maps API Key is not required but highly recommended, get more info at <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Google Documentation</a>."
+msgstr "Το κλειδί API του Google Maps δεν είναι υποχρεωτικό αλλά συνιστάται ανεπιφύλακτα· λάβετε περισσότερες πληροφορίες στο <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Τεκμηρίωση Google</a>."
+
+#: includes/setup/settings.php
+msgid "Geolocation URL"
+msgstr "URL γεωεντοπισμού"
+
+#: includes/setup/settings.php
+msgid "Enter the URL of the IP to Geolocation lookup service.  Every devices IP address will be tested against this location service if not set to determine the devices Geolocation.  The devices IP address will be appended to the end of this URL."
+msgstr "Εισαγάγετε τη διεύθυνση URL της υπηρεσίας αναζήτησης γεωεντοπισμού IP. Κάθε διεύθυνση IP συσκευής θα ελέγχεται σε αυτή την υπηρεσία τοποθεσίας, εάν δεν έχει οριστεί, για τον προσδιορισμό του γεωεντοπισμού της συσκευής. Η διεύθυνση IP της συσκευής θα προσαρτάται στο τέλος αυτής της διεύθυνσης URL."
+
+#: includes/setup/settings.php
+msgid "Initial Latitude"
+msgstr "Αρχικό γεωγραφικό πλάτος"
+
+#: includes/setup/settings.php
+msgid "Defines the centering of the map"
+msgstr "Ορίζει το κεντράρισμα του χάρτη"
+
+#: includes/setup/settings.php
+msgid "Initial Longitude"
+msgstr "Αρχικό γεωγραφικό μήκος"
+
+#: includes/setup/settings.php
+msgid "Initial Elevation"
+msgstr "Αρχικό υψόμετρο"
+
+#: includes/setup/settings.php
+msgid "Defines the elevation of the map from 0 - 12"
+msgstr "Ορίζει το υψόμετρο (επίπεδο εστίασης) του χάρτη από 0 - 12"
+
+#: includes/setup/settings.php
+msgid "Display Settings"
+msgstr "Ρυθμίσεις εμφάνισης"
+
+#: includes/setup/settings.php
+msgid "Display Disabled Devices"
+msgstr "Εμφάνιση απενεργοποιημένων συσκευών"
+
+#: includes/setup/settings.php
+msgid "Allow the display of disabled Devices on the Map"
+msgstr "Να επιτρέπεται η εμφάνιση απενεργοποιημένων συσκευών στον χάρτη"
+
+#: includes/setup/settings.php
+msgid "Coverage Overlay"
+msgstr "Επικάλυψη κάλυψης"
+
+#: includes/setup/settings.php
+msgid "Draws a transparent circle around an AP with a radius equal to the furthest node in the same subnet"
+msgstr "Σχεδιάζει έναν διαφανή κύκλο γύρω από ένα AP με ακτίνα ίση με τον πιο απομακρυσμένο κόμβο στο ίδιο υποδίκτυο"
+
+#: includes/setup/settings.php
+msgid "Map Refresh"
+msgstr "Ανανέωση χάρτη"
+
+#: includes/setup/settings.php
+msgid "Refreshes map after set minutes. Recommend set to poller interval, 0 to disable."
+msgstr "Ανανεώνει τον χάρτη μετά από καθορισμένα λεπτά. Συνιστάται η ρύθμιση στο διάστημα του Poller, 0 για απενεργοποίηση."
+
+#: includes/setup/settings.php
+msgid "Overlay Settings"
+msgstr "Ρυθμίσεις επικάλυψης"
+
+#: includes/setup/settings.php
+msgid "Tab Radius (Required)"
+msgstr "Ακτίνα καρτέλας (Υποχρεωτικό)"
+
+#: includes/setup/settings.php
+msgid "Defines radius to combine points into one. (default: 0.0003)"
+msgstr "Ορίζει την ακτίνα για τη συγχώνευση σημείων σε ένα. (προεπιλογή: 0.0003)"
+
+#: includes/setup/settings.php
+msgid "Fill Color"
+msgstr "Χρώμα γεμίσματος"
+
+#: includes/setup/settings.php
+msgid "The overlay circle fill color as FFFFFF"
+msgstr "Το χρώμα γεμίσματος του κύκλου επικάλυψης ως FFFFFF"
+
+#: includes/setup/settings.php
+msgid "Ring Color"
+msgstr "Χρώμα δακτυλίου"
+
+#: includes/setup/settings.php
+msgid "Defines the outer rim color as FFFFFF"
+msgstr "Ορίζει το χρώμα του εξωτερικού περιγράμματος σε μορφή FFFFFF"
+
+#: includes/setup/settings.php
+msgid "Ring Width"
+msgstr "Πλάτος δακτυλίου"
+
+#: includes/setup/settings.php
+msgid "Outer Ring width"
+msgstr "Πλάτος εξωτερικού δακτυλίου"
+
+#: includes/setup/settings.php
+msgid "Fill Opacity"
+msgstr "Αδιαφάνεια γεμίσματος"
+
+#: includes/setup/settings.php
+msgid "Defines the fill opacity between 0 and 1"
+msgstr "Ορίζει την αδιαφάνεια γεμίσματος μεταξύ 0 και 1"
+
+#: includes/setup/settings.php
+msgid "Ring Opacity"
+msgstr "Αδιαφάνεια δακτυλίου"
+
+#: includes/setup/settings.php
+msgid "Defines the ring opacity between 0 and 1"
+msgstr "Ορίζει την αδιαφάνεια του δακτυλίου μεταξύ 0 και 1"
+
+#: includes/setup/settings.php
+msgid "Quality"
+msgstr "Ποιότητα"
+
+#: includes/setup/settings.php
+msgid "Number of divisions in circle (preferably > 15) greater numbers can slow down browser performance."
+msgstr "Αριθμός διαιρέσεων στον κύκλο (κατά προτίμηση > 15)· μεγαλύτεροι αριθμοί ενδέχεται να επιβραδύνουν την απόδοση του προγράμματος περιήγησης."
+
 #: setup.php
-#, fuzzy
 msgid "Configure Maps"
 msgstr "Διαμόρφωση χαρτών"
 
 #: setup.php
-#, fuzzy
 msgid "View Maps"
 msgstr "Προβολή χαρτών"
 
@@ -128,68 +252,57 @@ msgid "Map Settings"
 msgstr "Ρυθμίσεις Χάρτη"
 
 #: setup.php
-#, fuzzy
 msgid "Overlay Inclusion"
 msgstr "Συμπερίληψη επικάλυψης"
 
 #: setup.php
-#, fuzzy
 msgid "Disable to plot host only, not included in coverage overlay."
-msgstr "Απενεργοποίηση για να σχεδιάσετε μόνο τον κεντρικό υπολογιστή, δεν περιλαμβάνεται στην επικάλυψη κάλυψης"
+msgstr "Απενεργοποιήστε για να σχεδιάζεται μόνο ο κεντρικός υπολογιστής, χωρίς να περιλαμβάνεται στην επικάλυψη κάλυψης."
 
 #: setup.php
 msgid "Latitude"
 msgstr "Γεωγραφικό πλάτος"
 
 #: setup.php
-#, fuzzy
 msgid "The devices latitude coordinates"
-msgstr "Οι συντεταγμένες γεωγραφικού πλάτους συσκευών"
+msgstr "Οι συντεταγμένες γεωγραφικού πλάτους των συσκευών"
 
 #: setup.php
 msgid "Longitude"
 msgstr "Γεωγραφικό μήκος"
 
 #: setup.php
-#, fuzzy
 msgid "The devices longitude coordinates"
-msgstr "Οι συντεταγμένες γεωγραφικού μήκους συσκευών"
+msgstr "Οι συντεταγμένες γεωγραφικού μήκους των συσκευών"
 
 #: setup.php
-#, fuzzy
 msgid "Starting Degree"
-msgstr "Έναρξη πτυχίου"
+msgstr "Μοίρα έναρξης"
 
 #: setup.php
-#, fuzzy
 msgid "Starting degree for directional area between 0-360"
-msgstr "Έναρξη βαθμού για κατευθυντική περιοχή μεταξύ 0-360"
+msgstr "Μοίρα έναρξης για κατευθυντική περιοχή μεταξύ 0-360"
 
 #: setup.php
-#, fuzzy
 msgid "Stopping Degree"
-msgstr "Διακοπή πτυχίου"
+msgstr "Μοίρα λήξης"
 
 #: setup.php
-#, fuzzy
 msgid "Stopping degree for directional area, must be greater than the Starting Degree"
-msgstr "Ο βαθμός διακοπής για κατευθυντική περιοχή, πρέπει να είναι μεγαλύτερος από τον βαθμό εκκίνησης"
+msgstr "Μοίρα λήξης για κατευθυντική περιοχή, πρέπει να είναι μεγαλύτερη από τη μοίρα έναρξης"
 
 #: setup.php
-#, fuzzy
 msgid "Specify Radius"
-msgstr "Καθορίστε την ακτίνα"
+msgstr "Καθορισμός ακτίνας"
 
 #: setup.php
-#, fuzzy
 msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
-msgstr "Μη αυτόματη ρύθμιση ακτίνας για το Σημείο πρόσβασης. Ρυθμίστε στο 0 για να προσδιορίσετε την ακτίνα βάσει ομαδοποιημένων συσκευών"
+msgstr "Μη αυτόματος καθορισμός ακτίνας για το Access Point. Ορίστε σε 0 για προσδιορισμό της ακτίνας βάσει των ομαδοποιημένων συσκευών"
 
 #: setup.php
 msgid "Group ID"
 msgstr "ID ομάδας"
 
 #: setup.php
-#, fuzzy
 msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
 msgstr "Οι ομάδες καθορίζουν ποιες συσκευές περιλαμβάνονται στην επικάλυψη κάλυψης. Θα ελεγχθεί έναντι του αριθμού ομάδας συσκευών AP. 0 για απενεργοποίηση"
