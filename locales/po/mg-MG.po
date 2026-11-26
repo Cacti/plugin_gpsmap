@@ -1,0 +1,320 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The Cacti Group
+# This file is distributed under the same license as the Cacti package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Cacti\n"
+"Report-Msgid-Bugs-To: developers@cacti.net\n"
+"POT-Creation-Date: 2026-09-28 16:05-0400\n"
+"PO-Revision-Date: 2026-11-24 19:00+0000\n"
+"Last-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\n"
+"Language-Team: Malagasy\n"
+"Language: mg-MG\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: gpsmap.php
+msgid "Please make sure to properly configure Maps first under Settings > Maps"
+msgstr "Ataovy azo antoka ny fandrindrana tsara ny Sarintany aloha ao amin'ny Fandrindrana > Sarintany azafady"
+
+#: gpstemplates.php
+msgid "Delete"
+msgstr "Fafao"
+
+#: gpstemplates.php includes/setup/settings.php
+msgid "Map Templates"
+msgstr "Modelin'ny Sarintany"
+
+#: gpstemplates.php
+msgid "Host Template"
+msgstr "Modely Mpampiantrano"
+
+#: gpstemplates.php
+msgid "Up Image"
+msgstr "Sary Mandeha"
+
+#: gpstemplates.php
+msgid "Recovering Image"
+msgstr "Sary fanarenana"
+
+#: gpstemplates.php
+msgid "Down Image"
+msgstr "Sary rehefa maty"
+
+#: gpstemplates.php
+msgid "Is AP"
+msgstr "AP ve"
+
+#: gpstemplates.php
+msgid "True"
+msgstr "Marina"
+
+#: gpstemplates.php
+msgid "False"
+msgstr "Diso"
+
+#: gpstemplates.php
+msgid "Device Template"
+msgstr "Modely fitaovana"
+
+#: gpstemplates.php
+msgid "Choose the Device Template to base this Map Template type."
+msgstr "Safidio ny Modely Fitaovana hiorinan'ity karazana Modely Sarintany ity."
+
+#: gpstemplates.php
+msgid "Select the Image to Show for an Up Device"
+msgstr "Misafidiana ny sary aseho ho an'ny Fitaovana mandeha"
+
+#: gpstemplates.php
+msgid "Select the Image to Show for a Recovering Device"
+msgstr "Misafidiana ny sary aseho ho an'ny Fitaovana miverina miasa"
+
+#: gpstemplates.php
+msgid "Select the Image to Show for a Down Device"
+msgstr "Misafidiana ny sary aseho ho an'ny Fitaovana maty"
+
+#: gpstemplates.php
+msgid "Access Point"
+msgstr "Tebo-pidirana"
+
+#: gpstemplates.php
+msgid "Does this Device Template Represent an Access Point."
+msgstr "Maneho Access Point ve ity Modelin'ny Fitaovana ity."
+
+#: gpstemplates.php
+msgid "No"
+msgstr "Tsia"
+
+#: gpstemplates.php
+msgid "Yes"
+msgstr "Eny"
+
+#: gpstemplates.php
+msgid "Map Template Edit"
+msgstr "Fanovana Modelin'ny Sarintany"
+
+#: includes/polling/processregion.php
+#, php-format
+msgid "IP %s"
+msgstr "IP %s"
+
+#: includes/polling/processregion.php
+msgid "Start Over"
+msgstr "Atombohy indray"
+
+#: includes/polling/processregion.php
+msgid "Print"
+msgstr "Atonta"
+
+#: includes/setup/settings.php includes/setup/tabs.php
+msgid "Maps"
+msgstr "Sarintany"
+
+#: includes/setup/settings.php
+msgid "Create New Template"
+msgstr "Mamorona modely vaovao"
+
+#: includes/setup/settings.php
+msgid "Map"
+msgstr "Sarintany"
+
+#: includes/setup/settings.php
+msgid "Templates"
+msgstr "Modely"
+
+#: includes/setup/settings.php
+msgid "Google API Key"
+msgstr "Lakile API Google"
+
+#: includes/setup/settings.php
+msgid "The Google Maps API Key is not required but highly recommended, get more info at <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Google Documentation</a>."
+msgstr "Tsy voatery ilaina ny lakile API Google Maps fa tena soso-kevitra mafy, makà fampahalalana bebe kokoa ao amin'ny <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Torolàlana Google</a>."
+
+#: includes/setup/settings.php
+msgid "Geolocation URL"
+msgstr "URL an'ny toerana jeografika"
+
+#: includes/setup/settings.php
+msgid "Enter the URL of the IP to Geolocation lookup service.  Every devices IP address will be tested against this location service if not set to determine the devices Geolocation.  The devices IP address will be appended to the end of this URL."
+msgstr "Ampidiro ny URL-n'ny tolotra fitadiavana toerana ara-jeografika avy amin'ny IP.  Hotsapaina amin'ity tolotra fitadiavana toerana ity ny adiresy IP-n'ny fitaovana tsirairay raha tsy mbola voafaritra mba hamaritana ny toerana misy ny fitaovana.  Hampiana any amin'ny faran'ity URL ity ny adiresy IP-n'ny fitaovana."
+
+#: includes/setup/settings.php
+msgid "Initial Latitude"
+msgstr "Fehin-tany Voalohany"
+
+#: includes/setup/settings.php
+msgid "Defines the centering of the map"
+msgstr "Mamaritra ny fanatobiana eo afovoany ny sarintany"
+
+#: includes/setup/settings.php
+msgid "Initial Longitude"
+msgstr "Laharan-tany Voalohany"
+
+#: includes/setup/settings.php
+msgid "Initial Elevation"
+msgstr "Haavo Voalohany"
+
+#: includes/setup/settings.php
+msgid "Defines the elevation of the map from 0 - 12"
+msgstr "Mamaritra ny haavon'ny sarintany manomboka amin'ny 0 - 12"
+
+#: includes/setup/settings.php
+msgid "Display Settings"
+msgstr "Fandrindrana ny fisehoana"
+
+#: includes/setup/settings.php
+msgid "Display Disabled Devices"
+msgstr "Asehoy ny Fitaovana tsy mavitrika"
+
+#: includes/setup/settings.php
+msgid "Allow the display of disabled Devices on the Map"
+msgstr "Avelao haseho eny amin'ny Sarintany ny Fitaovana tsy mavitrika"
+
+#: includes/setup/settings.php
+msgid "Coverage Overlay"
+msgstr "Sosona fandrakofana"
+
+#: includes/setup/settings.php
+msgid "Draws a transparent circle around an AP with a radius equal to the furthest node in the same subnet"
+msgstr "Manaova faribolana mangarahara manodidina ny AP manana tana mitovy amin'ny teboka lavitra indrindra ao amin'ny tambajotra kely iray ihany"
+
+#: includes/setup/settings.php
+msgid "Map Refresh"
+msgstr "Fanavaozana ny sarintany"
+
+#: includes/setup/settings.php
+msgid "Refreshes map after set minutes. Recommend set to poller interval, 0 to disable."
+msgstr "Manavao ny sarintany rehefa dila ny minitra voafaritra. Soso-kevitra ny hametrahana azy hitovy amin'ny elanelan'ny Poller, 0 raha tsy alefa."
+
+#: includes/setup/settings.php
+msgid "Overlay Settings"
+msgstr "Fandrindrana ny sosona ambony"
+
+#: includes/setup/settings.php
+msgid "Tab Radius (Required)"
+msgstr "Radius-n'ny takelaka (Ilaina)"
+
+#: includes/setup/settings.php
+msgid "Defines radius to combine points into one. (default: 0.0003)"
+msgstr "Mamaritra ny tana hanambarana ny teboka ho iray. (mahazatra: 0.0003)"
+
+#: includes/setup/settings.php
+msgid "Fill Color"
+msgstr "Lokon'ny famenoana"
+
+#: includes/setup/settings.php
+msgid "The overlay circle fill color as FFFFFF"
+msgstr "Ny lokon'ny famenoana ny faribolana amboniny amin'ny endrika FFFFFF"
+
+#: includes/setup/settings.php
+msgid "Ring Color"
+msgstr "Lokon'ny peratra"
+
+#: includes/setup/settings.php
+msgid "Defines the outer rim color as FFFFFF"
+msgstr "Mamaritra ny lokon'ny sisiny ivelany ho FFFFFF"
+
+#: includes/setup/settings.php
+msgid "Ring Width"
+msgstr "Sakan'ny peratra"
+
+#: includes/setup/settings.php
+msgid "Outer Ring width"
+msgstr "Sakan'ny peratra ivelany"
+
+#: includes/setup/settings.php
+msgid "Fill Opacity"
+msgstr "Hakitroky ny famenoana"
+
+#: includes/setup/settings.php
+msgid "Defines the fill opacity between 0 and 1"
+msgstr "Mamaritra ny tsy fangaraharahan'ny famenoana eo anelanelan'ny 0 sy 1"
+
+#: includes/setup/settings.php
+msgid "Ring Opacity"
+msgstr "Tsy fahangarahan'ny peratra"
+
+#: includes/setup/settings.php
+msgid "Defines the ring opacity between 0 and 1"
+msgstr "Mamaritra ny tsy fangaraharahan'ny peratra eo anelanelan'ny 0 sy 1"
+
+#: includes/setup/settings.php
+msgid "Quality"
+msgstr "Kalitao"
+
+#: includes/setup/settings.php
+msgid "Number of divisions in circle (preferably > 15) greater numbers can slow down browser performance."
+msgstr "Isan'ny fizarana ao amin'ny faribolana (tsara raha > 15) ny isa lehibe kokoa dia mety hampiadana ny fiasan'ny mpitety."
+
+#: setup.php
+msgid "Configure Maps"
+msgstr "Rindrao ny sarintany"
+
+#: setup.php
+msgid "View Maps"
+msgstr "Jereo ny sarintany"
+
+#: setup.php
+msgid "Map Settings"
+msgstr "Fandrindrana ny sarintany"
+
+#: setup.php
+msgid "Overlay Inclusion"
+msgstr "Fampidirana sosona ambony"
+
+#: setup.php
+msgid "Disable to plot host only, not included in coverage overlay."
+msgstr "Ataovy tsy mavitrika mba hanaovana sarin'ny mpampiantrano fotsiny, tsy ampidirina ao amin'ny rakotra fandrakofana."
+
+#: setup.php
+msgid "Latitude"
+msgstr "Latitida"
+
+#: setup.php
+msgid "The devices latitude coordinates"
+msgstr "Ny fandrindrana latitude-n'ny Fitaovana"
+
+#: setup.php
+msgid "Longitude"
+msgstr "Lonjitida"
+
+#: setup.php
+msgid "The devices longitude coordinates"
+msgstr "Ny fandrindrana longitude-n'ny Fitaovana"
+
+#: setup.php
+msgid "Starting Degree"
+msgstr "Degre fanombohana"
+
+#: setup.php
+msgid "Starting degree for directional area between 0-360"
+msgstr "Degre fanombohana ho an'ny faritra misy zotra eo anelanelan'ny 0-360"
+
+#: setup.php
+msgid "Stopping Degree"
+msgstr "Degre fijanonana"
+
+#: setup.php
+msgid "Stopping degree for directional area, must be greater than the Starting Degree"
+msgstr "Degre fijanonana ho an'ny faritra misy zotra, tsy maintsy lehibe noho ny Degre fanombohana"
+
+#: setup.php
+msgid "Specify Radius"
+msgstr "Farito ny Radius"
+
+#: setup.php
+msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
+msgstr "Farito an-tanana ny savaivony ho an'ny Access Point. Ataovy 0 mba hamaritana ny savaivony araka ireo Fitaovana natambatra"
+
+#: setup.php
+msgid "Group ID"
+msgstr "ID-n'ny vondrona"
+
+#: setup.php
+msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
+msgstr "Ny vondrona no mamaritra izay Fitaovana tafiditra ao amin'ny saron'ny fandrakofana. Hoamarinina amin'ny laharan'ny vondron'ny Fitaovana AP. 0 mba tsy hampavitrika."
+

@@ -1,0 +1,320 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The Cacti Group
+# This file is distributed under the same license as the Cacti package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Cacti\n"
+"Report-Msgid-Bugs-To: developers@cacti.net\n"
+"POT-Creation-Date: 2026-09-28 16:05-0400\n"
+"PO-Revision-Date: 2026-11-24 19:00+0000\n"
+"Last-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\n"
+"Language-Team: Amharic\n"
+"Language: am-ET\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: gpsmap.php
+msgid "Please make sure to properly configure Maps first under Settings > Maps"
+msgstr "እባክዎ መጀመሪያ በቅንብሮች > ካርታዎች ስር ካርታዎችን በትክክል ማዋቀርዎን ያረጋግጡ"
+
+#: gpstemplates.php
+msgid "Delete"
+msgstr "ሰርዝ"
+
+#: gpstemplates.php includes/setup/settings.php
+msgid "Map Templates"
+msgstr "የካርታ አብነቶች"
+
+#: gpstemplates.php
+msgid "Host Template"
+msgstr "የአስተናጋጅ አብነት"
+
+#: gpstemplates.php
+msgid "Up Image"
+msgstr "ንቁ ምስል"
+
+#: gpstemplates.php
+msgid "Recovering Image"
+msgstr "የማገገሚያ ምስል"
+
+#: gpstemplates.php
+msgid "Down Image"
+msgstr "የወረደ ምስል"
+
+#: gpstemplates.php
+msgid "Is AP"
+msgstr "AP ነው"
+
+#: gpstemplates.php
+msgid "True"
+msgstr "እውነት"
+
+#: gpstemplates.php
+msgid "False"
+msgstr "ሐሰት"
+
+#: gpstemplates.php
+msgid "Device Template"
+msgstr "የመሳሪያ አብነት"
+
+#: gpstemplates.php
+msgid "Choose the Device Template to base this Map Template type."
+msgstr "ይህ የካርታ አብነት አይነት መሰረት የሚያደርገውን የመሣሪያ አብነት ይምረጡ።"
+
+#: gpstemplates.php
+msgid "Select the Image to Show for an Up Device"
+msgstr "ንቁ ለሆነ መሣሪያ የሚታየውን ምስል ይምረጡ"
+
+#: gpstemplates.php
+msgid "Select the Image to Show for a Recovering Device"
+msgstr "እያገገመ ላለ መሣሪያ የሚታየውን ምስል ይምረጡ"
+
+#: gpstemplates.php
+msgid "Select the Image to Show for a Down Device"
+msgstr "ለወረደ መሣሪያ የሚታየውን ምስል ይምረጡ"
+
+#: gpstemplates.php
+msgid "Access Point"
+msgstr "የመዳረሻ ነጥብ"
+
+#: gpstemplates.php
+msgid "Does this Device Template Represent an Access Point."
+msgstr "ይህ የመሣሪያ አብነት የመዳረሻ ነጥብን (Access Point) ይወክላል።"
+
+#: gpstemplates.php
+msgid "No"
+msgstr "አይ"
+
+#: gpstemplates.php
+msgid "Yes"
+msgstr "አዎ"
+
+#: gpstemplates.php
+msgid "Map Template Edit"
+msgstr "የካርታ አብነት አርትዖት"
+
+#: includes/polling/processregion.php
+#, php-format
+msgid "IP %s"
+msgstr "IP %s"
+
+#: includes/polling/processregion.php
+msgid "Start Over"
+msgstr "እንደገና ጀምር"
+
+#: includes/polling/processregion.php
+msgid "Print"
+msgstr "አትም"
+
+#: includes/setup/settings.php includes/setup/tabs.php
+msgid "Maps"
+msgstr "ካርታዎች"
+
+#: includes/setup/settings.php
+msgid "Create New Template"
+msgstr "አዲስ አብነት ፍጠር"
+
+#: includes/setup/settings.php
+msgid "Map"
+msgstr "ካርታ"
+
+#: includes/setup/settings.php
+msgid "Templates"
+msgstr "አብነቶች"
+
+#: includes/setup/settings.php
+msgid "Google API Key"
+msgstr "የGoogle API ቁልፍ"
+
+#: includes/setup/settings.php
+msgid "The Google Maps API Key is not required but highly recommended, get more info at <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Google Documentation</a>."
+msgstr "የGoogle Maps API ቁልፍ የግድ አያስፈልግም ነገር ግን በጥብቅ ይመከራል፣ ተጨማሪ መረጃ በ<a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Google ሰነድ</a> ላይ ያግኙ።"
+
+#: includes/setup/settings.php
+msgid "Geolocation URL"
+msgstr "የጂኦግራፊያዊ መገኛ URL"
+
+#: includes/setup/settings.php
+msgid "Enter the URL of the IP to Geolocation lookup service.  Every devices IP address will be tested against this location service if not set to determine the devices Geolocation.  The devices IP address will be appended to the end of this URL."
+msgstr "የIP ወደ ጂኦግራፊያዊ መገኛ መፈለጊያ አገልግሎት URL ያስገቡ።  ካልተዘጋጀ የመሣሪያውን ጂኦግራፊያዊ መገኛ ለመወሰን የእያንዳንዱ መሣሪያ IP አድራሻ ከዚህ የመገኛ አገልግሎት ጋር ይሞከራል።  የመሣሪያው IP አድራሻ በዚህ URL መጨረሻ ላይ ይታከላል።"
+
+#: includes/setup/settings.php
+msgid "Initial Latitude"
+msgstr "የመጀመሪያ ኬክሮስ"
+
+#: includes/setup/settings.php
+msgid "Defines the centering of the map"
+msgstr "የካርታውን መሃከል አቀማመጥ ይገልጻል"
+
+#: includes/setup/settings.php
+msgid "Initial Longitude"
+msgstr "የመጀመሪያ ኬንትሮስ"
+
+#: includes/setup/settings.php
+msgid "Initial Elevation"
+msgstr "የመጀመሪያ ከፍታ"
+
+#: includes/setup/settings.php
+msgid "Defines the elevation of the map from 0 - 12"
+msgstr "የካርታውን ከፍታ ከ0 - 12 ይገልጻል"
+
+#: includes/setup/settings.php
+msgid "Display Settings"
+msgstr "የማሳያ ቅንብሮች"
+
+#: includes/setup/settings.php
+msgid "Display Disabled Devices"
+msgstr "የተሰናከሉ መሳሪያዎችን አሳይ"
+
+#: includes/setup/settings.php
+msgid "Allow the display of disabled Devices on the Map"
+msgstr "የተሰናከሉ መሳሪያዎች በካርታው ላይ እንዲታዩ ፍቀድ"
+
+#: includes/setup/settings.php
+msgid "Coverage Overlay"
+msgstr "የሽፋን ተደራቢ"
+
+#: includes/setup/settings.php
+msgid "Draws a transparent circle around an AP with a radius equal to the furthest node in the same subnet"
+msgstr "በተመሳሳይ ሳብኔት ውስጥ ካለው በጣም ሩቅ አንጓ ጋር እኩል የሆነ ራዲየስ ያለው ግልጽ ክብ በAP ዙሪያ ይስላል"
+
+#: includes/setup/settings.php
+msgid "Map Refresh"
+msgstr "የካርታ ማደስ"
+
+#: includes/setup/settings.php
+msgid "Refreshes map after set minutes. Recommend set to poller interval, 0 to disable."
+msgstr "ከተቀመጡት ደቂቃዎች በኋላ ካርታውን ያድሳል። ወደ ፖለር ክፍተት እንዲቀናበር ይመከራል፤ ለማሰናከል 0 ያድርጉ።"
+
+#: includes/setup/settings.php
+msgid "Overlay Settings"
+msgstr "የተደራቢ ቅንብሮች"
+
+#: includes/setup/settings.php
+msgid "Tab Radius (Required)"
+msgstr "የትር ራዲየስ (አስፈላጊ)"
+
+#: includes/setup/settings.php
+msgid "Defines radius to combine points into one. (default: 0.0003)"
+msgstr "ነጥቦችን ወደ አንድ ለማዋሃድ የሚያገለግል ራዲየስ ይገልጻል። (ነባሪ፦ 0.0003)"
+
+#: includes/setup/settings.php
+msgid "Fill Color"
+msgstr "የመሙያ ቀለም"
+
+#: includes/setup/settings.php
+msgid "The overlay circle fill color as FFFFFF"
+msgstr "የተደራቢ ክብ መሙያ ቀለም እንደ FFFFFF"
+
+#: includes/setup/settings.php
+msgid "Ring Color"
+msgstr "የቀለበት ቀለም"
+
+#: includes/setup/settings.php
+msgid "Defines the outer rim color as FFFFFF"
+msgstr "የውጫዊውን ጠርዝ ቀለም እንደ FFFFFF ይገልጻል"
+
+#: includes/setup/settings.php
+msgid "Ring Width"
+msgstr "የቀለበት ስፋት"
+
+#: includes/setup/settings.php
+msgid "Outer Ring width"
+msgstr "የውጫዊ ቀለበት ስፋት"
+
+#: includes/setup/settings.php
+msgid "Fill Opacity"
+msgstr "የመሙያ ግልጽነት"
+
+#: includes/setup/settings.php
+msgid "Defines the fill opacity between 0 and 1"
+msgstr "በ0 እና በ1 መካከል ያለውን የመሙያ ግልጽነት (opacity) ይገልጻል"
+
+#: includes/setup/settings.php
+msgid "Ring Opacity"
+msgstr "የቀለበት ግልጽነት"
+
+#: includes/setup/settings.php
+msgid "Defines the ring opacity between 0 and 1"
+msgstr "በ0 እና በ1 መካከል ያለውን የቀለበት ግልጽነት (opacity) ይገልጻል"
+
+#: includes/setup/settings.php
+msgid "Quality"
+msgstr "ጥራት"
+
+#: includes/setup/settings.php
+msgid "Number of divisions in circle (preferably > 15) greater numbers can slow down browser performance."
+msgstr "በክብ ውስጥ ያሉ ክፍፍሎች ብዛት (ቢቻል > 15) ትላልቅ ቁጥሮች የአሳሽ አፈጻጸምን ሊያዘገዩ ይችላሉ።"
+
+#: setup.php
+msgid "Configure Maps"
+msgstr "ካርታዎችን አዋቅር"
+
+#: setup.php
+msgid "View Maps"
+msgstr "ካርታዎችን ተመልከት"
+
+#: setup.php
+msgid "Map Settings"
+msgstr "የካርታ ቅንብሮች"
+
+#: setup.php
+msgid "Overlay Inclusion"
+msgstr "የተደራቢ ማካተት"
+
+#: setup.php
+msgid "Disable to plot host only, not included in coverage overlay."
+msgstr "አስተናጋጅን ብቻ ለመሳል ያሰናክሉ፤ በሽፋን ተደራቢ ውስጥ አይካተትም።"
+
+#: setup.php
+msgid "Latitude"
+msgstr "ኬክሮስ"
+
+#: setup.php
+msgid "The devices latitude coordinates"
+msgstr "የመሳሪያዎች የኬክሮስ (latitude) መጋጠሚያዎች"
+
+#: setup.php
+msgid "Longitude"
+msgstr "ኬንትሮስ"
+
+#: setup.php
+msgid "The devices longitude coordinates"
+msgstr "የመሳሪያዎች የኬንትሮስ (longitude) መጋጠሚያዎች"
+
+#: setup.php
+msgid "Starting Degree"
+msgstr "መነሻ ዲግሪ"
+
+#: setup.php
+msgid "Starting degree for directional area between 0-360"
+msgstr "ከ0-360 መካከል ላለው የአቅጣጫ አካባቢ መነሻ ዲግሪ"
+
+#: setup.php
+msgid "Stopping Degree"
+msgstr "መቆሚያ ዲግሪ"
+
+#: setup.php
+msgid "Stopping degree for directional area, must be greater than the Starting Degree"
+msgstr "ለአቅጣጫ አካባቢ መቆሚያ ዲግሪ፣ ከመነሻ ዲግሪ መብለጥ አለበት"
+
+#: setup.php
+msgid "Specify Radius"
+msgstr "ራዲየስ ይግለጹ"
+
+#: setup.php
+msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
+msgstr "ለመዳረሻ ነጥብ (Access Point) ራዲየሱን በእጅ ይግለጹ። በቡድን በተከፋፈሉ መሳሪያዎች ላይ በመመስረት ራዲየሱን ለመወሰን ወደ 0 ያቀናብሩ"
+
+#: setup.php
+msgid "Group ID"
+msgstr "የቡድን መለያ"
+
+#: setup.php
+msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
+msgstr "ቡድኖች በሽፋን ተደራቢው ውስጥ የትኞቹ መሳሪያዎች እንደሚካተቱ ይገልጻሉ። ከAP መሣሪያ ቡድን ቁጥር ጋር ይመሳከራል። ለማሰናከል 0"
+

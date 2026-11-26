@@ -1,0 +1,320 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The Cacti Group
+# This file is distributed under the same license as the Cacti package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Cacti\n"
+"Report-Msgid-Bugs-To: developers@cacti.net\n"
+"POT-Creation-Date: 2026-09-28 16:05-0400\n"
+"PO-Revision-Date: 2026-11-24 19:00+0000\n"
+"Last-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\n"
+"Language-Team: Hausa\n"
+"Language: ha-NG\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: gpsmap.php
+msgid "Please make sure to properly configure Maps first under Settings > Maps"
+msgstr "Da fatan za a tabbatar an saita Taswirori yadda ya kamata da farko a ƙarƙashin Saituna > Taswirori"
+
+#: gpstemplates.php
+msgid "Delete"
+msgstr "Share"
+
+#: gpstemplates.php includes/setup/settings.php
+msgid "Map Templates"
+msgstr "Samfuran Taswira"
+
+#: gpstemplates.php
+msgid "Host Template"
+msgstr "Samfurin Mai Masauki"
+
+#: gpstemplates.php
+msgid "Up Image"
+msgstr "Hoton Yanayin Aiki (Up)"
+
+#: gpstemplates.php
+msgid "Recovering Image"
+msgstr "Hoton farfaɗowa"
+
+#: gpstemplates.php
+msgid "Down Image"
+msgstr "Hoton Daina Aiki"
+
+#: gpstemplates.php
+msgid "Is AP"
+msgstr "Shin AP ne"
+
+#: gpstemplates.php
+msgid "True"
+msgstr "Gaskiya"
+
+#: gpstemplates.php
+msgid "False"
+msgstr "Ƙarya"
+
+#: gpstemplates.php
+msgid "Device Template"
+msgstr "Samfurin Na'ura"
+
+#: gpstemplates.php
+msgid "Choose the Device Template to base this Map Template type."
+msgstr "Zaɓi Samfurin Na'ura don gina wannan nau'in Samfurin Taswira a kai."
+
+#: gpstemplates.php
+msgid "Select the Image to Show for an Up Device"
+msgstr "Zaɓi Hoton da za a Nuna don Na'urar da ke Aiki"
+
+#: gpstemplates.php
+msgid "Select the Image to Show for a Recovering Device"
+msgstr "Zaɓi Hoton da za a Nuna don Na'urar da ke Farfaɗowa"
+
+#: gpstemplates.php
+msgid "Select the Image to Show for a Down Device"
+msgstr "Zaɓi Hoton da za a Nuna don Na'urar da ta Sauka"
+
+#: gpstemplates.php
+msgid "Access Point"
+msgstr "Wurin Shiga"
+
+#: gpstemplates.php
+msgid "Does this Device Template Represent an Access Point."
+msgstr "Shin wannan Samfurin Na'ura yana wakiltar Access Point ne."
+
+#: gpstemplates.php
+msgid "No"
+msgstr "A'a"
+
+#: gpstemplates.php
+msgid "Yes"
+msgstr "Eh"
+
+#: gpstemplates.php
+msgid "Map Template Edit"
+msgstr "Gyara Samfurin Taswira"
+
+#: includes/polling/processregion.php
+#, php-format
+msgid "IP %s"
+msgstr "IP %s"
+
+#: includes/polling/processregion.php
+msgid "Start Over"
+msgstr "Sake Farawa"
+
+#: includes/polling/processregion.php
+msgid "Print"
+msgstr "Buga"
+
+#: includes/setup/settings.php includes/setup/tabs.php
+msgid "Maps"
+msgstr "Taswirori"
+
+#: includes/setup/settings.php
+msgid "Create New Template"
+msgstr "Ƙirƙiri Sabon Samfuri"
+
+#: includes/setup/settings.php
+msgid "Map"
+msgstr "Taswira"
+
+#: includes/setup/settings.php
+msgid "Templates"
+msgstr "Samfura"
+
+#: includes/setup/settings.php
+msgid "Google API Key"
+msgstr "Maɓallin API na Google"
+
+#: includes/setup/settings.php
+msgid "The Google Maps API Key is not required but highly recommended, get more info at <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Google Documentation</a>."
+msgstr "Ba dole ba ne a samu Mabuɗin API na Google Maps amma ana ba da shawarar sosai, sami ƙarin bayani a <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Takardun Google</a>."
+
+#: includes/setup/settings.php
+msgid "Geolocation URL"
+msgstr "URL na Wurin Geo"
+
+#: includes/setup/settings.php
+msgid "Enter the URL of the IP to Geolocation lookup service.  Every devices IP address will be tested against this location service if not set to determine the devices Geolocation.  The devices IP address will be appended to the end of this URL."
+msgstr "Shigar da URL na sabis ɗin binciken IP zuwa Wurin Duniya (Geolocation). Za a gwada kowane adireshin IP na na'ura da wannan sabis ɗin wuri idan ba a saita ba don tantance wurin da na'urar take. Za a ƙara adireshin IP na na'urar a ƙarshen wannan URL."
+
+#: includes/setup/settings.php
+msgid "Initial Latitude"
+msgstr "Latitude na Farko"
+
+#: includes/setup/settings.php
+msgid "Defines the centering of the map"
+msgstr "Yana bayyana saita taswira a tsakiya"
+
+#: includes/setup/settings.php
+msgid "Initial Longitude"
+msgstr "Longitude na Farko"
+
+#: includes/setup/settings.php
+msgid "Initial Elevation"
+msgstr "Tsayi na Farko"
+
+#: includes/setup/settings.php
+msgid "Defines the elevation of the map from 0 - 12"
+msgstr "Yana bayyana tsayin taswira daga 0 - 12"
+
+#: includes/setup/settings.php
+msgid "Display Settings"
+msgstr "Saitunan Nuni"
+
+#: includes/setup/settings.php
+msgid "Display Disabled Devices"
+msgstr "Nuna Na'urorin da Aka Kashe"
+
+#: includes/setup/settings.php
+msgid "Allow the display of disabled Devices on the Map"
+msgstr "Ba da izin nuna Na'urori da aka kashe a kan Taswira"
+
+#: includes/setup/settings.php
+msgid "Coverage Overlay"
+msgstr "Rufin Yankin Aiki"
+
+#: includes/setup/settings.php
+msgid "Draws a transparent circle around an AP with a radius equal to the furthest node in the same subnet"
+msgstr "Yana zana da'ira mai bayyana a kewaye da AP tare da radiyon da ya yi daidai da mafi nisan na'ura a cikin wannan subnet ɗin"
+
+#: includes/setup/settings.php
+msgid "Map Refresh"
+msgstr "Sabunta Taswira"
+
+#: includes/setup/settings.php
+msgid "Refreshes map after set minutes. Recommend set to poller interval, 0 to disable."
+msgstr "Yana sabunta taswira bayan mintunan da aka saita. Ana ba da shawarar saita shi zuwa tazarar mai tattara bayanai, 0 don kashewa."
+
+#: includes/setup/settings.php
+msgid "Overlay Settings"
+msgstr "Saitunan Rufi"
+
+#: includes/setup/settings.php
+msgid "Tab Radius (Required)"
+msgstr "Lanƙwasar Tab (Ana buƙata)"
+
+#: includes/setup/settings.php
+msgid "Defines radius to combine points into one. (default: 0.0003)"
+msgstr "Yana bayyana radiyus don haɗa maki su zama ɗaya. (na asali: 0.0003)"
+
+#: includes/setup/settings.php
+msgid "Fill Color"
+msgstr "Launin Cika"
+
+#: includes/setup/settings.php
+msgid "The overlay circle fill color as FFFFFF"
+msgstr "Launin cikon da'irar rufi kamar FFFFFF"
+
+#: includes/setup/settings.php
+msgid "Ring Color"
+msgstr "Launin Zobe"
+
+#: includes/setup/settings.php
+msgid "Defines the outer rim color as FFFFFF"
+msgstr "Yana bayyana launin gefen waje a matsayin FFFFFF"
+
+#: includes/setup/settings.php
+msgid "Ring Width"
+msgstr "Faɗin Zobe"
+
+#: includes/setup/settings.php
+msgid "Outer Ring width"
+msgstr "Faɗin Zoben Waje"
+
+#: includes/setup/settings.php
+msgid "Fill Opacity"
+msgstr "Duhuwar Cika"
+
+#: includes/setup/settings.php
+msgid "Defines the fill opacity between 0 and 1"
+msgstr "Yana bayyana duhun cikar launi tsakanin 0 da 1"
+
+#: includes/setup/settings.php
+msgid "Ring Opacity"
+msgstr "Duhuwar Zobe"
+
+#: includes/setup/settings.php
+msgid "Defines the ring opacity between 0 and 1"
+msgstr "Yana bayyana duhun zoben launi tsakanin 0 da 1"
+
+#: includes/setup/settings.php
+msgid "Quality"
+msgstr "Inganci"
+
+#: includes/setup/settings.php
+msgid "Number of divisions in circle (preferably > 15) greater numbers can slow down browser performance."
+msgstr "Adadin rabe-rabe a cikin da'ira (wanda ya fi dacewa > 15) ƙarin adadi mai yawa zai iya rage saurin aikin burauza."
+
+#: setup.php
+msgid "Configure Maps"
+msgstr "Saita Taswirori"
+
+#: setup.php
+msgid "View Maps"
+msgstr "Duba Taswirori"
+
+#: setup.php
+msgid "Map Settings"
+msgstr "Saitunan Taswira"
+
+#: setup.php
+msgid "Overlay Inclusion"
+msgstr "Haɗa Rufi (Overlay)"
+
+#: setup.php
+msgid "Disable to plot host only, not included in coverage overlay."
+msgstr "Kashe don nuna Mai Masauki kaɗai, ba za a haɗa shi a shimfiɗar rufe yanki ba."
+
+#: setup.php
+msgid "Latitude"
+msgstr "Latitude"
+
+#: setup.php
+msgid "The devices latitude coordinates"
+msgstr "Alƙaluman latitude na na'urori"
+
+#: setup.php
+msgid "Longitude"
+msgstr "Longitude"
+
+#: setup.php
+msgid "The devices longitude coordinates"
+msgstr "Alƙaluman longitude na na'urori"
+
+#: setup.php
+msgid "Starting Degree"
+msgstr "Digirin Farawa"
+
+#: setup.php
+msgid "Starting degree for directional area between 0-360"
+msgstr "Digirin farawa don yankin alkibla tsakanin 0-360"
+
+#: setup.php
+msgid "Stopping Degree"
+msgstr "Digirin Tsayawa"
+
+#: setup.php
+msgid "Stopping degree for directional area, must be greater than the Starting Degree"
+msgstr "Digirin tsayawa don yankin alkibla, dole ne ya fi Digirin Farawa girma"
+
+#: setup.php
+msgid "Specify Radius"
+msgstr "Ƙayyade Radius"
+
+#: setup.php
+msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
+msgstr "Ƙayyade faɗin kewayon Access Point da hannu. Sanya 0 don tantance kewaye bisa na'urorin da aka haɗa a rukuni"
+
+#: setup.php
+msgid "Group ID"
+msgstr "Lambar Ƙungiya"
+
+#: setup.php
+msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
+msgstr "Ƙungiyoyi suna bayyana na'urorin da aka haɗa a cikin rufin rarraba sigina. Za a duba da lambar ƙungiyar na'urar AP. 0 don kashewa"
+

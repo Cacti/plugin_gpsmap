@@ -1,0 +1,320 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The Cacti Group
+# This file is distributed under the same license as the Cacti package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Cacti\n"
+"Report-Msgid-Bugs-To: developers@cacti.net\n"
+"POT-Creation-Date: 2026-09-28 16:05-0400\n"
+"PO-Revision-Date: 2026-11-24 19:00+0000\n"
+"Last-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\n"
+"Language-Team: Kinyarwanda\n"
+"Language: rw-RW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: gpsmap.php
+msgid "Please make sure to properly configure Maps first under Settings > Maps"
+msgstr "Nyamuneka genzura ko wateguye neza Amakarita mbere munsi ya Amagenamiterere > Amakarita"
+
+#: gpstemplates.php
+msgid "Delete"
+msgstr "Siba"
+
+#: gpstemplates.php includes/setup/settings.php
+msgid "Map Templates"
+msgstr "Inyandikorugero z'Amakarita"
+
+#: gpstemplates.php
+msgid "Host Template"
+msgstr "Inyandikorugero ya Mwakirizi"
+
+#: gpstemplates.php
+msgid "Up Image"
+msgstr "Ishusho y'Ukora"
+
+#: gpstemplates.php
+msgid "Recovering Image"
+msgstr "Ishusho yo kugarura"
+
+#: gpstemplates.php
+msgid "Down Image"
+msgstr "Ishusho y'ihagarara"
+
+#: gpstemplates.php
+msgid "Is AP"
+msgstr "Ni AP"
+
+#: gpstemplates.php
+msgid "True"
+msgstr "Ukuri"
+
+#: gpstemplates.php
+msgid "False"
+msgstr "Sibyo"
+
+#: gpstemplates.php
+msgid "Device Template"
+msgstr "Inyandikorugero y'igikoresho"
+
+#: gpstemplates.php
+msgid "Choose the Device Template to base this Map Template type."
+msgstr "Hitamo Inyandikorugero y'Igikoresho yo gushingiraho ubu bwoko bw'Inyandikorugero y'Ikarita."
+
+#: gpstemplates.php
+msgid "Select the Image to Show for an Up Device"
+msgstr "Hitamo Ishusho yo Kwerekana ku Gikoresho Gikora"
+
+#: gpstemplates.php
+msgid "Select the Image to Show for a Recovering Device"
+msgstr "Hitamo Ishusho yo Kwerekana ku Gikoresho Kirimo Kugaruka"
+
+#: gpstemplates.php
+msgid "Select the Image to Show for a Down Device"
+msgstr "Hitamo Ishusho yo Kwerekana ku Gikoresho Cyahagaze"
+
+#: gpstemplates.php
+msgid "Access Point"
+msgstr "Ingingo yo kwinjiriraho"
+
+#: gpstemplates.php
+msgid "Does this Device Template Represent an Access Point."
+msgstr "Ese iyi Nyandikorugero y'Igikoresho ihagarariye Access Point."
+
+#: gpstemplates.php
+msgid "No"
+msgstr "Oya"
+
+#: gpstemplates.php
+msgid "Yes"
+msgstr "Yego"
+
+#: gpstemplates.php
+msgid "Map Template Edit"
+msgstr "Hindura Inyandikorugero y'Ikarita"
+
+#: includes/polling/processregion.php
+#, php-format
+msgid "IP %s"
+msgstr "IP %s"
+
+#: includes/polling/processregion.php
+msgid "Start Over"
+msgstr "Tangira bushya"
+
+#: includes/polling/processregion.php
+msgid "Print"
+msgstr "Capisha"
+
+#: includes/setup/settings.php includes/setup/tabs.php
+msgid "Maps"
+msgstr "Amakarita"
+
+#: includes/setup/settings.php
+msgid "Create New Template"
+msgstr "Kora Inyandikorugero Nshya"
+
+#: includes/setup/settings.php
+msgid "Map"
+msgstr "Ikarita"
+
+#: includes/setup/settings.php
+msgid "Templates"
+msgstr "Inyandikorugero"
+
+#: includes/setup/settings.php
+msgid "Google API Key"
+msgstr "Urufunguzo rwa Google API"
+
+#: includes/setup/settings.php
+msgid "The Google Maps API Key is not required but highly recommended, get more info at <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Google Documentation</a>."
+msgstr "Urufunguzo rwa API rwa Google Maps ntirukenewe byanze bikunze ariko rurasabwa cyane, bona amakuru arambuye kuri <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Inyandiko za Google</a>."
+
+#: includes/setup/settings.php
+msgid "Geolocation URL"
+msgstr "URL y'aho biherereye"
+
+#: includes/setup/settings.php
+msgid "Enter the URL of the IP to Geolocation lookup service.  Every devices IP address will be tested against this location service if not set to determine the devices Geolocation.  The devices IP address will be appended to the end of this URL."
+msgstr "Andika URL ya serivisi yo gushakisha aho IP iherereye ku ikarita. Buri aderesi ya IP y'ibikoresho izasuzumwa kuri iyi serivisi y'aho biherereye niba idashyizweho kugira ngo hamenyekane aho ibikoresho biherereye. Aderesi ya IP y'igikoresho izongerwa ku mpera z'iyi URL."
+
+#: includes/setup/settings.php
+msgid "Initial Latitude"
+msgstr "Latitide y'Ibanze"
+
+#: includes/setup/settings.php
+msgid "Defines the centering of the map"
+msgstr "Bigena gushyira ikarita hagati"
+
+#: includes/setup/settings.php
+msgid "Initial Longitude"
+msgstr "Longitide y'Ibanze"
+
+#: includes/setup/settings.php
+msgid "Initial Elevation"
+msgstr "Ubutumburuke bw'Ibanze"
+
+#: includes/setup/settings.php
+msgid "Defines the elevation of the map from 0 - 12"
+msgstr "Bigena ubutumburuke bw'ikarita kuva kuri 0 - 12"
+
+#: includes/setup/settings.php
+msgid "Display Settings"
+msgstr "Amagenamiterere y'igaragara"
+
+#: includes/setup/settings.php
+msgid "Display Disabled Devices"
+msgstr "Erekana Ibikoresho Byahagaritswe"
+
+#: includes/setup/settings.php
+msgid "Allow the display of disabled Devices on the Map"
+msgstr "Emera kugaragaza Ibikoresho byahagaritswe ku Ikarita"
+
+#: includes/setup/settings.php
+msgid "Coverage Overlay"
+msgstr "Igaragaza ry'Ahagerwa"
+
+#: includes/setup/settings.php
+msgid "Draws a transparent circle around an AP with a radius equal to the furthest node in the same subnet"
+msgstr "Ishushanya uruziga rubonerana ruzengurutse AP rufite intera yo hagati ingana n'iy'igice cya kure muri subnet imwe"
+
+#: includes/setup/settings.php
+msgid "Map Refresh"
+msgstr "Kuvugurura Ikarita"
+
+#: includes/setup/settings.php
+msgid "Refreshes map after set minutes. Recommend set to poller interval, 0 to disable."
+msgstr "Bivugurura ikarita nyuma y'iminota yagenwe. Birasabwa kugena ku gihe cy'ikusanyamakuru, 0 kugira ngo uhagarike."
+
+#: includes/setup/settings.php
+msgid "Overlay Settings"
+msgstr "Amagenamiterere y'igice kigerekeranye"
+
+#: includes/setup/settings.php
+msgid "Tab Radius (Required)"
+msgstr "Ubuzenguruke bwa Tab (Birakenewe)"
+
+#: includes/setup/settings.php
+msgid "Defines radius to combine points into one. (default: 0.0003)"
+msgstr "Bigena umuzenguruko wo guhuza utudomo tukaba kamwe. (mburabuzi: 0.0003)"
+
+#: includes/setup/settings.php
+msgid "Fill Color"
+msgstr "Ibara ryuzuza"
+
+#: includes/setup/settings.php
+msgid "The overlay circle fill color as FFFFFF"
+msgstr "Ibara ryuzuza uruziga ruri hejuru nka FFFFFF"
+
+#: includes/setup/settings.php
+msgid "Ring Color"
+msgstr "Ibara ry'uruziga"
+
+#: includes/setup/settings.php
+msgid "Defines the outer rim color as FFFFFF"
+msgstr "Bigena ibara ry'uruziga rw'inyuma nka FFFFFF"
+
+#: includes/setup/settings.php
+msgid "Ring Width"
+msgstr "Ubugari bw'uruziga"
+
+#: includes/setup/settings.php
+msgid "Outer Ring width"
+msgstr "Ubugari bw'uruziga rw'inyuma"
+
+#: includes/setup/settings.php
+msgid "Fill Opacity"
+msgstr "Kubonerana kw'ibara ryuzuza"
+
+#: includes/setup/settings.php
+msgid "Defines the fill opacity between 0 and 1"
+msgstr "Bigena ubwijime bw'imbere hagati ya 0 na 1"
+
+#: includes/setup/settings.php
+msgid "Ring Opacity"
+msgstr "Ukwibonerana kw'uruziga"
+
+#: includes/setup/settings.php
+msgid "Defines the ring opacity between 0 and 1"
+msgstr "Bigena ubwijime bw'uruziga hagati ya 0 na 1"
+
+#: includes/setup/settings.php
+msgid "Quality"
+msgstr "Ubwiza"
+
+#: includes/setup/settings.php
+msgid "Number of divisions in circle (preferably > 15) greater numbers can slow down browser performance."
+msgstr "Umubare w'ibice mu ruziga (byaba byiza > 15) imibare minini ishobora kugabanya umuvuduko wa mushakisha."
+
+#: setup.php
+msgid "Configure Maps"
+msgstr "Gena Amakarita"
+
+#: setup.php
+msgid "View Maps"
+msgstr "Reba amakarita"
+
+#: setup.php
+msgid "Map Settings"
+msgstr "Amagenamiterere y'Ikarita"
+
+#: setup.php
+msgid "Overlay Inclusion"
+msgstr "Kwinjiza igice kigerekeranye"
+
+#: setup.php
+msgid "Disable to plot host only, not included in coverage overlay."
+msgstr "Hagarika kugira ngo ushushanye mwakirizi wenyine, adashyizwe mu gice cyerekana aho bigera."
+
+#: setup.php
+msgid "Latitude"
+msgstr "Latitide"
+
+#: setup.php
+msgid "The devices latitude coordinates"
+msgstr "Imibare ndangahantu ya latitude y'igikoresho"
+
+#: setup.php
+msgid "Longitude"
+msgstr "Lonjitide"
+
+#: setup.php
+msgid "The devices longitude coordinates"
+msgstr "Imibare ndangahantu ya longitude y'igikoresho"
+
+#: setup.php
+msgid "Starting Degree"
+msgstr "Dogere itangirirwaho"
+
+#: setup.php
+msgid "Starting degree for directional area between 0-360"
+msgstr "Dogere itangirirwaho y'akarere k'icyerekezo hagati ya 0-360"
+
+#: setup.php
+msgid "Stopping Degree"
+msgstr "Dogere isorezwaho"
+
+#: setup.php
+msgid "Stopping degree for directional area, must be greater than the Starting Degree"
+msgstr "Dogere isorezwaho y'akarere k'icyerekezo, igomba kuba iruta Dogere itangirirwaho"
+
+#: setup.php
+msgid "Specify Radius"
+msgstr "Garagaza Intera y'umuzingo"
+
+#: setup.php
+msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
+msgstr "Sobanura n'intoki umurambararo wa Access Point. Shyira kuri 0 kugira ngo umurambararo ugenwe hakurikijwe ibikoresho byashyizwe hamwe"
+
+#: setup.php
+msgid "Group ID"
+msgstr "Indangatsinda"
+
+#: setup.php
+msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
+msgstr "Amatsinda asobanura ibikoresho bigaragara ku ikarita y'ubwishingizi bw'ihuzanzira. Bizagenzurwa hakurikijwe nimero y'itsinda ry'igikoresho cya AP. Shyiramo 0 kugira ngo uhagarike"
+

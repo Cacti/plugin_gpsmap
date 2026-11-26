@@ -1,0 +1,320 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The Cacti Group
+# This file is distributed under the same license as the Cacti package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Cacti\n"
+"Report-Msgid-Bugs-To: developers@cacti.net\n"
+"POT-Creation-Date: 2026-09-28 16:05-0400\n"
+"PO-Revision-Date: 2026-11-24 19:00+0000\n"
+"Last-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\n"
+"Language-Team: Somali\n"
+"Language: so-SO\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: gpsmap.php
+msgid "Please make sure to properly configure Maps first under Settings > Maps"
+msgstr "Fadlan hubi inaad marka hore si sax ah u habayso Khariidadaha hoos yimaada Dejinta > Khariidadaha"
+
+#: gpstemplates.php
+msgid "Delete"
+msgstr "Tirtir"
+
+#: gpstemplates.php includes/setup/settings.php
+msgid "Map Templates"
+msgstr "Qaab-dhismeedyada Khariidadda"
+
+#: gpstemplates.php
+msgid "Host Template"
+msgstr "Qaab-dhismeedka Martigeliyaha"
+
+#: gpstemplates.php
+msgid "Up Image"
+msgstr "Sawirka Shaqeeya"
+
+#: gpstemplates.php
+msgid "Recovering Image"
+msgstr "Sawirka Soo-kabashada"
+
+#: gpstemplates.php
+msgid "Down Image"
+msgstr "Sawirka Maqan"
+
+#: gpstemplates.php
+msgid "Is AP"
+msgstr "Ma yahay AP"
+
+#: gpstemplates.php
+msgid "True"
+msgstr "Run"
+
+#: gpstemplates.php
+msgid "False"
+msgstr "Been"
+
+#: gpstemplates.php
+msgid "Device Template"
+msgstr "Qaabka Aaladda"
+
+#: gpstemplates.php
+msgid "Choose the Device Template to base this Map Template type."
+msgstr "Dooro Qaab-dhismeedka Qalabka si loogu saleeyo noocan Qaab-dhismeedka Khariidadda."
+
+#: gpstemplates.php
+msgid "Select the Image to Show for an Up Device"
+msgstr "Dooro Sawirka la Muujinayo ee Qalab Shaqaynaya"
+
+#: gpstemplates.php
+msgid "Select the Image to Show for a Recovering Device"
+msgstr "Dooro Sawirka la Muujinayo ee Qalab Soo Kabanaya"
+
+#: gpstemplates.php
+msgid "Select the Image to Show for a Down Device"
+msgstr "Dooro Sawirka la Muujinayo ee Qalab aan Shaqaynayn"
+
+#: gpstemplates.php
+msgid "Access Point"
+msgstr "Barta Helitaanka"
+
+#: gpstemplates.php
+msgid "Does this Device Template Represent an Access Point."
+msgstr "Qaab-dhismeedkan Qalabku ma wuxuu matalaa Access Point."
+
+#: gpstemplates.php
+msgid "No"
+msgstr "Maya"
+
+#: gpstemplates.php
+msgid "Yes"
+msgstr "Haa"
+
+#: gpstemplates.php
+msgid "Map Template Edit"
+msgstr "Wax ka beddelka Qaab-dhismeedka Khariidadda"
+
+#: includes/polling/processregion.php
+#, php-format
+msgid "IP %s"
+msgstr "IP %s"
+
+#: includes/polling/processregion.php
+msgid "Start Over"
+msgstr "Dib u bilow"
+
+#: includes/polling/processregion.php
+msgid "Print"
+msgstr "Daabac"
+
+#: includes/setup/settings.php includes/setup/tabs.php
+msgid "Maps"
+msgstr "Khariidadaha"
+
+#: includes/setup/settings.php
+msgid "Create New Template"
+msgstr "Abuur Qaab-dhismeed Cusub"
+
+#: includes/setup/settings.php
+msgid "Map"
+msgstr "Khariidad"
+
+#: includes/setup/settings.php
+msgid "Templates"
+msgstr "Qaab-dhismeedyada"
+
+#: includes/setup/settings.php
+msgid "Google API Key"
+msgstr "Furaha API-ga Google"
+
+#: includes/setup/settings.php
+msgid "The Google Maps API Key is not required but highly recommended, get more info at <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Google Documentation</a>."
+msgstr "Furaha API ee Google Maps looma baahna laakiin aad baa loo kugula talinayaa, macluumaad dheeraad ah ka hel <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Dukumeentiga Google</a>."
+
+#: includes/setup/settings.php
+msgid "Geolocation URL"
+msgstr "URL-ka Goobta Juqraafiyeed"
+
+#: includes/setup/settings.php
+msgid "Enter the URL of the IP to Geolocation lookup service.  Every devices IP address will be tested against this location service if not set to determine the devices Geolocation.  The devices IP address will be appended to the end of this URL."
+msgstr "Geli URL-ka adeegga raadinta IP ilaa Juqraafiyadda Goobta. Ciwaanka IP ee qalab kasta waxaa lagu tijaabin doonaa adeeggan goobta haddii aan la dejin si loo go'aamiyo Juqraafiyadda Goobta ee aaladaha. Ciwaanka IP ee aaladaha waxaa lagu dari doonaa dhammaadka URL-kan."
+
+#: includes/setup/settings.php
+msgid "Initial Latitude"
+msgstr "Loolka Bilowga ah"
+
+#: includes/setup/settings.php
+msgid "Defines the centering of the map"
+msgstr "Waxay qeexaysaa bartamaha khariidadda"
+
+#: includes/setup/settings.php
+msgid "Initial Longitude"
+msgstr "Dhigta Bilowga ah"
+
+#: includes/setup/settings.php
+msgid "Initial Elevation"
+msgstr "Joogga Bilowga ah"
+
+#: includes/setup/settings.php
+msgid "Defines the elevation of the map from 0 - 12"
+msgstr "Waxay qeexaysaa joogga khariidadda laga bilaabo 0 - 12"
+
+#: includes/setup/settings.php
+msgid "Display Settings"
+msgstr "Dejinta Muuqaalka"
+
+#: includes/setup/settings.php
+msgid "Display Disabled Devices"
+msgstr "Muuji Aaladaha La joojiyay"
+
+#: includes/setup/settings.php
+msgid "Allow the display of disabled Devices on the Map"
+msgstr "Oggolow muujinta Aaladaha la joojiyay ee Khariidadda"
+
+#: includes/setup/settings.php
+msgid "Coverage Overlay"
+msgstr "Dahaarka Daboolista"
+
+#: includes/setup/settings.php
+msgid "Draws a transparent circle around an AP with a radius equal to the furthest node in the same subnet"
+msgstr "Waxay ku sawirtaa goobo hufan agagaarka AP oo leh gacan u dhigma noodhka ugu fog ee ku jira isla subnet-ka"
+
+#: includes/setup/settings.php
+msgid "Map Refresh"
+msgstr "Cusboonaysiinta Khariidadda"
+
+#: includes/setup/settings.php
+msgid "Refreshes map after set minutes. Recommend set to poller interval, 0 to disable."
+msgstr "Wuxuu cusbooneysiiyaa khariidadda ka dib daqiiqadaha la dejiyay. Waxaa lagu talinayaa in lagu dejiyo muddada u dhaxaysa xog-uruuriyaha, 0 si loo joojiyo."
+
+#: includes/setup/settings.php
+msgid "Overlay Settings"
+msgstr "Dejinta Dahaarka"
+
+#: includes/setup/settings.php
+msgid "Tab Radius (Required)"
+msgstr "Raadiyaska Tab-ka (Loo baahan yahay)"
+
+#: includes/setup/settings.php
+msgid "Defines radius to combine points into one. (default: 0.0003)"
+msgstr "Waxay qeexaysaa gacan-goobo lagu mideeyo dhibcaha si ay hal u noqdaan. (caadiga ah: 0.0003)"
+
+#: includes/setup/settings.php
+msgid "Fill Color"
+msgstr "Midabka Buuxinta"
+
+#: includes/setup/settings.php
+msgid "The overlay circle fill color as FFFFFF"
+msgstr "Midabka buuxinta goobada dulsaarka sida FFFFFF"
+
+#: includes/setup/settings.php
+msgid "Ring Color"
+msgstr "Midabka Giraanta"
+
+#: includes/setup/settings.php
+msgid "Defines the outer rim color as FFFFFF"
+msgstr "Waxay qeexaysaa midabka geeska sare ee dibadda sida FFFFFF"
+
+#: includes/setup/settings.php
+msgid "Ring Width"
+msgstr "Ballaca Giraanta"
+
+#: includes/setup/settings.php
+msgid "Outer Ring width"
+msgstr "Ballaca Giraanta Dibadda"
+
+#: includes/setup/settings.php
+msgid "Fill Opacity"
+msgstr "Mugdiga Buuxinta"
+
+#: includes/setup/settings.php
+msgid "Defines the fill opacity between 0 and 1"
+msgstr "Waxay qeexaysaa mugdiga buuxinta ee u dhexeeya 0 iyo 1"
+
+#: includes/setup/settings.php
+msgid "Ring Opacity"
+msgstr "Hufnaanta Giraanta"
+
+#: includes/setup/settings.php
+msgid "Defines the ring opacity between 0 and 1"
+msgstr "Waxay qeexaysaa mugdiga giraanta ee u dhexeeya 0 iyo 1"
+
+#: includes/setup/settings.php
+msgid "Quality"
+msgstr "Tayada"
+
+#: includes/setup/settings.php
+msgid "Number of divisions in circle (preferably > 15) greater numbers can slow down browser performance."
+msgstr "Tirada qaybaha goobada (waxaa la doorbidayaa > 15) tirooyinka waaweyn waxay hoos u dhigi karaan waxqabadka biraawsarka."
+
+#: setup.php
+msgid "Configure Maps"
+msgstr "Qaabee Khariidadaha"
+
+#: setup.php
+msgid "View Maps"
+msgstr "Eeg Khariidadaha"
+
+#: setup.php
+msgid "Map Settings"
+msgstr "Dejinta Khariidadda"
+
+#: setup.php
+msgid "Overlay Inclusion"
+msgstr "Ku-darka Dahaarka"
+
+#: setup.php
+msgid "Disable to plot host only, not included in coverage overlay."
+msgstr "Jooji si aad u sawirto martigeliyaha oo keliya, laguma daro lakabka daboolista."
+
+#: setup.php
+msgid "Latitude"
+msgstr "Loolka"
+
+#: setup.php
+msgid "The devices latitude coordinates"
+msgstr "Isku-duwaha loolka (latitude) ee qalabka"
+
+#: setup.php
+msgid "Longitude"
+msgstr "Dhigaha"
+
+#: setup.php
+msgid "The devices longitude coordinates"
+msgstr "Isku-duwaha dhigta (longitude) ee qalabka"
+
+#: setup.php
+msgid "Starting Degree"
+msgstr "Darajada Bilowga"
+
+#: setup.php
+msgid "Starting degree for directional area between 0-360"
+msgstr "Darajada bilowga ee aagga jihada ee u dhexeeya 0-360"
+
+#: setup.php
+msgid "Stopping Degree"
+msgstr "Darajada Joojinta"
+
+#: setup.php
+msgid "Stopping degree for directional area, must be greater than the Starting Degree"
+msgstr "Darajada joojinta ee aagga jihada, waa inay ka weynaataa Darajada Bilowga"
+
+#: setup.php
+msgid "Specify Radius"
+msgstr "Qeex Raadiyaska"
+
+#: setup.php
+msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
+msgstr "Gacanta ku cayim gacan-wareegga (radius) Barta Gelitaanka (Access Point). Ku deji 0 si loo go'aamiyo gacan-wareegga iyadoo lagu saleynayo aaladaha kooxaysan"
+
+#: setup.php
+msgid "Group ID"
+msgstr "Aqoonsiga Kooxda"
+
+#: setup.php
+msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
+msgstr "Kooxuhu waxay qeexayaan aaladaha lagu daray dahaarka daboolka. Waxaa lala hubin doonaa lambarka kooxda qalabka AP. 0 si loo joojiyo"
+

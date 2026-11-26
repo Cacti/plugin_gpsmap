@@ -1,0 +1,320 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The Cacti Group
+# This file is distributed under the same license as the Cacti package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Cacti\n"
+"Report-Msgid-Bugs-To: developers@cacti.net\n"
+"POT-Creation-Date: 2026-09-28 16:05-0400\n"
+"PO-Revision-Date: 2026-11-24 19:00+0000\n"
+"Last-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\n"
+"Language-Team: Swahili\n"
+"Language: sw-KE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: gpsmap.php
+msgid "Please make sure to properly configure Maps first under Settings > Maps"
+msgstr "Tafadhali hakikisha umesanidi Ramani ipasavyo kwanza chini ya Mipangilio > Ramani"
+
+#: gpstemplates.php
+msgid "Delete"
+msgstr "Futa"
+
+#: gpstemplates.php includes/setup/settings.php
+msgid "Map Templates"
+msgstr "Violezo vya Ramani"
+
+#: gpstemplates.php
+msgid "Host Template"
+msgstr "Kiolezo cha Kipangishi"
+
+#: gpstemplates.php
+msgid "Up Image"
+msgstr "Picha ya Juu"
+
+#: gpstemplates.php
+msgid "Recovering Image"
+msgstr "Picha ya Urejesho"
+
+#: gpstemplates.php
+msgid "Down Image"
+msgstr "Picha ya Kutopatikana"
+
+#: gpstemplates.php
+msgid "Is AP"
+msgstr "Ni AP"
+
+#: gpstemplates.php
+msgid "True"
+msgstr "Kweli"
+
+#: gpstemplates.php
+msgid "False"
+msgstr "Si kweli"
+
+#: gpstemplates.php
+msgid "Device Template"
+msgstr "Kiolezo cha Kifaa"
+
+#: gpstemplates.php
+msgid "Choose the Device Template to base this Map Template type."
+msgstr "Chagua Kiolezo cha Kifaa ili kuunda msingi wa aina hii ya Kiolezo cha Ramani."
+
+#: gpstemplates.php
+msgid "Select the Image to Show for an Up Device"
+msgstr "Chagua Picha ya Kuonyesha kwa Kifaa Kinachofanya Kazi"
+
+#: gpstemplates.php
+msgid "Select the Image to Show for a Recovering Device"
+msgstr "Chagua Picha ya Kuonyesha kwa Kifaa Kinachorejea"
+
+#: gpstemplates.php
+msgid "Select the Image to Show for a Down Device"
+msgstr "Chagua Picha ya Kuonyesha kwa Kifaa Kilichozima"
+
+#: gpstemplates.php
+msgid "Access Point"
+msgstr "Sehemu ya Kufikia"
+
+#: gpstemplates.php
+msgid "Does this Device Template Represent an Access Point."
+msgstr "Je, Kiolezo hiki cha Kifaa kinawakilisha Access Point."
+
+#: gpstemplates.php
+msgid "No"
+msgstr "Hapana"
+
+#: gpstemplates.php
+msgid "Yes"
+msgstr "Ndiyo"
+
+#: gpstemplates.php
+msgid "Map Template Edit"
+msgstr "Hariri Kiolezo cha Ramani"
+
+#: includes/polling/processregion.php
+#, php-format
+msgid "IP %s"
+msgstr "IP %s"
+
+#: includes/polling/processregion.php
+msgid "Start Over"
+msgstr "Anza Tena"
+
+#: includes/polling/processregion.php
+msgid "Print"
+msgstr "Chapisha"
+
+#: includes/setup/settings.php includes/setup/tabs.php
+msgid "Maps"
+msgstr "Ramani"
+
+#: includes/setup/settings.php
+msgid "Create New Template"
+msgstr "Unda Kiolezo Kipya"
+
+#: includes/setup/settings.php
+msgid "Map"
+msgstr "Ramani"
+
+#: includes/setup/settings.php
+msgid "Templates"
+msgstr "Violezo"
+
+#: includes/setup/settings.php
+msgid "Google API Key"
+msgstr "Ufunguo wa API ya Google"
+
+#: includes/setup/settings.php
+msgid "The Google Maps API Key is not required but highly recommended, get more info at <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Google Documentation</a>."
+msgstr "Ufunguo wa API ya Google Maps hauhitajiki lakini unapendekezwa sana, pata maelezo zaidi katika <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Nyaraka za Google</a>."
+
+#: includes/setup/settings.php
+msgid "Geolocation URL"
+msgstr "URL ya Eneo la Kijiografia"
+
+#: includes/setup/settings.php
+msgid "Enter the URL of the IP to Geolocation lookup service.  Every devices IP address will be tested against this location service if not set to determine the devices Geolocation.  The devices IP address will be appended to the end of this URL."
+msgstr "Ingiza URL ya huduma ya kutafuta Eneo la Kijiografia kutoka kwa IP.  Anwani ya IP ya kila kifaa itajaribiwa dhidi ya huduma hii ya eneo ikiwa haijawekwa ili kubaini Eneo la Kijiografia la kifaa.  Anwani ya IP ya kifaa itaongezwa mwishoni mwa URL hii."
+
+#: includes/setup/settings.php
+msgid "Initial Latitude"
+msgstr "Latitudo ya Awali"
+
+#: includes/setup/settings.php
+msgid "Defines the centering of the map"
+msgstr "Hubainisha uwekaji wa katikati wa ramani"
+
+#: includes/setup/settings.php
+msgid "Initial Longitude"
+msgstr "Longitudo ya Awali"
+
+#: includes/setup/settings.php
+msgid "Initial Elevation"
+msgstr "Mwinuko wa Awali"
+
+#: includes/setup/settings.php
+msgid "Defines the elevation of the map from 0 - 12"
+msgstr "Hubainisha mwinuko wa ramani kuanzia 0 - 12"
+
+#: includes/setup/settings.php
+msgid "Display Settings"
+msgstr "Mipangilio ya Kuonyesha"
+
+#: includes/setup/settings.php
+msgid "Display Disabled Devices"
+msgstr "Onyesha Vifaa Vilivyozimwa"
+
+#: includes/setup/settings.php
+msgid "Allow the display of disabled Devices on the Map"
+msgstr "Ruhusu kuonyeshwa kwa Vifaa vilivyozimwa kwenye Ramani"
+
+#: includes/setup/settings.php
+msgid "Coverage Overlay"
+msgstr "Tabaka la Ufunikaji"
+
+#: includes/setup/settings.php
+msgid "Draws a transparent circle around an AP with a radius equal to the furthest node in the same subnet"
+msgstr "Huchora duara angavu kuzunguka AP lenye nusukipenyo sawa na nodi iliyo mbali zaidi katika subnet moja"
+
+#: includes/setup/settings.php
+msgid "Map Refresh"
+msgstr "Onyesha Upya Ramani"
+
+#: includes/setup/settings.php
+msgid "Refreshes map after set minutes. Recommend set to poller interval, 0 to disable."
+msgstr "Huonyesha upya ramani baada ya dakika zilizowekwa. Inapendekezwa kuweka kwa muda wa kikusanyaji, 0 ili kuzima."
+
+#: includes/setup/settings.php
+msgid "Overlay Settings"
+msgstr "Mipangilio ya Safu ya Juu"
+
+#: includes/setup/settings.php
+msgid "Tab Radius (Required)"
+msgstr "Nusu Kipenyo cha Kichupo (Inahitajika)"
+
+#: includes/setup/settings.php
+msgid "Defines radius to combine points into one. (default: 0.0003)"
+msgstr "Hubainisha nusu-kipenyo cha kuunganisha nukta kuwa moja. (chaguo-msingi: 0.0003)"
+
+#: includes/setup/settings.php
+msgid "Fill Color"
+msgstr "Rangi ya Kujaza"
+
+#: includes/setup/settings.php
+msgid "The overlay circle fill color as FFFFFF"
+msgstr "Rangi ya kujaza duara la kufunika kama FFFFFF"
+
+#: includes/setup/settings.php
+msgid "Ring Color"
+msgstr "Rangi ya Pete"
+
+#: includes/setup/settings.php
+msgid "Defines the outer rim color as FFFFFF"
+msgstr "Hubainisha rangi ya ukingo wa nje kama FFFFFF"
+
+#: includes/setup/settings.php
+msgid "Ring Width"
+msgstr "Upana wa Pete"
+
+#: includes/setup/settings.php
+msgid "Outer Ring width"
+msgstr "Upana wa Pete ya Nje"
+
+#: includes/setup/settings.php
+msgid "Fill Opacity"
+msgstr "Uwazi wa Kujaza"
+
+#: includes/setup/settings.php
+msgid "Defines the fill opacity between 0 and 1"
+msgstr "Hubainisha kiwango cha kutopenya mwanga cha kujaza kati ya 0 na 1"
+
+#: includes/setup/settings.php
+msgid "Ring Opacity"
+msgstr "Uwazi wa Pete"
+
+#: includes/setup/settings.php
+msgid "Defines the ring opacity between 0 and 1"
+msgstr "Hubainisha kiwango cha kutopenya mwanga cha duara kati ya 0 na 1"
+
+#: includes/setup/settings.php
+msgid "Quality"
+msgstr "Ubora"
+
+#: includes/setup/settings.php
+msgid "Number of divisions in circle (preferably > 15) greater numbers can slow down browser performance."
+msgstr "Idadi ya migawanyo katika duara (ikiwezekana > 15) nambari kubwa zaidi zinaweza kupunguza kasi ya utendakazi wa kivinjari."
+
+#: setup.php
+msgid "Configure Maps"
+msgstr "Sanidi Ramani"
+
+#: setup.php
+msgid "View Maps"
+msgstr "Tazama Ramani"
+
+#: setup.php
+msgid "Map Settings"
+msgstr "Mipangilio ya Ramani"
+
+#: setup.php
+msgid "Overlay Inclusion"
+msgstr "Ujumuishaji wa Safu ya Juu"
+
+#: setup.php
+msgid "Disable to plot host only, not included in coverage overlay."
+msgstr "Zima ili kuchora kipangishi pekee, kisijumuishwe kwenye tabaka la ufunikaji."
+
+#: setup.php
+msgid "Latitude"
+msgstr "Latitudo"
+
+#: setup.php
+msgid "The devices latitude coordinates"
+msgstr "Viratibu vya latitudo vya kifaa"
+
+#: setup.php
+msgid "Longitude"
+msgstr "Longitudo"
+
+#: setup.php
+msgid "The devices longitude coordinates"
+msgstr "Viratibu vya longitudo vya kifaa"
+
+#: setup.php
+msgid "Starting Degree"
+msgstr "Digrii ya Kuanzia"
+
+#: setup.php
+msgid "Starting degree for directional area between 0-360"
+msgstr "Digrii ya kuanzia kwa eneo la mwelekeo kati ya 0-360"
+
+#: setup.php
+msgid "Stopping Degree"
+msgstr "Digrii ya Kusimama"
+
+#: setup.php
+msgid "Stopping degree for directional area, must be greater than the Starting Degree"
+msgstr "Digrii ya kusimama kwa eneo la mwelekeo, lazima iwe kubwa kuliko Digrii ya Kuanzia"
+
+#: setup.php
+msgid "Specify Radius"
+msgstr "Bainisha Nusukipenyo"
+
+#: setup.php
+msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
+msgstr "Bainisha nusukipenyo kwa mikono kwa Kituo cha Ufikiaji. Weka 0 ili kubaini nusukipenyo kulingana na vifaa vilivyowekwa katika vikundi"
+
+#: setup.php
+msgid "Group ID"
+msgstr "Kitambulisho cha Kikundi"
+
+#: setup.php
+msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
+msgstr "Vikundi hufafanua ni vifaa vipi vinajumuishwa katika mwonekano wa ufunikaji. Vitakaguliwa dhidi ya nambari ya kikundi cha kifaa cha AP. 0 ili kuzima"
+

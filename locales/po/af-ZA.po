@@ -1,0 +1,320 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The Cacti Group
+# This file is distributed under the same license as the Cacti package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Cacti\n"
+"Report-Msgid-Bugs-To: developers@cacti.net\n"
+"POT-Creation-Date: 2026-09-28 16:05-0400\n"
+"PO-Revision-Date: 2026-11-24 19:00+0000\n"
+"Last-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\n"
+"Language-Team: Afrikaans\n"
+"Language: af-ZA\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: gpsmap.php
+msgid "Please make sure to properly configure Maps first under Settings > Maps"
+msgstr "Maak asseblief seker dat Kaarte eers behoorlik gekonfigureer is onder Instellings > Kaarte"
+
+#: gpstemplates.php
+msgid "Delete"
+msgstr "Skrap"
+
+#: gpstemplates.php includes/setup/settings.php
+msgid "Map Templates"
+msgstr "Kaartsjablone"
+
+#: gpstemplates.php
+msgid "Host Template"
+msgstr "Gasheersjabloon"
+
+#: gpstemplates.php
+msgid "Up Image"
+msgstr "Op-beeld"
+
+#: gpstemplates.php
+msgid "Recovering Image"
+msgstr "Herstelbeeld"
+
+#: gpstemplates.php
+msgid "Down Image"
+msgstr "Af-prent"
+
+#: gpstemplates.php
+msgid "Is AP"
+msgstr "Is AP"
+
+#: gpstemplates.php
+msgid "True"
+msgstr "Waar"
+
+#: gpstemplates.php
+msgid "False"
+msgstr "Onwaar"
+
+#: gpstemplates.php
+msgid "Device Template"
+msgstr "Toestelsjabloon"
+
+#: gpstemplates.php
+msgid "Choose the Device Template to base this Map Template type."
+msgstr "Kies die Toestelsjabloon waarop hierdie Kaartsjabloon-tipe gebaseer moet word."
+
+#: gpstemplates.php
+msgid "Select the Image to Show for an Up Device"
+msgstr "Kies die Beeld om te Wys vir 'n Toestel wat Op is"
+
+#: gpstemplates.php
+msgid "Select the Image to Show for a Recovering Device"
+msgstr "Kies die Beeld om vir 'n Herstellende Toestel te Wys"
+
+#: gpstemplates.php
+msgid "Select the Image to Show for a Down Device"
+msgstr "Kies die Beeld om te Wys vir 'n Toestel wat Af is"
+
+#: gpstemplates.php
+msgid "Access Point"
+msgstr "Toegangspunt"
+
+#: gpstemplates.php
+msgid "Does this Device Template Represent an Access Point."
+msgstr "Verteenwoordig hierdie toestelsjabloon 'n toegangspunt."
+
+#: gpstemplates.php
+msgid "No"
+msgstr "Nee"
+
+#: gpstemplates.php
+msgid "Yes"
+msgstr "Ja"
+
+#: gpstemplates.php
+msgid "Map Template Edit"
+msgstr "Kaartsjabloon wysig"
+
+#: includes/polling/processregion.php
+#, php-format
+msgid "IP %s"
+msgstr "IP %s"
+
+#: includes/polling/processregion.php
+msgid "Start Over"
+msgstr "Begin oor"
+
+#: includes/polling/processregion.php
+msgid "Print"
+msgstr "Druk"
+
+#: includes/setup/settings.php includes/setup/tabs.php
+msgid "Maps"
+msgstr "Kaarte"
+
+#: includes/setup/settings.php
+msgid "Create New Template"
+msgstr "Skep nuwe sjabloon"
+
+#: includes/setup/settings.php
+msgid "Map"
+msgstr "Kaart"
+
+#: includes/setup/settings.php
+msgid "Templates"
+msgstr "Sjablone"
+
+#: includes/setup/settings.php
+msgid "Google API Key"
+msgstr "Google API-sleutel"
+
+#: includes/setup/settings.php
+msgid "The Google Maps API Key is not required but highly recommended, get more info at <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Google Documentation</a>."
+msgstr "Die Google Maps API-sleutel word nie vereis nie, maar word sterk aanbeveel; kry meer inligting by <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Google-dokumentasie</a>."
+
+#: includes/setup/settings.php
+msgid "Geolocation URL"
+msgstr "Geoligging-URL"
+
+#: includes/setup/settings.php
+msgid "Enter the URL of the IP to Geolocation lookup service.  Every devices IP address will be tested against this location service if not set to determine the devices Geolocation.  The devices IP address will be appended to the end of this URL."
+msgstr "Voer die URL van die IP-na-geolokasie-opsoekdiens in. Elke toestel se IP-adres sal teen hierdie liggingsdiens getoets word indien nie gestel nie om die toestel se geolokasie te bepaal. Die toestel se IP-adres sal aan die einde van hierdie URL geheg word."
+
+#: includes/setup/settings.php
+msgid "Initial Latitude"
+msgstr "Aanvanklike Breedtegraad"
+
+#: includes/setup/settings.php
+msgid "Defines the centering of the map"
+msgstr "Definieer die sentrering van die kaart"
+
+#: includes/setup/settings.php
+msgid "Initial Longitude"
+msgstr "Aanvanklike Lengtegraad"
+
+#: includes/setup/settings.php
+msgid "Initial Elevation"
+msgstr "Aanvanklike Hoogte"
+
+#: includes/setup/settings.php
+msgid "Defines the elevation of the map from 0 - 12"
+msgstr "Definieer die hoogte van die kaart van 0 - 12"
+
+#: includes/setup/settings.php
+msgid "Display Settings"
+msgstr "Vertooninstellings"
+
+#: includes/setup/settings.php
+msgid "Display Disabled Devices"
+msgstr "Vertoon gedeaktiveerde toestelle"
+
+#: includes/setup/settings.php
+msgid "Allow the display of disabled Devices on the Map"
+msgstr "Laat die vertoon van gedeaktiveerde Toestelle op die Kaart toe"
+
+#: includes/setup/settings.php
+msgid "Coverage Overlay"
+msgstr "Dekkingsoorleg"
+
+#: includes/setup/settings.php
+msgid "Draws a transparent circle around an AP with a radius equal to the furthest node in the same subnet"
+msgstr "Teken 'n deursigtige sirkel rondom 'n AP met 'n radius gelyk aan die verste nodus in dieselfde subnet"
+
+#: includes/setup/settings.php
+msgid "Map Refresh"
+msgstr "Kaartverfrissing"
+
+#: includes/setup/settings.php
+msgid "Refreshes map after set minutes. Recommend set to poller interval, 0 to disable."
+msgstr "Verfris kaart na gestelde minute. Aanbeveel om op poller-interval te stel, 0 om te deaktiveer."
+
+#: includes/setup/settings.php
+msgid "Overlay Settings"
+msgstr "Oorleg-instellings"
+
+#: includes/setup/settings.php
+msgid "Tab Radius (Required)"
+msgstr "Oortjieradius (Vereis)"
+
+#: includes/setup/settings.php
+msgid "Defines radius to combine points into one. (default: 0.0003)"
+msgstr "Definieer die radius om punte in een te kombineer. (verstek: 0.0003)"
+
+#: includes/setup/settings.php
+msgid "Fill Color"
+msgstr "Vulkleur"
+
+#: includes/setup/settings.php
+msgid "The overlay circle fill color as FFFFFF"
+msgstr "Die oorlegsirkel se vulkleur as FFFFFF"
+
+#: includes/setup/settings.php
+msgid "Ring Color"
+msgstr "Ringkleur"
+
+#: includes/setup/settings.php
+msgid "Defines the outer rim color as FFFFFF"
+msgstr "Definieer die buitenste randkleur as FFFFFF"
+
+#: includes/setup/settings.php
+msgid "Ring Width"
+msgstr "Ringwydte"
+
+#: includes/setup/settings.php
+msgid "Outer Ring width"
+msgstr "Buitenste ringwydte"
+
+#: includes/setup/settings.php
+msgid "Fill Opacity"
+msgstr "Vulondeursigtigheid"
+
+#: includes/setup/settings.php
+msgid "Defines the fill opacity between 0 and 1"
+msgstr "Definieer die vul-ondeursigtigheid tussen 0 en 1"
+
+#: includes/setup/settings.php
+msgid "Ring Opacity"
+msgstr "Ringondeursigtigheid"
+
+#: includes/setup/settings.php
+msgid "Defines the ring opacity between 0 and 1"
+msgstr "Definieer die ring-ondeursigtigheid tussen 0 en 1"
+
+#: includes/setup/settings.php
+msgid "Quality"
+msgstr "Gehalte"
+
+#: includes/setup/settings.php
+msgid "Number of divisions in circle (preferably > 15) greater numbers can slow down browser performance."
+msgstr "Aantal verdelings in sirkel (verkieslik > 15); groter getalle kan blaaierwerkverrigting vertraag."
+
+#: setup.php
+msgid "Configure Maps"
+msgstr "Konfigureer kaarte"
+
+#: setup.php
+msgid "View Maps"
+msgstr "Bekyk kaarte"
+
+#: setup.php
+msgid "Map Settings"
+msgstr "Kaartinstellings"
+
+#: setup.php
+msgid "Overlay Inclusion"
+msgstr "Oorleg-insluiting"
+
+#: setup.php
+msgid "Disable to plot host only, not included in coverage overlay."
+msgstr "Deaktiveer om slegs gasheer te stip, nie ingesluit in dekkingsoorleg nie."
+
+#: setup.php
+msgid "Latitude"
+msgstr "Breedtegraad"
+
+#: setup.php
+msgid "The devices latitude coordinates"
+msgstr "Die Toestel se breedtegraadkoördinate"
+
+#: setup.php
+msgid "Longitude"
+msgstr "Lengtegraad"
+
+#: setup.php
+msgid "The devices longitude coordinates"
+msgstr "Die Toestel se lengtegraadkoördinate"
+
+#: setup.php
+msgid "Starting Degree"
+msgstr "Begingraad"
+
+#: setup.php
+msgid "Starting degree for directional area between 0-360"
+msgstr "Begingraad vir rigtingarea tussen 0-360"
+
+#: setup.php
+msgid "Stopping Degree"
+msgstr "Eindgraad"
+
+#: setup.php
+msgid "Stopping degree for directional area, must be greater than the Starting Degree"
+msgstr "Eindgraad vir rigtingarea, moet groter as die begingraad wees"
+
+#: setup.php
+msgid "Specify Radius"
+msgstr "Spesifiseer radius"
+
+#: setup.php
+msgid "Manually specify radius for Access Point. Set to 0 to determine radius based on grouped devices"
+msgstr "Spesifiseer radius handmatig vir toegangspunt. Stel op 0 om radius op grond van gegroepeerde toestelle te bepaal"
+
+#: setup.php
+msgid "Group ID"
+msgstr "Groep-ID"
+
+#: setup.php
+msgid "Groups define what devices are included in the coverage overlay. Will be checked against AP device group number. 0 to disable"
+msgstr "Groepe definieer watter toestelle in die dekkingsoorleg ingesluit word. Sal teen die AP-toestelgroepnommer nagegaan word. 0 om te deaktiveer"
+
