@@ -4,19 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr ""
-"Project-Id-Version: Cacti\n"
-"Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2026-09-28 16:05-0400\n"
-"PO-Revision-Date: 2024-12-09 15:49+0000\n"
-"Last-Translator: Anton Zhuravlev <baka109g@gmail.com>\n"
-"Language-Team: Russian <http://translate.cacti.net/projects/cacti/gpsmaps/ru/>\n"
-"Language: ru-RU\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.8.1\n"
+msgstr "Project-Id-Version: Cacti\nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2026-09-28 16:05-0400\nPO-Revision-Date: 2026-11-26 00:18+0000\nLast-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\nLanguage-Team: Russian <https://translate.cacti.net/projects/cacti/gpsmaps/ru/>\nLanguage: ru-RU\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\nX-Generator: Weblate 5.11.4\n"
 
 #: gpsmap.php
 msgid "Please make sure to properly configure Maps first under Settings > Maps"
@@ -26,7 +14,7 @@ msgstr "Пожалуйста, сначала убедитесь, что прав
 msgid "Delete"
 msgstr "Удалить"
 
-#: gpstemplates.php
+#: gpstemplates.php includes/setup/settings.php
 msgid "Map Templates"
 msgstr "Шаблоны карт"
 
@@ -97,6 +85,159 @@ msgstr "Да"
 #: gpstemplates.php
 msgid "Map Template Edit"
 msgstr "Редактировать шаблон карты"
+
+#: includes/polling/processregion.php
+#, php-format
+msgid "IP %s"
+msgstr "IP %s"
+
+#: includes/polling/processregion.php
+msgid "Start Over"
+msgstr "Начать заново"
+
+#: includes/polling/processregion.php
+msgid "Print"
+msgstr "Печать"
+
+#: includes/setup/settings.php includes/setup/tabs.php
+msgid "Maps"
+msgstr "Карты"
+
+#: includes/setup/settings.php
+msgid "Create New Template"
+msgstr "Создать новый шаблон"
+
+#: includes/setup/settings.php
+msgid "Map"
+msgstr "Карта"
+
+#: includes/setup/settings.php
+msgid "Templates"
+msgstr "Шаблоны"
+
+#: includes/setup/settings.php
+msgid "Google API Key"
+msgstr "Ключ Google API"
+
+#: includes/setup/settings.php
+msgid "The Google Maps API Key is not required but highly recommended, get more info at <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>Google Documentation</a>."
+msgstr "Ключ API Google Maps не обязателен, но настоятельно рекомендуется; подробнее см. в <a href='https://developers.google.com/maps/documentation/javascript/tutorial#api_key'>документации Google</a>."
+
+#: includes/setup/settings.php
+msgid "Geolocation URL"
+msgstr "URL геолокации"
+
+#: includes/setup/settings.php
+msgid "Enter the URL of the IP to Geolocation lookup service.  Every devices IP address will be tested against this location service if not set to determine the devices Geolocation.  The devices IP address will be appended to the end of this URL."
+msgstr "Введите URL-адрес сервиса геолокации по IP. IP-адрес каждого устройства с незаданными координатами будет проверяться через этот сервис для определения его геолокации. IP-адрес устройства будет добавлен в конец этого URL-адреса."
+
+#: includes/setup/settings.php
+msgid "Initial Latitude"
+msgstr "Начальная широта"
+
+#: includes/setup/settings.php
+msgid "Defines the centering of the map"
+msgstr "Задаёт центрирование карты"
+
+#: includes/setup/settings.php
+msgid "Initial Longitude"
+msgstr "Начальная долгота"
+
+#: includes/setup/settings.php
+msgid "Initial Elevation"
+msgstr "Начальная высота"
+
+#: includes/setup/settings.php
+msgid "Defines the elevation of the map from 0 - 12"
+msgstr "Задаёт высоту (уровень) карты от 0 до 12"
+
+#: includes/setup/settings.php
+msgid "Display Settings"
+msgstr "Настройки отображения"
+
+#: includes/setup/settings.php
+msgid "Display Disabled Devices"
+msgstr "Отображать отключённые устройства"
+
+#: includes/setup/settings.php
+msgid "Allow the display of disabled Devices on the Map"
+msgstr "Разрешить отображение отключённых устройств на карте"
+
+#: includes/setup/settings.php
+msgid "Coverage Overlay"
+msgstr "Слой покрытия"
+
+#: includes/setup/settings.php
+msgid "Draws a transparent circle around an AP with a radius equal to the furthest node in the same subnet"
+msgstr "Рисует прозрачный круг вокруг точки доступа с радиусом, равным расстоянию до самого дальнего узла в той же подсети"
+
+#: includes/setup/settings.php
+msgid "Map Refresh"
+msgstr "Обновление карты"
+
+#: includes/setup/settings.php
+msgid "Refreshes map after set minutes. Recommend set to poller interval, 0 to disable."
+msgstr "Обновляет карту через заданное число минут. Рекомендуется задать равным интервалу опросчика; 0 — отключить."
+
+#: includes/setup/settings.php
+msgid "Overlay Settings"
+msgstr "Настройки наложения"
+
+#: includes/setup/settings.php
+msgid "Tab Radius (Required)"
+msgstr "Радиус вкладки (обязательно)"
+
+#: includes/setup/settings.php
+msgid "Defines radius to combine points into one. (default: 0.0003)"
+msgstr "Задаёт радиус объединения точек в одну (по умолчанию: 0.0003)"
+
+#: includes/setup/settings.php
+msgid "Fill Color"
+msgstr "Цвет заливки"
+
+#: includes/setup/settings.php
+msgid "The overlay circle fill color as FFFFFF"
+msgstr "Цвет заливки круга наложения в формате FFFFFF"
+
+#: includes/setup/settings.php
+msgid "Ring Color"
+msgstr "Цвет кольца"
+
+#: includes/setup/settings.php
+msgid "Defines the outer rim color as FFFFFF"
+msgstr "Задаёт цвет внешней границы в формате FFFFFF"
+
+#: includes/setup/settings.php
+msgid "Ring Width"
+msgstr "Ширина кольца"
+
+#: includes/setup/settings.php
+msgid "Outer Ring width"
+msgstr "Ширина внешнего кольца"
+
+#: includes/setup/settings.php
+msgid "Fill Opacity"
+msgstr "Непрозрачность заливки"
+
+#: includes/setup/settings.php
+msgid "Defines the fill opacity between 0 and 1"
+msgstr "Задаёт непрозрачность заливки от 0 до 1"
+
+#: includes/setup/settings.php
+msgid "Ring Opacity"
+msgstr "Непрозрачность кольца"
+
+#: includes/setup/settings.php
+msgid "Defines the ring opacity between 0 and 1"
+msgstr "Задаёт непрозрачность контура кольца от 0 до 1"
+
+#: includes/setup/settings.php
+msgid "Quality"
+msgstr "Качество"
+
+#: includes/setup/settings.php
+msgid "Number of divisions in circle (preferably > 15) greater numbers can slow down browser performance."
+msgstr "Количество сегментов окружности (желательно > 15); большие значения могут замедлить работу браузера."
 
 #: setup.php
 msgid "Configure Maps"
