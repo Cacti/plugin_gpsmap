@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: Cacti\nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2026-09-28 16:05-0400\nPO-Revision-Date: 2026-11-26 00:18+0000\nLast-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\nLanguage-Team: Vietnamese <https://translate.cacti.net/projects/cacti/gpsmaps/vi/>\nLanguage: vi-VN\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 5.11.4\n"
+msgstr "Project-Id-Version: Cacti\nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2026-09-28 16:05-0400\nPO-Revision-Date: 2026-11-26 19:18+0000\nLast-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\nLanguage-Team: Vietnamese <https://translate.cacti.net/projects/cacti/gpsmaps/vi/>\nLanguage: vi-VN\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 5.11.4\n"
 
 #: gpsmap.php
 msgid "Please make sure to properly configure Maps first under Settings > Maps"
@@ -157,7 +157,7 @@ msgstr "Cài đặt hiển thị"
 
 #: includes/setup/settings.php
 msgid "Display Disabled Devices"
-msgstr "Hiển thị thiết bị bị vô hiệu hóa"
+msgstr "Hiển thị thiết bị đã vô hiệu hóa"
 
 #: includes/setup/settings.php
 msgid "Allow the display of disabled Devices on the Map"
